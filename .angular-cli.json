@@ -26,7 +26,10 @@
         "../node_modules/primeng/resources/themes/darkness/theme.css",
         "../node_modules/angular5-toaster/dist/toaster.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
