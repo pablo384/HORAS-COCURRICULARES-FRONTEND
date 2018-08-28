@@ -15,7 +15,8 @@ export class PeticionesService {
       return this.http.get(this.url +'')
   } 
 
-  realizarContingencia(data: string) {
-    return this.http.post(this.url + '/realizar_contingencia',data)
+  login(data: string) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(this.url + '/login',data,{headers: headers})
   }
 }
