@@ -15,6 +15,8 @@ import {BlockUIModule} from 'ng-block-ui';
 import { AppComponent } from './app.component';
 
 import { PeticionesService } from './services/peticiones.service'
+import { FuncionesService } from './services/funciones.service'
+import { AuthGuard } from './auth.guard';
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component'
 import { routing }        from './app.routing';
@@ -44,6 +46,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   providers: [
   	PeticionesService,
+  	AuthGuard,
+  	FuncionesService,
   // WebsocketService,
   ConfirmationService,
   ToasterService,
