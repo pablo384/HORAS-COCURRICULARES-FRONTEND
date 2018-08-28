@@ -3,15 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 
-// import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuard } from './auth.guard';
  
 const appRoutes: Routes = [
-    // { path: '', component: HomeComponent, canActivate: [AuthGuardService]},
-    { path: '', component: HomeComponent},
+    // { path: '', component: HomeComponent, canActivate: [AuthGuard]},
+     { path: '', component: HomeComponent, pathMatch: 'full' , canActivate: [AuthGuard]},
+    // { path: '', component: HomeComponent},
     { path: 'login', component: LoginComponent },
  
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: '',canActivate: [AuthGuard] }
 ];
  
 export const routing = RouterModule.forRoot(appRoutes);

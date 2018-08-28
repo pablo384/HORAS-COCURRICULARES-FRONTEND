@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import {FuncionesService} from '../../services/funciones.service'
 import {PeticionesService} from '../../services/peticiones.service'
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 	loading = false;
     submitted = false;
     returnUrl: string;
-  constructor(private formBuilder: FormBuilder,private router: Router, private _peticiones :PeticionesService ) {
+  constructor(private _funtions: FuncionesService, private formBuilder: FormBuilder,private router: Router, private _peticiones :PeticionesService ) {
   	 
   }
 
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
       response => {
         console.log(response);
         if (response["data"] && response["data"].authentication_token) {
+          this._funtions.sendToken(response["data"].authentication_token);
           // // console.log(response.auth_token);
           // this.token = response.data.authentication_token;
           // if (this.token.length <= 0) {
