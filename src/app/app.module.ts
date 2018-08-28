@@ -19,13 +19,15 @@ import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component'
 import { routing }        from './app.routing';
 import { HomeComponent } from './components/home/home.component';
+import { BoxBodyComponent } from './components/box-body/box-body.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    BoxBodyComponent
   ],
   imports: [
     BrowserModule,
