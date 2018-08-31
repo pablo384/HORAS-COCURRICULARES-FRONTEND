@@ -1,4 +1,3 @@
 export const CONSTANTES = {
-
-  url:'localhost:5000'
+  url:'localhost:1337'
 };

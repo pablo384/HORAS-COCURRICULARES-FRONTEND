@@ -15,8 +15,8 @@ export class PeticionesService {
       return this.http.get(this.url +'')
   } 
 
-  login(data: string) {
+  login(data: Object) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(this.url + '/login',data,{headers: headers})
+    return this.http.post(this.url + '/login',JSON.stringify(data),{headers: headers})
   }
 }
