@@ -225,7 +225,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="assets/myimages/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{_funtions.getLoggedUser().nombre_usuario}}</span>
+              <span class="hidden-xs">{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -287,7 +287,7 @@
           <img src="assets/myimages/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{_funtions.getLoggedUser().nombre_usuario}}</p>
+          <p>{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
