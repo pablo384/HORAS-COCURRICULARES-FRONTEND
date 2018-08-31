@@ -7,7 +7,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>SAHC</b></span>
     </a>
     <!-- =============================== -->
     <!-- MENU GRIS LATERAL  -->
@@ -304,17 +304,45 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
+        <!-- <li class="header">MAIN NAVIGATION</li> -->
+       <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> <span>Estudiante</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i>Registrar</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Buscar</a></li>
+          </ul>
+        </li>
+
+
+         <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Actividades</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i>Registrar</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Listado</a></li>
+          </ul>
+        </li>
+
+
+         <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Carreras</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i>Registrar</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Listado</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -397,7 +425,9 @@
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol>
-       <app-box-body> </app-box-body>
+       <!-- <app-box-body> </app-box-body> -->
+       <!-- <app-reg-estudiante></app-reg-estudiante> -->
+       <app-list-actividades></app-list-actividades>
     </section>
 
     <!-- Main content -->

@@ -22,6 +22,10 @@ import { LoginComponent } from './components/login/login.component'
 import { routing }        from './app.routing';
 import { HomeComponent } from './components/home/home.component';
 import { BoxBodyComponent } from './components/box-body/box-body.component';
+import { RegEstudianteComponent } from './components/reg-estudiante/reg-estudiante.component';
+import { RegActividadComponent } from './components/reg-actividad/reg-actividad.component';
+import { RegCarreraComponent } from './components/reg-carrera/reg-carrera.component';
+import { ListActividadesComponent } from './components/list-actividades/list-actividades.component';
 
 
 @NgModule({
@@ -29,7 +33,11 @@ import { BoxBodyComponent } from './components/box-body/box-body.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    BoxBodyComponent
+    BoxBodyComponent,
+    RegEstudianteComponent,
+    RegActividadComponent,
+    RegCarreraComponent,
+    ListActividadesComponent
   ],
   imports: [
     BrowserModule,

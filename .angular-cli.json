@@ -20,7 +20,8 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "assets/mystyles/AdminLTE.min.css",
+        "./assets/mystyles/AdminLTE.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/primeng/resources/primeng.min.css",
         "../node_modules/primeng/resources/themes/darkness/theme.css",
@@ -28,6 +29,7 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
+        "./app/jsLib/jquery.dataTables.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js",
         "./app/jsLib/adminlte.js"
       ],
