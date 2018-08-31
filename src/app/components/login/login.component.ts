@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-    console.log(this.loginForm.value);
+    // console.log(this.loginForm.value);
     this.blockUI.start()
     this._peticiones.login(this.loginForm.value).subscribe(
       response => {
@@ -41,7 +41,8 @@ export class LoginComponent implements OnInit {
         console.log(response);
         if (response && response["token"]) {
            this.toasterService.pop("success", "success", "Bienvenido!!");
-          this._funtions.sendToken(response["token"]);
+          this._funtions.setCookieObject("LoggedInUser",response["user"])
+          this._funtions.setCookieText("token",response["token"])
           this._router.navigate(['/home']);
         }
 
@@ -55,17 +56,8 @@ export class LoginComponent implements OnInit {
         }
         console.log(error.error.message)
         this.toasterService.pop("error","Error",resultado);
-        // if (error.error.error.email[0]) {
-        //   console.log(error.error.error.email[0]);
-        //   this.msg = error.error.error.email[0];
-        //   this._userService.popToast(this.status, this.msg);
-        // } else if (error.error) {
-        //   this.msg = error.error;
-        //   this._userService.popToast(this.status, this.msg);
-        // }
-        // this.status = 'error';
-        this.blockUI.stop(); // Stop blocking
-        // this._userService.popToast(this.status, this.resultado);
+
+        this.blockUI.stop(); 
       }
     );
 

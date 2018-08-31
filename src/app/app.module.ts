@@ -10,7 +10,7 @@ import {ToasterModule, ToasterService}  from 'angular5-toaster/dist';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {BlockUIModule} from 'ng-block-ui';
-
+import {CookieModule, CookieService} from 'ngx-cookie';
 
 import { AppComponent } from './app.component';
 
@@ -45,6 +45,7 @@ import { ListActividadesComponent } from './components/list-actividades/list-act
     ConfirmDialogModule,
     BlockUIModule.forRoot(),
     ToasterModule,
+    CookieModule.forRoot(),
     MomentModule,
     InputSwitchModule,
     FormsModule,
@@ -56,6 +57,7 @@ import { ListActividadesComponent } from './components/list-actividades/list-act
   ],
   providers: [
   	PeticionesService,
+  	CookieService,
   	AuthGuard,
   	FuncionesService,
   // WebsocketService,

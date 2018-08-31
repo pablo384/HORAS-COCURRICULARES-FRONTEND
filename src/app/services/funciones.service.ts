@@ -1,24 +1,66 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import {CookieService} from 'ngx-cookie';
 
 @Injectable()
 export class FuncionesService {
+  public token: string;
+  public loggedUser;
+  constructor(private myRoute: Router,private cookieService: CookieService) { }
 
-  constructor(private myRoute: Router) { }
-
-
-  sendToken(token: string) {
-    localStorage.setItem("LoggedInUser", token)
+  setCookieObject(name: string, object: Object) {
+    this.cookieService.putObject(name, object);
   }
-  getToken() {
-    return localStorage.getItem("LoggedInUser")
+
+  setCookieText(name: string, text: string) {
+    this.cookieService.put(name, text);
   }
+  // sendToken(token: string) {
+  //   cookieService.setItem("LoggedInUser", token)
+  // }
+
+
+
+
+  getToken(): string {
+    const token = this.cookieService.get('token');
+    if (token !== 'undefined') {
+      if (token !== '') {
+        this.token = token;
+      } else {
+        this.token = null;
+      }
+    } else {
+      this.token = null;
+    }
+    // console.log("getToken ",this.token)
+    return this.token;
+  }
+
+
+  getLoggedUser() {
+    const userExtracted = this.cookieService.getObject('LoggedInUser');
+    if (userExtracted !== undefined) {
+      if (userExtracted !== '') {
+        this.loggedUser = userExtracted;
+      } else {
+        this.loggedUser = null;
+      }
+    } else {
+      this.loggedUser = null;
+    }
+    return this.loggedUser;
+  }
+
+
+
   isLoggednIn() {
-    // console.log("this.getToken()",this.getToken())
-    return this.getToken() !== null;
+    // console.log("this.getToken()",this.getToken(),this.getToken() != null)
+    return this.getToken() != null;
   }
+
   logout() {
-    localStorage.removeItem("LoggedInUser");
+    this.cookieService.removeAll();
     this.myRoute.navigate(["login"]);
   }
   
