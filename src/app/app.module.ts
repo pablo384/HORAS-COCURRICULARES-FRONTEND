@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 import {NgbDropdownModule, NgbModule, NgbDropdown} from '@ng-bootstrap/ng-bootstrap';
 import {HTTP_INTERCEPTORS, HttpClientModule}            from '@angular/common/http';
 import { FormBuilder, FormsModule,ReactiveFormsModule} from '@angular/forms';
-import {InputSwitchModule} from 'primeng/primeng';
+import {InputSwitchModule , CalendarModule , InputTextModule , InputMaskModule , MultiSelectModule , ListboxModule} from 'primeng/primeng';
 import { MomentModule } from 'angular2-moment';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule, ToasterService}  from 'angular5-toaster/dist';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {ConfirmationService} from 'primeng/api';
+import {ConfirmationService } from 'primeng/api';
 import {BlockUIModule} from 'ng-block-ui';
 import {CookieModule, CookieService} from 'ngx-cookie';
 
@@ -48,6 +48,11 @@ import { ListActividadesComponent } from './components/list-actividades/list-act
     CookieModule.forRoot(),
     MomentModule,
     InputSwitchModule,
+    CalendarModule,
+    InputTextModule,
+    InputMaskModule,
+    MultiSelectModule,
+    ListboxModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reg-estudiante.component.css']
 })
 export class RegEstudianteComponent implements OnInit {
-
+	val5: string;
   constructor() { }
 
   ngOnInit() {

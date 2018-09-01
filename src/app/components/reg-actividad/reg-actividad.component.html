@@ -1,78 +1,90 @@
- <div class="col-lg-6">
- <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Registrar Estudiante</h3>
-            </div>
-            <div class="box-body">
+<div class="modal fade" id="modal-default3">
+    <div class="modal-dialog">
+        <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Registrar Actividad</h4>
+      </div>
+        <div class="modal-body">
+          <div class="box-body">
               <div class="input-group">
-                <span class="input-group-addon">@</span>
-                <input type="text" class="form-control" placeholder="Username">
+                <span class="input-group-addon">Titulo</span>
+                <input type="text" class="form-control" >
               </div>
               <br>
-
-              <div class="input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-addon">.00</span>
-              </div>
-              <br>
-
-              <div class="input-group">
-                <span class="input-group-addon">$</span>
-                <input type="text" class="form-control">
-                <span class="input-group-addon">.00</span>
-              </div>
-
-              <h4>With icons</h4>
-
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="email" class="form-control" placeholder="Email">
-              </div>
-              <br>
-
-              <div class="input-group">
-                <input type="text" class="form-control">
-                <span class="input-group-addon"><i class="fa fa-check"></i></span>
-              </div>
-              <br>
-
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                <input type="text" class="form-control">
-                <span class="input-group-addon"><i class="fa fa-ambulance"></i></span>
-              </div>
-
-              <h4>With checkbox and radio inputs</h4>
 
               <div class="row">
                 <div class="col-lg-6">
                   <div class="input-group">
-                        <span class="input-group-addon">
-                          <input type="checkbox">
-                        </span>
-                    <input type="text" class="form-control">
+                    <div class="input-group-addon">
+                     Fecha de inicio
+                    </div>
+                   <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
                   </div>
-                  <!-- /input-group -->
                 </div>
-                <!-- /.col-lg-6 -->
+
                 <div class="col-lg-6">
                   <div class="input-group">
-                        <span class="input-group-addon">
-                          <input type="radio">
-                        </span>
-                    <input type="text" class="form-control">
+                    <div class="input-group-addon">
+                      Finaliza
+                    </div>
+                   <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
                   </div>
-                  <!-- /input-group -->
                 </div>
-                <!-- /.col-lg-6 -->
               </div>
-              <!-- /.row -->
 
-           
-     
-            </div>
-            <!-- /.box-body -->
+              <br>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <label >Conferencistas</label>
+                  <p-listbox [options]="cities" [(ngModel)]="selectedCities" filter="filter"  multiple="multiple" checkbox="checkbox" ></p-listbox>
+                  <p>Selected Cities: <span *ngFor="let c of selectedCities" style="margin-right: 10px">{{c.name}}</span></p>
+                </div>
+                <div class="col-lg-6">
+                  <label >Carreras</label>
+                  <p-listbox [options]="carreras" [(ngModel)]="selectedCarreras" filter="filter"  multiple="multiple" checkbox="checkbox" ></p-listbox>
+                   <p>Selected Cities: <span *ngFor="let c of selectedCarreras" style="margin-right: 10px">{{c.name}}</span></p>
+                </div>
+              </div>
+
+              <!-- <div class="row">
+                <div class="col-lg-6">
+                      <label>Hora de inicio:</label>
+                      <p-calendar [(ngModel)]="date8" [timeOnly]="true"></p-calendar>
+                </div>
+              
+                <div class="col-lg-6">
+                      <label>Duración:</label>
+                      <p-calendar [(ngModel)]="date8" [timeOnly]="true"></p-calendar>
+                </div>
+              </div> -->
+
+           <!--    <div class="row">
+                <div class="col-lg-6">
+                  <div class="input-group">
+                    <div class="input-group-addon">Carreras</div>
+                    <select class="form-control select2" style="width: 100%;">
+                        <option selected="selected">ISC</option>
+                        <option>INN</option>
+                        <option>ADM</option>
+                        <option>MED</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                
+                </div>
+              </div> -->
+             
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-success">Registrar</button>
+          </div>
+        </div>
+      </div>
+  </div>
 </div>
-
- <div class="col-lg-6"></div>
