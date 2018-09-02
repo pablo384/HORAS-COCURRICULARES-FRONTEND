@@ -8,46 +8,49 @@
       </div>
         <div class="modal-body">
           <div class="box-body">
-              <div class="input-group">
-                <span class="input-group-addon">Titulo</span>
-                <input type="text" class="form-control" >
-              </div>
-              <br>
-
-              <div class="row">
-                <div class="col-lg-6">
+              
+              <div class="col-lg-7">
                   <div class="input-group">
-                    <div class="input-group-addon">
-                     Fecha de inicio
-                    </div>
-                   <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
+                    <span class="input-group-addon">Titulo</span>
+                    <input type="text" class="form-control" >
                   </div>
-                </div>
+                  <br>
 
-                <div class="col-lg-6">
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      Finaliza
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="col-lg-6">
+                         Fecha de inicio
+                      </div>
+                      <div class="col-lg-6">
+                        <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
+                      </div>
                     </div>
-                   <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
                   </div>
-                </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-lg-6">
+                          Fecha de Finalizar
+                        </div>
+                        <div class="col-lg-6">
+                          <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
+                        </div>
+                    </div>
+                  </div>
+                   <br>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <p>Carreras participantes: <span *ngFor="let c of selectedCarreras" style="margin-right: 10px">{{c.name}}</span></p>
+                    </div>
+                  </div>
               </div>
+          
 
-              <br>
-
-              <div class="row">
-                <div class="col-lg-6">
-                  <label >Conferencistas</label>
-                  <p-listbox [options]="cities" [(ngModel)]="selectedCities" filter="filter"  multiple="multiple" checkbox="checkbox" ></p-listbox>
-                  <p>Selected Cities: <span *ngFor="let c of selectedCities" style="margin-right: 10px">{{c.name}}</span></p>
-                </div>
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                   <label >Carreras</label>
                   <p-listbox [options]="carreras" [(ngModel)]="selectedCarreras" filter="filter"  multiple="multiple" checkbox="checkbox" ></p-listbox>
-                   <p>Selected Cities: <span *ngFor="let c of selectedCarreras" style="margin-right: 10px">{{c.name}}</span></p>
                 </div>
-              </div>
+        
 
               <!-- <div class="row">
                 <div class="col-lg-6">

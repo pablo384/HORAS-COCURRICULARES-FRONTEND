@@ -31,14 +31,14 @@ export class RegActividadComponent implements OnInit {
 	        {label: 'avatar', value: 'avatar9'}
 	    ];
 	    this.carreras = [
-	        {label: 'ISC', value: 'avatar1'},
-	        {label: 'ADM', value: 'avatar2'},
-	        {label: 'MED', value: 'avatar3'},
-	        {label: 'INC', value: 'avatar4'},
-	        {label: 'IIN', value: 'avatar5'},
-	        {label: 'DER', value: 'avatar6'},
-	        {label: 'ARQ', value: 'avatar6'},
-	        {label: 'BIO', value: 'avatar7'},
+	        {label: 'ISC', value:{id:1,name:'ISC',code:'ISC'}},
+	        {label: 'ADM', value:{id:2,name:'ADM',code:'ADM'}},
+	        {label: 'MED', value:{id:3,name:'MED',code:'MED'}},
+	        {label: 'INC', value:{id:4,name:'INC',code:'INC'}},
+	        {label: 'IIN', value:{id:5,name:'IIN',code:'IIN'}},
+	        {label: 'DER', value:{id:6,name:'DER',code:'DER'}},
+	        {label: 'ARQ', value:{id:7,name:'ARQ',code:'ARQ'}},
+	        {label: 'BIO', value:{id:8,name:'BIO',code:'BIO'}}
 	    ];
 		this.cities = [
 		        {label:'Select City', value:null},

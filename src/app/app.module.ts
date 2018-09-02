@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {NgbDropdownModule, NgbModule, NgbDropdown} from '@ng-bootstrap/ng-bootstrap';
 import {HTTP_INTERCEPTORS, HttpClientModule}            from '@angular/common/http';
 import { FormBuilder, FormsModule,ReactiveFormsModule} from '@angular/forms';
-import {InputSwitchModule , CalendarModule , InputTextModule , InputMaskModule , MultiSelectModule , ListboxModule} from 'primeng/primeng';
+import {InputSwitchModule , CalendarModule , InputTextModule , InputMaskModule , MultiSelectModule , ListboxModule ,SplitButtonModule} from 'primeng/primeng';
 import { MomentModule } from 'angular2-moment';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule, ToasterService}  from 'angular5-toaster/dist';
@@ -26,6 +26,8 @@ import { RegEstudianteComponent } from './components/reg-estudiante/reg-estudian
 import { RegActividadComponent } from './components/reg-actividad/reg-actividad.component';
 import { RegCarreraComponent } from './components/reg-carrera/reg-carrera.component';
 import { ListActividadesComponent } from './components/list-actividades/list-actividades.component';
+import { RegConferenciaComponent } from './components/reg-conferencia/reg-conferencia.component';
+import { ListEstudiantesComponent } from './components/list-estudiantes/list-estudiantes.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { ListActividadesComponent } from './components/list-actividades/list-act
     RegEstudianteComponent,
     RegActividadComponent,
     RegCarreraComponent,
-    ListActividadesComponent
+    ListActividadesComponent,
+    RegConferenciaComponent,
+    ListEstudiantesComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,7 @@ import { ListActividadesComponent } from './components/list-actividades/list-act
     InputMaskModule,
     MultiSelectModule,
     ListboxModule,
+    SplitButtonModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
