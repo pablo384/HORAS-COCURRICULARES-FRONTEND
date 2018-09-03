@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-default4">
+<div class="modal fade" id="modal-reg-conferencia">
   	<div class="modal-dialog">
         <div class="modal-content">
 			<div class="modal-header">
@@ -26,7 +26,18 @@
 	            		</div>
 	            	</div>
             		<br>
-            		
+
+            		<div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-lg-6">
+                          Día(s) de presentación
+                        </div>
+                        <div class="col-lg-6">
+                          <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
+                        </div>
+                    </div>
+                  </div>
+
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
