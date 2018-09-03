@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FuncionesService} from '../../services/funciones.service';
+import {PeticionesService} from '../../services/peticiones.service';
 
 @Component({
   selector: 'app-reg-estudiante',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegEstudianteComponent implements OnInit {
 	val5: string;
-  constructor() { }
+  constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) { }
 
   ngOnInit() {
   }

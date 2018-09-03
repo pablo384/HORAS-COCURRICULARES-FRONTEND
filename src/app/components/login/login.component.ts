@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import {ToasterService} from 'angular5-toaster/dist';
-import {BlockUI, NgBlockUI} from 'ng-block-ui';
+// import {ToasterService} from 'angular5-toaster/dist';
+// import {BlockUI, NgBlockUI} from 'ng-block-ui';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 
@@ -14,12 +14,12 @@ import {PeticionesService} from '../../services/peticiones.service';
 })
 
 export class LoginComponent implements OnInit {
-  @BlockUI() blockUI: NgBlockUI;
+  // @BlockUI() blockUI: NgBlockUI;
 	loginForm: FormGroup;
 	loading = false;
     submitted = false;
     returnUrl: string;
-  constructor(private _funtions: FuncionesService, private formBuilder: FormBuilder,private _router: Router, private _peticiones :PeticionesService,private toasterService: ToasterService ) {
+  constructor(private _funtions: FuncionesService, private formBuilder: FormBuilder,private _router: Router, private _peticiones :PeticionesService ) {
   	 
   }
 
@@ -34,13 +34,13 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     // console.log(this.loginForm.value);
-    this.blockUI.start()
+    this._funtions.blockUIO().start()
     this._peticiones.login(this.loginForm.value).subscribe(
       response => {
-         this.blockUI.stop()
+         this._funtions.blockUIO().stop()
         console.log(response);
         if (response && response["token"]) {
-           this.toasterService.pop("success", "success", "Bienvenido!!");
+          this._funtions.Toast("success", "success", "Bienvenido!!");
           this._funtions.setCookieObject("LoggedInUser",response["user"])
           this._funtions.setCookieText("token",response["token"])
           this._router.navigate(['/home']);
@@ -55,9 +55,9 @@ export class LoginComponent implements OnInit {
           resultado = error.error.message;
         }
         console.log(error.error.message)
-        this.toasterService.pop("error","Error",resultado);
+        this._funtions.Toast("error","Error",resultado);
 
-        this.blockUI.stop(); 
+        this._funtions.blockUIO().stop(); 
       }
     );
 

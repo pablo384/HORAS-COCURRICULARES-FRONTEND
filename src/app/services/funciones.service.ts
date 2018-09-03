@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {CookieService} from 'ngx-cookie';
+import {ToasterService} from 'angular5-toaster/dist';
+import {BlockUI, NgBlockUI} from 'ng-block-ui';
 
 @Injectable()
 export class FuncionesService {
+  @BlockUI() blockUI: NgBlockUI;
   public token: string;
   public loggedUser;
-  constructor(private myRoute: Router,private cookieService: CookieService) { }
+  constructor(private myRoute: Router,private cookieService: CookieService,private toasterService: ToasterService) { }
 
   setCookieObject(name: string, object: Object) {
     this.cookieService.putObject(name, object);
@@ -18,9 +21,14 @@ export class FuncionesService {
   // sendToken(token: string) {
   //   cookieService.setItem("LoggedInUser", token)
   // }
+  Toast(cType="success",cTitle="success",cMsg){
+    this.toasterService.pop(cType,cTitle,cMsg);
+    // this.toasterService.pop("success", "success", "Bienvenido!!");
+  }
 
-
-
+  blockUIO(){
+    return this.blockUI;
+  }
 
   getToken(): string {
     const token = this.cookieService.get('token');
