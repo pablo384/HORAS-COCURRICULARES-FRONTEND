@@ -28,6 +28,7 @@ import { RegCarreraComponent } from './components/reg-carrera/reg-carrera.compon
 import { ListActividadesComponent } from './components/list-actividades/list-actividades.component';
 import { RegConferenciaComponent } from './components/reg-conferencia/reg-conferencia.component';
 import { ListEstudiantesComponent } from './components/list-estudiantes/list-estudiantes.component';
+import { RegConferencistaComponent } from './components/reg-conferencista/reg-conferencista.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ListEstudiantesComponent } from './components/list-estudiantes/list-est
     RegCarreraComponent,
     ListActividadesComponent,
     RegConferenciaComponent,
-    ListEstudiantesComponent
+    ListEstudiantesComponent,
+    RegConferencistaComponent
   ],
   imports: [
     BrowserModule,
