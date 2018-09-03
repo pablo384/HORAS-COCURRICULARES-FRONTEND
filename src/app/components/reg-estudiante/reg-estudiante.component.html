@@ -8,97 +8,99 @@
 			</div>
 			<div class="modal-body">
         <div class="box-body">
-        	<div class="input-group">
-	          <span class="input-group-addon">Nombres</span>
-	          <input type="text" class="form-control" >
-          </div>
-          <br>
-					<div class="input-group">
-						<span class="input-group-addon">Apellidos</span>
-						<input type="text" class="form-control">
-					</div>
-					<br>
-					<div class="input-group">
-						<span class="input-group-addon">Dirección</span>
-						<input type="text" class="form-control">
-					</div>
-					<br>
-					<div class="row" style="padding-bottom:16px">
-						<div class="col-lg-6">
-							<div class="input-group">
-								<span class="input-group-addon">Cedula</span>
-								<input type="text" class="form-control">
-							</div>
+        	<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
+	        	<div class="input-group">
+		          <span class="input-group-addon">Nombres</span>
+		          <input type="text" class="form-control" formControlName="nombres" >
+	          </div>
+	          <br>
+						<div class="input-group">
+							<span class="input-group-addon">Apellidos</span>
+							<input type="text" class="form-control" formControlName="apellidos">
 						</div>
-						<div class="col-lg-6">
-							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-								<input type="email" class="form-control" placeholder="Email">
-							</div>
+						<br>
+						<div class="input-group">
+							<span class="input-group-addon">Dirección</span>
+							<input type="text" class="form-control" formControlName="direccion">
 						</div>
-					</div>
-					<div class="row" style="padding-bottom:16px">
-						<div class="col-lg-6">
-							<label>Carrera</label>
-		            <select class="form-control select2" style="width: 100%;">
-		              <option selected="selected">ISC</option>
-		              <option>INN</option>
-		              <option>ADM</option>
-		              <option>MED</option>
-		            </select>
-						</div>
-						<div class="col-lg-6">
-							<label>Teléfono</label>
-							<div class="form-group">
+						<br>
+						<div class="row" style="padding-bottom:16px">
+							<div class="col-lg-6">
 								<div class="input-group">
-				          <div class="input-group-addon">
-				            <i class="fa fa-phone"></i>
-				          </div>
-				          <p-inputMask mask="(999) 999-9999" [(ngModel)]="val5" placeholder="(999) 999-9999"></p-inputMask>
-				        </div>
+									<span class="input-group-addon">Cedula</span>
+									<input type="text" class="form-control" formControlName="cedula">
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" class="form-control" placeholder="Email" formControlName="email">
+								</div>
 							</div>
 						</div>
-					</div>   
-          <div class="input-group">
-            <span class="input-group-addon">Nombre de usuario</span>
-            <input type="text" class="form-control">
-          </div>    
-	        <br>
-				  <div class="row">
-          	<div class="col-lg-6">
-          		<div class="input-group">
-	              <span class="input-group-addon">Matricula</span>
-	              <input type="password" class="form-control">
-	            </div>
-          	</div>
-          	<div class="col-lg-6">
-          		 <div class="input-group">
-                <span class="input-group-addon">Carnet</span>
-                <input type="password" class="form-control">
-            	</div>
-          	</div>
-          </div>
-					<br>
-          <div class="row">
-          	<div class="col-lg-6">
-          		<div class="input-group">
-                <span class="input-group-addon">Clave</span>
-                <input type="password" class="form-control">
-	            </div>
-          	</div>
-            	<div class="col-lg-6">
-            		<div class="input-group">
-	                <span class="input-group-addon">Confirmar Clave</span>
-	                <input type="password" class="form-control">
+						<div class="row" style="padding-bottom:16px">
+							<div class="col-lg-6">
+								<label>Carrera</label>
+			            <select class="form-control select2" style="width: 100%;" formControlName="carrera">
+			              <option selected="selected">ISC</option>
+			              <option>INN</option>
+			              <option>ADM</option>
+			              <option>MED</option>
+			            </select>
+							</div>
+							<div class="col-lg-6">
+								<label>Teléfono</label>
+								<div class="form-group">
+									<div class="input-group">
+					          <div class="input-group-addon">
+					            <i class="fa fa-phone"></i>
+					          </div>
+					          <p-inputMask mask="(999) 999-9999" formControlName="telefono" placeholder="(999) 999-9999"></p-inputMask>
+					        </div>
+								</div>
+							</div>
+						</div>   
+	          <div class="input-group">
+	            <span class="input-group-addon">Nombre de usuario</span>
+	            <input type="text" class="form-control" formControlName="usuario">
+	          </div>    
+		        <br>
+					  <div class="row">
+	          	<div class="col-lg-6">
+	          		<div class="input-group">
+		              <span class="input-group-addon">Matricula</span>
+		              <input type="text" class="form-control" formControlName="matricula">
+		            </div>
+	          	</div>
+	          	<div class="col-lg-6">
+	          		 <div class="input-group">
+	                <span class="input-group-addon">Carnet</span>
+	                <input type="text" class="form-control" formControlName="carnet">
 	            	</div>
-            	</div>
-          </div>
-					<br>
+	          	</div>
+	          </div>
+						<br>
+	          <div class="row">
+	          	<div class="col-lg-6">
+	          		<div class="input-group">
+	                <span class="input-group-addon">Clave</span>
+	                <input type="password" class="form-control" formControlName="clave">
+		            </div>
+	          	</div>
+	            	<div class="col-lg-6">
+	            		<div class="input-group">
+		                <span class="input-group-addon">Confirmar Clave</span>
+		                <input type="password" class="form-control" formControlName="claveConfirm">
+		            	</div>
+	            	</div>
+	          </div>
+						<br>
+					</form>
 	    	</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-success">Registrar</button>
+				<button type="button" (click)="onSubmit()" class="btn btn-success">Registrar</button>
 			</div>
   	</div>
 	</div>
