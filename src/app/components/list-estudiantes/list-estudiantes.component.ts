@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FuncionesService} from '../../services/funciones.service';
+import {PeticionesService} from '../../services/peticiones.service';
 
 @Component({
   selector: 'app-list-estudiantes',
