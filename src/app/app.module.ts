@@ -29,6 +29,7 @@ import { ListActividadesComponent } from './components/list-actividades/list-act
 import { RegConferenciaComponent } from './components/reg-conferencia/reg-conferencia.component';
 import { ListEstudiantesComponent } from './components/list-estudiantes/list-estudiantes.component';
 import { RegConferencistaComponent } from './components/reg-conferencista/reg-conferencista.component';
+import { ListConferenciasComponent } from './components/list-conferencias/list-conferencias.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { RegConferencistaComponent } from './components/reg-conferencista/reg-co
     ListActividadesComponent,
     RegConferenciaComponent,
     ListEstudiantesComponent,
-    RegConferencistaComponent
+    RegConferencistaComponent,
+    ListConferenciasComponent
   ],
   imports: [
     BrowserModule,
