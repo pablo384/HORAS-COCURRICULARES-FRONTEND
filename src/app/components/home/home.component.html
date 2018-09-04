@@ -210,13 +210,13 @@
       </ol>
        <!-- <app-box-body> </app-box-body> -->
        <app-reg-estudiante></app-reg-estudiante>
-       <app-reg-carrera></app-reg-carrera>
+       <app-reg-carrera (Outdisplay)="showAndHideCarrera($event)" [(Inpdisplay)]="displayCarrera" ></app-reg-carrera>
        <app-reg-actividad></app-reg-actividad>
        <app-reg-conferencia></app-reg-conferencia>
        <app-reg-conferencista></app-reg-conferencista>
 
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">Registrar Estudiante</button>
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-reg-carrera">Registrar Carrera</button>
+      <button type="button" class="btn btn-default" (click)="showAndHideCarrera(true)">Registrar Carrera</button>
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-reg-actividad">Registrar Actividad</button>
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-reg-conferencia">Registrar Conferencia</button>
       <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-reg-conferencista">Registrar Conferencista</button>

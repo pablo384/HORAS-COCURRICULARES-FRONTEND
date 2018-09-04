@@ -7,10 +7,17 @@ import {FuncionesService} from '../../services/funciones.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private _funtions: FuncionesService,) { }
+	displayCarrera :boolean;
+  constructor(private _funtions: FuncionesService) {
+  	this.displayCarrera = false;
+  }
 
   ngOnInit() {
   }
 
+  showAndHideCarrera(display:boolean){
+  	this.displayCarrera =display;// = display;
+  	console.log("showAndHideCarrera display",display);
+  	// return this.displayCarrera;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,6 +11,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegCarreraComponent implements OnInit {
 	formCarrera:FormGroup;
+	
+	@Input() Inpdisplay: boolean;
+	@Output() public Outdisplay = new EventEmitter<boolean>();
   constructor(private fb: FormBuilder,private _funtions: FuncionesService, private _peticiones :PeticionesService) { }
 
   ngOnInit() {
@@ -23,6 +26,11 @@ export class RegCarreraComponent implements OnInit {
   		abreviatura:''
   	})
   }
+
+  OnHIde(){
+    this.Outdisplay.emit(false);
+  }
+
   onSubmit(){
     this._funtions.blockUIO().start()
   	this._peticiones.crearCarrera(this.formCarrera.value).subscribe(
@@ -31,9 +39,10 @@ export class RegCarreraComponent implements OnInit {
         console.log(response);
         if (response.info) {
           this._funtions.Toast("success", "success", response.message);
+          this.Outdisplay.emit(false);
           // this._router.navigate(['/home']);
         }else
-        	this._funtions.Toast("error", "error", response.error);
+        	this._funtions.Toast("error", "error",this._funtions.sacarText(response.error));
 
       },
       error => {
