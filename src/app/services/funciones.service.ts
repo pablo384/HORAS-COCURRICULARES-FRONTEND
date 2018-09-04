@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import {CookieService} from 'ngx-cookie';
 import {ToasterService} from 'angular5-toaster/dist';
 import {BlockUI, NgBlockUI} from 'ng-block-ui';
-
+import {PeticionesService} from './peticiones.service';
 @Injectable()
 export class FuncionesService {
   @BlockUI() blockUI: NgBlockUI;
   public token: string;
   public loggedUser;
-  constructor(private myRoute: Router,private cookieService: CookieService,private toasterService: ToasterService) { }
+  constructor(private myRoute: Router,private cookieService: CookieService,private toasterService: ToasterService,private _peticiones:PeticionesService) { }
 
   setCookieObject(name: string, object: Object) {
     this.cookieService.putObject(name, object);
@@ -25,6 +25,29 @@ export class FuncionesService {
     this.toasterService.pop(cType,cTitle,cMsg);
     // this.toasterService.pop("success", "success", "Bienvenido!!");
   }
+
+  allCarreras(callBack){
+    this.blockUIO().start()
+    this._peticiones.GetAllCarrera().subscribe(
+      response => {
+        this.blockUIO().stop()
+        callBack(response);
+      },
+      error => {
+        let resultado;
+        if (error.error && error.status !== 0) {
+          resultado = this.sacarText(error.error);
+        } else {
+          resultado = error.error.error;
+        }
+        console.log(error.error)
+        this.Toast("error","Error",resultado);
+
+        this.blockUIO().stop(); 
+      }
+    );
+   }
+
 
   blockUIO(){
     return this.blockUI;
