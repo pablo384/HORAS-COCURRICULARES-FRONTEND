@@ -36,6 +36,7 @@ export class RegEstudianteComponent implements OnInit {
       telefono:'',
       usuario:'',
       matricula:'',
+      tipo:'E',
       carnet:'',
       clave:'',
       claveConfirm:''

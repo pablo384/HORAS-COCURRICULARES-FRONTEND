@@ -1,5 +1,5 @@
 
-<p-dialog header="Registrar Estudiante" [(visible)]="Inpdisplay" width=600 closeOnEscape=false modal=true (onHide)="OnHIde()"  >
+<p-dialog header="Registrar Estudiante" [(visible)]="Inpdisplay" [width]=600 [height]=560 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
 		<div class="box-body">
         	<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
 	        	<div class="input-group">
@@ -45,10 +45,8 @@
 								<label>Teléfono</label>
 								<div class="form-group">
 									<div class="input-group">
-					          <div class="input-group-addon">
-					            <i class="fa fa-phone"></i>
-					          </div>
-					          <p-inputMask mask="(999) 999-9999" formControlName="telefono" placeholder="(999) 999-9999"></p-inputMask>
+					          <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+					          <p-inputMask mask="(999) 999-9999" formControlName="telefono" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%'}" placeholder="(999) 999-9999"></p-inputMask>
 					        </div>
 								</div>
 							</div>
@@ -91,7 +89,7 @@
 					</form>
     	</div>
     	<p-footer>
-    		<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+    		<button type="button" class="btn btn-default pull-left"   (click)="OnHIde()">Salir</button>
 			<button type="button" (click)="onSubmit()" class="btn btn-success">Registrar</button>
     	</p-footer>
 </p-dialog>

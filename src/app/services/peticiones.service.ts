@@ -34,4 +34,9 @@ export class PeticionesService {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.url + '/actividad',JSON.stringify(data))
   }
+
+  crearEstudiante(data: Object): Observable<any> {
+    // const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(this.url + '/persona',JSON.stringify(data))
+  }
 }
