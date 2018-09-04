@@ -1,5 +1,5 @@
 
-<p-dialog header="Registrar Actividad" [(visible)]="Inpdisplay" width=600 closeOnEscape=false modal=true (onHide)="OnHIde()"  >
+<p-dialog header="Registrar Actividad" [(visible)]="Inpdisplay" [width]=500 [height]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" >
   <div class="box-body">
     <form [formGroup]="formActividad"  (ngSubmit)="crearActividad()" >
       <div class="col-lg-12">
@@ -15,7 +15,7 @@
                Fecha de inicio
             </div>
             <div class="col-lg-6">
-              <p-calendar  dateFormat="dd/mm/yy" formControlName="fecha_inicio"></p-calendar>
+              <p-calendar  dateFormat="dd/mm/yy"  [minDate]="minDate" formControlName="fecha_inicio" [showIcon]="true"></p-calendar>
             </div>
           </div>
         </div>
@@ -26,14 +26,14 @@
                 Fecha de Finalizar
               </div>
               <div class="col-lg-6">
-                <p-calendar  dateFormat="dd/mm/yy" formControlName="fecha_finalizacion"></p-calendar>
+                <p-calendar  dateFormat="dd/mm/yy" [minDate]="minDate" formControlName="fecha_finalizacion" [showIcon]="true"></p-calendar>
               </div>
           </div>
         </div>
          <br>
         <div class="row">
           <div class="col-lg-5">
-            <div class="col-lg-12"><label >Carreras participantes {{selectedCarreras|json}}</label></div>
+            <div class="col-lg-12"><label >Carreras participantes</label></div>
             <div class="col-lg-12"><p-multiSelect [options]="carreras"  formControlName="carreras"></p-multiSelect></div>
           </div>
           <div class="col-lg-7">
