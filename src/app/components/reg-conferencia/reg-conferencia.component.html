@@ -27,16 +27,63 @@
 	            	</div>
             		<br>
 
-            		<div class="row">
-                    <div class="col-lg-12">
-                        <div class="col-lg-6">
+            		<div class="col-lg-12">
+        				<div class="col-lg-5"><label>Hora de inicio</label></div>
+        				<div class="col-lg-7" style="margin-bottom:4px"><p-calendar [(ngModel)]="date8" [timeOnly]="true"></p-calendar></div>
+        				<div class="col-lg-5"><label>Duracion</label></div>
+        				<div class="col-lg-7" style="margin-bottom:4px">
+        					<select class="form-control select2" style="width: 100%;" formControlName="carrera">
+								<option>0:15</option>
+								<option>0:30</option>
+								<option selected="selected">1:00</option>
+								<option>1:15</option>
+								<option>1:30</option>
+								<option>1:45</option>
+								<option>2:00</option>
+								<option>2:15</option>
+								<option>2:30</option>
+								<option>2:45</option>
+								<option>3:00</option>
+								<option>3:15</option>
+								<option>3:30</option>
+								<option>3:45</option>
+								<option>4:00</option>
+								<option>4:15</option>
+								<option>4:30</option>
+								<option>4:45</option>
+								<option>5:00</option>
+								<option>5:15</option>
+								<option>5:30</option>
+								<option>5:45</option>
+								<option>6:00</option>
+							</select>
+        				</div>
+            		</div>
+
+            		<br>
+
+            		<div class="col-lg-12">
+                        <div class="col-lg-5" style="margin-bottom:4px">
                           Día(s) de presentación
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-7" style="margin-bottom:4px">
                           <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
                         </div>
-                    </div>
-                  </div>
+                        <div class="col-lg-5" style="margin-bottom:4px">% de horas validass</div>
+                        <div class="col-lg-7" style="margin-bottom:4px">
+							<select class="form-control select2" style="width: 100%;" formControlName="carrera">
+								<option selected="selected">50%</option>
+								<option>60%</option>
+								<option>70%</option>
+								<option>75%</option>
+								<option>80%</option>
+								<option>85%</option>
+								<option>90%</option>
+								<option>95%</option>
+								<option>100%</option>
+							</select>
+                        </div>
+                  	</div>
 
 				</div>
 				<div class="modal-footer">
