@@ -1,4 +1,4 @@
-<p-dialog header="Registrar Carrera" [(visible)]="Inpdisplay" width=600 closeOnEscape=false modal=true (onHide)="OnHIde()"  >
+<p-dialog header="Registrar Carrera" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
 	<form [formGroup]="formCarrera"  (ngSubmit)="onSubmit()" >
 		<div class="box-body">
 			<div class="col-lg-7">
@@ -16,7 +16,7 @@
 		</div>
 	</form>
 	<p-footer>
-  	<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+  	<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
 		<button type="button" class="btn btn-success" (click)="onSubmit()">Registrar</button>
 	</p-footer>
 </p-dialog>
