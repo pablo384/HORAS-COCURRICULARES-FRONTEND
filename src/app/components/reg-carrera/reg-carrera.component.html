@@ -1,10 +1,4 @@
 <p-dialog header="Registrar Carrera" [(visible)]="Inpdisplay" width=600 closeOnEscape=false modal=true (onHide)="OnHIde()"  >
-  <p-header>
-    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
-		<!-- <span aria-hidden="true">&times;</span></button> -->
-		<!-- <h4 class="modal-title">Registrar Carrera</h4> -->
-  </p-header>
-
 	<form [formGroup]="formCarrera"  (ngSubmit)="onSubmit()" >
 		<div class="box-body">
 			<div class="col-lg-7">
@@ -26,38 +20,3 @@
 		<button type="button" class="btn btn-success" (click)="onSubmit()">Registrar</button>
 	</p-footer>
 </p-dialog>
-
-
-<!-- <div class="modal fade" id="modal-reg-carrera">
-  	<div class="modal-dialog">
-        <div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Registrar Carrera</h4>
-			</div>
-				<div class="modal-body">
-            	<div class="box-body">
-            		<form [formGroup]="formCarrera"  (ngSubmit)="onSubmit()" >
-            		<div class="col-lg-7">
-	               		<div class="input-group">
-			               	<span class="input-group-addon">Nombre</span>
-			                <input type="text" class="form-control" formControlName="nombre">
-		              	</div>
-            		</div>
-	              	<div class="col-lg-5">
-	               		<div class="input-group">
-			               	<span class="input-group-addon">Abreviatura</span>
-			                <input type="text" class="form-control" formControlName="abreviatura">
-		              	</div>
-            		</div>
-            	</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-success" (click)="onSubmit()">Registrar</button>
-				</div>
-    		</div>
-  		</div>
-	</div>
-</div> -->
