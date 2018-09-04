@@ -1,65 +1,50 @@
-<div class="modal fade" id="modal-reg-actividad">
-    <div class="modal-dialog">
-        <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Registrar Actividad</h4>
+
+<p-dialog header="Registrar Estudiante" [(visible)]="Inpdisplay" width=600 closeOnEscape=false modal=true (onHide)="OnHIde()"  >
+  <div class="box-body">
+    <div class="col-lg-12">
+      <div class="input-group">
+        <span class="input-group-addon">Titulo</span>
+        <input type="text" class="form-control" >
       </div>
-        <div class="modal-body">
-          <div class="box-body">
-              
-              <div class="col-lg-12">
-                  <div class="input-group">
-                    <span class="input-group-addon">Titulo</span>
-                    <input type="text" class="form-control" >
-                  </div>
-                  <br>
+      <br>
 
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="col-lg-6">
-                         Fecha de inicio
-                      </div>
-                      <div class="col-lg-6">
-                        <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
-                      </div>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col-lg-12">
-                        <div class="col-lg-6">
-                          Fecha de Finalizar
-                        </div>
-                        <div class="col-lg-6">
-                          <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
-                        </div>
-                    </div>
-                  </div>
-                   <br>
-                  <div class="row">
-                    <div class="col-lg-5">
-                      <div class="col-lg-12"><label >Carreras participantes</label></div>
-                      <div class="col-lg-12"><p-multiSelect [options]="carreras" [(ngModel)]="selectedCarreras"></p-multiSelect></div>
-                      <!-- <p-listbox [options]="carreras" [(ngModel)]="selectedCarreras" filter="filter"  multiple="multiple" checkbox="checkbox" ></p-listbox> -->
-                    </div>
-                    <div class="col-lg-7">
-                      <p><span *ngFor="let c of selectedCarreras" style="margin-right: 10px">{{c.name}}</span></p>
-                    </div>
-
-                  </div>
-          
-
-               
-        
-            </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="col-lg-6">
+             Fecha de inicio
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success">Registrar</button>
+          <div class="col-lg-6">
+            <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
           </div>
         </div>
       </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-6">
+              Fecha de Finalizar
+            </div>
+            <div class="col-lg-6">
+              <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+        </div>
+      </div>
+       <br>
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="col-lg-12"><label >Carreras participantes</label></div>
+          <div class="col-lg-12"><p-multiSelect [options]="carreras" [(ngModel)]="selectedCarreras"></p-multiSelect></div>
+          <!-- <p-listbox [options]="carreras" [(ngModel)]="selectedCarreras" filter="filter"  multiple="multiple" checkbox="checkbox" ></p-listbox> -->
+        </div>
+        <div class="col-lg-7">
+          <p><span *ngFor="let c of selectedCarreras" style="margin-right: 10px">{{c.name}}</span></p>
+        </div>
+
+      </div>
+    </div>
   </div>
-</div>
+  <p-footer>
+    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+    <button type="button" (click)="onSubmit()" class="btn btn-success">Registrar</button>
+  </p-footer>
+</p-dialog>

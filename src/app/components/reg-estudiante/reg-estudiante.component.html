@@ -1,13 +1,6 @@
-<div class="modal fade" id="modal-default">
-  <div class="modal-dialog">
-    <div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				  <span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Registrar Estudiante</h4>
-			</div>
-			<div class="modal-body">
-        <div class="box-body">
+
+<p-dialog header="Registrar Estudiante" [(visible)]="Inpdisplay" width=600 closeOnEscape=false modal=true (onHide)="OnHIde()"  >
+		<div class="box-body">
         	<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
 	        	<div class="input-group">
 		          <span class="input-group-addon">Nombres</span>
@@ -96,12 +89,9 @@
 	          </div>
 						<br>
 					</form>
-	    	</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-				<button type="button" (click)="onSubmit()" class="btn btn-success">Registrar</button>
-			</div>
-  	</div>
-	</div>
-</div>
+    	</div>
+    	<p-footer>
+    		<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+			<button type="button" (click)="onSubmit()" class="btn btn-success">Registrar</button>
+    	</p-footer>
+</p-dialog>

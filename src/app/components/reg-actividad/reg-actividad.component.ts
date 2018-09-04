@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { SelectItem } from 'primeng/primeng'
 @Component({
   selector: 'app-reg-actividad',
@@ -6,6 +6,9 @@ import { SelectItem } from 'primeng/primeng'
   styleUrls: ['./reg-actividad.component.css']
 })
 export class RegActividadComponent implements OnInit {
+
+	@Input() Inpdisplay: boolean;
+  	@Output() public Outdisplay = new EventEmitter<boolean>();
 	date8: Date;
 	cars: SelectItem[];
 	selectedCars1: string[] = [];
@@ -52,9 +55,11 @@ export class RegActividadComponent implements OnInit {
 		    ];
 	}
 
+	 OnHIde(){
+	    this.Outdisplay.emit(false);
+	 }
 
-
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
 }
