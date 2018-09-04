@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reg-conferencia.component.css']
 })
 export class RegConferenciaComponent implements OnInit {
-
+	date8: Date;
+	dateValue: Date;
   constructor() { }
 
   ngOnInit() {
