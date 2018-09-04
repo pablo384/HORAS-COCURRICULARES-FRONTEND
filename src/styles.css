@@ -5,6 +5,15 @@
 .ui-widget-content {
   border: 2px solid white;
   background: white;
-  color: #cccccc; }
- .ui-widget-content a {
-    color: #cccccc; }
+  color: #323232;
+}
+.ui-widget-content a {
+  color: #323232; 
+}
+
+.ui-autocomplete-dd input.ui-corner-all, .ui-autocomplete-dd .ui-autocomplete-multiple-container.ui-corner-all{
+	border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 36px;
+  border-radius: 1px 1px 1px 1px;
+}

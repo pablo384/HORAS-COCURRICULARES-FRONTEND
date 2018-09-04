@@ -19,7 +19,6 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
         "./assets/mystyles/AdminLTE.css",
         "./assets/mystyles/daterangepicker.css",
         "./assets/mystyles/bootstrap-datepicker.css",
@@ -28,7 +27,8 @@
         "../node_modules/font-awesome/css/font-awesome.min.css",
         "../node_modules/primeng/resources/primeng.min.css",
         "../node_modules/primeng/resources/themes/darkness/theme.css",
-        "../node_modules/angular5-toaster/dist/toaster.css"
+        "../node_modules/angular5-toaster/dist/toaster.css",
+        "styles.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
