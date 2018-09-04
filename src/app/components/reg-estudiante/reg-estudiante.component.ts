@@ -58,8 +58,10 @@ export class RegEstudianteComponent implements OnInit {
     });
   }
   onSubmit(){
+    let value = this.formPerson.value
+    value.carrera = value.carrera.id
     this._funtions.blockUIO().start()
-    this._peticiones.crearCarrera(this.formPerson.value).subscribe(
+    this._peticiones.crearEstudiante(value).subscribe(
       response => {
         this._funtions.blockUIO().stop()
         console.log(response);
@@ -85,6 +87,6 @@ export class RegEstudianteComponent implements OnInit {
       }
     );
 
-  	console.log("onSubmit ",JSON.stringify(this.formPerson.value))
+  	console.log("onSubmit ",JSON.stringify(value))
   }
 }
