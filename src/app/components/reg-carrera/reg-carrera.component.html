@@ -8,22 +8,24 @@
 			</div>
 				<div class="modal-body">
             	<div class="box-body">
+            		<form [formGroup]="formCarrera"  (ngSubmit)="onSubmit()" >
             		<div class="col-lg-7">
 	               		<div class="input-group">
-			               	<span class="input-group-addon">Nombres</span>
-			                <input type="text" class="form-control">
+			               	<span class="input-group-addon">Nombre</span>
+			                <input type="text" class="form-control" formControlName="nombre">
 		              	</div>
             		</div>
 	              	<div class="col-lg-5">
 	               		<div class="input-group">
 			               	<span class="input-group-addon">Abreviatura</span>
-			                <input type="text" class="form-control">
+			                <input type="text" class="form-control" formControlName="abreviatura">
 		              	</div>
             		</div>
+            	</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-success">Registrar</button>
+					<button type="button" class="btn btn-success" (click)="onSubmit()">Registrar</button>
 				</div>
     		</div>
   		</div>

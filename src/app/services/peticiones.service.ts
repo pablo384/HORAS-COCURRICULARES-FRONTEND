@@ -19,4 +19,9 @@ export class PeticionesService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.url + '/login',JSON.stringify(data),{headers: headers})
   }
+
+  crearCarrera(data: Object): Observable<any> {
+    // const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(this.url + '/carrera',JSON.stringify(data))
+  }
 }
