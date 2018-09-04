@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-reg-conferencista',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegConferencistaComponent implements OnInit {
 
-  constructor() { }
+	@Input() Inpdisplay: boolean;
+  	@Output() public Outdisplay = new EventEmitter<boolean>();
+	constructor() { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
+
+
+	 OnHIde(){
+	    this.Outdisplay.emit(false);
+	 }
 
 }

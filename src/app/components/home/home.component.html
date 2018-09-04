@@ -209,17 +209,17 @@
         <li class="active">Dashboard</li>
       </ol>
        <!-- <app-box-body> </app-box-body> -->
-       <app-reg-estudiante></app-reg-estudiante>
+       <app-reg-estudiante (Outdisplay)="showAndHideEstudiante($event)" [(Inpdisplay)]="displayEstudiante" ></app-reg-estudiante>
        <app-reg-carrera (Outdisplay)="showAndHideCarrera($event)" [(Inpdisplay)]="displayCarrera" ></app-reg-carrera>
-       <app-reg-actividad></app-reg-actividad>
-       <app-reg-conferencia></app-reg-conferencia>
-       <app-reg-conferencista></app-reg-conferencista>
+       <app-reg-actividad (Outdisplay)="showAndHideActividad($event)" [(Inpdisplay)]="displayActividad" ></app-reg-actividad>
+       <app-reg-conferencia (Outdisplay)="showAndHideConferencia($event)" [(Inpdisplay)]="displayConferencia" ></app-reg-conferencia>
+       <app-reg-conferencista (Outdisplay)="showAndHideConferencista($event)" [(Inpdisplay)]="displayConferencista" ></app-reg-conferencista>
 
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">Registrar Estudiante</button>
+      <button type="button" class="btn btn-default" (click)="showAndHideEstudiante(true)">Registrar Estudiante</button>
       <button type="button" class="btn btn-default" (click)="showAndHideCarrera(true)">Registrar Carrera</button>
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-reg-actividad">Registrar Actividad</button>
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-reg-conferencia">Registrar Conferencia</button>
-      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-reg-conferencista">Registrar Conferencista</button>
+      <button type="button" class="btn btn-default" (click)="showAndHideActividad(true)">Registrar Actividad</button>
+      <button type="button" class="btn btn-default" (click)="showAndHideConferencia(true)">Registrar Conferencia</button>
+      <button type="button" class="btn btn-default" (click)="showAndHideConferencista(true)">Registrar Conferencista</button>
       
 
        <app-list-actividades></app-list-actividades>

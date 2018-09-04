@@ -7,9 +7,17 @@ import {FuncionesService} from '../../services/funciones.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-	displayCarrera :boolean;
+  displayCarrera      :boolean;
+  displayEstudiante   :boolean;
+  displayActividad    :boolean;
+  displayConferencia  :boolean;
+  displayConferencista:boolean;
   constructor(private _funtions: FuncionesService) {
-  	this.displayCarrera = false;
+    this.displayCarrera       = false;
+    this.displayEstudiante    = false;
+    this.displayActividad     = false;
+    this.displayConferencia   = false;
+    this.displayConferencista = false;
   }
 
   ngOnInit() {
@@ -20,4 +28,24 @@ export class HomeComponent implements OnInit {
   	console.log("showAndHideCarrera display",display);
   	// return this.displayCarrera;
   }
+
+  showAndHideEstudiante(display:boolean){
+    this.displayEstudiante =display;// = display;
+    console.log("displayEstudiante display",display);
+  }
+
+  showAndHideActividad(display:boolean){
+    this.displayActividad =display;// = display;
+    console.log("displayActividad display",display);
+  }
+
+  showAndHideConferencia(display:boolean){
+    this.displayConferencia =display;// = display;
+    console.log("displayConferencia display",display);
+  }
+  showAndHideConferencista(display:boolean){
+    this.displayConferencista =display;// = display;
+    console.log("displayConferencista display",display);
+  }
+
 }
