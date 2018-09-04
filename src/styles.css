@@ -2,3 +2,9 @@
 @import "~bootstrap/dist/css/bootstrap.css"
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+.ui-widget-content {
+  border: 2px solid white;
+  background: white;
+  color: #cccccc; }
+ .ui-widget-content a {
+    color: #cccccc; }

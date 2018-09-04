@@ -24,4 +24,14 @@ export class PeticionesService {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.url + '/carrera',JSON.stringify(data))
   }
+
+  GetAllCarrera(): Observable<any> {
+    // const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(this.url + '/carrera')
+  }
+
+  crearActividad(data: Object): Observable<any> {
+    // const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(this.url + '/actividad',JSON.stringify(data))
+  }
 }
