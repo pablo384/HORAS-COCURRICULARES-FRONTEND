@@ -12,9 +12,11 @@ export class AuthService {
 
     this._peticiones = this.injector.get(PeticionesService);
     let d={
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin':'*',
+      'Content-Type': 'application/json'
+
     }
+
+
     if (this._funtions.getToken() != null){
       d["authorization"] = this._funtions.getToken()
     } 
