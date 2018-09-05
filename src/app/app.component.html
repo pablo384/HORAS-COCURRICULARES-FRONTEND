@@ -150,8 +150,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="#" data-toggle="modal" data-target="#modal-reg-actividad"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
+            <li class="active"><a [routerLink]="['resgistrar_actividad']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+            <li><a [routerLink]="['lista_actividades']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
           </ul>
         </li>
 
@@ -167,7 +167,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a (click)="showAndHideCarrera(true)"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+            <li class="active"><a [routerLink]="['resgistrar_carrera']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
           </ul>
         </li>
@@ -182,7 +182,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="#" data-toggle="modal" data-target="#modal-default"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+            <li class="active"><a [routerLink]="['resgistrar_verificador']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
             <li><a href="index2.html"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
           </ul>
         </li>
@@ -476,6 +476,9 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
+</div>
+
+<div *ngIf="!_funtions.isLoggednIn()"> <router-outlet></router-outlet> 
 </div>
 
 

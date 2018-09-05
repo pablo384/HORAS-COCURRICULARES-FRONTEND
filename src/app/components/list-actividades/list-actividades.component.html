@@ -1,87 +1,42 @@
-   <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Listado de Actividades</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Titulo</th>
-                  <th>Fecha de inicio</th>
-                  <th>Fecha de finalizar</th>
-                  <th>Hora de inicio</th>
-                  <th>Acciones</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet Explorer 4.0</td>
-                  <td>Win 95+</td>
-                  <td>Win 95+</td>
-                  <td>Win 95+</td>
-                  <td>
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-success btn-flat" title="Agregar Conferencia">
-                        <i class="fa fa-plus"></i>
-                      </button>
-                      <button type="button" class="btn btn-default btn-flat" title="Editar"><i class="fa fa-edit"></i></button>
-                      <button type="button" class="btn btn-default btn-flat" title="Ver"><i class="fa fa-eye"></i></button>
-                      <button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>InternetExplorer 5.0</td>
-                  <td>Win 95+</td>
-                  <td>Win 95+</td>
-                  <td>Win 95+</td>
-                  <td>
-                    <div class="btn-group">
-                     <button type="button" class="btn btn-success btn-flat" title="Agregar Conferencia">
-                        <i class="fa fa-plus"></i>
-                      </button>
-                      <button type="button" class="btn btn-default btn-flat"><i class="fa fa-edit"></i></button>
-                      <button type="button" class="btn btn-default btn-flat"><i class="fa fa-eye"></i></button>
-                      <button type="button" class="btn btn-default btn-danger"><i class="fa fa-remove"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>InternetExplorer 5.0</td>
-                  <td>Win 95+</td>
-                  <td>Win 95+</td>
-                  <td>Win 95+</td>
-                  <td>
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-success btn-flat" title="Agregar Conferencia">
-                        <i class="fa fa-plus"></i>
-                      </button>
-                      <button type="button" class="btn btn-default btn-flat"><i class="fa fa-edit"></i></button>
-                      <button type="button" class="btn btn-default btn-flat"><i class="fa fa-eye"></i></button>
-                      <button type="button" class="btn btn-default btn-danger"><i class="fa fa-remove"></i></button>
-                    </div>
-                  </td>
-                </tr>
-                </tbody>
-              <!--   <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>CSS grade</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot> -->
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-
+<div class="box">
+    <div class="box-header header-list">
+      <h3 class="box-title">Listado de Actividades</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Fecha de inicio</th>
+            <th>Fecha de finalizar</th>
+            <th>Hora de inicio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of ListadoDeActividades">
+            <td>{{item.id}}</td>
+            <td>{{item.titulo}}</td>
+            <td>{{item.fecha_fin}}</td>
+            <td>{{item.fecha_inicio}}</td>
+            <td>{{item.fecha_fin}}</td>
+            <td>
+              <div class="btn-group">
+                <a class="btn btn-default btn-flat" title="Editar" [routerLink]="['/conferencias']" [queryParams]="{actividad:item|json }"><i class="fa fa-list"></i></a>
+                <a class="btn btn-success btn-flat" title="Agregar Conferencia" [routerLink]="['reg',1]" >
+                  <i class="fa fa-plus"></i>
+                </a>
+                <button type="button" class="btn btn-default btn-flat" title="Editar"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-default btn-flat" title="Ver"><i class="fa fa-eye"></i></button>
+                <button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+<router-outlet></router-outlet>
  

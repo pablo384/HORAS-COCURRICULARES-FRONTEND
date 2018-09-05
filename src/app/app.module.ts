@@ -32,6 +32,7 @@ import { RegConferencistaComponent } from './components/reg-conferencista/reg-co
 import { ListConferenciasComponent } from './components/list-conferencias/list-conferencias.component';
 import { RegVerificadorComponent } from './components/reg-verificador/reg-verificador.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
+import { ListAsistenciasComponent } from './components/list-asistencias/list-asistencias.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
     RegConferencistaComponent,
     ListConferenciasComponent,
     RegVerificadorComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    ListAsistenciasComponent
   ],
   imports: [
     BrowserModule,

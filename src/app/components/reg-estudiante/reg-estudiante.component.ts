@@ -1,5 +1,5 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule, Router ,  ActivatedRoute} from '@angular/router';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,12 +18,17 @@ export class RegEstudianteComponent implements OnInit {
   carreras:Array<Object>;
 	formPerson: FormGroup;
   filteredCarreras: any[];
-  constructor(private fb: FormBuilder,private _router: Router, private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
+  routeBack;
+  constructor(private aroute:ActivatedRoute,private fb: FormBuilder,private _router: Router, private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
     this._funtions.allCarreras((carreras) =>{
       this.carreras = carreras.data
-    }) 
+    })
+    this.aroute.params.subscribe( params => 
+      this.routeBack = params["router_back"]
+     );
   }
- 
+
+
   ngOnInit() {
     this.Inpdisplay = true;
   	this.createForm();
@@ -32,7 +37,11 @@ export class RegEstudianteComponent implements OnInit {
   OnHIde(){
     this.formPerson.reset();
     this.Inpdisplay = false;
-    this._router.navigate(["/"]);
+    if (this.routeBack != null){
+      this._router.navigate(["/lista_actividades"]);
+    }else
+      this._router.navigate(["/"]);
+
     // this.Outdisplay.emit(false);
   }
 

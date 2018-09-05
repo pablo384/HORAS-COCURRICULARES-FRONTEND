@@ -1,10 +1,9 @@
 <div class="box">
-    <div class="box-header">
-      	<h3 class="box-title"> [ 10 ] ID Actividad : Nombre Actividad</h3>
+    <div class="box-header header-list">
+      	<h3 class="box-title"> [ {{actividad.id}} ] ID Actividad : {{actividad.titulo}}</h3>
       	<br>
 		<small>Listado de Conferencias</small>
     </div>
-    <!-- /.box-header -->
     <div class="box-body">
 		<table id="example1" class="table table-bordered table-striped">
 			<thead>
@@ -21,71 +20,23 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Trident</td>
-					<td>Internet Explorer 4.0</td>
-					<td>Win 95+</td>
-					<td>Win 95+</td>
-					<td>Win 95+</td>
+				<tr *ngFor="let item of ListadoDeEstudiantes">
+					<td>{{item.id}}</td>
+					<td>{{item.titulo}}</td>
+					<td>{{item.fecha_inicio}}</td>
+					<td>{{item.fecha_fin}}</td>
+					<td>{{item.titulo}}</td>
 					<td> 4</td>
 					<td> 4</td>
 					<td>
 					<div class="btn-group">
+						<a class="btn btn-default btn-flat" title="Editar" [routerLink]="['/list_estudiantes']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i></a>
 					  	<button type="button" class="btn btn-primary btn-flat" title="Agregar Conferencia">
 					    	<i class="fa fa-clock-o"></i>
 					  	</button>
-						<button type="button" class="btn btn-success btn-flat" title="Agregar Conferencia"  data-toggle="modal" data-target="#modal-default4">
-							<i class="fa fa-plus"></i>
-						</button>
 						<button type="button" class="btn btn-default btn-flat" title="Editar"><i class="fa fa-edit"></i></button>
 						<button type="button" class="btn btn-default btn-flat" title="Ver"><i class="fa fa-eye"></i></button>
 						<button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
-					</div>
-					</td>
-					<td>Finalizado</td>
-				</tr>
-				<tr>
-					<td>Trident</td>
-					<td>InternetExplorer 5.0</td>
-					<td>Win 95+</td>
-					<td>Win 95+</td>
-					<td>Win 95+</td>
-					<td>Win 95+</td>
-					<td>5</td>
-					<td>
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary btn-flat" title="Agregar Conferencia">
-					    	<i class="fa fa-clock-o"></i>
-					  	</button>
-					    <button type="button" class="btn btn-success btn-flat" title="Agregar Conferencia"  data-toggle="modal" data-target="#modal-default4">
-					        <i class="fa fa-plus"></i>
-					    </button>
-					    <button type="button" class="btn btn-default btn-flat"><i class="fa fa-edit"></i></button>
-					    <button type="button" class="btn btn-default btn-flat"><i class="fa fa-eye"></i></button>
-					    <button type="button" class="btn btn-default btn-danger"><i class="fa fa-remove"></i></button>
-					</div>
-					</td>
-					<td>Finalizado</td>
-				</tr>
-				<tr>
-					<td>Trident</td>
-					<td>InternetExplorer 5.0</td>
-					<td>Win 95+</td>
-					<td>Win 95+</td>
-					<td>Win 95+</td>
-					<td>Win 95+</td>
-					<td>5</td>
-					<td>
-					<div class="btn-group">
-						<button type="button" class="btn btn-primary btn-flat" title="Agregar Conferencia">
-					    	<i class="fa fa-clock-o"></i>
-					  	</button>
-					    <button type="button" class="btn btn-success btn-flat" title="Agregar Conferencia"  data-toggle="modal" data-target="#modal-default4">
-					        <i class="fa fa-plus"></i>
-					    </button>
-					    <button type="button" class="btn btn-default btn-flat"><i class="fa fa-edit"></i></button>
-					    <button type="button" class="btn btn-default btn-flat"><i class="fa fa-eye"></i></button>
-					    <button type="button" class="btn btn-default btn-danger"><i class="fa fa-remove"></i></button>
 					</div>
 					</td>
 					<td>Finalizado</td>
@@ -94,5 +45,6 @@
 		</table>
     </div>
 </div>
+<router-outlet></router-outlet>
 
  

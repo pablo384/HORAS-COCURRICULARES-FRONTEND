@@ -1,4 +1,5 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
 import { SelectItem } from 'primeng/primeng'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {FuncionesService} from '../../services/funciones.service';
@@ -11,8 +12,8 @@ import * as moment from "moment"
 })
 export class RegActividadComponent implements OnInit {
 	formActividad:FormGroup;
-	@Input() Inpdisplay: boolean;
-  @Output() public Outdisplay = new EventEmitter<boolean>();
+	Inpdisplay: boolean;
+  // @Output() public Outdisplay = new EventEmitter<boolean>();
 	date8: Date;
 	minDate: Date;
     carreras: SelectItem[];
@@ -20,12 +21,13 @@ export class RegActividadComponent implements OnInit {
     selectedCarreras: string[];
 
 
-	constructor(private fb: FormBuilder,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
+	constructor(private fb: FormBuilder,private _router: Router,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
 	  this.allCarreras()
 	  this.minDate = new Date()
 	}
 
 	ngOnInit() {
+    this.Inpdisplay = true;
 		this.createForm()
 	}
 
@@ -99,7 +101,10 @@ export class RegActividadComponent implements OnInit {
 	
 
 	 OnHIde(){
-	    this.Outdisplay.emit(false);
+    this.formActividad.reset();
+    this.Inpdisplay = false;
+    this._router.navigate(["/"]);
+	    // this.Outdisplay.emit(false);
 	 }
 
 	
