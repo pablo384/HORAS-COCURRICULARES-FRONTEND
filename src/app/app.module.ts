@@ -33,6 +33,7 @@ import { ListConferenciasComponent } from './components/list-conferencias/list-c
 import { RegVerificadorComponent } from './components/reg-verificador/reg-verificador.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { ListAsistenciasComponent } from './components/list-asistencias/list-asistencias.component';
+import { IniciarActividadComponent } from './components/iniciar-actividad/iniciar-actividad.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { ListAsistenciasComponent } from './components/list-asistencias/list-asi
     ListConferenciasComponent,
     RegVerificadorComponent,
     BuscadorComponent,
-    ListAsistenciasComponent
+    ListAsistenciasComponent,
+    IniciarActividadComponent
   ],
   imports: [
     BrowserModule,
