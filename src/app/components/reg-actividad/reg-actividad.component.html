@@ -1,50 +1,54 @@
 
-<p-dialog header="Registrar Estudiante" [(visible)]="Inpdisplay" width=600 closeOnEscape=false modal=true (onHide)="OnHIde()"  >
+<p-dialog header="Registrar Actividad" [(visible)]="Inpdisplay" [width]=500 [height]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" >
   <div class="box-body">
-    <div class="col-lg-12">
-      <div class="input-group">
-        <span class="input-group-addon">Titulo</span>
-        <input type="text" class="form-control" >
-      </div>
-      <br>
-
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="col-lg-6">
-             Fecha de inicio
-          </div>
-          <div class="col-lg-6">
-            <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
-          </div>
+    <form [formGroup]="formActividad"  (ngSubmit)="crearActividad()" >
+      <div class="col-lg-12">
+        <div class="input-group">
+          <span class="input-group-addon">Titulo</span>
+          <input type="text" class="form-control" formControlName="titulo">
         </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-lg-12">
+        <br>
+        <div class="row">
+          <div class="col-lg-12">
             <div class="col-lg-6">
-              Fecha de Finalizar
+               Fecha de inicio
             </div>
             <div class="col-lg-6">
-              <p-calendar [(ngModel)]="dateValue" dateFormat="dd/mm/yy"></p-calendar>
+              <p-calendar  dateFormat="dd/mm/yy"  [minDate]="minDate" formControlName="fecha_inicio" [showIcon]="true" required></p-calendar>
             </div>
+          </div>
         </div>
-      </div>
-       <br>
-      <div class="row">
-        <div class="col-lg-5">
-          <div class="col-lg-12"><label >Carreras participantes</label></div>
-          <div class="col-lg-12"><p-multiSelect [options]="carreras" [(ngModel)]="selectedCarreras"></p-multiSelect></div>
-          <!-- <p-listbox [options]="carreras" [(ngModel)]="selectedCarreras" filter="filter"  multiple="multiple" checkbox="checkbox" ></p-listbox> -->
+        <br>
+        <div class="row">
+          <div class="col-lg-12">
+              <div class="col-lg-6">
+                Fecha de Finalizar
+              </div>
+              <div class="col-lg-6">
+                <p-calendar  dateFormat="dd/mm/yy" [minDate]="minDate" formControlName="fecha_finalizacion" [showIcon]="true" required></p-calendar>
+              </div>
+          </div>
         </div>
-        <div class="col-lg-7">
-          <p><span *ngFor="let c of selectedCarreras" style="margin-right: 10px">{{c.name}}</span></p>
-        </div>
+         <br>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="col-lg-6">
+              <span>Carreras participantes</span>
+            </div>
+            <div class="col-lg-6">
+              <p-multiSelect defaultLabel="Carreras" [options]="carreras"  formControlName="carreras" [style]="{'width':'100%','height':'33px'}" required></p-multiSelect>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <p><span *ngFor="let c of selectedCarreras" style="margin-right: 10px">{{c.name}}</span></p>
+          </div>
 
+        </div>
       </div>
-    </div>
+    </form>
   </div>
   <p-footer>
-    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-    <button type="button" (click)="onSubmit()" class="btn btn-success">Registrar</button>
+    <button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
+    <button type="button" (click)="crearActividad()" [disabled]="formActividad.invalid" class="btn btn-success">Registrar</button>
   </p-footer>
 </p-dialog>

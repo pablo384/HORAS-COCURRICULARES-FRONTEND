@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import {NgbDropdownModule, NgbModule, NgbDropdown} from '@ng-bootstrap/ng-bootstrap';
 import {HTTP_INTERCEPTORS, HttpClientModule}            from '@angular/common/http';
 import { FormBuilder, FormsModule,ReactiveFormsModule} from '@angular/forms';
-import {InputSwitchModule , CalendarModule , InputTextModule , InputMaskModule , MultiSelectModule , ListboxModule ,SplitButtonModule,DialogModule} from 'primeng/primeng';
+import {InputSwitchModule , CalendarModule , InputTextModule , InputMaskModule , MultiSelectModule , ListboxModule ,SplitButtonModule,DialogModule,AutoCompleteModule} from 'primeng/primeng';
 import { MomentModule } from 'angular2-moment';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToasterModule, ToasterService}  from 'angular5-toaster/dist';
@@ -65,6 +65,7 @@ import { RegVerificadorComponent } from './components/reg-verificador/reg-verifi
     ListboxModule,
     SplitButtonModule,
     DialogModule,
+    AutoCompleteModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),

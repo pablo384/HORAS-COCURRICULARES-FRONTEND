@@ -9,14 +9,6 @@
  * Core: General Layout Style
  * -------------------------
  */
-.ui-widget-content {
-  border: 2px solid white;
-  background: white;
-  color: #cccccc; }
-  .ui-widget-content a {
-    color: #cccccc; }
-
-
 html,
 body {
   height: 100%;

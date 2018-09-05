@@ -1,4 +1,4 @@
-<p-dialog header="Registrar Conferencista" [(visible)]="Inpdisplay" width=600 closeOnEscape=false modal=true (onHide)="OnHIde()"  >
+<p-dialog header="Registrar Conferencista" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
 	<div class="modal-body">
     	<div class="box-body">
 			<div class="row">
@@ -24,7 +24,7 @@
             	<div class="col-lg-6">
             		 <div class="input-group">
 		                <span class="input-group-addon">Teléfono</span>
-		                <p-inputMask mask="(999) 999-9999" [(ngModel)]="val5" placeholder="(999) 999-9999"></p-inputMask>
+		                <p-inputMask mask="(999) 999-9999" [(ngModel)]="val5" [style]="{'border-radius': '1px 6px 6px 1px','border-color':'#bfbfbf','height':'35px'}" placeholder="(999) 999-9999"></p-inputMask>
 		            </div>
               	</div>
               	<div class="col-lg-6">
@@ -58,7 +58,7 @@
 		</div>
 	</div>
 	<p-footer>
-		<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+		<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
 		<button type="button" (click)="onSubmit()" class="btn btn-success">Registrar</button>
 	</p-footer>
 </p-dialog>
