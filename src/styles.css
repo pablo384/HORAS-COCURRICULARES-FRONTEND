@@ -17,3 +17,11 @@
   height: 36px;
   border-radius: 1px 1px 1px 1px;
 }
+.item_menu{
+	background:#222d32;
+	color:#b8c7ce;
+}
+
+.skin-blue .sidebar-menu .treeview-menu>li>a {
+    color: #8aa4af;
+}
