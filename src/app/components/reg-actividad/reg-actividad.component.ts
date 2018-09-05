@@ -15,7 +15,8 @@ export class RegActividadComponent implements OnInit {
 	Inpdisplay: boolean;
   // @Output() public Outdisplay = new EventEmitter<boolean>();
 	date8: Date;
-	minDate: Date;
+  minDate: Date;
+	minDateFin: Date;
     carreras: SelectItem[];
     selectedCities: string[];
     selectedCarreras: string[];
@@ -23,14 +24,17 @@ export class RegActividadComponent implements OnInit {
 
 	constructor(private fb: FormBuilder,private _router: Router,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
 	  this.allCarreras()
-	  this.minDate = new Date()
+    this.minDate = new Date()
+	  this.minDateFin = new Date()
 	}
 
 	ngOnInit() {
     this.Inpdisplay = true;
 		this.createForm()
 	}
-
+  onSelectDateInicio(event){
+    this.minDateFin = event
+  }
 	createForm(){
   	this.formActividad=this.fb.group({
   		titulo:"",

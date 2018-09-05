@@ -14,7 +14,7 @@
                Fecha de inicio
             </div>
             <div class="col-lg-6">
-              <p-calendar  dateFormat="dd/mm/yy"  [minDate]="minDate" formControlName="fecha_inicio" [showIcon]="true" required></p-calendar>
+              <p-calendar  dateFormat="dd/mm/yy" (onSelect)="onSelectDateInicio($event)" [minDate]="minDate" formControlName="fecha_inicio" [showIcon]="true" required></p-calendar>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
                 Fecha de Finalizar
               </div>
               <div class="col-lg-6">
-                <p-calendar  dateFormat="dd/mm/yy" [minDate]="minDate" formControlName="fecha_finalizacion" [showIcon]="true" required></p-calendar>
+                <p-calendar  dateFormat="dd/mm/yy" [minDate]="minDateFin" formControlName="fecha_finalizacion" [showIcon]="true" required></p-calendar>
               </div>
           </div>
         </div>
