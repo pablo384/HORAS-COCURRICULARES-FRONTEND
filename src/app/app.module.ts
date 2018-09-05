@@ -68,7 +68,7 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
     SplitButtonModule,
     DialogModule,
     AutoCompleteModule,
-    DropdownModule
+    DropdownModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),

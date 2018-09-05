@@ -37,6 +37,6 @@ export class PeticionesService {
 
   crearEstudiante(data: Object): Observable<any> {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(this.url + '/persona',JSON.stringify(data))
+    return this.http.post(this.url + '/usuario',JSON.stringify(data))
   }
 }
