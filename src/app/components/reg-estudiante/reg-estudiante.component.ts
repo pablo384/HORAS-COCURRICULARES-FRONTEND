@@ -1,4 +1,5 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import { RouterModule, Router } from '@angular/router';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -11,24 +12,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./reg-estudiante.component.css']
 })
 export class RegEstudianteComponent implements OnInit {
-	@Input() Inpdisplay: boolean;
-  @Output() public Outdisplay = new EventEmitter<boolean>();
+	Inpdisplay: boolean;
+  // @Output() public Outdisplay = new EventEmitter<boolean>();
   val5: string;
   carreras:Array<Object>;
 	formPerson: FormGroup;
   filteredCarreras: any[];
-  constructor(private fb: FormBuilder,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
+  constructor(private fb: FormBuilder,private _router: Router, private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
     this._funtions.allCarreras((carreras) =>{
       this.carreras = carreras.data
     }) 
   }
  
   ngOnInit() {
+    this.Inpdisplay = true;
   	this.createForm();
   }
 
   OnHIde(){
-    this.Outdisplay.emit(false);
+    this.formPerson.reset();
+    this.Inpdisplay = false;
+    this._router.navigate(["/"]);
+    // this.Outdisplay.emit(false);
   }
 
   filterCarreras(event) {
