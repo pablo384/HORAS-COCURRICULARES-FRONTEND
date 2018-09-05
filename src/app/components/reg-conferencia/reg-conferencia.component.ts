@@ -1,4 +1,7 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import {FuncionesService} from '../../services/funciones.service';
+import {PeticionesService} from '../../services/peticiones.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reg-conferencia',
@@ -6,18 +9,37 @@ import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
   styleUrls: ['./reg-conferencia.component.css']
 })
 export class RegConferenciaComponent implements OnInit {
-
+  formConferencia:FormGroup;
 	@Input() Inpdisplay: boolean;
   	@Output() public Outdisplay = new EventEmitter<boolean>();
 	date8: Date;
 	dateValue: Date;
-  constructor() { }
-
-  ngOnInit() {
+  porcentaje_default:any[];
+  constructor(private fb: FormBuilder,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
   }
 
-   OnHIde(){
+  ngOnInit() {
+    this.porcentaje_default =[{name:"50%",value:50},{name:"60%",value:60},{name:"70%",value:70},{name:"80%",value:80},{name:"90%",value:90},{name:"100%",value:100}];
+    this.createForm();
+  }
+
+  OnHIde(){
     this.Outdisplay.emit(false);
   }
 
+
+
+  createForm(){
+    this.formConferencia=this.fb.group({
+      titulo:'',
+      descripcion:'',
+      hora_inicio:new Date(),
+      duracion:'',
+      dia_de_presentacion:"",
+      porcentaje_horas_validas:""
+    })
+  }
+  onSubmit(){
+    console.log("formConferencia",this.formConferencia.value)
+  }
 }
