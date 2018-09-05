@@ -40,14 +40,18 @@ export class RegActividadComponent implements OnInit {
 
 	crearActividad(){
 		let value                = this.formActividad.value
-		// value.fecha_inicio       = moment(value.fecha_inicio).format("YYYY-MM-DD")
-		// value.fecha_finalizacion = moment(value.fecha_finalizacion).format("YYYY-MM-DD")
+		value.fecha_inicio       = moment(value.fecha_inicio).format("YYYY-MM-DD")
+		value.fecha_finalizacion = moment(value.fecha_finalizacion).format("YYYY-MM-DD")
 		console.log("formActividad ",this.formActividad.value )
-		// return;
 		this._funtions.blockUIO().start()
   	this._peticiones.crearActividad(value).subscribe(
       response => {
-        this._funtions.blockUIO().stop()
+        this._funtions.blockUIO().stop();
+        if(response.info){
+          this.OnHIde();
+        }else{
+          this._funtions.Toast("error","Error",this._funtions.sacarText(response.error));
+        }
         console.log(response); 				
       },
       error => {
