@@ -112,7 +112,7 @@
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+    <!--   <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="Search...">
           <span class="input-group-btn">
@@ -120,7 +120,7 @@
                 </button>
               </span>
         </div>
-      </form>
+      </form> -->
 
 
 
@@ -214,12 +214,14 @@
        <app-reg-actividad (Outdisplay)="showAndHideActividad($event)" [(Inpdisplay)]="displayActividad" ></app-reg-actividad>
        <app-reg-conferencia (Outdisplay)="showAndHideConferencia($event)" [(Inpdisplay)]="displayConferencia" ></app-reg-conferencia>
        <app-reg-conferencista (Outdisplay)="showAndHideConferencista($event)" [(Inpdisplay)]="displayConferencista" ></app-reg-conferencista>
+       <app-reg-verificador (Outdisplay)="showAndHideVerificador($event)" [(Inpdisplay)]="displayVerificador" ></app-reg-verificador>
 
       <button type="button" class="btn btn-default" (click)="showAndHideEstudiante(true)">Registrar Estudiante</button>
       <button type="button" class="btn btn-default" (click)="showAndHideCarrera(true)">Registrar Carrera</button>
       <button type="button" class="btn btn-default" (click)="showAndHideActividad(true)">Registrar Actividad</button>
       <button type="button" class="btn btn-default" (click)="showAndHideConferencia(true)">Registrar Conferencia</button>
       <button type="button" class="btn btn-default" (click)="showAndHideConferencista(true)">Registrar Conferencista</button>
+      <button type="button" class="btn btn-default" (click)="showAndHideVerificador(true)">Registrar Verificador</button>
       
 
        <app-list-actividades></app-list-actividades>

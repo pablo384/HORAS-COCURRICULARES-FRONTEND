@@ -12,12 +12,14 @@ export class HomeComponent implements OnInit {
   displayActividad    :boolean;
   displayConferencia  :boolean;
   displayConferencista:boolean;
+  displayVerificador  :boolean;
   constructor(private _funtions: FuncionesService) {
     this.displayCarrera       = false;
     this.displayEstudiante    = false;
     this.displayActividad     = false;
     this.displayConferencia   = false;
     this.displayConferencista = false;
+    this.displayVerificador   = false;
   }
 
   ngOnInit() {
@@ -46,6 +48,10 @@ export class HomeComponent implements OnInit {
   showAndHideConferencista(display:boolean){
     this.displayConferencista =display;// = display;
     console.log("displayConferencista display",display);
+  }
+  showAndHideVerificador(display:boolean){
+    this.displayVerificador =display;// = display;
+    // console.log("displayConferencista display",display);
   }
 
 }
