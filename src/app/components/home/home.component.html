@@ -12,7 +12,7 @@
     <!-- =============================== -->
     <!-- MENU GRIS LATERAL  -->
     <!-- =============================== -->
-    <nav class="navbar navbar-static-top">
+    <nav class="navbar navbar-static-top" style="background: #001c42">
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
@@ -100,7 +100,7 @@
   <!-- =============================== -->
   <!-- FRNAJA AZUL DEL TOP -->
   <!-- =============================== -->
-  <aside class="main-sidebar">
+  <aside class="main-sidebar" style="background:#222d32">
     <section class="sidebar">
       <div class="user-panel">
         <div class="pull-left image">
@@ -127,15 +127,15 @@
       <ul class="sidebar-menu" data-widget="tree">
 
         <li class="active treeview">
-          <a href="#">
+          <a href="#" class="item_menu">
             <i class="fa fa-dashboard"></i> <span>Estudiante</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="#" data-toggle="modal" data-target="#modal-default"><i class="fa fa-circle-o"></i>Registrar</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Buscar</a></li>
+            <li class="active"><a href="#" data-toggle="modal" data-target="#modal-default"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o text-yellow"></i>Buscar</a></li>
           </ul>
         </li>
 
@@ -144,15 +144,15 @@
 
 
         <li class="active treeview">
-          <a href="#">
+          <a href="#" class="item_menu">
             <i class="fa fa-dashboard"></i> <span>Actividades</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="#" data-toggle="modal" data-target="#modal-reg-actividad"><i class="fa fa-circle-o"></i>Registrar</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Listado</a></li>
+            <li class="active"><a href="#" data-toggle="modal" data-target="#modal-reg-actividad"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
           </ul>
         </li>
 
@@ -161,30 +161,30 @@
 
 
         <li class="active treeview">
-          <a href="#">
+          <a href="#" class="item_menu">
             <i class="fa fa-dashboard"></i> <span>Carreras</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="#" data-toggle="modal" data-target="#modal-reg-carrera"><i class="fa fa-circle-o"></i>Registrar</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Listado</a></li>
+            <li class="active"><a href="#" data-toggle="modal" data-target="#modal-reg-carrera"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
           </ul>
         </li>
 
 
 
         <li class="active treeview">
-          <a href="#">
+          <a href="#" class="item_menu">
             <i class="fa fa-dashboard"></i> <span>Verificadores</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="#" data-toggle="modal" data-target="#modal-default"><i class="fa fa-circle-o"></i>Registrar</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i>Listado</a></li>
+            <li class="active"><a href="#" data-toggle="modal" data-target="#modal-default"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+            <li><a href="index2.html"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
           </ul>
         </li>
       
@@ -215,6 +215,48 @@
        <app-reg-conferencia (Outdisplay)="showAndHideConferencia($event)" [(Inpdisplay)]="displayConferencia" ></app-reg-conferencia>
        <app-reg-conferencista (Outdisplay)="showAndHideConferencista($event)" [(Inpdisplay)]="displayConferencista" ></app-reg-conferencista>
        <app-reg-verificador (Outdisplay)="showAndHideVerificador($event)" [(Inpdisplay)]="displayVerificador" ></app-reg-verificador>
+       <app-buscador></app-buscador>
+
+
+<!--        <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">CPU Traffic</span>
+              <span class="info-box-number">90<small>%</small></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Likes</span>
+              <span class="info-box-number">41,410</span>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix visible-sm-block"></div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Sales</span>
+              <span class="info-box-number">760</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+            <div class="info-box-content">
+              <span class="info-box-text">New Members</span>
+              <span class="info-box-number">2,000</span>
+            </div>
+          </div>
+        </div>
+      </div> -->
 
       <button type="button" class="btn btn-default" (click)="showAndHideEstudiante(true)">Registrar Estudiante</button>
       <button type="button" class="btn btn-default" (click)="showAndHideCarrera(true)">Registrar Carrera</button>
@@ -224,9 +266,9 @@
       <button type="button" class="btn btn-default" (click)="showAndHideVerificador(true)">Registrar Verificador</button>
       
 
-       <app-list-actividades></app-list-actividades>
+     <!--   <app-list-actividades></app-list-actividades>
        <app-list-estudiantes></app-list-estudiantes>
-       <app-list-conferencias></app-list-conferencias>
+       <app-list-conferencias></app-list-conferencias> -->
     </section>
 
     <!-- Main content -->

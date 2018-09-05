@@ -31,6 +31,7 @@ import { ListEstudiantesComponent } from './components/list-estudiantes/list-est
 import { RegConferencistaComponent } from './components/reg-conferencista/reg-conferencista.component';
 import { ListConferenciasComponent } from './components/list-conferencias/list-conferencias.component';
 import { RegVerificadorComponent } from './components/reg-verificador/reg-verificador.component';
+import { BuscadorComponent } from './components/buscador/buscador.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { RegVerificadorComponent } from './components/reg-verificador/reg-verifi
     ListEstudiantesComponent,
     RegConferencistaComponent,
     ListConferenciasComponent,
-    RegVerificadorComponent
+    RegVerificadorComponent,
+    BuscadorComponent
   ],
   imports: [
     BrowserModule,
