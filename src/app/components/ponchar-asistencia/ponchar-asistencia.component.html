@@ -1,48 +1,42 @@
 <p-dialog header="Ponchar Asistencia" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
-	<form [formGroup]="formAsistencia"  (ngSubmit)="onSubmit()" >
-		<div class="box-body">
-			<div class="row">
-				<div class="col-lg-12">
-			   		<div class="input-group">
-				       	<h3 >Actividad: </h3>
-				       	<h5 >Conferencia</h5>
-			    	</div>
-				</div>
+
+	<div class="box-body">
+		<div class="row">
+			<div class="col-lg-7">
+		   		<div class="input-group">
+		       	<span>Nombres:</span>
+		    	</div>
 			</div>
-			<br>
-			<div class="row">
-				<div class="col-lg-7">
-			   		<div class="input-group">
-			       	<span>Nombres:</span>
-			    	</div>
-				</div>
-			  	<div class="col-lg-5">
-			   		<div class="input-group">
-			       	<span>Matricula:</span>
-			    	</div>
-				</div>
-			</div>
-			<br>
-			<div class="row">
-				<div class="col-lg-7">
-			   		<div class="input-group">
-			       	<span>Carrera:</span>
-			    	</div>
-				</div>
-			  	<div class="col-lg-5">
-			   		<div class="input-group">
-			   			<span>Carnet:</span>
-			    	</div>
-				</div>
+		  	<div class="col-lg-5">
+		   		<div class="input-group">
+		       	<span>Matricula:</span>
+		    	</div>
 			</div>
 		</div>
-	</form>
-	<p-footer>
-				<div class="col-lg-6">
-					<button type="button" class="btn btn-success pull-left btn-lg btn_asistencia col-lg-12" (click)="OnHIde()">Salir</button>
-				</div>
-			  	<div class="col-lg-6">
-					<button type="button" class="btn btn-primary pull-left btn-lg btn_asistencia col-lg-12" (click)="OnHIde()">Salir</button>
-				</div>
-	</p-footer>
+		<br>
+		<div class="row">
+			<div class="col-lg-7">
+		   		<div class="input-group">
+		       	<span>Carrera:</span>
+		    	</div>
+			</div>
+		  	<div class="col-lg-5">
+		   		<div class="input-group">
+		   			<span>Carnet:</span>
+		    	</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-6">
+				<button type="button" class="btn btn-success pull-left btn-lg btn_asistencia col-lg-12" (click)="OnHIde()">Salir</button>
+			</div>
+		  	<div class="col-lg-6">
+				<button type="button" class="btn btn-primary pull-left btn-lg btn_asistencia col-lg-12" (click)="OnHIde()">Salir</button>
+			</div>
+		</div>
+		
+	</div>
+	<app-list-entrada-salida></app-list-entrada-salida>
+	
 </p-dialog>

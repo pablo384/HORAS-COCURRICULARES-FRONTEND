@@ -36,6 +36,7 @@ import { ListAsistenciasComponent } from './components/list-asistencias/list-asi
 import { IniciarActividadComponent } from './components/iniciar-actividad/iniciar-actividad.component';
 import { BuscarPorFechaComponent } from './components/buscar-por-fecha/buscar-por-fecha.component';
 import { PoncharAsistenciaComponent } from './components/ponchar-asistencia/ponchar-asistencia.component';
+import { ListEntradaSalidaComponent } from './components/list-entrada-salida/list-entrada-salida.component';
 
 
 
@@ -58,7 +59,8 @@ import { PoncharAsistenciaComponent } from './components/ponchar-asistencia/ponc
     ListAsistenciasComponent,
     IniciarActividadComponent,
     BuscarPorFechaComponent,
-    PoncharAsistenciaComponent
+    PoncharAsistenciaComponent,
+    ListEntradaSalidaComponent
   ],
   imports: [
     BrowserModule,
