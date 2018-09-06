@@ -9,12 +9,16 @@ export class ListAsistenciasComponent implements OnInit {
 
 	conferencia;
   	constructor(private aroute:ActivatedRoute) {
-  	this.aroute.queryParams.subscribe( params => {
-  		console.log('params["conferencia"]',params);
-      		this.conferencia = JSON.parse( params["conferencia"] );
-  		}
-	);
+    	this.aroute.queryParams.subscribe( params => {
+    		// console.log('params["conferencia"]',params);
+        		this.conferencia = JSON.parse( params["conferencia"] );
+    		}
+  	);
 
+  }
+
+  private doThingFactory() {
+    
   }
 
   ngOnInit() {

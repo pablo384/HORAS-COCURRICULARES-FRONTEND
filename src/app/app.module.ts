@@ -35,6 +35,7 @@ import { BuscadorComponent } from './components/buscador/buscador.component';
 import { ListAsistenciasComponent } from './components/list-asistencias/list-asistencias.component';
 import { IniciarActividadComponent } from './components/iniciar-actividad/iniciar-actividad.component';
 import { BuscarPorFechaComponent } from './components/buscar-por-fecha/buscar-por-fecha.component';
+import { PoncharAsistenciaComponent } from './components/ponchar-asistencia/ponchar-asistencia.component';
 
 
 
@@ -56,7 +57,8 @@ import { BuscarPorFechaComponent } from './components/buscar-por-fecha/buscar-po
     BuscadorComponent,
     ListAsistenciasComponent,
     IniciarActividadComponent,
-    BuscarPorFechaComponent
+    BuscarPorFechaComponent,
+    PoncharAsistenciaComponent
   ],
   imports: [
     BrowserModule,

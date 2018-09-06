@@ -4,7 +4,7 @@
 		<br>
 		<small>Listado de Asistencia</small>
     </div>
-    <!-- /.box-header -->
+    <app-buscador [fn]="doThingFactory()" ></app-buscador>
     <div class="box-body">
       	<table id="example1" class="table table-bordered table-striped">
 	        <thead>
@@ -26,7 +26,7 @@
 		          <td> 4</td>
 		          <td>
 		            <div class="btn-group">
-		              <button type="button" class="btn btn-default btn-flat" title="Editar"><i class="fa fa-edit"></i></button>
+		              <a [routerLink]="['/ponchar_asistencia']" class="btn btn-default btn-flat" title="Editar"><i class="fa fa-edit"></i></a>
 		              <button type="button" class="btn btn-default btn-flat" title="Ver"><i class="fa fa-eye"></i></button>
 		              <button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
 		            </div>
