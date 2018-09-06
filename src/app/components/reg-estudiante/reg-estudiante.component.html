@@ -4,12 +4,12 @@
         	<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
 	        	<div class="input-group">
 		          <span class="input-group-addon">Nombres</span>
-		          <input type="text" class="form-control" formControlName="nombres" >
+		          <input type="text" class="form-control" formControlName="nombres"required >
 	          </div>
 	          <br>
 						<div class="input-group">
 							<span class="input-group-addon">Apellidos</span>
-							<input type="text" class="form-control" formControlName="apellidos">
+							<input type="text" class="form-control" formControlName="apellidos" required>
 						</div>
 						<br>
 						<div class="input-group">
@@ -21,9 +21,11 @@
 							<div class="col-lg-6">
 								<div class="input-group">
 									<span class="input-group-addon">Cedula</span>
-									<input type="text" class="form-control" formControlName="cedula">
+									<!-- <input type="text" class="form-control" formControlName="cedula"> -->
+									 <p-inputMask mask="999-9999999-9" formControlName="cedula" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}" placeholder="999-9999999-9"></p-inputMask>
 								</div>
 							</div>
+							<br>
 							<div class="col-lg-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -37,8 +39,7 @@
 								<div class="form-group">
 									<div class="input-group">
 					          <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-						        <p-autoComplete formControlName="carrera" [suggestions]="filteredCarreras" [style]="{'height':'36px'}" (completeMethod)="filterCarreras($event)" field="nombre" [size]="15"
-									    [minLength]="1" placeholder="Carreras" [dropdown]="true">
+						        <p-autoComplete formControlName="carrera" [suggestions]="filteredCarreras" [style]="{'height':'36px'}" [inputStyle]="{'border': '1px solid #d0caca'}" (completeMethod)="filterCarreras($event)" field="abreviatura" [size]="15" [minLength]="1" placeholder="Carreras" [dropdown]="true" [readonly]="true" required>
 									    <ng-template let-carrera pTemplate="item" >
 									        <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
 									            <!-- <img src="assets/showcase/images/demo/car/{{brand}}.png" style="width:32px;display:inline-block;margin:5px 0 2px 5px"/> -->
@@ -54,27 +55,28 @@
 								<div class="form-group">
 									<div class="input-group">
 					          <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-					          <p-inputMask mask="(999) 999-9999" formControlName="telefono" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%'}" placeholder="(999) 999-9999"></p-inputMask>
+					          <p-inputMask mask="(999) 999-9999" formControlName="telefono" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}" placeholder="(999) 999-9999"></p-inputMask>
 					        </div>
 								</div>
 							</div>
 						</div>   
 	          <div class="input-group">
 	            <span class="input-group-addon">Nombre de usuario</span>
-	            <input type="text" class="form-control" formControlName="usuario">
+	            <input type="text" class="form-control" formControlName="usuario" required>
 	          </div>    
 		        <br>
 					  <div class="row">
 	          	<div class="col-lg-6">
 	          		<div class="input-group">
 		              <span class="input-group-addon">Matricula</span>
-		              <input type="text" class="form-control" formControlName="matricula">
+		              <input type="text" minlength="5" class="form-control" formControlName="matricula" required>
 		            </div>
 	          	</div>
+	          	<br>
 	          	<div class="col-lg-6">
 	          		 <div class="input-group">
 	                <span class="input-group-addon">Carnet</span>
-	                <input type="text" class="form-control" formControlName="carnet">
+	                <input type="text" maxlength="16" class="form-control" formControlName="carnet" >
 	            	</div>
 	          	</div>
 	          </div>
@@ -83,13 +85,14 @@
 	          	<div class="col-lg-6">
 	          		<div class="input-group">
 	                <span class="input-group-addon">Clave</span>
-	                <input type="password" class="form-control" formControlName="clave">
+	                <input type="password" minlength="4" class="form-control" formControlName="clave" >
 		            </div>
 	          	</div>
+	          	<br>
 	            	<div class="col-lg-6">
 	            		<div class="input-group">
 		                <span class="input-group-addon">Confirmar Clave</span>
-		                <input type="password" class="form-control" formControlName="claveConfirm">
+		                <input type="password" minlength="4" class="form-control" formControlName="claveConfirm" >
 		            	</div>
 	            	</div>
 	          </div>
@@ -98,6 +101,6 @@
     	</div>
     	<p-footer>
     		<button type="button" class="btn btn-default pull-left"   (click)="OnHIde()">Salir</button>
-			<button type="button" (click)="onSubmit()" class="btn btn-success">Registrar</button>
+			<button type="button" (click)="onSubmit()" [disabled]="formPerson.invalid" class="btn btn-success">Registrar</button>
     	</p-footer>
 </p-dialog>

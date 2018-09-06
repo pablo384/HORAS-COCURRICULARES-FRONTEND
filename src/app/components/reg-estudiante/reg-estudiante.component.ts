@@ -49,7 +49,7 @@ export class RegEstudianteComponent implements OnInit {
         this.filteredCarreras = [];
         for(let i = 0; i < this.carreras.length; i++) {
             let brand = this.carreras[i];
-            if(brand["nombre"].toLowerCase().indexOf(event.query.toLowerCase()) == 0) {
+            if(brand["abreviatura"].toLowerCase().indexOf(event.query.toLowerCase()) == 0) {
                 this.filteredCarreras.push(brand);
             }
         }
@@ -61,46 +61,50 @@ export class RegEstudianteComponent implements OnInit {
       direccion: '',
       cedula:'',
       email:'',
-      carrera:'',
+      carrera:['', Validators.required],
       telefono:'',
-      usuario:'',
-      matricula:'',
+      usuario:['', Validators.required],
+      matricula:['', Validators.required],
       tipo:'E',
-      carnet:'',
-      clave:'',
-      claveConfirm:''
+      carnet:['',Validators.compose([Validators.required, Validators.minLength(16),Validators.maxLength(16)])],
+      clave:['', Validators.compose([Validators.required, Validators.minLength(4)])],
+      claveConfirm:['',Validators.compose([Validators.required, Validators.minLength(4)])]
     });
   }
   onSubmit(){
     let value = this.formPerson.value
     value.carrera = value.carrera.id
-    this._funtions.blockUIO().start()
-    this._peticiones.crearEstudiante(value).subscribe(
-      response => {
-        this._funtions.blockUIO().stop()
-        console.log(response);
-        if (response.info) {
-          this._funtions.Toast("success", "success", response.message);
-          this.OnHIde();
-          // this._router.navigate(['/home']);
-        }else
-          this._funtions.Toast("error", "error",this._funtions.sacarText(response.error));
+    if (value.clave == value.claveConfirm){
+      this._funtions.blockUIO().start()
+      this._peticiones.crearEstudiante(value).subscribe(
+        response => {
+          this._funtions.blockUIO().stop()
+          console.log(response);
+          if (response.info) {
+            this._funtions.Toast("success", "success", response.message);
+            this.OnHIde();
+            // this._router.navigate(['/home']);
+          }else
+            this._funtions.Toast("error", "error",this._funtions.sacarText(response.error || response.message));
 
-      },
-      error => {
-        let resultado;
-        if (error.error && error.status !== 0) {
-          resultado = this._funtions.sacarText(error.error);
-        } else {
-          resultado = error.error.error;
+        },
+        error => {
+          let resultado;
+          if (error.error && error.status !== 0) {
+            resultado = this._funtions.sacarText(error.error);
+          } else {
+            resultado = error.error.error;
+          }
+          console.log(error.error)
+          this._funtions.Toast("error","Error",resultado);
+
+          this._funtions.blockUIO().stop(); 
         }
-        console.log(error.error)
-        this._funtions.Toast("error","Error",resultado);
+      );
 
-        this._funtions.blockUIO().stop(); 
-      }
-    );
-
-  	console.log("onSubmit ",JSON.stringify(value))
+    	console.log("onSubmit ",JSON.stringify(value))
+    }else{
+      this._funtions.Toast("error","error","Contraseñas no coinciden")
+    }
   }
 }

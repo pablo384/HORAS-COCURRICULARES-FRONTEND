@@ -36,6 +36,7 @@ import { ListAsistenciasComponent } from './components/list-asistencias/list-asi
 import { IniciarActividadComponent } from './components/iniciar-actividad/iniciar-actividad.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
