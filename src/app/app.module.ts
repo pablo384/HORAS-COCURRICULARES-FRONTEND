@@ -34,6 +34,7 @@ import { RegVerificadorComponent } from './components/reg-verificador/reg-verifi
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { ListAsistenciasComponent } from './components/list-asistencias/list-asistencias.component';
 import { IniciarActividadComponent } from './components/iniciar-actividad/iniciar-actividad.component';
+import { BuscarPorFechaComponent } from './components/buscar-por-fecha/buscar-por-fecha.component';
 
 
 
@@ -54,7 +55,8 @@ import { IniciarActividadComponent } from './components/iniciar-actividad/inicia
     RegVerificadorComponent,
     BuscadorComponent,
     ListAsistenciasComponent,
-    IniciarActividadComponent
+    IniciarActividadComponent,
+    BuscarPorFechaComponent
   ],
   imports: [
     BrowserModule,
