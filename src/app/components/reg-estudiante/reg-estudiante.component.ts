@@ -19,6 +19,7 @@ export class RegEstudianteComponent implements OnInit {
 	formPerson: FormGroup;
   filteredCarreras: any[];
   routeBack;
+  imgPerson;
   constructor(private aroute:ActivatedRoute,private fb: FormBuilder,private _router: Router, private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
     this._funtions.allCarreras((carreras) =>{
       this.carreras = carreras.data
@@ -28,6 +29,31 @@ export class RegEstudianteComponent implements OnInit {
      );
   }
 
+
+  onFileChange(event) {
+    console.log(event.files);
+    const reader = new FileReader();
+    if (event.files && event.files.length > 0) {
+      const file = event.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        this.formPerson.get('image').patchValue({
+          name: file.name,
+          type: file.type,
+          data: reader.result.split(',')[1]
+        });
+        // this.doctor.image = this.doctorForm.value.image;
+        // objeto imagen a enviar
+        // console.log(this.doctorForm.get('userData.data.image').value)
+        this.imgPerson = 'data:' + this.formPerson.get('image')
+          .value.type + ';base64,' + this.formPerson.get('image')
+          .value.data;
+        // console.log(this.imgPerson);
+        console.log(this.formPerson.value);
+      };
+      // // console.log(this.form.value);
+    }
+  }
 
   ngOnInit() {
     this.Inpdisplay = true;
@@ -66,6 +92,7 @@ export class RegEstudianteComponent implements OnInit {
       usuario:['', Validators.required],
       matricula:['', Validators.required],
       tipo:'E',
+      image:"",
       carnet:['',Validators.compose([Validators.required, Validators.minLength(16),Validators.maxLength(16)])],
       clave:['', Validators.compose([Validators.required, Validators.minLength(4)])],
       claveConfirm:['',Validators.compose([Validators.required, Validators.minLength(4)])]
