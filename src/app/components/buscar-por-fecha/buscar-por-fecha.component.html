@@ -5,16 +5,16 @@
 	      <label class="label_date">Desde</label>
 	    </div>
 	    <div class="col-xs-3">
-	     <p-calendar [(ngModel)]="value"></p-calendar>
+	     <p-calendar [(ngModel)]="fecha_inicio" dateFormat="dd/mm/yy"></p-calendar>
 	    </div>
 	    <div class="col-xs-1">
 	      <label class="label_date">Hasta</label>
 	    </div>
 	    <div class="col-xs-3">
-	     <p-calendar [(ngModel)]="value"></p-calendar>
+	     <p-calendar [(ngModel)]="fecha_fin" dateFormat="dd/mm/yy"></p-calendar>
 	    </div>
 	    <div class="col-xs-2">
-	       <button type="button" class="btn btn-success" >Consultar</button>
+	       <button type="button" class="btn btn-success" (click)="buscar()">Consultar</button>
 	    </div>
 	  </div>
 	</div>

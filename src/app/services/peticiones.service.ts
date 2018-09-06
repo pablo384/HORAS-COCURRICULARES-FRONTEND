@@ -39,4 +39,11 @@ export class PeticionesService {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.url + '/usuario',JSON.stringify(data))
   }
+
+
+  GetActividades(fecha1: string,fecha2): Observable<any> {
+    // const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.get(this.url + '/actividad/por_fecha/'+fecha1+'/'+fecha2)
+    // return this.http.get(this.url + '/actividad')
+  }
 }

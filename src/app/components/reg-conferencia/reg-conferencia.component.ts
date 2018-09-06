@@ -27,7 +27,7 @@ export class RegConferenciaComponent implements OnInit {
   }
 
   OnHIde(){
-    this.formPerson.reset();
+    // this.formPerson.reset();
     this.Inpdisplay = false;
     this._router.navigate(["/"]);
     // this.Outdisplay.emit(false);
