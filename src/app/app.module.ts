@@ -33,7 +33,7 @@ import { ListConferenciasComponent } from './components/list-conferencias/list-c
 import { RegVerificadorComponent } from './components/reg-verificador/reg-verificador.component';
 import { BuscadorComponent } from './components/buscador/buscador.component';
 import { ListAsistenciasComponent } from './components/list-asistencias/list-asistencias.component';
-import { FormPersonaComponent } from './components/form-persona/form-persona.component';
+
 
 
 @NgModule({
@@ -52,8 +52,7 @@ import { FormPersonaComponent } from './components/form-persona/form-persona.com
     ListConferenciasComponent,
     RegVerificadorComponent,
     BuscadorComponent,
-    ListAsistenciasComponent,
-    FormPersonaComponent
+    ListAsistenciasComponent
   ],
   imports: [
     BrowserModule,
