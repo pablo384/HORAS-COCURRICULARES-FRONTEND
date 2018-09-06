@@ -13,6 +13,9 @@ export class HomeComponent implements OnInit {
   displayConferencia  :boolean;
   displayConferencista:boolean;
   displayVerificador  :boolean;
+
+  ListadoDeConferencias:any[];
+
   constructor(private _funtions: FuncionesService) {
     this.displayCarrera       = false;
     this.displayEstudiante    = false;
@@ -20,6 +23,16 @@ export class HomeComponent implements OnInit {
     this.displayConferencia   = false;
     this.displayConferencista = false;
     this.displayVerificador   = false;
+    this.ListadoDeConferencias = [
+      {'actividad':'X','conferencia':'Y','estado':'A'},
+      {'actividad':'X','conferencia':'Y','estado':'A'},
+      {'actividad':'X','conferencia':'Y','estado':'A'},
+      {'actividad':'X','conferencia':'Y','estado':'A'},
+      {'actividad':'X','conferencia':'Y','estado':'A'},
+      {'actividad':'X','conferencia':'Y','estado':'A'}
+    ]
+
+
   }
 
   ngOnInit() {

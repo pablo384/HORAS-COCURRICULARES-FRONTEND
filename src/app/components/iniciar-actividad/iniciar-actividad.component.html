@@ -1,5 +1,5 @@
 <p-dialog header="Registrar Carrera" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
-	<form [formGroup]="formCarrera"  (ngSubmit)="onSubmit()" >
+	<form [formGroup]="formActividad"  (ngSubmit)="onSubmit()" >
 		<div class="box-body">
 			<div class="col-lg-7">
 		   		<div class="input-group">
@@ -17,6 +17,6 @@
 	</form>
 	<p-footer>
   	<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
-		<button type="button" class="btn btn-success" [disabled]="formCarrera.invalid" (click)="onSubmit()">Registrar</button>
+		<button type="button" class="btn btn-success" [disabled]="formActividad.invalid" (click)="onSubmit()">Registrar</button>
 	</p-footer>
 </p-dialog>
