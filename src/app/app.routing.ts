@@ -2,12 +2,15 @@ import { Routes, RouterModule } from '@angular/router';
  
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { IniciarActividadComponent } from './components/iniciar-actividad/iniciar-actividad.component';
+
 import { RegEstudianteComponent } from './components/reg-estudiante/reg-estudiante.component';
 import { RegConferencistaComponent } from './components/reg-conferencista/reg-conferencista.component';
 import { RegCarreraComponent } from './components/reg-carrera/reg-carrera.component';
 import { RegConferenciaComponent } from './components/reg-conferencia/reg-conferencia.component';
 import { RegActividadComponent } from './components/reg-actividad/reg-actividad.component';
 import { RegVerificadorComponent } from './components/reg-verificador/reg-verificador.component';
+import { PoncharAsistenciaComponent } from './components/ponchar-asistencia/ponchar-asistencia.component';
 
 import { ListActividadesComponent } from './components/list-actividades/list-actividades.component';
 import { ListConferenciasComponent } from './components/list-conferencias/list-conferencias.component';
@@ -20,12 +23,15 @@ const appRoutes: Routes = [
     // { path: '', component: HomeComponent, canActivate: [AuthGuard]},
     { path: '', component: HomeComponent, pathMatch: 'full' , canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
+    { path: 'iniciar_actividad', component: IniciarActividadComponent },
+
     { path: 'resgistrar_estudiante', component: RegEstudianteComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_conferencista', component: RegConferencistaComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_carrera', component: RegCarreraComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_actividad', component: RegActividadComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_conferencia', component: RegConferenciaComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_verificador', component: RegVerificadorComponent, canActivate: [AuthGuard] },
+    { path: 'ponchar_asistencia', component: PoncharAsistenciaComponent, canActivate: [AuthGuard] },
     
 
     { 

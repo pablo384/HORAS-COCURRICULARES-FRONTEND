@@ -11,7 +11,6 @@ export class PeticionesService {
   }
 
   getResultadosDeSorteos(cFecha:string,token:string) {
-    
       return this.http.get(this.url +'')
   } 
 
@@ -19,7 +18,7 @@ export class PeticionesService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.url + '/login',JSON.stringify(data),{headers: headers})
   }
-
+  //=======================================| CARRERA |=====================
   crearCarrera(data: Object): Observable<any> {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.url + '/carrera',JSON.stringify(data))
@@ -30,20 +29,22 @@ export class PeticionesService {
     return this.http.get(this.url + '/carrera')
   }
 
+  //=======================================| ACTIVIDAD |=====================
   crearActividad(data: Object): Observable<any> {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.url + '/actividad',JSON.stringify(data))
   }
-
-  crearEstudiante(data: Object): Observable<any> {
-    // const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(this.url + '/usuario',JSON.stringify(data))
-  }
-
 
   GetActividades(fecha1: string,fecha2): Observable<any> {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(this.url + '/actividad/por_fecha/'+fecha1+'/'+fecha2)
     // return this.http.get(this.url + '/actividad')
   }
+  //=======================================| ESTUDIANTE |=====================
+  crearEstudiante(data: Object): Observable<any> {
+    // const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(this.url + '/usuario',JSON.stringify(data))
+  }
+
+
 }
