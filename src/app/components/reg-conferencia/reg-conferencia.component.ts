@@ -22,10 +22,10 @@ export class RegConferenciaComponent implements OnInit {
   constructor(private aroute:ActivatedRoute,private fb: FormBuilder,private _router: Router,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
     this.aroute.queryParams.subscribe( params => {
       console.log('params["actividad"]',params);
-          // this.actividad = JSON.parse( params["actividad"] );
+          this.actividad = JSON.parse( params["id_actividad"] );
       }
    );
-    this.actividad= '1';
+    // this.actividad= '1';
   }
 
   ngOnInit() {
