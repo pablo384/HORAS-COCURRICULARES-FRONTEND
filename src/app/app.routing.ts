@@ -32,7 +32,7 @@ const appRoutes: Routes = [
         path: 'lista_actividades',
         component: ListActividadesComponent, canActivate: [AuthGuard],
         children: [
-          {path: 'reg/:router_back', component: RegConferenciaComponent},
+          {path: 'reg/:actividad', component: RegConferenciaComponent},
         ]
     },
 
