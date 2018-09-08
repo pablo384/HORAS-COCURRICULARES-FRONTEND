@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PeticionesService} from '../../services/peticiones.service';
 import {FuncionesService} from '../../services/funciones.service';
+import * as moment from "moment"
 @Component({
   selector: 'app-list-actividades',
   templateUrl: './list-actividades.component.html',
@@ -19,7 +20,7 @@ export class ListActividadesComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.buscarActividades()
+    this.buscarActividades(moment().format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"))
   }
 
 
