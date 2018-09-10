@@ -14,6 +14,7 @@ import { PoncharAsistenciaComponent } from './components/ponchar-asistencia/ponc
 
 import { ListActividadesComponent } from './components/list-actividades/list-actividades.component';
 import { ListConferenciasComponent } from './components/list-conferencias/list-conferencias.component';
+import { ListConferencistasComponent } from './components/list-conferencistas/list-conferencistas.component';
 import { ListAsistenciasComponent } from './components/list-asistencias/list-asistencias.component';
 
 
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     },
 
     { path: 'conferencias', component: ListConferenciasComponent,canActivate: [AuthGuard] },
+    { path: 'list_conferencistas', component: ListConferencistasComponent, canActivate: [AuthGuard] },
     { path: 'list_estudiantes', component: ListAsistenciasComponent,canActivate: [AuthGuard] },
  
     // otherwise redirect to home

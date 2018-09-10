@@ -37,6 +37,7 @@ import { IniciarActividadComponent } from './components/iniciar-actividad/inicia
 import { BuscarPorFechaComponent } from './components/buscar-por-fecha/buscar-por-fecha.component';
 import { PoncharAsistenciaComponent } from './components/ponchar-asistencia/ponchar-asistencia.component';
 import { ListEntradaSalidaComponent } from './components/list-entrada-salida/list-entrada-salida.component';
+import { ListConferencistasComponent } from './components/list-conferencistas/list-conferencistas.component';
 
 
 
@@ -60,7 +61,8 @@ import { ListEntradaSalidaComponent } from './components/list-entrada-salida/lis
     IniciarActividadComponent,
     BuscarPorFechaComponent,
     PoncharAsistenciaComponent,
-    ListEntradaSalidaComponent
+    ListEntradaSalidaComponent,
+    ListConferencistasComponent
   ],
   imports: [
     BrowserModule,
