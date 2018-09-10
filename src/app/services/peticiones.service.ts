@@ -44,7 +44,13 @@ export class PeticionesService {
   crearEstudiante(data: Object): Observable<any> {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.url + '/usuario',JSON.stringify(data))
+  }
+  //=======================================| ESTUDIANTE |=====================
+  crearConferencia(data: Object): Observable<any> {
+    // const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(this.url + '/conferencia',JSON.stringify(data))
   } 
+
   GetConferencistas(): Observable<any> {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(this.url + '/persona/conferencistas')
