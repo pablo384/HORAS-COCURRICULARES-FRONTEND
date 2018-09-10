@@ -15,18 +15,18 @@
 					<th>Empresa o trabajo</th>
 					<th>Dirección</th>
 					<th>Acciones</th>
-					<th>Estado</th>
+					<!-- <th>Estado</th> -->
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let item of ListadoDeEstudiantes">
-					<td>.....</td>
-					<td>.....</td>
-					<td>.....</td>
-					<td>.....</td>
-					<td>.....</td>
-					<td> 4</td>
-					<td> 4</td>
+				<tr *ngFor="let item of ListadoConferencistas">
+					<td>{{item.id}}</td>
+					<td>{{item.nombres}}</td>
+					<td>{{item.apellidos}}</td>
+					<td>{{item.email}}</td>
+					<td>{{item.cargo}}</td>
+					<td>{{item.trabajo}}</td>
+					<td>{{item.direccion}}</td>
 					<td>
 					<div class="btn-group">
 						<a class="btn btn-default btn-flat" title="Editar" [routerLink]="['/list_estudiantes']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i></a>
@@ -38,7 +38,7 @@
 						<button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
 					</div>
 					</td>
-					<td>Finalizado</td>
+					<!-- <td>Finalizado</td> -->
 				</tr>
 			</tbody>
 		</table>

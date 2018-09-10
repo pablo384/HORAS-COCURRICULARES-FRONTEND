@@ -45,7 +45,7 @@ export class PeticionesService {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.url + '/usuario',JSON.stringify(data))
   } 
-  GetConferencistas(data: Object): Observable<any> {
+  GetConferencistas(): Observable<any> {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.get(this.url + '/persona/conferencistas')
   }

@@ -87,7 +87,7 @@ export class FuncionesService {
 
   isLoggednIn() {
     // console.log("this.getToken()",this.getToken(),this.getToken() != null)
-    return true //this.getToken() != null;
+    return this.getToken() != null;
   }
 
   logout() {

@@ -26,7 +26,7 @@
 				<div class="col-lg-7" style="margin-bottom:4px"><p-calendar formControlName="hora_inicio" required [inputStyle]="{'width':'100%','height':'33px'}" [style]="{'width':'100%','height':'33px'}"  [timeOnly]="true" hourFormat="12"></p-calendar></div>
 				<div class="col-lg-5"><label>Duración</label></div>
 				<div class="col-lg-7" style="margin-bottom:4px">
-					<p-inputMask [style]="{'width':'100%','heigth':'54px'}" mask="99:99" formControlName="duracion"></p-inputMask>
+					<p-inputMask [style]="{'width':'100%','heigth':'54px'}" mask="99:99" formControlName="dura_estimada"></p-inputMask>
 					<!-- <p-dropdown [options]="horas_default" formControlName="duracion" [style]="{'width':'100%','heigth':'54px'}" placeholder="Selectione la duracion" optionLabel="name" ></p-dropdown> -->
 					<!-- <select class="form-control select2" style="width: 100%;" >
 						<option>0:15</option>
@@ -82,18 +82,22 @@
                 </div>
           	</div>
 
-        	<!-- <div class="input-group"> -->
-        		<!-- <p-dropdown [options]="porcentaje_default" formControlName="porcentaje_horas_validas" [style]="{'width':'180px','heigth':'34px'}" placeholder="Selectione el porcentaje" optionLabel="name" ></p-dropdown> -->
-	        <!--   <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-		        <p-autoComplete formControlName="porcentaje_horas_validas" [suggestions]="filteredCarreras" [style]="{'height':'36px'}" (completeMethod)="filterPorcentajes($event)"  [size]="15"
-					    [minLength]="1" placeholder="Porcentajes" [dropdown]="true">
-					    <ng-template let-porcentaje pTemplate="item" >
-					        <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
-					            <div style="font-size:18px;float:right;margin:10px 10px 0 0">{{porcentaje}}</div>
-					        </div>
-					    </ng-template>
-						</p-autoComplete> -->
-	        <!-- </div> -->
+			<div class="col-lg-12">
+				<div class="col-lg-5" style="margin-bottom:4px">
+                  Día de presentación
+                </div>
+                <div class="col-lg-7" style="margin-bottom:4px">
+					<p-autoComplete [(ngModel)]="brand" [suggestions]="filteredBrands" (completeMethod)="filterBrands($event)" formControlName="conferencista" [size]="28"
+						[minLength]="1" placeholder="Nombre del conferencista" [dropdown]="true">
+						<ng-template let-brand pTemplate="item">
+							<div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+								<div style="font-size:18px;float:right;margin:10px 10px 0 0">{{brand}}</div>
+							</div>
+						</ng-template>
+					</p-autoComplete>
+				</div>
+			</div>
+
 		</div>
 		</form>
 	</div>

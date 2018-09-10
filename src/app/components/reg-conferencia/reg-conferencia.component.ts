@@ -18,7 +18,10 @@ export class RegConferenciaComponent implements OnInit {
 	dateValue: Date;
   porcentaje_default:any[];
   actividad:string;
+  conferencista:string;
   horas_default:any[];
+  ListadoConferencistas: string[] = ['Audi','BMW','Fiat','Ford','Honda','Jaguar','Mercedes','Renault','Volvo','VW'];
+  filteredBrands: any[];
   constructor(private aroute:ActivatedRoute,private fb: FormBuilder,private _router: Router,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
     this.aroute.queryParams.subscribe( params => {
       console.log('params["actividad"]',params);
@@ -42,6 +45,44 @@ export class RegConferenciaComponent implements OnInit {
     // this.Outdisplay.emit(false);
   }
 
+   filterBrands(event) {
+        this.filteredBrands = [];
+        for(let i = 0; i < this.ListadoConferencistas.length; i++) {
+            let brand = this.ListadoConferencistas[i];
+            if(brand.toLowerCase().indexOf(event.query.toLowerCase()) == 0) {
+                this.filteredBrands.push(brand);
+            }
+        }
+    }
+
+
+    listadoDeConferencistas() {
+    
+    // console.log(this.loginForm.value);
+    this._funtions.blockUIO().start()
+    this._peticiones.GetConferencistas().subscribe(
+      response => {
+         this._funtions.blockUIO().stop()
+        console.log('response',response);
+        this.ListadoConferencistas = response.data;
+
+      },
+      error => {
+        let resultado;
+        if (error.error && error.status !== 0) {
+          resultado = this._funtions.sacarText(error.error);
+        } else {
+          resultado = error.error.message;
+        }
+        console.log(error.error.message)
+        this._funtions.Toast("error","Error",resultado);
+
+        this._funtions.blockUIO().stop(); 
+      }
+    );
+
+  }
+
 
 
   createForm(){
@@ -49,9 +90,10 @@ export class RegConferenciaComponent implements OnInit {
       titulo:['', Validators.required],
       descripcion:'',
       hora_inicio:[new Date(), Validators.required],
-      duracion:['0000', Validators.required],
+      dura_estimada:['0000', Validators.required],
       dia_de_presentacion:[new Date(), Validators.required],
-      porcentaje_horas_validas:['', Validators.required]
+      porcentaje_horas_validas:['', Validators.required],
+      conferencista:['',Validators.required]
     })
   }
   onSubmit(){
@@ -60,6 +102,7 @@ export class RegConferenciaComponent implements OnInit {
     value.dia_de_presentacion = moment(value.dia_de_presentacion).format("YYYY/MM/DD")
     value.porcentaje_horas_validas = value.porcentaje_horas_validas.value
     value.actividad = this.actividad;
+    value.conferencista = this.conferencista;
     console.log("formConferencia",JSON.stringify(value))
   }
 }
