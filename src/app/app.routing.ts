@@ -16,6 +16,7 @@ import { ListActividadesComponent } from './components/list-actividades/list-act
 import { ListConferenciasComponent } from './components/list-conferencias/list-conferencias.component';
 import { ListConferencistasComponent } from './components/list-conferencistas/list-conferencistas.component';
 import { ListAsistenciasComponent } from './components/list-asistencias/list-asistencias.component';
+import { ListCarrerasComponent } from './components/list-carreras/list-carreras.component';
 
 
 import { AuthGuard } from './auth.guard';
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
     { path: 'conferencias', component: ListConferenciasComponent,canActivate: [AuthGuard] },
     { path: 'list_conferencistas', component: ListConferencistasComponent, canActivate: [AuthGuard] },
     { path: 'list_estudiantes', component: ListAsistenciasComponent,canActivate: [AuthGuard] },
+    { path: 'list_carreras', component: ListCarrerasComponent,canActivate: [AuthGuard] },
  
     // otherwise redirect to home
     { path: '**', redirectTo: '',canActivate: [AuthGuard] }
