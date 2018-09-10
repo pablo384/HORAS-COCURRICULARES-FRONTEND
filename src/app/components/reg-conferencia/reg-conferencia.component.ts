@@ -20,7 +20,7 @@ export class RegConferenciaComponent implements OnInit {
   actividad:string;
   conferencista:string;
   horas_default:any[];
-  ListadoConferencistas: string[] = ['Audi','BMW','Fiat','Ford','Honda','Jaguar','Mercedes','Renault','Volvo','VW'];
+  ListadoConferencistas: any[];
   filteredConferencista: any[];
   constructor(private aroute:ActivatedRoute,private fb: FormBuilder,private _router: Router,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
     this.aroute.queryParams.subscribe( params => {

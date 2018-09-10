@@ -12,7 +12,7 @@
             <th>Titulo</th>
             <th>Fecha de inicio</th>
             <th>Fecha de finalizar</th>
-            <th>Hora de inicio</th>
+            <!-- <th>Hora de inicio</th> -->
             <th>Acciones</th>
           </tr>
         </thead>
@@ -22,7 +22,7 @@
             <td>{{item.titulo}}</td>
             <td>{{item.fecha_inicio  | amDateFormat:'DD/MM/YYYY'}}</td>
             <td>{{item.fecha_finalizar | amDateFormat:'DD/MM/YYYY'}}</td>
-            <td>{{item.fecha_fin}}</td>
+            <!-- <td>{{item.fecha_fin}}</td> -->
             <td>
               <div class="btn-group">
                 <a class="btn btn-default btn-flat" title="Editar" [routerLink]="['/conferencias']" [queryParams]="{actividad:item|json }"><i class="fa fa-list"></i></a>

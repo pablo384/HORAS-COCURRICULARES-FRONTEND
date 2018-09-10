@@ -14,15 +14,15 @@ export class BuscarPorFechaComponent implements OnInit {
 	// @Output() public Outdisplay = new EventEmitter<boolean>();
 	// @Output() fn;
   constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
-
-  	this.fecha_inicio  = new Date();
-  	this.fecha_fin     = new Date();
   }
 
   ngOnInit() {
+    this.fecha_inicio  = new Date();
+    this.fecha_fin     = new Date();
   	console.log(this.fn)
   }
   buscar(){
+    console.log("fecha_inicio",this.fecha_inicio)
   	this.fn(moment(this.fecha_inicio).format("YYYY-MM-DD"), moment(this.fecha_fin).format("YYYY-MM-DD") );
   }
 }
