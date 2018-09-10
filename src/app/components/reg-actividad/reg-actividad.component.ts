@@ -100,7 +100,6 @@ export class RegActividadComponent implements OnInit {
         this._funtions.blockUIO().stop(); 
       }
     );
-  
   }
 	
 
