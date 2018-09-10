@@ -93,7 +93,7 @@ export class RegConferenciaComponent implements OnInit {
       hora_inicio:[new Date(), Validators.required],
       dura_estimada:['', Validators.required],
       dia_de_presentacion:[new Date(), Validators.required],
-      porcentaje_horas_validas:['', Validators.required],
+      porciento_horas_validas:['', Validators.required],
       id_persona_conferencista:['',Validators.required]
     })
   }
@@ -101,18 +101,24 @@ export class RegConferenciaComponent implements OnInit {
     // console.log("console.log(this.formConferencia.value)",this.formConferencia.value)
     let value = JSON.parse(JSON.stringify(this.formConferencia.value))
     let duracion = value.dura_estimada.replace(":","")
+    duracion = duracion.replace(":","")
     if(parseInt(duracion)>0){
       value.hora_inicio = moment(value.hora_inicio).format("HH:MM:SS")
       value.dia_de_presentacion = moment(value.dia_de_presentacion).format("YYYY-MM-DD")
-      value.porcentaje_horas_validas = value.porcentaje_horas_validas.value
+      value.porciento_horas_validas = value.porciento_horas_validas.value
       value.id_persona_conferencista = value.id_persona_conferencista.id
       value.actividad = this.actividad;
       this._peticiones.crearConferencia(value).subscribe(
         response => {
           this._funtions.blockUIO().stop()
           console.log('response',response);
-          this._funtions.Toast("success", "success", response.message);
-          this.OnHIde();
+          if(response["info"]){
+
+            this._funtions.Toast("success", "success", response.message);
+            this.OnHIde();
+          }else {
+            this._funtions.Toast("error","Error",this._funtions.sacarText(response.error))
+          }
         },
         error => {
           let resultado;
@@ -121,7 +127,7 @@ export class RegConferenciaComponent implements OnInit {
           } else {
             resultado = error.error.message;
           }
-          console.log(error.error.message)
+          console.log(error.error)
           this._funtions.Toast("error","Error",resultado);
 
           this._funtions.blockUIO().stop(); 
