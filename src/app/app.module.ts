@@ -39,6 +39,7 @@ import { PoncharAsistenciaComponent } from './components/ponchar-asistencia/ponc
 import { ListEntradaSalidaComponent } from './components/list-entrada-salida/list-entrada-salida.component';
 import { ListConferencistasComponent } from './components/list-conferencistas/list-conferencistas.component';
 import { ListCarrerasComponent } from './components/list-carreras/list-carreras.component';
+import { ListVerificadoresComponent } from './components/list-verificadores/list-verificadores.component';
 
 
 
@@ -64,7 +65,8 @@ import { ListCarrerasComponent } from './components/list-carreras/list-carreras.
     PoncharAsistenciaComponent,
     ListEntradaSalidaComponent,
     ListConferencistasComponent,
-    ListCarrerasComponent
+    ListCarrerasComponent,
+    ListVerificadoresComponent
   ],
   imports: [
     BrowserModule,
