@@ -1,0 +1,38 @@
+<div class="box">
+    <div class="box-header header-list">
+      <h3 class="box-title">Listado de Carreras</h3>
+    </div>
+    <!-- <app-buscador ></app-buscador> -->
+    <div class="box-body">
+      <table id="example1" class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Dirección</th>
+            <th>email</th>
+            <th>Telefono</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of verificadores">
+            <td>{{item.id_persona}}</td>
+            <td>{{item.apellidos}}</td>
+            <td>{{item.direccion}}</td>
+            <td>{{item.correo}}</td>
+            <td>{{item.telefono}}</td>
+            <td>{{item.estado}}</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-default btn-flat" title="Editar"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+<router-outlet></router-outlet>
+ 
