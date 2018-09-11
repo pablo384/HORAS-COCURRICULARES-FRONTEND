@@ -4,7 +4,7 @@
       	<br>
 		<small>Listado de Conferencias</small>
     </div>
-    <app-buscar-por-fecha></app-buscar-por-fecha>
+    <!-- <app-buscar-por-fecha></app-buscar-por-fecha> -->
     <div class="box-body">
 		<table id="example1" class="table table-bordered table-striped">
 			<thead>
@@ -12,7 +12,7 @@
 					<th>ID</th>
 					<th>Titulo</th>
 					<th>Fecha de inicio</th>
-					<th>Fecha de finalizar</th>
+					<!-- <th>Fecha de finalizar</th> -->
 					<th>Hora de inicio</th>
 					<th>Duración estimada</th>
 					<th>Tiempo transcurrido</th>
@@ -24,11 +24,11 @@
 				<tr *ngFor="let item of ListadoDeConferenciasPorActividad">
 					<td>{{item.id}}</td>
 					<td>{{item.titulo}}</td>
-					<td>{{item.fecha_inicio}}</td>
-					<td>{{item.fecha_fin}}</td>
-					<td>{{item.titulo}}</td>
-					<td> 4</td>
-					<td> 4</td>
+					<td>{{item.dia_de_presentacion | amDateFormat:'DD/MM/YYYY'}}</td>
+					<!-- <td>{{item.fecha_fin}}</td> -->
+					<td>{{item.hora_inicio}}</td>
+					<td>{{item.dura_estimada}}</td>
+					<td>{{item.dura_estimada}}</td>
 					<td>
 					<div class="btn-group">
 						<a class="btn btn-default btn-flat" title="Editar" [routerLink]="['/list_estudiantes']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i></a>
