@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { RouterModule, Router ,  ActivatedRoute} from '@angular/router';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
@@ -8,22 +8,25 @@ import {PeticionesService} from '../../services/peticiones.service';
   templateUrl: './list-conferencias.component.html',
   styleUrls: ['./list-conferencias.component.css']
 })
-export class ListConferenciasComponent implements OnInit {
+export class ListConferenciasComponent implements OnInit,OnDestroy {
 	ListadoDeConferenciasPorActividad:any[];
 	actividad;
 	constructor(private aroute:ActivatedRoute,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
-		this.ListadoDeConferenciasPorActividad = [
-	  		{id:1,titulo:"Encriptación",fecha_inicio:"101212",fecha_fin:"123213"},
-	  		{id:2,titulo:"El mundo de Git",fecha_inicio:"101212",fecha_fin:"123213"},
-	  		{id:3,titulo:"Hello Mundo",fecha_inicio:"101212",fecha_fin:"123213"},
-	  	]
+		// this.ListadoDeConferenciasPorActividad = [
+	 //  		{id:1,titulo:"Encriptación",fecha_inicio:"101212",fecha_fin:"123213"},
+	 //  		{id:2,titulo:"El mundo de Git",fecha_inicio:"101212",fecha_fin:"123213"},
+	 //  		{id:3,titulo:"Hello Mundo",fecha_inicio:"101212",fecha_fin:"123213"},
+	 //  	]
 		  this.aroute.queryParams.subscribe( params => {
 	  		console.log('params["actividad"]',params);
 	      		this.actividad = JSON.parse( params["actividad"] );
 	  		}
 	     );
 	}
+	ngOnDestroy(){
 
+	}
+	
 	ngOnInit() {
 		this.ListasDeConferencias();
 	}
