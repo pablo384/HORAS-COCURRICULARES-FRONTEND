@@ -2,24 +2,27 @@
     <div class="box-header header-list">
       <h3 class="box-title">Listado de Carreras</h3>
     </div>
-    <app-buscador ></app-buscador>
+    <!-- <app-buscador ></app-buscador> -->
     <div class="box-body">
       <table id="example1" class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Abreviatura</th>
-            <th>Nombre</th>
-            <th>Fecha de creación</th>
-            <th>Acciones</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Dirección</th>
+            <th>email</th>
+            <th>Telefono</th>
+            <th>Estado</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of verificadores">
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
-            <td>..</td>
+            <td>{{item.id_persona}}</td>
+            <td>{{item.apellidos}}</td>
+            <td>{{item.direccion}}</td>
+            <td>{{item.correo}}</td>
+            <td>{{item.telefono}}</td>
+            <td>{{item.estado}}</td>
             <td>
               <div class="btn-group">
                 <button type="button" class="btn btn-default btn-flat" title="Editar"><i class="fa fa-edit"></i></button>
