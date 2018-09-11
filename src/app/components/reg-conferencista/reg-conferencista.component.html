@@ -1,4 +1,4 @@
-<p-dialog header="Registrar Conferencista" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
+<p-dialog header="Registrar Conferencista"  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
 	<div class="modal-body">
   	<div class="box-body">
 			<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >

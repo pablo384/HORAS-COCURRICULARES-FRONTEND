@@ -1,5 +1,5 @@
 
-<p-dialog header="Registrar Actividad" [(visible)]="Inpdisplay" [width]=500 [height]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" >
+<p-dialog header="Registrar Actividad"  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=500 [height]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" >
   <div class="box-body" style="height: 441px;">
     <form [formGroup]="formActividad"  (ngSubmit)="crearActividad()" >
       <div class="col-lg-12">
