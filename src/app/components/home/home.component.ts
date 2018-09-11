@@ -1,28 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {FuncionesService} from '../../services/funciones.service';
-
+import {PeticionesService} from '../../services/peticiones.service';
+import * as moment from "moment"
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  displayCarrera      :boolean;
-  displayEstudiante   :boolean;
-  displayActividad    :boolean;
-  displayConferencia  :boolean;
-  displayConferencista:boolean;
-  displayVerificador  :boolean;
-
   ListadoDeConferencias:any[];
-
-  constructor(private _funtions: FuncionesService) {
-    this.displayCarrera       = false;
-    this.displayEstudiante    = false;
-    this.displayActividad     = false;
-    this.displayConferencia   = false;
-    this.displayConferencista = false;
-    this.displayVerificador   = false;
+  fechaActual:Date;
+  constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) {
+    this.fechaActual =new Date();
     this.ListadoDeConferencias = [
       {'actividad':'X','conferencia':'Y','estado':'A'},
       {'actividad':'X','conferencia':'Y','estado':'A'},
@@ -37,34 +26,27 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
+  listaDeActividadesPorfecha(){
+    this._funtions.blockUIO().start()
+      this._peticiones.GetConferenciasPorFecha(moment().format("YYYY-MM-DD"),moment().format("YYYY-MM-DD")).subscribe(
+        response => {
+           this._funtions.blockUIO().stop()
+          console.log('response',response);
+          this.ListadoDeConferencias = response.data;
+        },
+        error => {
+          let resultado;
+          if (error.error && error.status !== 0) {
+            resultado = this._funtions.sacarText(error.error);
+          } else {
+            resultado = error.error.message;
+          }
+          console.log(error.error.message)
+          this._funtions.Toast("error","Error",resultado);
 
-  showAndHideCarrera(display:boolean){
-  	this.displayCarrera =display;// = display;
-  	console.log("showAndHideCarrera display",display);
-  	// return this.displayCarrera;
-  }
+          this._funtions.blockUIO().stop(); 
+        }
+      );
 
-  showAndHideEstudiante(display:boolean){
-    this.displayEstudiante =display;// = display;
-    console.log("displayEstudiante display",display);
   }
-
-  showAndHideActividad(display:boolean){
-    this.displayActividad =display;// = display;
-    console.log("displayActividad display",display);
-  }
-
-  showAndHideConferencia(display:boolean){
-    this.displayConferencia =display;// = display;
-    console.log("displayConferencia display",display);
-  }
-  showAndHideConferencista(display:boolean){
-    this.displayConferencista =display;// = display;
-    console.log("displayConferencista display",display);
-  }
-  showAndHideVerificador(display:boolean){
-    this.displayVerificador =display;// = display;
-    // console.log("displayConferencista display",display);
-  }
-
 }

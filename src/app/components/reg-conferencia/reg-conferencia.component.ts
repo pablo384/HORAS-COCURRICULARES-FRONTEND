@@ -103,11 +103,12 @@ export class RegConferenciaComponent implements OnInit {
     let duracion = value.dura_estimada.replace(":","")
     duracion = duracion.replace(":","")
     if(parseInt(duracion)>0){
-      value.hora_inicio = moment(value.hora_inicio).format("HH:MM:SS")
+      value.hora_inicio = moment(value.hora_inicio).format("HH:MM")
       value.dia_de_presentacion = moment(value.dia_de_presentacion).format("YYYY-MM-DD")
       value.porciento_horas_validas = value.porciento_horas_validas.value
       value.id_persona_conferencista = value.id_persona_conferencista.id
       value.actividad = this.actividad;
+      console.log("onSubmit ",value)
       this._peticiones.crearConferencia(value).subscribe(
         response => {
           this._funtions.blockUIO().stop()

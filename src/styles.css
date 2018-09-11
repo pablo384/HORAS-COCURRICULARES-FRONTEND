@@ -29,3 +29,11 @@
 .header-list{
   background: #b3d9ea;
 }
+
+.ui-widget-header {
+    border: 1px solid #323232;
+    /*background: #333333b3;*/
+    color: #cccccc;
+    background:#1a83e4;
+    font-weight: bold;
+}
