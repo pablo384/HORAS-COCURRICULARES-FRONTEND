@@ -6,39 +6,39 @@
 
 			<div class="hold-transition login-page">
 			  <div class="login-logo">
-			    <a [routerLink]="['/']"><b>Admin</b>LTE</a>
+			    <a [routerLink]="['/']"><b>SAHC</b></a>
 			  </div>
 			  <div class="login-box-body">
-			    <p class="login-box-msg">Sign in to start your session</p>
+			    <p class="login-box-msg">Inicia sesión para comenzar tu sesión</p>
 			    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 			     	<div class="form-group has-feedback">
 				        <input type="text" formControlName="usuario" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.usuario.errors }" placeholder="Usuario"/>
 				        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 				        <div *ngIf="submitted && f.usuario.errors" class="invalid-feedback">
-				            <div *ngIf="f.usuario.errors.required">Username is required</div>
+				            <div *ngIf="f.usuario.errors.required">Username es requerido</div>
 				        </div>
 				    </div>
 			      <div class="form-group has-feedback">
 			        <input type="password" formControlName="password" placeholder="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
 			        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 			         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-				            <div *ngIf="f.password.errors.required">Password is required</div>
+				            <div *ngIf="f.password.errors.required">Password es requerido</div>
 				        </div>
 			      </div>
 			      <div class="row">
-			        <div class="col-xs-8">
+			       <!--  <div class="col-xs-8">
 			          <div class="checkbox icheck">
 			            <label>
 			              <input type="checkbox"> Remember Me
 			            </label>
 			          </div>
-			        </div>
+			        </div> -->
 			        <div class="col-xs-4">
-			          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+			          <button type="submit" class="btn btn-primary btn-block btn-flat">Iniciar</button>
 			        </div>
 			      </div>
 			    </form>
-			    <a [routerLink]="['/']">I forgot my password</a><br>
+			    <a [routerLink]="['/']">Olvidé mi contraseña</a><br>
 			  </div>
 			</div>
 		</div>

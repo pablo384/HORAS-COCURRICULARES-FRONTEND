@@ -9,7 +9,7 @@
     <!-- Logo -->
     <a href="/" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>S</b>AHC</span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>SAHC</b></span>
     </a>
@@ -47,42 +47,30 @@
           
 
           <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="#" class="dropdown-toggle" style="height: 50px;" data-toggle="dropdown">
               <img src="assets/myimages/user2-160x160.jpg" class="user-image" alt="User Image">
-              <!-- <span class="hidden-xs">{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</span> -->
+              <span class="hidden-xs">{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <img src="assets/myimages/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                <p style="color:#001c42;">
+                  {{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}} 
+                  <!-- Alexander Pierce - Web Developer -->
+                  <small *ngIf="_funtions.getLoggedUser().tipo == 'A'">Administrador</small>
+                  <small *ngIf="_funtions.getLoggedUser().tipo == 'V'">Vericador</small>
+                  <small *ngIf="_funtions.getLoggedUser().tipo == 'E'">Estudiante</small>
+                
                 </p>
               </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-                <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a (click)="_funtions.logout()" class="btn btn-default btn-flat">Salir</a>
                 </div>
               </li>
             </ul>
@@ -204,74 +192,23 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-  <!-- =============================== -->
-  <!-- FRNAJA AZUL DEL TOP ------------------------| END |-->
-  <!-- =============================== -->
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
-      <!-- <h1>
-        Dashboard
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
- -->
-        <router-outlet></router-outlet>
-       <!-- <app-box-body> </app-box-body> -->
-       <!-- <app-reg-estudiante (Outdisplay)="showAndHideEstudiante($event)" [(Inpdisplay)]="displayEstudiante" ></app-reg-estudiante>
-       <app-reg-carrera (Outdisplay)="showAndHideCarrera($event)" [(Inpdisplay)]="displayCarrera" ></app-reg-carrera>
-       <app-reg-actividad (Outdisplay)="showAndHideActividad($event)" [(Inpdisplay)]="displayActividad" ></app-reg-actividad>
-       <app-reg-conferencia (Outdisplay)="showAndHideConferencia($event)" [(Inpdisplay)]="displayConferencia" ></app-reg-conferencia>
-       <app-reg-conferencista (Outdisplay)="showAndHideConferencista($event)" [(Inpdisplay)]="displayConferencista" ></app-reg-conferencista>
-       <app-reg-verificador (Outdisplay)="showAndHideVerificador($event)" [(Inpdisplay)]="displayVerificador" ></app-reg-verificador>
-       <app-buscador></app-buscador>
- -->
-
-
-
-     <!--  <button type="button" class="btn btn-default" (click)="showAndHideEstudiante(true)">Registrar Estudiante</button>
-      <button type="button" class="btn btn-default" (click)="showAndHideCarrera(true)">Registrar Carrera</button>
-      <button type="button" class="btn btn-default" (click)="showAndHideActividad(true)">Registrar Actividad</button>
-      <button type="button" class="btn btn-default" (click)="showAndHideConferencia(true)">Registrar Conferencia</button>
-      <button type="button" class="btn btn-default" (click)="showAndHideConferencista(true)">Registrar Conferencista</button>
-      <button type="button" class="btn btn-default" (click)="showAndHideVerificador(true)">Registrar Verificador</button> -->
-      
-
-     <!--   <app-list-actividades></app-list-actividades>
-       <app-list-estudiantes></app-list-estudiantes>
-       <app-list-conferencias></app-list-conferencias> -->
+      <router-outlet></router-outlet>
     </section>
-
-    <!-- Main content -->
-
-    
-    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-  <!-- <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
-  </footer> -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+  <!-- <aside class="control-sidebar control-sidebar-dark"> -->
+
+   <!--  <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
       <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
       <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane" id="control-sidebar-home-tab">
+    </ul> -->
+
+    <!-- <div class="tab-content"> -->
+
+      <!-- <div class="tab-pane" id="control-sidebar-home-tab">
         <h3 class="control-sidebar-heading">Recent Activity</h3>
         <ul class="control-sidebar-menu">
           <li>
@@ -318,9 +255,8 @@
               </div>
             </a>
           </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
+        </ul> -->
+<!-- 
         <h3 class="control-sidebar-heading">Tasks Progress</h3>
         <ul class="control-sidebar-menu">
           <li>
@@ -371,15 +307,10 @@
               </div>
             </a>
           </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
+        </ul> -->
+  <!--     </div>
       <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
+
       <div class="tab-pane" id="control-sidebar-settings-tab">
         <form method="post">
           <h3 class="control-sidebar-heading">General Settings</h3>
@@ -394,7 +325,6 @@
               Some information about this general settings option
             </p>
           </div>
-          <!-- /.form-group -->
 
           <div class="form-group">
             <label class="control-sidebar-subheading">
@@ -442,14 +372,11 @@
             </label>
           </div>
         </form>
-      </div>
-    </div>
+      </div>-->
+    <!-- </div>  -->
 
-  </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
+  <!-- </aside> -->
+  <!-- <div class="control-sidebar-bg"></div> -->
 </div>
 </div>
 
