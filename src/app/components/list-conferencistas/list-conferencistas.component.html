@@ -2,7 +2,16 @@
     <div class="box-header header-list">
       	<h3 class="box-title">Listado de Conferencistas</h3>
     </div>
-    <app-buscador></app-buscador>
+    <!-- <app-buscador></app-buscador> -->
+    <div class="box box-success  bg-blue">
+	<div class="box-header">
+	  <div class="row">
+	    <div class="col-xs-3">
+	      <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Nombre, Apellido, Email, Dirección">
+	    </div>
+	  </div>
+	</div>
+</div>
     <div class="box-body">
 		<table id="example1" class="table table-bordered table-striped">
 			<thead>
@@ -19,7 +28,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let item of ListadoConferencistas">
+				<tr *ngFor="let item of ListadoConferencistas | search:searchText">
 					<td>{{item.id}}</td>
 					<td>{{item.nombres}}</td>
 					<td>{{item.apellidos}}</td>

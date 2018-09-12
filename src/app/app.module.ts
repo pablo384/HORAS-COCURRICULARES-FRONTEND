@@ -40,6 +40,7 @@ import { ListEntradaSalidaComponent } from './components/list-entrada-salida/lis
 import { ListConferencistasComponent } from './components/list-conferencistas/list-conferencistas.component';
 import { ListCarrerasComponent } from './components/list-carreras/list-carreras.component';
 import { ListVerificadoresComponent } from './components/list-verificadores/list-verificadores.component';
+import { SearchPipe } from './search.pipe';
 
 
 
@@ -66,7 +67,8 @@ import { ListVerificadoresComponent } from './components/list-verificadores/list
     ListEntradaSalidaComponent,
     ListConferencistasComponent,
     ListCarrerasComponent,
-    ListVerificadoresComponent
+    ListVerificadoresComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

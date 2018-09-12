@@ -10,8 +10,10 @@ import * as moment from "moment"
 })
 export class ListCarrerasComponent implements OnInit {
 	carreras: any[];
+  searchText;
   constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) {
   	this.allCarreras()
+    this.searchText='';
   }
 
   ngOnInit() {
@@ -30,7 +32,8 @@ export class ListCarrerasComponent implements OnInit {
         		label:carrera.nombre,
         		value:carrera.id,
         		abreviatura:carrera.abreviatura,
-        		creado:moment(carrera.createat).format("DD/MM/YYYY hh:mm:ss")
+            creado:carrera.createat
+        		// creado:moment(carrera.createat).format("DD/MM/YYYY hh:mm:ss")
         		// modificado:moment(carrera.updateat).format("DD/MM/YYYY hh:mm:ss")
         	})
         }

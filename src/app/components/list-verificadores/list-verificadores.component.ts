@@ -10,7 +10,9 @@ import * as moment from "moment"
 export class ListVerificadoresComponent implements OnInit {
   constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) { }
   verificadores
+  searchText;
   ngOnInit() {
+    this.searchText='';
   	this.allVerificadores()
   }
 

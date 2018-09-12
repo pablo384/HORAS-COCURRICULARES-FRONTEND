@@ -2,7 +2,14 @@
     <div class="box-header header-list">
       <h3 class="box-title">Listado de Carreras</h3>
     </div>
-    <app-buscador ></app-buscador>
+    <!-- <app-buscador ></app-buscador> -->
+    <div class="box-header">
+    <div class="row">
+      <div class="col-xs-4">
+        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Nombre, Abreviatura, Fecha de creación">
+      </div>
+    </div>
+  </div>
     <div class="box-body">
       <table id="example1" class="table table-bordered table-striped">
         <thead>
@@ -15,7 +22,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of carreras">
+          <tr *ngFor="let item of carreras | search:searchText">
             <td>{{item.value}}</td>
             <td>{{item.label}}</td>
             <td>{{item.abreviatura}}</td>

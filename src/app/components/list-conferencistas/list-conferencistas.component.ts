@@ -7,9 +7,10 @@ import {PeticionesService} from '../../services/peticiones.service';
   styleUrls: ['./list-conferencistas.component.css']
 })
 export class ListConferencistasComponent implements OnInit {
-	ListadoConferencistas
+	ListadoConferencistas;
+  searchText;
     constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService ) {
-
+      this.searchText='';
     }
 
   ngOnInit() {
