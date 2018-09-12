@@ -35,8 +35,7 @@
         "./app/jsLib/jquery.dataTables.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js",
         "./app/jsLib/adminlte.js",
-        "./app/jsLib/bootstrap-timepicker.js",
-        "./app/jsLib/myFunctions.js"
+        "./app/jsLib/bootstrap-timepicker.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
