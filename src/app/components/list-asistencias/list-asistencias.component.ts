@@ -21,7 +21,9 @@ export class ListAsistenciasComponent implements OnInit {
 
   }
 
-
+private doThingFactory() {
+    // return (fecha1,fecha2) => this.buscarActividades(fecha1,fecha2);
+  }
   ngOnInit() {
     this.ListadoEstudiantesPorConferencias()
   }

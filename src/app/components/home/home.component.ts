@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
           console.log('response',response);
           for (var i = 0; i < response.data.length; ++i) {
             let conf = response.data[i];
-            conf.hora_pasada = moment().isAfter(moment(conf.hora_inicio));
+            conf.hora_pasada = false;//moment().isAfter(moment(conf.hora_inicio));
             // console.log( moment().isAfter(moment(conf.hora_inicio)))
           }
           this.ListadoDeConferencias = response.data;

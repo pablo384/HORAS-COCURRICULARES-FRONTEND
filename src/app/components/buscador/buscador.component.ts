@@ -9,6 +9,7 @@ export class BuscadorComponent implements OnInit {
 	@Input() fn;
 	fecha_inicio :Date
 	fecha_fin :Date
+	@Input() placeholder:string = "Matircula, Nombre, Apellido ,Usuario";
 	constructor() { }
 
 	ngOnInit() {
@@ -16,6 +17,10 @@ export class BuscadorComponent implements OnInit {
 	}
 	buscar(){
 		this.fn(moment(this.fecha_inicio).format("YYYY-MM-DD"), moment(this.fecha_fin).format("YYYY-MM-DD") );
+	}
+
+	onKeydown(event) {
+  	this.buscar()	
 	}
 
 }
