@@ -16,8 +16,8 @@
 						<span class="info-box-text">Hora:&nbsp;{{item.hora_inicio | amDateFormat:'HH:MM A'}}</span>
 						<span class="info-box-text">Total Asistencia:&nbsp;{{item.total}}</span>
 						<div class="btn-group">
-							<a class="btn btn-success btn-flat" title="Editar" [routerLink]="['/list_estudiantes']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i> Pasar Asistencia</a>
-						  	<button type="button" class="btn btn-primary btn-flat" title="Agregar Conferencia">
+							<button class="btn btn-success btn-flat" [disabled]="item.hora_pasada" title="Editar" [routerLink]="['/list_estudiantes']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i> Pasar Asistencia</button>
+						  	<button type="button" class="btn btn-primary btn-flat" title="Agregar Conferencia"  [disabled]="item.hora_pasada">
 						    	<i class="fa fa-clock-o"></i> Iniciar
 						  	</button>
 						</div>

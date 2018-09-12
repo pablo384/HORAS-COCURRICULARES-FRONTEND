@@ -12,29 +12,27 @@ export class HomeComponent implements OnInit {
   fechaActual:Date;
   constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) {
     this.fechaActual =new Date();
-    // this.ListadoDeConferencias = [
-    //   {'actividad':'X','conferencia':'Y','estado':'A'},
-    //   {'actividad':'X','conferencia':'Y','estado':'A'},
-    //   {'actividad':'X','conferencia':'Y','estado':'A'},
-    //   {'actividad':'X','conferencia':'Y','estado':'A'},
-    //   {'actividad':'X','conferencia':'Y','estado':'A'},
-    //   {'actividad':'X','conferencia':'Y','estado':'A'}
-    // ]
     this.listaDeActividadesYConferenciasDeHoy()
-
   }
 
   ngOnInit() {
   }
+
   listaDeActividadesYConferenciasDeHoy(){
     this._funtions.blockUIO().start()
       this._peticiones.GetConferenciasDeHoy().subscribe(
         response => {
-           this._funtions.blockUIO().stop()
+          this._funtions.blockUIO().stop()
           console.log('response',response);
+          for (var i = 0; i < response.data.length; ++i) {
+            let conf = response.data[i];
+            conf.hora_pasada = moment().isAfter(moment(conf.hora_inicio));
+            // console.log( moment().isAfter(moment(conf.hora_inicio)))
+          }
           this.ListadoDeConferencias = response.data;
         },
         error => {
+          this._funtions.blockUIO().stop(); 
           let resultado;
           if (error.error && error.status !== 0) {
             resultado = this._funtions.sacarText(error.error);
@@ -44,7 +42,6 @@ export class HomeComponent implements OnInit {
           console.log(error.error.message)
           this._funtions.Toast("error","Error",resultado);
 
-          this._funtions.blockUIO().stop(); 
         }
       );
 
