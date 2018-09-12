@@ -30,8 +30,9 @@
               <span class="label label-warning">{{TotalDeConferencias}}</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header" *ngIf="TotalDeConferencias>1">Tienes <b>{{TotalDeConferencias}} </b>conferencias</li>
-              <li class="header" *ngIf="TotalDeConferencias==1">Tienes <b>{{TotalDeConferencias}} </b>conferencia </li>
+              <li class="header" *ngIf="TotalDeConferencias>1">Tienes <b>{{TotalDeConferencias}} </b>conferencias para hoy</li>
+              <li class="header" *ngIf="TotalDeConferencias==1">Tienes <b>{{TotalDeConferencias}} </b>conferencia para hoy</li>
+              <li class="header" *ngIf="TotalDeConferencias==0">No Tienes conferencias para hoy</li>
               <li>
               </li>
 <!--               <li class="footer"><a href="#">View all</a></li> -->
@@ -92,7 +93,7 @@
           <img src="assets/myimages/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <!-- <p>{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</p> -->
+          <p style="color: #d7d9f9">{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

@@ -98,7 +98,7 @@ export class RegConferenciaComponent implements OnInit {
     })
   }
   onSubmit(){
-    // console.log("console.log(this.formConferencia.value)",this.formConferencia.value)
+    console.log("console.log(this.formConferencia.value)",this.formConferencia.value)
     let value = JSON.parse(JSON.stringify(this.formConferencia.value))
     let duracion = value.dura_estimada.replace(":","")
     duracion = duracion.replace(":","")
@@ -108,7 +108,7 @@ export class RegConferenciaComponent implements OnInit {
       value.porciento_horas_validas = value.porciento_horas_validas.value
       value.id_persona_conferencista = value.id_persona_conferencista.id
       value.actividad = this.actividad;
-      console.log("onSubmit ",value)
+      console.log("onSubmit ",JSON.stringify(value))
       this._peticiones.crearConferencia(value).subscribe(
         response => {
           this._funtions.blockUIO().stop()

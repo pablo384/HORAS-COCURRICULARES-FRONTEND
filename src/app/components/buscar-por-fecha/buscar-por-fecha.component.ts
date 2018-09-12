@@ -19,7 +19,7 @@ export class BuscarPorFechaComponent implements OnInit {
   ngOnInit() {
     this.fecha_inicio  = new Date();
     this.fecha_fin     = new Date();
-  	console.log(this.fn)
+  	// console.log(this.fn)
   }
   buscar(){
     console.log("fecha_inicio",this.fecha_inicio)

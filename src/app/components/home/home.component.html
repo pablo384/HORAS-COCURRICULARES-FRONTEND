@@ -13,7 +13,7 @@
 				    <div class="info-box-content" style="margin-left: 18px;">
 						<span class="info-box-number">Conferencia:&nbsp;{{item.conferencia}}</span>
 						<span class="info-box-text" >Actividad:&nbsp;{{item.actividad}}</span>
-						<span class="info-box-text">Hora:&nbsp;{{item.conferencia}}</span>
+						<span class="info-box-text">Hora:&nbsp;{{item.hora_inicio | amDateFormat:'HH:MM A'}}</span>
 						<span class="info-box-text">Total Asistencia:&nbsp;{{item.total}}</span>
 						<div class="btn-group">
 							<a class="btn btn-success btn-flat" title="Editar" [routerLink]="['/list_estudiantes']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i> Pasar Asistencia</a>
