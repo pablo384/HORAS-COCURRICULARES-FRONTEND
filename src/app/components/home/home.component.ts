@@ -12,23 +12,23 @@ export class HomeComponent implements OnInit {
   fechaActual:Date;
   constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) {
     this.fechaActual =new Date();
-    this.ListadoDeConferencias = [
-      {'actividad':'X','conferencia':'Y','estado':'A'},
-      {'actividad':'X','conferencia':'Y','estado':'A'},
-      {'actividad':'X','conferencia':'Y','estado':'A'},
-      {'actividad':'X','conferencia':'Y','estado':'A'},
-      {'actividad':'X','conferencia':'Y','estado':'A'},
-      {'actividad':'X','conferencia':'Y','estado':'A'}
-    ]
-
+    // this.ListadoDeConferencias = [
+    //   {'actividad':'X','conferencia':'Y','estado':'A'},
+    //   {'actividad':'X','conferencia':'Y','estado':'A'},
+    //   {'actividad':'X','conferencia':'Y','estado':'A'},
+    //   {'actividad':'X','conferencia':'Y','estado':'A'},
+    //   {'actividad':'X','conferencia':'Y','estado':'A'},
+    //   {'actividad':'X','conferencia':'Y','estado':'A'}
+    // ]
+    this.listaDeActividadesYConferenciasDeHoy()
 
   }
 
   ngOnInit() {
   }
-  listaDeActividadesPorfecha(){
+  listaDeActividadesYConferenciasDeHoy(){
     this._funtions.blockUIO().start()
-      this._peticiones.GetConferenciasPorFecha(moment().format("YYYY-MM-DD"),moment().format("YYYY-MM-DD")).subscribe(
+      this._peticiones.GetConferenciasDeHoy().subscribe(
         response => {
            this._funtions.blockUIO().stop()
           console.log('response',response);

@@ -66,9 +66,9 @@ export class PeticionesService {
     return this.http.get(this.url + '/conferencia/por_actividad/'+actividad)
   }
 
-  GetConferenciasPorFecha(fecha1,fecha2): Observable<any> {
+  GetConferenciasDeHoy(): Observable<any> {
     // const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.get(this.url + '/conferencia/'+fecha1+"/"+fecha2)
+    return this.http.get(this.url + '/conferencia/para_hoy')
   }
 
   //=======================================| ESTUDIANTE |=====================

@@ -1,35 +1,3 @@
-<!-- <div class="row">
-	<div class="col-md-4 col-sm-6 col-xs-12">
-	  <div class="info-box">
-	    <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-	    <div class="info-box-content">
-	      <span class="info-box-text">CPU Traffic</span>
-	      <span class="info-box-number">90<small>%</small></span>
-	    </div>
-	  </div>
-	</div>
-	<div class="col-md-4 col-sm-6 col-xs-12">
-	  <div class="info-box">
-	    <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
-	    <div class="info-box-content">
-	      <span class="info-box-text">Likes</span>
-	      <span class="info-box-number">41,410</span>
-	    </div>
-	  </div>
-	</div>
-	<div class="clearfix visible-sm-block"></div>
-	<div class="col-md-4 col-sm-6 col-xs-12">
-	  <div class="info-box">
-	    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-	    <div class="info-box-content">
-	      <span class="info-box-text">Sales</span>
-	      <span class="info-box-number">760</span>
-	    </div>
-	  </div>
-	</div>
-</div> -->
-
-
 <div class="col-lg-12">
 	<div class="row">
 		<div class="box box-widget widget-user-2">
@@ -43,10 +11,10 @@
 				  <div class="info-box">
 				    <div class=" info-box-icon bg-green" style="width:8px;"><i class="ion ion-ios-cart-outline"></i></div>
 				    <div class="info-box-content" style="margin-left: 18px;">
-						<span class="info-box-number">Conferencia:{{item.conferencia}}</span>
-						<span class="info-box-text" >Actividad:{{item.actividad}}</span>
-						<span class="info-box-text">Hora:{{item.conferencia}}</span>
-						<span class="info-box-text">Total Asistencia:{{item.conferencia}}</span>
+						<span class="info-box-number">Conferencia:&nbsp;{{item.conferencia}}</span>
+						<span class="info-box-text" >Actividad:&nbsp;{{item.actividad}}</span>
+						<span class="info-box-text">Hora:&nbsp;{{item.conferencia}}</span>
+						<span class="info-box-text">Total Asistencia:&nbsp;{{item.total}}</span>
 						<div class="btn-group">
 							<a class="btn btn-success btn-flat" title="Editar" [routerLink]="['/list_estudiantes']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i> Pasar Asistencia</a>
 						  	<button type="button" class="btn btn-primary btn-flat" title="Agregar Conferencia">
