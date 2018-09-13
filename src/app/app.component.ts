@@ -22,14 +22,14 @@ export class AppComponent {
           this.TotalDeConferencias = response.data.length;
         },
         error => {
-          let resultado;
-          if (error.error && error.status !== 0) {
-            resultado = this._funtions.sacarText(error.error);
-          } else {
-            resultado = error.error.message;
-          }
-          console.log(error.error.message)
-          this._funtions.Toast("error","Error",resultado);
+          // let resultado;
+          // if (error.error && error.status !== 0) {
+          //   resultado = this._funtions.sacarText(error.error);
+          // } else {
+          //   resultado = error.error.message;
+          // }
+          // console.log(error.error.message)
+          // this._funtions.Toast("error","Error",resultado);
 
           this._funtions.blockUIO().stop(); 
         }

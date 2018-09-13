@@ -1,5 +1,5 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule, Router ,ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-ponchar-asistencia',
@@ -8,12 +8,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PoncharAsistenciaComponent implements OnInit {
 	formAsistencia:FormGroup;
-	
-	Inpdisplay: boolean;
-	  constructor(private fb: FormBuilder,private _router: Router) { }
+	@Output() public Outdisplay = new EventEmitter<boolean>();
+	@Input() public Inpdisplay;
+	@Input() public InpDatos;
+	  constructor(private fb: FormBuilder,private _router: Router,private aroute:ActivatedRoute) {
+	  	// this.aroute.queryParams.subscribe( params => {
+    // 		console.log('params["conferencia"]',params);
+    //     		// this.datos = JSON.parse( params["datos"] );
+    // 		});
+    
+	  }
 
 	ngOnInit() {
-		this.Inpdisplay = true;
+		this.Outdisplay.emit(false); //estaba true
+		console.log("this.Inpdisplay ",this.Inpdisplay)
+		console.log("InpDatos ",this.InpDatos)
 		this.createForm();
 	}
 
@@ -25,9 +34,9 @@ export class PoncharAsistenciaComponent implements OnInit {
 	}
 
 	OnHIde(){
+		this.Outdisplay.emit(false);
 		this.formAsistencia.reset();
-		this.Inpdisplay = false;
-		this._router.navigate(["/list_asistencia"]);
+		// this._router.navigate(["/list_asistencia"]);
 		// this.Outdisplay.emit(false);
 	}
 

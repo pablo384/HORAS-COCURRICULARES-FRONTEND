@@ -7,8 +7,7 @@ import * as moment from "moment"
 })
 export class BuscadorComponent implements OnInit {
 	@Input() fn;
-	fecha_inicio :Date
-	fecha_fin :Date
+	texto_a_buscar:string;
 	@Input() placeholder:string = "Matircula, Nombre, Apellido ,Usuario";
 	constructor() { }
 
@@ -16,7 +15,7 @@ export class BuscadorComponent implements OnInit {
 		console.log(this.fn)
 	}
 	buscar(){
-		this.fn(moment(this.fecha_inicio).format("YYYY-MM-DD"), moment(this.fecha_fin).format("YYYY-MM-DD") );
+		this.fn(this.texto_a_buscar);
 	}
 
 	onKeydown(event) {

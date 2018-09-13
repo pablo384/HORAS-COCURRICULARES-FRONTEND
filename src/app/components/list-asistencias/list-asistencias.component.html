@@ -1,14 +1,14 @@
 <div class="box">
     <div class="box-header header-list">
+		<h3>Listado de Asistencia</h3>
+		<!-- <br> -->
 		<h3 class="box-title ">[ {{conferencia.id}} ] ID Conferencia : {{conferencia.titulo}}</h3>
-		<br>
-		<small>Listado de Asistencia</small>
     </div>
     <app-buscador [fn]="doThingFactory()" [placeholder]="'Matircula, Carnet, Usuario'"></app-buscador>
      <div class="box-header">
     <div class="row">
       <div class="col-xs-4">
-        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Nombre, Matricula, Carrera">
+        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Filtar por: Nombre, Matricula, Carrera">
       </div>
     </div>
   </div>
@@ -43,5 +43,6 @@
   		</table>
     </div>
 </div>
+<app-ponchar-asistencia (Outdisplay)='changeDisplayPoncheo($event)' [Inpdisplay]="displayPoncheo" [InpDatos]="datosPoncheo"></app-ponchar-asistencia>
 <router-outlet></router-outlet>
  
