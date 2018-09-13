@@ -13,14 +13,10 @@ export class AppComponent {
 	constructor(private _funtions: FuncionesService,private _peticiones:PeticionesService) {
 		this.actividadesDehoy();
 	}
-  permisosEstudiante =[{}]
-  permisosVerificador =[{}]
-
-  ListadoAccesos ={estudiante:this.permisosEstudiante,verificador:this.permisosVerificador}
 
 
   isAdmin(){
-    return true;//this._funtions.getLoggedUser().tipo == 'A'
+    return this._funtions.getLoggedUser().tipo == 'A'
   }
   actividadesDehoy(){
   	this._funtions.blockUIO().start()
