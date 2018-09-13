@@ -42,15 +42,15 @@ export class ListAsistenciasComponent implements OnInit {
       response => {
         this._funtions.blockUIO().stop()
         console.log("verificarParticipacion",response);
-        // if(response.info){
+        if(response.info){
           this.datosPoncheo = response.data
           this.displayPoncheo = true;
           // this._router.navigate(["/ponchar_asistencia?datos="+JSON.stringify(response.data)])//, { queryParams: {datos:JSON.stringify(response.data) }, queryParamsHandling: 'preserve' });
           // this._router.navigate(["ponchar_asistencia",{datos:response.data}])//, { queryParams: {datos:JSON.stringify(response.data) }, queryParamsHandling: 'preserve' });
           // 
-        // }else{
-          // this._funtions.Toast("error","Error",this._funtions.sacarText(response.error ||  response.message));
-        // }
+        }else{
+          this._funtions.Toast("error","Error",this._funtions.sacarText(response.error ||  response.message));
+        }
       },
       error => {
         let resultado;
