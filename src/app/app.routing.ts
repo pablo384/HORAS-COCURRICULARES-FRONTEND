@@ -18,6 +18,7 @@ import { ListConferencistasComponent } from './components/list-conferencistas/li
 import { ListAsistenciasComponent } from './components/list-asistencias/list-asistencias.component';
 import { ListCarrerasComponent } from './components/list-carreras/list-carreras.component';
 import { ListVerificadoresComponent } from './components/list-verificadores/list-verificadores.component';
+import { ListEstudiantesComponent } from './components/list-estudiantes/list-estudiantes.component';
 
 
 import { AuthGuard } from './auth.guard';
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
 
     { path: 'conferencias', component: ListConferenciasComponent,canActivate: [AuthGuard] },
     { path: 'list_conferencistas', component: ListConferencistasComponent, canActivate: [AuthGuard] },
-    { path: 'list_estudiantes', component: ListAsistenciasComponent,canActivate: [AuthGuard],
+    { path: 'list_asistencias', component: ListAsistenciasComponent, canActivate: [AuthGuard] },
+    { path: 'list_estudiantes', component: ListEstudiantesComponent,canActivate: [AuthGuard],
       // children: [
       //     {path: 'ponchar_asistencia', component: PoncharAsistenciaComponent},
       //   ]

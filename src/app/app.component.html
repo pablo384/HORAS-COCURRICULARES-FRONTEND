@@ -121,7 +121,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active" *ngIf="isAdmin()"><a [routerLink]="['resgistrar_estudiante']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
-            <li><a href="#"><i class="fa fa-circle-o text-yellow"></i>Buscar</a></li>
+            <li><a [routerLink]="['list_estudiantes']"><i class="fa fa-circle-o text-yellow"></i>Buscar</a></li>
           </ul>
         </li>
         <li class="active treeview">
