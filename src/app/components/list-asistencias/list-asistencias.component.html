@@ -1,0 +1,48 @@
+<div class="box">
+    <div class="box-header header-list">
+		<h3>Listado de Asistencia</h3>
+		<!-- <br> -->
+		<h3 class="box-title ">[ {{conferencia.id}} ] ID Conferencia : {{conferencia.titulo}}</h3>
+    </div>
+    <app-buscador [fn]="doThingFactory()" [placeholder]="'Matircula, Carnet, Usuario'"></app-buscador>
+     <div class="box-header">
+    <div class="row">
+      <div class="col-xs-4">
+        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Filtar por: Nombre, Matricula, Carrera">
+      </div>
+    </div>
+  </div>
+    <div class="box-body">
+      	<table id="example1" class="table table-bordered table-striped">
+	        <thead>
+		        <tr>
+		          <th>Matricula</th>
+		          <th>Nombres</th>
+		          <!-- <th>Hora de entrada</th> -->
+		          <th>Carrera</th>
+		          <!-- <th>Tiempo Acumulado</th> -->
+		          <th>Acciones</th>
+		        </tr>
+        	</thead>
+	        <tbody>
+		        <tr *ngFor="let item of listaEstudiantesPorActividad | search:searchText">
+		          <td>{{item.matricula}}</td>
+		          <td>{{item.nombres}} {{item.apellidos}}</td>
+		          <!-- <td>Win 95+</td> -->
+		          <td> {{item.carrera}}</td>
+		          <!-- <td> 4</td> -->
+		          <td>
+		            <div class="btn-group">
+		              <a [routerLink]="['/ponchar_asistencia']" class="btn btn-default btn-flat" title="Editar"><i class=" glyphicon glyphicon-pencil" aria-hidden="true"></i></a>
+		              <button type="button" class="btn btn-default btn-flat" title="Ver"><i class="fa fa-eye"></i></button>
+		              <button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
+		            </div>
+		          </td>
+		        </tr>
+	        </tbody>
+  		</table>
+    </div>
+</div>
+<app-ponchar-asistencia (Outdisplay)='changeDisplayPoncheo($event)' [Inpdisplay]="displayPoncheo" [InpDatos]="datosPoncheo"></app-ponchar-asistencia>
+<router-outlet></router-outlet>
+ 

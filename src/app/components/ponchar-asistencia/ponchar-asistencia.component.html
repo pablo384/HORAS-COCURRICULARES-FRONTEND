@@ -1,0 +1,42 @@
+<p-dialog header="Ponchar Asistencia" [(visible)]="Inpdisplay"  [positionTop]=50 [draggable]="false"  [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
+
+	<div class="box-body">
+		<div class="row">
+			<div class="col-lg-7">
+		   		<div class="input-group">
+		       	<span>Nombres: {{InpDatos?.nombres}}</span>
+		    	</div>
+			</div>
+		  	<div class="col-lg-5">
+		   		<div class="input-group">
+		       	<span>Matricula: {{InpDatos?.matricula}}</span>
+		    	</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-7">
+		   		<div class="input-group">
+		       	<span>Carrera: {{InpDatos?.carrera}}</span>
+		    	</div>
+			</div>
+		  	<div class="col-lg-5">
+		   		<div class="input-group">
+		   			<span>Carnet: {{InpDatos?.carnet}}</span>
+		    	</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-6">
+				<button type="button" class="btn btn-success pull-left btn-lg btn_asistencia col-lg-12" (click)="OnHIde()">Salir</button>
+			</div>
+		  	<div class="col-lg-6">
+				<button type="button" class="btn btn-primary pull-left btn-lg btn_asistencia col-lg-12" (click)="OnHIde()">Salir</button>
+			</div>
+		</div>
+		
+	</div>
+	<app-list-entrada-salida></app-list-entrada-salida>
+	
+</p-dialog>

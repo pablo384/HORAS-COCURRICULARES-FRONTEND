@@ -1,0 +1,91 @@
+<p-dialog header="Registrar Conferencia"  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="600" [height]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
+	<div class="modal-body">
+    <form [formGroup]="formConferencia"  (ngSubmit)="onSubmit()" >
+    	<div class="box-body">
+			<div class="row">
+        		<div class="col-lg-12">
+               		<div class="input-group">
+		               	<span class="input-group-addon">Titulo</span>
+		                <input type="text" class="form-control" formControlName="titulo" required>
+	              	</div>
+        		</div>
+        	</div>
+    		<br>
+			<div class="row">
+              	<div class="col-lg-12">
+               		<div class="input-group">
+		               	<span class="input-group-addon">Descripción</span>
+		                <input type="text" class="form-control" formControlName="descripcion" >
+	              	</div>
+        		</div>
+        	</div>
+    		<br>
+
+    		<div class="col-lg-12">
+				<div class="col-lg-5"><label>Hora de inicio</label></div>
+				<div class="col-lg-7" style="margin-bottom:4px"><p-calendar formControlName="hora_inicio" required [inputStyle]="{'width':'100%','height':'33px'}" [style]="{'width':'100%','height':'33px'}" [timeOnly]="true" hourFormat="12"></p-calendar></div>
+				<div class="col-lg-5"><label>Duración</label></div>
+				<div class="col-lg-7" style="margin-bottom:4px">
+					<p-inputMask [style]="{'width':'100%','heigth':'54px'}" mask="99:99:99" formControlName="dura_estimada"></p-inputMask>
+					<!-- <p-dropdown [options]="horas_default" formControlName="duracion" [style]="{'width':'100%','heigth':'54px'}" placeholder="Selectione la duracion" optionLabel="name" ></p-dropdown> -->
+					<!-- <select class="form-control select2" style="width: 100%;" >
+						<option>0:15</option>
+						<option>0:30</option>
+						<option selected="selected">1:00</option>
+						<option>1:15</option>
+						<option>1:30</option>
+						<option>1:45</option>
+						<option>2:00</option>
+						<option>2:15</option>
+						<option>2:30</option>
+						<option>2:45</option>
+						<option>3:00</option>
+						<option>3:15</option>
+						<option>3:30</option>
+						<option>3:45</option>
+						<option>4:00</option>
+						<option>4:15</option>
+						<option>4:30</option>
+						<option>4:45</option>
+						<option>5:00</option>
+						<option>5:15</option>
+						<option>5:30</option>
+						<option>5:45</option>
+						<option>6:00</option>
+					</select> -->
+				</div>
+    		</div>
+
+    		<br>
+
+    		<div class="col-lg-12">
+                <div class="col-lg-5" style="margin-bottom:4px">
+   	             	Día de presentación
+                </div>
+                <div class="col-lg-7" style="margin-bottom:4px">
+                  <p-calendar formControlName="dia_de_presentacion" required [inputStyle]="{'width':'100%','height':'33px'}" [style]="{'width':'100%','height':'33px'}"  dateFormat="dd/mm/yy"></p-calendar>
+                </div>
+                <div class="col-lg-5" style="margin-bottom:4px">% de horas validas</div>
+                <div class="col-lg-7" style="margin-bottom:4px">
+                	<p-dropdown [options]="porcentaje_default" formControlName="porciento_horas_validas" [style]="{'width':'100%','heigth':'34px'}" placeholder="Selectione el porcentaje" optionLabel="name" ></p-dropdown>
+                </div>
+          	</div>
+
+			<div class="col-lg-12">
+				<div class="col-lg-5" style="margin-bottom:4px">
+                  Conferencista
+                </div>
+                <div class="col-lg-7" style="margin-bottom:4px">
+                	<p-autoComplete formControlName="id_persona_conferencista" field="nombres" [suggestions]="filteredConferencista" (completeMethod)="filterConferencistas($event)"  [size]="30" placeholder="Conferencistas" [minLength]="1"></p-autoComplete>
+	
+				</div>
+			</div>
+
+		</div>
+		</form>
+	</div>
+	<p-footer>
+		<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
+		<button type="button" [disabled]="formConferencia.invalid" (click)="onSubmit()" class="btn btn-success">Registrar</button>
+	</p-footer>
+</p-dialog>

@@ -1,0 +1,22 @@
+<p-dialog header="Registrar Carrera" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
+	<form [formGroup]="formActividad"  (ngSubmit)="onSubmit()" >
+		<div class="box-body">
+			<div class="col-lg-7">
+		   		<div class="input-group">
+		       	<span class="input-group-addon">Nombre</span>
+		        <input type="text" class="form-control" formControlName="nombre" required>
+		    	</div>
+			</div>
+		  	<div class="col-lg-5">
+		   		<div class="input-group">
+		       	<span class="input-group-addon">Abreviatura</span>
+		        <input type="text" class="form-control" formControlName="abreviatura" required>
+		    	</div>
+			</div>
+		</div>
+	</form>
+	<p-footer>
+  	<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
+		<button type="button" class="btn btn-success" [disabled]="formActividad.invalid" (click)="onSubmit()">Registrar</button>
+	</p-footer>
+</p-dialog>

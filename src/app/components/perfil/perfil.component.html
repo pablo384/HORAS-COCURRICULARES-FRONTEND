@@ -1,0 +1,45 @@
+<p-dialog header="Perfil"  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="400" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
+	<form [formGroup]="formCarrera"  (ngSubmit)="onSubmit()" >
+		<div class="box-body" style="text-align: center">
+				<div class="col-lg-12">
+			        <img  _ngcontent-c0="" alt="User Image" class="img-circle img_border" src="assets/myimages/user2-160x160.jpg">
+				</div>
+				<div class="col-lg-12">
+			   		<div >Nombres</div>
+				</div>
+				<div class="col-lg-12">
+			   		<div class="datos">...Junior</div>
+				</div>
+			  	<div class="col-lg-12">
+			   		<div>Apellidos</div>
+				</div>
+				<div class="col-lg-12">
+			   		<div class="datos">...Abreu Lopéz</div>
+				</div>
+		
+				<div class="col-lg-12" style="margin-bottom: 8px;">
+			   		<div class="input-group">
+			       	<span class="input-group-addon">Clave Actual</span>
+			        	<input type="text" class="form-control" formControlName="abreviatura" required>
+			    	</div>
+				</div>
+
+				<div class="col-lg-12" style="margin-bottom: 8px;">
+			   		<div class="input-group">
+			       	<span class="input-group-addon">Clave Nueva</span>
+			        	<input type="text" class="form-control" formControlName="abreviatura" required>
+			    	</div>
+				</div>
+				<div class="col-lg-12" style="margin-bottom: 8px;">
+			   		<div class="input-group">
+			       	<span class="input-group-addon">Confirmar Clave Nueva</span>
+			        	<input type="text" class="form-control" formControlName="abreviatura" required>
+			    	</div>
+				</div>
+		</div>
+	</form>
+	<p-footer>
+  	<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
+		<button type="button" class="btn btn-success" [disabled]="formCarrera.invalid" (click)="onSubmit()">Guardar</button>
+	</p-footer>
+</p-dialog>

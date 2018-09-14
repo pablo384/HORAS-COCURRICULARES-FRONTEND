@@ -1,0 +1,9 @@
+.datos{
+	font-weight: bold;
+	font-size: 20px;
+}
+.img_border{
+	border-width:6px;  
+    border-style:solid;
+    border-color: #1a83e4;
+}
