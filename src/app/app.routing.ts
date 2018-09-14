@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { IniciarActividadComponent } from './components/iniciar-actividad/iniciar-actividad.component';
+import { PoncharAsistenciaComponent } from './components/ponchar-asistencia/ponchar-asistencia.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 import { RegEstudianteComponent } from './components/reg-estudiante/reg-estudiante.component';
 import { RegConferencistaComponent } from './components/reg-conferencista/reg-conferencista.component';
@@ -10,7 +12,6 @@ import { RegCarreraComponent } from './components/reg-carrera/reg-carrera.compon
 import { RegConferenciaComponent } from './components/reg-conferencia/reg-conferencia.component';
 import { RegActividadComponent } from './components/reg-actividad/reg-actividad.component';
 import { RegVerificadorComponent } from './components/reg-verificador/reg-verificador.component';
-import { PoncharAsistenciaComponent } from './components/ponchar-asistencia/ponchar-asistencia.component';
 
 import { ListActividadesComponent } from './components/list-actividades/list-actividades.component';
 import { ListConferenciasComponent } from './components/list-conferencias/list-conferencias.component';
@@ -20,8 +21,8 @@ import { ListCarrerasComponent } from './components/list-carreras/list-carreras.
 import { ListVerificadoresComponent } from './components/list-verificadores/list-verificadores.component';
 import { ListEstudiantesComponent } from './components/list-estudiantes/list-estudiantes.component';
 
+import { DetalleConferenciaComponent } from './components/detalle-conferencia/detalle-conferencia.component';
 
-import { PerfilComponent } from './components/perfil/perfil.component';
 
 
 import { AuthGuard } from './auth.guard';
@@ -50,7 +51,11 @@ const appRoutes: Routes = [
     },
 
     { path: 'conferencias', component: ListConferenciasComponent,canActivate: [AuthGuard] },
-    { path: 'list_conferencistas', component: ListConferencistasComponent, canActivate: [AuthGuard] },
+    { path: 'list_conferencistas', component: ListConferencistasComponent, canActivate: [AuthGuard],
+        children: [
+          {path: 'detalle_conferencia', component: DetalleConferenciaComponent},
+        ]
+    },
     { path: 'list_asistencias', component: ListAsistenciasComponent, canActivate: [AuthGuard] },
     { path: 'list_estudiantes', component: ListEstudiantesComponent,canActivate: [AuthGuard],
       // children: [

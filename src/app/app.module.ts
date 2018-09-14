@@ -42,6 +42,7 @@ import { ListCarrerasComponent } from './components/list-carreras/list-carreras.
 import { ListVerificadoresComponent } from './components/list-verificadores/list-verificadores.component';
 import { SearchPipe } from './search.pipe';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { DetalleConferenciaComponent } from './components/detalle-conferencia/detalle-conferencia.component';
 
 
 
@@ -70,7 +71,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     ListCarrerasComponent,
     ListVerificadoresComponent,
     SearchPipe,
-    PerfilComponent
+    PerfilComponent,
+    DetalleConferenciaComponent
   ],
   imports: [
     BrowserModule,
