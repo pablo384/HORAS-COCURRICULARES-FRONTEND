@@ -34,6 +34,11 @@ export class PeticionesService {
 
     return this.http.post(this.url + '/actividad',JSON.stringify(data))
   }
+  //=======================================| ACTIVIDAD |=====================
+  crearAsistencia(data: Object): Observable<any> {
+
+    return this.http.post(this.url + '/asistencia/new',JSON.stringify(data))
+  }
 
   GetActividades(fecha1: string,fecha2): Observable<any> {
 

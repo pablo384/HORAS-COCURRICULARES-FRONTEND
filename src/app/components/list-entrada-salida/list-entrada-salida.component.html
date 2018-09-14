@@ -1,6 +1,6 @@
 <div class="box">
     <div class="box-header list_e_s">
-		<h3 class="box-title ">[  ] ID Conferencia :</h3>
+		<h3 class="box-title ">[{{InpDatos?.conferencia?.id}}] ID Conferencia: {{InpDatos?.conferencia?.titulo}}</h3>
 		<br>
 		<small>Entradas y Salidas</small>
     </div>
@@ -8,18 +8,15 @@
       	<table id="example1" class="table table-bordered table-striped">
 	        <thead>
 		        <tr style="background: white">
-		          <th>Tipo</th>
-		          <th>Hora</th>
+		          <th>Entrada</th>
+		          <th>Salida</th>
 		        </tr>
         	</thead>
 	        <tbody>
-		         <tr>
-		          <td>Entrada</td>
-		          <td>13:15</td>
-		        </tr>
-		         <tr>
-		          <td>Salida</td>
-		          <td>13:50</td>
+		         <tr *ngFor="let item of InpDatos?.asistencia">
+		          <td>{{item.hora_inicio | amDateFormat:'HH:MM A'}}</td>
+		          <td *ngIf="item.hora_fin!= null">{{item.hora_fin | amDateFormat:'HH:MM A'}}</td>
+		          <td *ngIf="item.hora_fin== null">No ha Salido</td>
 		        </tr>
 	        </tbody>
   		</table>

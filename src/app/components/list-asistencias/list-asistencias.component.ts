@@ -34,9 +34,17 @@ export class ListAsistenciasComponent implements OnInit {
     return (matricula) => this.verificarParticipacion(matricula);
   }
   
-  verificarParticipacion(_matricula){
-    let value = {conferencia:this.conferencia.id,matricula:_matricula}
-    // console.log(";dlfklasdfkl;ASDKLF",JSON.stringify(value))
+  verificarParticipacion(cDatos){
+    let value = {conferencia:this.conferencia.id}
+    if (!isNaN(parseInt(cDatos)) && parseInt(cDatos)>0){
+      if (cDatos.length == 16){
+        value["carnet"] = cDatos;
+      }else
+        value["matricula"] = cDatos;
+    }else{
+      value["usuario"] = cDatos
+    }
+    console.log("value",JSON.stringify(value))
     this._funtions.blockUIO().start()
     this._peticiones.verificarParticipacion(value).subscribe(
       response => {
@@ -44,6 +52,7 @@ export class ListAsistenciasComponent implements OnInit {
         console.log("verificarParticipacion",response);
         if(response.info){
           this.datosPoncheo = response.data
+          this.datosPoncheo.conferencia = this.conferencia
           this.displayPoncheo = true;
           // this._router.navigate(["/ponchar_asistencia?datos="+JSON.stringify(response.data)])//, { queryParams: {datos:JSON.stringify(response.data) }, queryParamsHandling: 'preserve' });
           // this._router.navigate(["ponchar_asistencia",{datos:response.data}])//, { queryParams: {datos:JSON.stringify(response.data) }, queryParamsHandling: 'preserve' });
