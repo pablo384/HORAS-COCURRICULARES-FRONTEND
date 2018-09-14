@@ -21,6 +21,9 @@ import { ListVerificadoresComponent } from './components/list-verificadores/list
 import { ListEstudiantesComponent } from './components/list-estudiantes/list-estudiantes.component';
 
 
+import { PerfilComponent } from './components/perfil/perfil.component';
+
+
 import { AuthGuard } from './auth.guard';
  
 const appRoutes: Routes = [
@@ -28,6 +31,7 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' , canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
     { path: 'iniciar_actividad', component: IniciarActividadComponent },
+    { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
 
     { path: 'resgistrar_estudiante', component: RegEstudianteComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_conferencista', component: RegConferencistaComponent, canActivate: [AuthGuard] },
@@ -35,7 +39,6 @@ const appRoutes: Routes = [
     { path: 'resgistrar_actividad', component: RegActividadComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_conferencia', component: RegConferenciaComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_verificador', component: RegVerificadorComponent, canActivate: [AuthGuard] },
-    // { path: 'ponchar_asistencia', component: PoncharAsistenciaComponent, canActivate: [AuthGuard] },
     
 
     { 

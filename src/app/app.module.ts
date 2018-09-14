@@ -41,6 +41,7 @@ import { ListConferencistasComponent } from './components/list-conferencistas/li
 import { ListCarrerasComponent } from './components/list-carreras/list-carreras.component';
 import { ListVerificadoresComponent } from './components/list-verificadores/list-verificadores.component';
 import { SearchPipe } from './search.pipe';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 
 
@@ -68,7 +69,8 @@ import { SearchPipe } from './search.pipe';
     ListConferencistasComponent,
     ListCarrerasComponent,
     ListVerificadoresComponent,
-    SearchPipe
+    SearchPipe,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
