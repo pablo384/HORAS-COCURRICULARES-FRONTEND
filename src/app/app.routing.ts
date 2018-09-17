@@ -21,6 +21,10 @@ import { ListCarrerasComponent } from './components/list-carreras/list-carreras.
 import { ListVerificadoresComponent } from './components/list-verificadores/list-verificadores.component';
 import { ListEstudiantesComponent } from './components/list-estudiantes/list-estudiantes.component';
 
+
+
+import { ReportAsistenciaPorConferenciaComponent } from './components/report-asistencia-por-conferencia/report-asistencia-por-conferencia.component';
+
 import { DetalleConferenciaComponent } from './components/detalle-conferencia/detalle-conferencia.component';
 
 
@@ -41,6 +45,9 @@ const appRoutes: Routes = [
     { path: 'resgistrar_actividad', component: RegActividadComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_conferencia', component: RegConferenciaComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_verificador', component: RegVerificadorComponent, canActivate: [AuthGuard] },
+    
+
+    { path: 'report_asistencia_conferencia', component: ReportAsistenciaPorConferenciaComponent, canActivate: [AuthGuard] },
     
 
     { 
