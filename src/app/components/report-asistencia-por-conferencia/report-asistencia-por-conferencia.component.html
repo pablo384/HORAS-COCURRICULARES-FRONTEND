@@ -1,1 +1,32 @@
-<p-chart type="bar" [data]="data"></p-chart>
+
+<div class="col-lg-6">
+	<div class="box box-solid">
+		<div class="box-header with-border" style="background: #027ebf;color: white">
+		  <i class="fa fa-dollar"></i>
+		  <h3 class="box-title">Resumen</h3>
+		</div>
+		<div class="box-body">
+		  <dl class="dl-horizontal">
+		    <dt>Fecha</dt><dd>02/09/2018 14:56:02 </dd>
+		    <dt>Cliente</dt><dd>XXX / CONSUMIDOR FINAL </dd>
+		    <dt>RNC</dt><dd>1-234564789-01 </dd>
+		    <dt>Tipo de Pago</dt><dd>CREDITO / DEBITO</dd>
+		    <dt>Numero Articulos</dt><dd>10</dd>
+		    <dt>SubTotal</dt><dd>100</dd>
+		    <dt>Descuento</dt><dd>10</dd>
+		    <dt>ITBIS</dt><dd>30</dd>
+		    <dt style="font-size: 32px">TOTAL</dt><dd style="font-size: 32px">$130</dd>
+		  </dl>
+		</div>
+		<div class="box-footer">
+			<div class="btn-group ">
+	        	<button type="submit" class="btn btn-lg btn-danger"><i class="fa fa-remove"></i> Cancelar</button>
+	        	<button type="submit" class="btn btn-lg btn-success"><i class="fa fa-print"></i> Imprimir Factura</button>
+			</div>
+	        <!-- <button type="submit" class="btn btn-default">Cancel</button> -->
+	      </div>
+	</div>
+</div>
+<div class="col-lg-6">
+	<p-chart type="bar" [data]="data"></p-chart>
+</div>
