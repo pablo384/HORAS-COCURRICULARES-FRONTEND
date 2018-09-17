@@ -43,6 +43,7 @@ import { ListVerificadoresComponent } from './components/list-verificadores/list
 import { SearchPipe } from './search.pipe';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { DetalleConferenciaComponent } from './components/detalle-conferencia/detalle-conferencia.component';
+import { ReportAsistenciaPorConferenciaComponent } from './components/report-asistencia-por-conferencia/report-asistencia-por-conferencia.component';
 
 
 
@@ -72,7 +73,8 @@ import { DetalleConferenciaComponent } from './components/detalle-conferencia/de
     ListVerificadoresComponent,
     SearchPipe,
     PerfilComponent,
-    DetalleConferenciaComponent
+    DetalleConferenciaComponent,
+    ReportAsistenciaPorConferenciaComponent
   ],
   imports: [
     BrowserModule,
