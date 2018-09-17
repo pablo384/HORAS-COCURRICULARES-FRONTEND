@@ -1,5 +1,5 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule,ActivatedRoute, Router } from '@angular/router';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,20 +12,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegCarreraComponent implements OnInit {
 	formCarrera:FormGroup;
-	
+	id;
 	Inpdisplay: boolean;
 	// @Output() public Outdisplay = new EventEmitter<boolean>();
-  constructor(private fb: FormBuilder,private _router: Router,private _funtions: FuncionesService, private _peticiones :PeticionesService) { }
+  constructor(private aroute:ActivatedRoute,private fb: FormBuilder,private _router: Router,private _funtions: FuncionesService, private _peticiones :PeticionesService) { }
 
   ngOnInit() {
     this.Inpdisplay = true;
-  	this.createForm();
+    this.aroute.params.subscribe( params => {
+      console.log('params["conferencia"]',params);
+          this.id = params["id"]
+      }
+    );
+    this.createForm();
+    if(this.id != undefined){
+      this.GetCarrera()
+    }
+  	
   }
 
-  createForm(){
+  createForm(n='',ab='',hr=0){
   	this.formCarrera=this.fb.group({
-  		nombre:'',
-  		abreviatura:''
+  		nombre:n,
+      abreviatura:ab,
+  		horas_requeridas:hr
   	})
   }
 
@@ -36,9 +46,45 @@ export class RegCarreraComponent implements OnInit {
     // this.Outdisplay.emit(false);
   }
 
-  onSubmit(){
+
+  GetCarrera(){
     this._funtions.blockUIO().start()
-  	this._peticiones.crearCarrera(this.formCarrera.value).subscribe(
+    this._peticiones.GetCarrera(this.id).subscribe(
+      response => {
+        this._funtions.blockUIO().stop()
+        console.log(response);
+        if (response.info) {
+          this.createForm(response.data.nombre,response.data.abreviatura,response.data.horas_requeridas)
+        }else
+          this._funtions.Toast("error", "error",this._funtions.sacarText(response.error));
+
+      },
+      error => {
+        let resultado;
+        if (error.error && error.status !== 0) {
+          resultado = this._funtions.sacarText(error.error);
+        } else {
+          resultado = error.error.error;
+        }
+        console.log(error.error)
+        this._funtions.Toast("error","Error",resultado);
+
+        this._funtions.blockUIO().stop(); 
+      }
+    );
+    // console.log("sdfdf",this.formCarrera.value)
+  }
+
+  onSubmit(){
+    let cNameAction = "crearCarrera";
+    let value = JSON.parse(JSON.stringify(this.formCarrera.value));
+    if (this.id!= null){
+      cNameAction ="ActualizarCarrera";
+      value.id = this.id;
+    }
+    console.log("value",value,"cNameAction",cNameAction)
+    this._funtions.blockUIO().start()
+  	this._peticiones[cNameAction](value,this.id).subscribe(
       response => {
         this._funtions.blockUIO().stop()
         console.log(response);

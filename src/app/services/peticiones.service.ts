@@ -67,6 +67,11 @@ export class PeticionesService {
     return this.http.get(this.url + '/persona/conferencistas')
   }
 
+  GetCarrera(id): Observable<any> {
+
+    return this.http.get(this.url + '/carrera/'+id)
+  }
+
   GetAllVerificadores(): Observable<any> {
 
     return this.http.get(this.url + '/usuario/verificadores')
@@ -91,6 +96,11 @@ export class PeticionesService {
   ActualizarEstudiante(data: Object): Observable<any> {
 
     return this.http.patch(this.url + '/usuario',JSON.stringify(data))
+  }
+  //=======================================| ESTUDIANTE |=====================
+  ActualizarCarrera(data: Object,id): Observable<any> {
+
+    return this.http.patch(this.url + '/carrera/'+id,JSON.stringify(data))
   }
 
 }

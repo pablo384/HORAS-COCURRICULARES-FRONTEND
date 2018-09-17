@@ -9,14 +9,26 @@
 			</div>
 		  	<div class="col-lg-5">
 		   		<div class="input-group">
-		       	<span class="input-group-addon">Abreviatura</span>
+		       	<span class="input-group-addon">Codigo</span>
 		        <input type="text" class="form-control" formControlName="abreviatura" required>
+		    	</div>
+			</div>
+			<br>
+			<br>
+			<br>
+			<div class="col-lg-12">
+		   		<div class="input-group">
+		       	<span class="input-group-addon">Horas Requeridas</span>
+		        <input type="text" class="form-control" formControlName="horas_requeridas" required>
 		    	</div>
 			</div>
 		</div>
 	</form>
 	<p-footer>
   	<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
-		<button type="button" class="btn btn-success" [disabled]="formCarrera.invalid" (click)="onSubmit()">Registrar</button>
+		<button type="button" class="btn btn-success" [disabled]="formCarrera.invalid" (click)="onSubmit()">
+			<span *ngIf="id==null">Registrar</span>
+			<span *ngIf="id!=null">Actualizar</span>
+		</button>
 	</p-footer>
 </p-dialog>
