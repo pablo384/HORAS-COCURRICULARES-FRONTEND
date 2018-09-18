@@ -3,7 +3,8 @@
 	<div class="col-lg-12">
 		<div class="box box-info">
 			<div class="box-header with-border">
-			  <h3 class="box-title">REPORTE DE ASISTENCIA POR CONFERENCIA</h3>
+			  <h3 class="box-title">REPORTE DE ASISTENCIA POR CONFERENCIA</h3><br>
+			  <h3 class="box-title">{{conferencia.titulo}}</h3>
 
 			  <div class="box-tools pull-right">
 			   <div class="btn-group">
@@ -64,10 +65,11 @@
 		</div>
 		<div class="box-body">
 		  <dl class="dl-horizontal">
-		    <dt>Fecha</dt><dd>02/09/2018</dd>
-		    <dt>Hora de Inicio</dt><dd>14:56:02 </dd>
-		    <dt>Hora de finalización</dt><dd>16:56:02 </dd>
-		    <dt style="font-size: 32px">TOTAL</dt><dd style="font-size: 32px">300</dd>
+		    <dt>Fecha</dt><dd>{{conferencia.dia_de_presentacion}}</dd>
+		    <dt>Tiempo valido</dt><dd>{{conferencia.porciento_horas_validas}}%</dd>
+		    <dt>Hora de Inicio</dt><dd>{{conferencia.hora_inicio}}</dd>
+		    <dt>Hora de finalización</dt><dd>{{conferencia.fin}}</dd>
+		    <dt style="font-size: 32px">TOTAL</dt><dd style="font-size: 32px">{{totalAsistencia}}</dd>
 		  </dl>
 		</div>
 		<div class="box-footer">
