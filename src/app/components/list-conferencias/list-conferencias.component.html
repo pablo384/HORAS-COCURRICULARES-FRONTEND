@@ -26,9 +26,9 @@
 					<td>{{item.titulo}}</td>
 					<td>{{item.dia_de_presentacion | amDateFormat:'DD/MM/YYYY'}}</td>
 					<!-- <td>{{item.fecha_fin}}</td> -->
-					<td>{{item.hora_inicio}}</td>
+					<td>{{item.hora_inicio | amDateFormat:'hh:mm:ss a'}}</td>
 					<td>{{item.dura_estimada}}</td>
-					<td>{{item.dura_estimada}}</td>
+					<td>falta</td>
 					<td>
 					<div class="btn-group">
 						<a class="btn btn-default btn-flat" title="Editar" [routerLink]="['/list_asistencias']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i></a>
@@ -43,7 +43,11 @@
 						<button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
 					</div>
 					</td>
-					<td>Finalizado</td>
+					<td>
+						<span *ngIf="item.hora_fin != null && item.hora_inicio != null">Finalizada</span>
+						<span *ngIf="item.hora_fin == null && item.hora_inicio != null">No ha Finalizado</span>
+						<span *ngIf="item.hora_fin == null && item.hora_inicio == null">No ha Iniciado</span>
+					</td>
 				</tr>
 			</tbody>
 		</table>
