@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     { path: 'resgistrar_verificador', component: RegVerificadorComponent, canActivate: [AuthGuard] },
     
 
-    { path: 'report_asistencia_conferencia', component: ReportAsistenciaPorConferenciaComponent, canActivate: [AuthGuard] },
+    
     
 
     { 
@@ -60,11 +60,8 @@ const appRoutes: Routes = [
     },
 
     { path: 'conferencias', component: ListConferenciasComponent,canActivate: [AuthGuard] },
-    { path: 'list_conferencistas', component: ListConferencistasComponent, canActivate: [AuthGuard],
-        children: [
-          {path: 'detalle_conferencia', component: DetalleConferenciaComponent},
-        ]
-    },
+    {path: 'detalle_conferencia', component: DetalleConferenciaComponent},
+    { path: 'list_conferencistas', component: ListConferencistasComponent, canActivate: [AuthGuard]},
     { path: 'list_asistencias', component: ListAsistenciasComponent, canActivate: [AuthGuard] },
     { path: 'list_estudiantes', component: ListEstudiantesComponent,canActivate: [AuthGuard],
       // children: [
@@ -74,6 +71,7 @@ const appRoutes: Routes = [
     { path: 'list_carreras', component: ListCarrerasComponent,canActivate: [AuthGuard] },
     { path: 'list_verificadores', component: ListVerificadoresComponent,canActivate: [AuthGuard] },
  
+    {path:'report_asistencia_conferencia', component: ReportAsistenciaPorConferenciaComponent, canActivate: [AuthGuard] },
     // otherwise redirect to home
     { path: '**', redirectTo: '',canActivate: [AuthGuard] }
     // { path: '**', redirectTo: ''}
