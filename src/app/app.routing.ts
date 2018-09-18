@@ -40,6 +40,7 @@ const appRoutes: Routes = [
 
     { path: 'resgistrar_estudiante', component: RegEstudianteComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_conferencista', component: RegConferencistaComponent, canActivate: [AuthGuard] },
+    { path: 'conferencista/editar/:id', component: RegConferencistaComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_carrera', component: RegCarreraComponent, canActivate: [AuthGuard] },
     { path: 'carrera/editar/:id', component: RegCarreraComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_actividad', component: RegActividadComponent, canActivate: [AuthGuard] },

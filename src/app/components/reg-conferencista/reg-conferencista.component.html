@@ -65,6 +65,9 @@
 	</div>
 	<p-footer>
 		<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
-		<button type="button" (click)="onSubmit()" [disabled]="formPerson.invalid" class="btn btn-success">Registrar</button>
+		<button type="button" (click)="onSubmit()" [disabled]="formPerson.invalid" class="btn btn-success">
+      <span *ngIf="id==null">Registrar</span>
+      <span *ngIf="id!=null">Actualizar</span>  
+    </button>
 	</p-footer>
 </p-dialog>

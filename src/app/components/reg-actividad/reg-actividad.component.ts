@@ -81,9 +81,11 @@ export class RegActividadComponent implements OnInit {
       response => {
         this._funtions.blockUIO().stop()
         console.log(response);
-        for (var i = 0; i < response.data.length; ++i) {
-        	let carrera = response.data[i];
-        	this.carreras.push({label:carrera.nombre,value:carrera.id})
+        if(response.info){ 
+          for (var i = 0; i < response.data.length; ++i) {
+          	let carrera = response.data[i];
+          	this.carreras.push({label:carrera.nombre,value:carrera.id})
+          }
         }
  				
       },

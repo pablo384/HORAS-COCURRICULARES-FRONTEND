@@ -72,6 +72,11 @@ export class PeticionesService {
     return this.http.get(this.url + '/carrera/'+id)
   }
 
+  GetConferencista(id): Observable<any> {
+
+    return this.http.get(this.url + '/persona/conferencista/'+id)
+  }
+
   GetAllVerificadores(): Observable<any> {
 
     return this.http.get(this.url + '/usuario/verificadores')
@@ -92,6 +97,15 @@ export class PeticionesService {
     return this.http.get(this.url + '/conferencia/lista_estudiantes/'+id_conferencia)
   }
 
+
+  ConferenciaTerminarOIniciar(id,iniciar:boolean=false): Observable<any> {
+    let uri = '/conferencia/iniciar/'
+    if (iniciar){
+      uri = '/conferencia/finalizar/'
+    }
+    return this.http.get(this.url + uri+id)
+  }
+
   //=======================================| ESTUDIANTE |=====================
   ActualizarEstudiante(data: Object): Observable<any> {
 
@@ -103,4 +117,9 @@ export class PeticionesService {
     return this.http.patch(this.url + '/carrera/'+id,JSON.stringify(data))
   }
 
+   //=======================================| ESTUDIANTE |=====================
+  ActualizarConferencista(data: Object,id): Observable<any> {
+
+    return this.http.patch(this.url + '/persona/conferencista/'+id,JSON.stringify(data))
+  }
 }
