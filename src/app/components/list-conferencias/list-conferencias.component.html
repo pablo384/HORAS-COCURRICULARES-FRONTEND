@@ -4,7 +4,6 @@
       	<small class="box-title"> [ {{actividad.id}} ] ID Actividad : {{actividad.titulo}}</small>
       	<br>
     </div>
-    <!-- <app-buscar-por-fecha></app-buscar-por-fecha> -->
     <div class="box-body">
 		<table id="example1" class="table table-bordered table-striped">
 			<thead>
@@ -14,9 +13,9 @@
 					<th>Fecha de inicio</th>
 					<!-- <th>Fecha de finalizar</th> -->
 					<th>Hora de inicio</th>
-					<th>Hora de terminada</th>
+					<!-- <th>Hora de terminada</th> -->
 					<th>Duración estimada</th>
-					<!-- <th>Tiempo transcurrido</th> -->
+					<th>Tiempo transcurrido</th>
 					<th>Acciones</th>
 					<th>Estado</th>
 				</tr>
@@ -27,10 +26,11 @@
 					<td>{{item.titulo}}</td>
 					<td>{{item.dia_de_presentacion | amDateFormat:'DD/MM/YYYY'}}</td>
 					<!-- <td>{{item.fecha_fin}}</td> -->
-					<td>{{item.hora_inicio | amDateFormat:'hh:mm:ss a'}}</td>
-					<td>{{item.hora_fin | amDateFormat:'hh:mm:ss a'}}</td>
+					<td *ngIf="item.hora_inicio != null">{{item.hora_inicio  | amAdd : '12' : 'hours' | amDateFormat:'hh:mm:ss a'}}</td>
+					<td *ngIf="item.hora_inicio == null"></td>
+					<!-- <td>{{item.hora_fin | amDateFormat:'hh:mm:ss a'}}</td> -->
 					<td>{{item.dura_estimada}}</td>
-					<!-- <td>falta</td> -->
+					<td>{{item.transcurrido}}</td>
 					<td>
 					<div class="btn-group">
 						<a class="btn btn-default btn-flat" title="Editar" [routerLink]="['/list_asistencias']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i></a>

@@ -2,7 +2,7 @@
   <div class="box-header">
     <h3 class="box-title">Listado de Estudiantes</h3>
   </div>
- <app-buscador ></app-buscador>
+  <app-buscador [fn]="doThingFactory()" [placeholder]="'Matircula, Carnet, Usuario'"></app-buscador>
   <div class="box-body">
     <table id="example1" class="table table-bordered table-striped">
       <thead>
@@ -17,12 +17,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>Trident</td>
-        <td>Internet Explorer 4.0</td>
-        <td>Win 95+</td>
-        <td>Win 95+</td>
-        <td> 4</td>
+      <tr *ngFor="let item of estudiante">
+        <td>{{item?.matricula}}</td>
+        <td>{{item?.nombres}}</td>
+        <td>{{item?.apellidos}}</td>
+        <td >{{item?.carrera_abreviatura}}</td>
+        <td> {{item?.horas_concurriculares_acumuladas}}</td>
         <td>
           <div class="btn-group">
             <button type="button" class="btn btn-default btn-flat" title="Editar"><i class=" glyphicon glyphicon-pencil" aria-hidden="true"></i></button>
@@ -30,22 +30,12 @@
             <button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
           </div>
         </td>
-        <td>Suspendido , Activo , Inactivo</td>
+        <td *ngIf="item.estado == 'A'">Activo</td>
+        <td *ngIf="item.estado == 'I'">Inactivo</td>
+        <td *ngIf="item.estado == 'S'">Suspendido</td>
       </tr>
       </tbody>
-    <!--   <tfoot>
-      <tr>
-        <th>Rendering engine</th>
-        <th>Browser</th>
-        <th>Platform(s)</th>
-        <th>Engine version</th>
-        <th>CSS grade</th>
-        <th>CSS grade</th>
-        <th>CSS grade</th>
-      </tr>
-      </tfoot> -->
     </table>
   </div>
-    <!-- /.box-body -->
 </div>
 

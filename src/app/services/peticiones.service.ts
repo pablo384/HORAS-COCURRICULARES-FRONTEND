@@ -72,6 +72,10 @@ export class PeticionesService {
     return this.http.get(this.url + '/carrera/'+id)
   }
 
+  getEstudiante(data: Object): Observable<any> {
+    return this.http.post(this.url + '/usuario/estudiante/search',data)
+  }
+
   GetConferencista(id): Observable<any> {
 
     return this.http.get(this.url + '/persona/conferencista/'+id)
