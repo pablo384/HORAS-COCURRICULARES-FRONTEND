@@ -1,11 +1,9 @@
 
 <toaster-container></toaster-container>
 <block-ui></block-ui>
-
-<div class="hold-transition skin-blue sidebar-mini" *ngIf="_funtions.isLoggednIn()">
-<div class="wrapper">
-
-  <header class="main-header">
+<div [class]="[_funtions.isLoggednIn()?['hold-transition','skin-blue', 'sidebar-mini']:'']">
+<div [class]="[_funtions.isLoggednIn()?'wrapper':'']">
+  <header class="main-header" *ngIf="_funtions.isLoggednIn()">
     <!-- Logo -->
     <a [routerLink]="['/']" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -35,28 +33,21 @@
               <li class="header" *ngIf="TotalDeConferencias==0">No Tienes conferencias para hoy</li>
               <li>
               </li>
-<!--               <li class="footer"><a >View all</a></li> -->
             </ul>
           </li>
-          
-
           <li class="dropdown user user-menu">
             <a  class="dropdown-toggle" style="height: 50px;" data-toggle="dropdown">
               <img src="assets/myimages/user2-160x160.jpg" class="user-image" alt="User Image">
               <span class="hidden-xs">{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</span>
             </a>
             <ul class="dropdown-menu">
-              <!-- User image -->
               <li class="user-header">
                 <img src="assets/myimages/user2-160x160.jpg" class="img-circle" alt="User Image">
-
                 <p style="color:#001c42;">
                   {{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}} 
-                  <!-- Alexander Pierce - Web Developer -->
                   <small *ngIf="_funtions.getLoggedUser().tipo == 'A'">Administrador</small>
                   <small *ngIf="_funtions.getLoggedUser().tipo == 'V'">Vericador</small>
                   <small *ngIf="_funtions.getLoggedUser().tipo == 'E'">Estudiante</small>
-                
                 </p>
               </li>
               <li class="user-footer">
@@ -69,10 +60,6 @@
               </li>
             </ul>
           </li>
-          <!-- Control Sidebar Toggle Button -->
-          <!-- <li>
-            <a  data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-          </li> -->
         </ul>
       </div>
     </nav>
@@ -80,13 +67,7 @@
     <!-- MENU GRIS LATERAL ------------------------| END |-->
     <!-- =============================== -->
   </header>
-
-
-
-  <!-- =============================== -->
-  <!-- FRNAJA AZUL DEL TOP -->
-  <!-- =============================== -->
-  <aside class="main-sidebar" style="background:#222d32">
+  <aside class="main-sidebar" style="background:#222d32" *ngIf="_funtions.isLoggednIn()">
     <section class="sidebar">
       <div class="user-panel">
         <div class="pull-left image">
@@ -97,21 +78,7 @@
           <a ><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      <!-- search form -->
-    <!--   <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form> -->
-
-
-
       <ul class="sidebar-menu" data-widget="tree">
-
         <li class="active treeview" *ngIf="isAdmin()">
           <a  class="item_menu">
             <i class="fa fa-dashboard"></i> <span>Estudiante</span>
@@ -186,18 +153,17 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <section class="content-header">
+  <div  [class]="[_funtions.isLoggednIn()?'content-wrapper':'']" >
+    <section  [class]="[_funtions.isLoggednIn()?'content-header':'']" >
       <router-outlet></router-outlet>
     </section>
   </div>
 </div>
 </div>
 
-<div *ngIf="!_funtions.isLoggednIn()"> <router-outlet></router-outlet> 
+<!-- <div *ngIf="!_funtions.isLoggednIn()"> <router-outlet></router-outlet> 
 </div>
-
+ -->
 
 
 
