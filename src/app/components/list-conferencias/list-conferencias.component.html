@@ -1,8 +1,8 @@
 <div class="box">
     <div class="box-header header-list">
-      	<h3 class="box-title"> [ {{actividad.id}} ] ID Actividad : {{actividad.titulo}}</h3>
+				<h1>Listado de Conferencias</h1>
+      	<small class="box-title"> [ {{actividad.id}} ] ID Actividad : {{actividad.titulo}}</small>
       	<br>
-		<small>Listado de Conferencias</small>
     </div>
     <!-- <app-buscar-por-fecha></app-buscar-por-fecha> -->
     <div class="box-body">
@@ -14,8 +14,9 @@
 					<th>Fecha de inicio</th>
 					<!-- <th>Fecha de finalizar</th> -->
 					<th>Hora de inicio</th>
+					<th>Hora de terminada</th>
 					<th>Duración estimada</th>
-					<th>Tiempo transcurrido</th>
+					<!-- <th>Tiempo transcurrido</th> -->
 					<th>Acciones</th>
 					<th>Estado</th>
 				</tr>
@@ -27,14 +28,15 @@
 					<td>{{item.dia_de_presentacion | amDateFormat:'DD/MM/YYYY'}}</td>
 					<!-- <td>{{item.fecha_fin}}</td> -->
 					<td>{{item.hora_inicio | amDateFormat:'hh:mm:ss a'}}</td>
+					<td>{{item.hora_fin | amDateFormat:'hh:mm:ss a'}}</td>
 					<td>{{item.dura_estimada}}</td>
-					<td>falta</td>
+					<!-- <td>falta</td> -->
 					<td>
 					<div class="btn-group">
 						<a class="btn btn-default btn-flat" title="Editar" [routerLink]="['/list_asistencias']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i></a>
-					  	<button type="button" class="btn btn-primary btn-flat" title="Agregar Conferencia">
+					<!--   	<button type="button" class="btn btn-primary btn-flat" title="Agregar Conferencia">
 					    	<i class="fa fa-clock-o"></i>
-					  	</button>
+					  	</button> -->
 						<button type="button" class="btn btn-default btn-flat" title="Editar"><i class=" glyphicon glyphicon-pencil" aria-hidden="true"></i></button>
 						<a class="btn btn-default btn-flat" title="Ver" [routerLink]="['/detalle_conferencia']" [queryParams]="{conferencia:item|json }"><i class="fa fa-eye"></i></a>
 						

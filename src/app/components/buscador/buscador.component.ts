@@ -7,9 +7,12 @@ import * as moment from "moment"
 })
 export class BuscadorComponent implements OnInit {
 	@Input() fn;
+	@Input() disabled;
 	texto_a_buscar:string;
 	@Input() placeholder:string = "Matircula, Nombre, Apellido ,Usuario";
-	constructor() { }
+	constructor() {
+		this.disabled= false;
+	}
 
 	ngOnInit() {
 		console.log(this.fn)

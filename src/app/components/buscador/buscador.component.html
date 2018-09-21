@@ -2,10 +2,10 @@
 	<div class="box-header">
 	  <div class="row">
 	    <div class="col-xs-3">
-	      <input type="text" class="form-control" [(ngModel)]="texto_a_buscar" placeholder="{{placeholder}}" (keydown.enter)="onKeydown($event)">
+	      <input type="text" class="form-control" [(ngModel)]="texto_a_buscar" placeholder="{{placeholder}}" (keydown.enter)="onKeydown($event)" [disabled]="disabled">
 	    </div>
 	    <div class="col-xs-2">
-	       <button type="button" class="btn btn-success" (click)="buscar()" >Consultar</button>
+	       <button type="button" class="btn btn-success" (click)="buscar()" [disabled]="disabled" >Consultar</button>
 	    </div>
 	  </div>
 	</div>

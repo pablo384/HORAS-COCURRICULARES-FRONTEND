@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
           this._funtions.blockUIO().stop()
           console.log('response',response);
           if(response.info){
-            if (!item.finalizada){
+            if (!item.finalizada && item.iniciada){
               item.finalizada = true;
             }
             if(!item.iniciada){

@@ -8,14 +8,15 @@
 
 	        <div class="col-lg-12" style="background: #9c9c9c52;padding-top: 12px">
 	        	<div class="col-md-5 col-sm-6 col-xs-12" *ngFor="let item of ListadoDeConferencias">
-				  <div class="info-box">
+				  <div class="info-box" >
 				    <div class=" info-box-icon bg-green" style="width:8px;"><i class="ion ion-ios-cart-outline"></i></div>
 				    <div class="info-box-content" style="margin-left: 18px;">
-						<span class="info-box-number">Conferencia:&nbsp;{{item.conferencia}}</span>
-						<span class="info-box-text" >Actividad:&nbsp;{{item.actividad}}</span>
-						<span class="info-box-text">Hora:&nbsp;{{item.hora_inicio | amDateFormat:'HH:MM A'}}</span>
-						<span class="info-box-text">Total Asistencia:&nbsp;{{item.total}}</span>
-						<div class="btn-group">
+						<span class="info-box-number"><b>Conferencia:</b>&nbsp;{{item.conferencia}}</span>
+						<span class="info-box-text" ><b>Actividad:</b>&nbsp;{{item.actividad}}</span>
+						<span class="info-box-text"><b>Hora:</b>&nbsp;{{item.hora_inicio | amDateFormat:'HH:MM A'}}</span>
+						<span class="info-box-text"><b>Total Asistencia:</b>&nbsp;{{item.total}}</span>
+						<h1 style="text-align: center; color: red;margin: 0;" *ngIf="item.finalizada && item.iniciada">Finalizada</h1>
+						<div class="btn-group" *ngIf="!item.finalizada || !item.iniciada">
 							<button class="btn btn-success btn-flat" [disabled]="item.finalizada" title="Editar" [routerLink]="['/list_asistencias']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i> Pasar Asistencia</button>
 						  	<button type="button" [disabled]="item.iniciada" class="btn btn-primary btn-flat" title="Agregar Conferencia"  (click)="confirm(item)">
 						    	<i class="fa fa-clock-o"></i> 

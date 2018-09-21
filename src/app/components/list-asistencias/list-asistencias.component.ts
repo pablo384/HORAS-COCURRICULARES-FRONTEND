@@ -19,6 +19,7 @@ export class ListAsistenciasComponent implements OnInit {
   	this.aroute.queryParams.subscribe( params => {
   		console.log('params["conferencia"]',params);
       		this.conferencia = JSON.parse( params["conferencia"] );
+          this.conferencia.finalizada = this.conferencia.hora_fin != null && this.conferencia.hora_inicio != null
   		}
   	);
 
