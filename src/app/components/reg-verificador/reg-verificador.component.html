@@ -25,7 +25,6 @@
 								 <p-inputMask mask="999-9999999-9" formControlName="cedula" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}" placeholder="999-9999999-9"></p-inputMask>
 							</div>
 					</div>
-					<br>
 					<div class="col-lg-6">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -56,7 +55,7 @@
 							<input type="password"  minlength="4" class="form-control" formControlName="clave">
 						</div>
 					</div>
-					<br>
+					<!-- <br> -->
 					<div class="col-lg-6">
 						<div class="input-group">
 							<span class="input-group-addon">Confirmar Clave</span>
@@ -69,6 +68,9 @@
     	</div>
     	<p-footer>
     		<button type="button" class="btn btn-default pull-left"   (click)="OnHIde()">Salir</button>
-			<button type="button" (click)="onSubmit()"  [disabled]="formPerson.invalid" class="btn btn-success">Registrar</button>
+			<button type="button" (click)="onSubmit()"  [disabled]="formPerson.invalid" class="btn btn-success">
+				<span *ngIf="id==null">Registrar</span>
+				<span *ngIf="id!=null">Actualizar</span>
+			</button>
     	</p-footer>
 </p-dialog>

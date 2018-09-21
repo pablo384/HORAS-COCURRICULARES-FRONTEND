@@ -1,6 +1,6 @@
 <div class="box">
     <div class="box-header header-list">
-      <h3 class="box-title">Listado de Carreras</h3>
+      <h3 class="box-title">Listado de Verificadores</h3>
     </div>
     <!-- <app-buscador ></app-buscador> -->
     <div class="box-header">
@@ -24,7 +24,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of verificadores | search:searchText">
-            <td>{{item.id_persona}}</td>
+            <td>{{item.nombres}}</td>
             <td>{{item.apellidos}}</td>
             <td>{{item.direccion}}</td>
             <td>{{item.correo}}</td>
@@ -32,7 +32,7 @@
             <td>{{item.estado}}</td>
             <td>
               <div class="btn-group">
-                <button type="button" class="btn btn-default btn-flat" title="Editar"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-default btn-flat" title="Editar" [routerLink]="['/verificador/editar',item.id_persona]"><i class="fa fa-edit"></i></button>
                 <button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
               </div>
             </td>

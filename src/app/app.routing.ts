@@ -46,6 +46,7 @@ const appRoutes: Routes = [
     { path: 'resgistrar_actividad', component: RegActividadComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_conferencia', component: RegConferenciaComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_verificador', component: RegVerificadorComponent, canActivate: [AuthGuard] },
+    { path: 'verificador/editar/:id', component: RegVerificadorComponent, canActivate: [AuthGuard] },
     
 
     
