@@ -29,7 +29,8 @@ export class ListAsistenciasComponent implements OnInit {
 
   changeDisplayPoncheo(event){
     this.displayPoncheo = event;
-    console.log("changeDisplayPoncheo event",event)
+    console.log("changeDisplayPoncheo event",event);
+    this.ListadoEstudiantesPorConferencias();
   }
   private doThingFactory() {
     return (matricula) => this.verificarParticipacion(matricula);

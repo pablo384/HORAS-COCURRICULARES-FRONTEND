@@ -36,7 +36,7 @@
               <span>Carreras participantes</span>
             </div>
             <div class="col-lg-6">
-              <p-multiSelect defaultLabel="Carreras" [options]="carreras"  formControlName="carreras" [style]="{'width':'100%','height':'33px'}" required></p-multiSelect>
+              <p-multiSelect defaultLabel="Carreras" [selectedItemsLabel]="'Carreras seleccionada'" [maxSelectedLabels]='false' [options]="allCarreras"  formControlName="carreras" [style]="{'width':'100%','height':'33px'}" required></p-multiSelect>
             </div>
           </div>
           <div class="col-lg-7">
@@ -49,6 +49,9 @@
   </div>
   <p-footer>
     <button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
-    <button type="button" (click)="crearActividad()" [disabled]="formActividad.invalid" class="btn btn-success">Registrar</button>
+    <button type="button" (click)="crearActividad()" [disabled]="formActividad.invalid" class="btn btn-success">
+      <span *ngIf="id==null">Registrar</span>
+      <span *ngIf="id!=null">Actualizar</span>
+    </button>
   </p-footer>
 </p-dialog>

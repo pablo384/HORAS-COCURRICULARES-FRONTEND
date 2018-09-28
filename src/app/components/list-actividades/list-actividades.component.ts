@@ -9,7 +9,7 @@ import * as moment from "moment"
 })
 export class ListActividadesComponent implements OnInit {
   ListadoDeActividades:any[];
-  searchText
+  searchText;
   constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) {
     this.searchText= '';
   	// this.ListadoDeActividades = [

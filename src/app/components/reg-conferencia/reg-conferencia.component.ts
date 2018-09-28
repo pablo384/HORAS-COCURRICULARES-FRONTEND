@@ -28,11 +28,20 @@ export class RegConferenciaComponent implements OnInit {
           this.actividad = JSON.parse( params["id_actividad"] );
       }
    );
+
     // this.actividad= '1';
   }
 
   ngOnInit() {
-    this.porcentaje_default =[{name:"50%",value:50},{name:"60%",value:60},{name:"70%",value:70},{name:"80%",value:80},{name:"90%",value:90},{name:"100%",value:100}];
+    this.porcentaje_default = [];
+
+    for(let i = 50; i <=100; i=i+5) {
+      console.log(i)
+      this.porcentaje_default.push({name:i+"%",value:i})
+    }
+    // this.porcentaje_default = [];
+    // this.porcentaje_default =[{name:"50%",value:50},{name:"60%",value:60},{name:"70%",value:70},{name:"80%",value:80},{name:"90%",value:90},{name:"100%",value:100}];
+
     this.horas_default =[{name:"0:15",value:"0:15"}];
     this.Inpdisplay = true;
     this.createForm();

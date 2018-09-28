@@ -3,8 +3,9 @@
 		<div class="box-body">
         	<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
 	        	<div class="input-group">
-		    		<div class="user user-menu" *ngIf="imgPerson && imgPerson !== 'null' && imgPerson !== 'undefined'">
-              <img class="user-image" style="height: 143px; width: 143px; border-radius: 80px;" src="{{imgPerson}}">
+		    		<!-- <div class="user user-menu" *ngIf="imgPerson && imgPerson !== 'null' && imgPerson !== 'undefined'"> -->
+		    		<div class="user user-menu" style="right: 50px;">
+              <img class="user-image" style="height: 143px; width: 143px; border-radius: 80px;" src="{{imgPerson!= null?imgPerson:'assets/myimages/user_default.png'}}">
             </div>
 		          <p-fileUpload mode="basic" name="myfile[]"  chooseLabel="Imagen"  customUpload="true" (onSelect)="onFileChange($event)"></p-fileUpload>
 	          </div>

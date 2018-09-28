@@ -25,6 +25,7 @@ export class ListConferenciasComponent implements OnInit,OnDestroy {
 	      		this.actividad = JSON.parse( params["actividad"] );
 	  		}
 	     );
+      
 	}
 
 	ngOnInit() {
@@ -46,7 +47,7 @@ export class ListConferenciasComponent implements OnInit,OnDestroy {
             duration = moment.duration(moment().diff(moment(conferencia.hora_inicio,"YYYY-MM-DDThh:mm:ssZ").add(12,'hours')));
           }
           conferencia.transcurrido = duration.humanize()
-         console.log("duration",duration)
+         console.log("duration",duration.asMinutes())
        }
        console.log(conferencia)
       }

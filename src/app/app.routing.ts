@@ -44,14 +44,10 @@ const appRoutes: Routes = [
     { path: 'resgistrar_carrera', component: RegCarreraComponent, canActivate: [AuthGuard] },
     { path: 'carrera/editar/:id', component: RegCarreraComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_actividad', component: RegActividadComponent, canActivate: [AuthGuard] },
+    { path: 'actividad/editar/:id', component: RegActividadComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_conferencia', component: RegConferenciaComponent, canActivate: [AuthGuard] },
     { path: 'resgistrar_verificador', component: RegVerificadorComponent, canActivate: [AuthGuard] },
     { path: 'verificador/editar/:id', component: RegVerificadorComponent, canActivate: [AuthGuard] },
-    
-
-    
-    
-
     { 
         path: 'lista_actividades',
         component: ListActividadesComponent, canActivate: [AuthGuard],
