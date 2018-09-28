@@ -173,9 +173,14 @@ export class RegActividadComponent implements OnInit {
 	
 
 	 OnHIde(){
+    let uri="/";
     this.formActividad.reset();
     this.Inpdisplay = false;
-    this._router.navigate(["/"]);
+    if(this.id!= null){
+      uri = "lista_actividades";
+    }
+
+    this._router.navigate([uri]);
 	    // this.Outdisplay.emit(false);
 	 }
 

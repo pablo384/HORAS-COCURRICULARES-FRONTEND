@@ -69,9 +69,13 @@ export class RegConferencistaComponent implements OnInit {
   }
 
 	OnHIde(){
-		this.formPerson.reset();
-	  this.Inpdisplay = false;
-	  this._router.navigate(["/"]);
+    let uri="/";
+    if(this.id!= null){
+      uri = "list_conferencistas";
+    }
+    this.formPerson.reset();
+    this.Inpdisplay = false;
+    this._router.navigate([uri]);
 	}
 	onSubmit(){
     let cNameAction = "crearEstudiante";

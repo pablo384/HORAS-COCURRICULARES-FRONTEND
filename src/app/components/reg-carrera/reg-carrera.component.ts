@@ -40,10 +40,14 @@ export class RegCarreraComponent implements OnInit {
   }
 
   OnHIde(){
+    let uri="/";
+    if(this.id!= null){
+      uri = "list_carreras";
+    }
     this.formCarrera.reset();
     this.Inpdisplay = false;
-    this._router.navigate(["/"]);
-    // this.Outdisplay.emit(false);
+    this._router.navigate([uri]);
+ 
   }
 
 

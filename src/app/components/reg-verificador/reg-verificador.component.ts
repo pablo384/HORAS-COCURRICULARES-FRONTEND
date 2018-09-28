@@ -33,10 +33,13 @@ export class RegVerificadorComponent implements OnInit {
 	}
 	
 	OnHIde(){
-      this.formPerson.reset();
-      this.Inpdisplay = false;
-      this._router.navigate(["/"]);
-    	// this.Outdisplay.emit(false);
+    let uri="/";
+    if(this.id!= null){
+      uri = "list_verificadores";
+    }
+    this.formPerson.reset();
+    this.Inpdisplay = false;
+    this._router.navigate([uri]); 
   	}
 
   getVerifcador(){
