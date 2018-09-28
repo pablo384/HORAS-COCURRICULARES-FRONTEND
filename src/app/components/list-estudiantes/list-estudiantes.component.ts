@@ -32,10 +32,11 @@ export class ListEstudiantesComponent implements OnInit {
     }else{
       value["usuario"] = cDatos
     }
+    console.log(value)
   	this._peticiones.getEstudiante(value).subscribe(
       response => {
         this._funtions.blockUIO().stop()
-        console.log("sdfkjdsjfjdsfj",response.data);
+        console.log("getEstudiante",response);
         if (response.info) {        
         	this.estudiante = response.data;
         }

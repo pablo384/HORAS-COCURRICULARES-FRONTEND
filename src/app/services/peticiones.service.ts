@@ -122,7 +122,7 @@ export class PeticionesService {
   //=======================================| ESTUDIANTE |=====================
   ActualizarEstudiante(data: Object): Observable<any> {
 
-    return this.http.patch(this.url + '/usuario',JSON.stringify(data))
+    return this.http.patch(this.url + '/usuario/estudiante',JSON.stringify(data))
   }
 
   //=======================================| ESTUDIANTE |=====================

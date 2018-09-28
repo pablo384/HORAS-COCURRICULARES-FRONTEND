@@ -1,15 +1,22 @@
 
-<p-dialog header="Registrar Estudiante" [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
+<p-dialog  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false"  >
+		<p-header>
+				<div [formGroup]="formPerson" >
+					<label style="font-size: 15px;margin-right: 270px;">Registrar Estudiante</label>
+					<p-toggleButton  formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
+				</div>
+		</p-header>
 		<div class="box-body">
         	<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
 	        	<div class="input-group">
 		    		<!-- <div class="user user-menu" *ngIf="imgPerson && imgPerson !== 'null' && imgPerson !== 'undefined'"> -->
 		    		<div class="user user-menu" style="right: 50px;">
-              <img class="user-image" style="height: 143px; width: 143px; border-radius: 80px;" src="{{imgPerson!= null?imgPerson:'assets/myimages/user_default.png'}}">
+              <img class="user-image" style="height: 143px; width: 143px; border-radius: 80px; margin-left: 193px" src="{{imgPerson!= null?imgPerson:'assets/myimages/user_default.png'}}">
             </div>
-		          <p-fileUpload mode="basic" name="myfile[]"  chooseLabel="Imagen"  customUpload="true" (onSelect)="onFileChange($event)"></p-fileUpload>
+		          <!-- <p-fileUpload mode="basic" name="myfile[]"  chooseLabel="Imagen"  customUpload="true" (onSelect)="onFileChange($event)"></p-fileUpload> -->
 	          </div>
-	        	<div class="input-group">
+		         
+	          <div class="input-group">
 		          <span class="input-group-addon">Nombres</span>
 		          <input type="text" class="form-control" formControlName="nombres"required >
 	          </div>
@@ -32,7 +39,7 @@
 									 <p-inputMask mask="999-9999999-9" formControlName="cedula" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}" placeholder="999-9999999-9"></p-inputMask>
 								</div>
 							</div>
-							<br>
+							<!-- <br> -->
 							<div class="col-lg-6">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
@@ -46,7 +53,7 @@
 								<div class="form-group">
 									<div class="input-group">
 					          <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-						        <p-autoComplete formControlName="carrera" [suggestions]="filteredCarreras" [style]="{'height':'36px'}" [inputStyle]="{'border': '1px solid #d0caca'}" (completeMethod)="filterCarreras($event)" field="abreviatura" [size]="15" [minLength]="1" placeholder="Carreras" [dropdown]="true" [readonly]="true" required>
+						        <p-autoComplete formControlName="carrera" value='carrera.value' [suggestions]="filteredCarreras" [style]="{'height':'36px'}" [inputStyle]="{'border': '1px solid #d0caca'}" (completeMethod)="filterCarreras($event)" field="abreviatura" [size]="15" [minLength]="1" placeholder="Carreras" [dropdown]="true" [readonly]="true" required>
 									    <ng-template let-carrera pTemplate="item" >
 									        <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
 									            <!-- <img src="assets/showcase/images/demo/car/{{brand}}.png" style="width:32px;display:inline-block;margin:5px 0 2px 5px"/> -->
@@ -66,17 +73,31 @@
 					        </div>
 								</div>
 							</div>
-						</div>   
-	          <div class="input-group">
-	            <span class="input-group-addon">Nombre de usuario</span>
-	            <input type="text" class="form-control" formControlName="usuario" required>
-	          </div>    
+						</div>  
+						<div class="row">
+							<div class="col-lg-6">
+			          <div class="input-group">
+			            <span class="input-group-addon">Nombre de usuario</span>
+			            <input type="text" class="form-control" formControlName="usuario" [attr.disabled]="id==null"  required>
+			          </div>
+			        </div>
+							<div class="col-lg-6">
+								<div class="progress-group" *ngIf="id!=null">
+                    <span class="progress-text">Horas Acumuladas</span>
+                    <span class="progress-number"><b>{{formPerson.controls.horas_concurriculares_acumuladas.value}}</b>/{{formPerson.controls.carrera.value.horas_requeridas}}</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-aqua" [ngStyle]="{'width': ((formPerson.controls.horas_concurriculares_acumuladas.value/formPerson.controls.carrera.value.horas_requeridas)*100)+'%' }"></div>
+                    </div>
+                  </div>
+							</div>
+						</div> 
 		        <br>
 					  <div class="row">
 	          	<div class="col-lg-6">
 	          		<div class="input-group">
 		              <span class="input-group-addon">Matricula</span>
-		              <input type="text" minlength="5" class="form-control" formControlName="matricula" required>
+		              <input type="text" minlength="5" class="form-control" formControlName="matricula" [attr.disabled]="id==null" required>
 		            </div>
 	          	</div>
 	          	<!-- <br> -->
@@ -87,15 +108,14 @@
 	            	</div>
 	          	</div>
 	          </div>
-						<br>
-	          <div class="row">
+						<!-- <br> -->
+	          <!-- <div class="row">
 	          	<div class="col-lg-6">
 	          		<div class="input-group">
 	                <span class="input-group-addon">Clave</span>
 	                <input type="password" minlength="4" pPassword style="border: 1px solid #d0caca" class="form-control" formControlName="clave" required>
 		            </div>
 	          	</div>
-	          	<!-- <br> -->
 	            	<div class="col-lg-6">
 	            		<div class="input-group">
 		                <span class="input-group-addon">Confirmar Clave</span>
@@ -103,7 +123,7 @@
 		            	</div>
 	            	</div>
 	          </div>
-						<br>
+						<br> -->
 					</form>
     	</div>
     	<p-footer>

@@ -37,3 +37,9 @@
     background:#1a83e4;
     font-weight: bold;
 }
+
+.ui-state-active {
+    border-color: #13630a;
+    background: #137b1a;
+    color: #fffff2;
+}

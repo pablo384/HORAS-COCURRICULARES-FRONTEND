@@ -20,7 +20,9 @@ export class RegEstudianteComponent implements OnInit {
   filteredCarreras: any[];
   routeBack;
   imgPerson;
+  id;
   constructor(private aroute:ActivatedRoute,private fb: FormBuilder,private _router: Router, private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
+  
     this._funtions.allCarreras((carreras) =>{
       this.carreras = carreras.data
     })
@@ -57,8 +59,49 @@ export class RegEstudianteComponent implements OnInit {
 
   ngOnInit() {
     this.Inpdisplay = true;
+     this.aroute.params.subscribe( params => {
+      console.log('params["estudiante"]',params);
+          this.id = params["id"]
+      }
+    );
   	this.createForm();
+     if(this.id != undefined){
+      this.getEstudiante()
+    }
+    // this.createForm();
   }
+
+  getEstudiante(){
+    let value = {id_persona:this.id}
+    this._peticiones.getEstudiante(value).subscribe(
+      response => {
+        this._funtions.blockUIO().stop()
+        console.log("getEstudiante",response.data);
+        if (response.data.length >0) {
+          let estudiante = response.data[0];
+          let carrera = {nombres:estudiante.carrera,abreviatura:estudiante.carrera_abreviatura,horas_requeridas:estudiante.horas_requeridas,id:estudiante.id_estudiante_carrera}
+          estudiante.carrera = carrera;
+          estudiante.estado = estudiante.estado=="A"
+          estudiante.carnet = estudiante.no_carnet;
+          this.createForm(estudiante);    
+          // this.estudiante = response.data;
+        }
+      },
+      error => {
+        let resultado;
+        if (error.error && error.status !== 0) {
+          resultado = this._funtions.sacarText(error.error);
+        } else {
+          resultado = error.error.error;
+        }
+        console.log(error.error)
+        this._funtions.Toast("error","Error",resultado);
+
+        this._funtions.blockUIO().stop(); 
+      }
+    );
+  }
+
 
   OnHIde(){
     this.formPerson.reset();
@@ -80,30 +123,45 @@ export class RegEstudianteComponent implements OnInit {
             }
         }
     }
-  createForm(){
+  createForm(a= {nombres:'',apellidos:'',direccion:'',cedula:'',email:'',carrera:'',telefono:'',usuario:'',matricula:'',image:'',carnet:'',horas_concurriculares_acumuladas:null,estado:true,id_usuario:''}){
   	this.formPerson = this.fb.group({
-      nombres: ['', Validators.required],
-      apellidos: ['', Validators.required],
-      direccion: '',
-      cedula:'',
-      email:'',
-      carrera:['', Validators.required],
-      telefono:'',
-      usuario:['', Validators.required],
-      matricula:['', Validators.required],
+      nombres: [a.nombres, Validators.required],
+      apellidos: [a.apellidos, Validators.required],
+      direccion: a.direccion,
+      cedula:a.cedula,
+      email:a.email,
+      carrera:[a.carrera, Validators.required],
+      telefono:a.telefono,
+      usuario:[a.usuario, Validators.required],
+      matricula:[a.matricula, Validators.required],
       tipo:'E',
-      image:"",
-      carnet:['',Validators.compose([Validators.required, Validators.minLength(16),Validators.maxLength(16)])],
-      clave:['', Validators.compose([Validators.required, Validators.minLength(4)])],
-      claveConfirm:['',Validators.compose([Validators.required, Validators.minLength(4)])]
+      estado:a.estado,
+      image:a.image,
+      carnet:[a.carnet,Validators.compose([Validators.required, Validators.minLength(16),Validators.maxLength(16)])],
+      clave:[''/*, Validators.compose([Validators.required, Validators.minLength(4)])*/],
+      claveConfirm:[''/*,Validators.compose([Validators.required, Validators.minLength(4)])*/],
+      horas_concurriculares_acumuladas:[a.horas_concurriculares_acumuladas],
+      id_usuario:a.id_usuario
     });
+    // console.log(this.formPerson.controls)
   }
   onSubmit(){
-    let value = this.formPerson.value
+    let value = JSON.parse(JSON.stringify(this.formPerson.value))
+    let cNameAction = "crearEstudiante";
+
+    if (this.id!= null){
+      cNameAction ="ActualizarEstudiante";
+      value.id_persona = this.id;
+      // value.id_persona = this.id;
+    }
+
     value.carrera = value.carrera.id
     if (value.clave == value.claveConfirm){
+      value.estado = value.estado?"A":"I";
+      
+      console.log("value",value,"cNameAction",cNameAction)
       this._funtions.blockUIO().start()
-      this._peticiones.crearEstudiante(value).subscribe(
+      this._peticiones[cNameAction](value).subscribe(
         response => {
           this._funtions.blockUIO().stop()
           console.log(response);
