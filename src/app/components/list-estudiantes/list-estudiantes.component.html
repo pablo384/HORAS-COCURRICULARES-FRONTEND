@@ -30,9 +30,8 @@
             <!-- <button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button> -->
           </div>
         </td>
-        <td *ngIf="item.estado == 'A'">Activo</td>
-        <td *ngIf="item.estado == 'I'">Inactivo</td>
-        <td *ngIf="item.estado == 'S'">Suspendido</td>
+        <td *ngIf="item.estado == 'A'"><div class="label label-success">Activo</div> </td>
+        <td *ngIf="item.estado == 'I'"><div class="label label-danger">Inactivo</div></td>
       </tr>
       </tbody>
     </table>
