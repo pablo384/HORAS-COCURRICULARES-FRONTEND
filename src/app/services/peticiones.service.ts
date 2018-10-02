@@ -130,6 +130,10 @@ export class PeticionesService {
 
     return this.http.patch(this.url + '/actividad/'+id,JSON.stringify(data))
   }
+  //=======================================| ESTUDIANTE |=====================
+  EliminarConferencia(id,id_conferecia_por_conferencista): Observable<any> {
+    return this.http.delete(this.url + "/conferencia/"+id+"/"+id_conferecia_por_conferencista)
+  }
 
   //=======================================| ESTUDIANTE |=====================
   ActualizarVerificador(data: Object,id): Observable<any> {

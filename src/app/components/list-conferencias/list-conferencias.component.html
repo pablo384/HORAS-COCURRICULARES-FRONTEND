@@ -21,7 +21,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let item of ListadoDeConferenciasPorActividad">
+				<tr *ngFor="let item of ListadoDeConferenciasPorActividad let i = index">
 					<td>{{item.id}}</td>
 					<td><b>{{item.titulo| uppercase}}</b></td>
 					<td>{{item.dia_de_presentacion | amDateFormat:'DD/MM/YYYY'}}</td>
@@ -39,7 +39,7 @@
 						
 						<a [routerLink]="['/report_asistencia_conferencia']" [queryParams]="{conferencia:item|json }" class="btn btn-default btn-flat" title="Reporte"><i class="fa fa-dashboard"></i></a>
 						
-						<button type="button" *ngIf="item.hora_fin == null && item.hora_inicio == null" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
+						<button type="button" *ngIf="item.hora_fin == null && item.hora_inicio == null" class="btn btn-default btn-danger" title="Desactivar" (click)="EliminarConferencia(i,item.id,item.id_conferencista_por_actividad)"><i class="fa fa-remove"></i></button>
 					</div>
 					</td>
 					<td>

@@ -32,7 +32,7 @@ export class ListActividadesComponent implements OnInit {
     this._peticiones.GetActividades(fecha1,fecha2).subscribe(
       response => {
         this._funtions.blockUIO().stop()
-        // console.log("sdfkjdsjfjdsfj",response.data);
+        console.log("buscarActividades",response.data);
         if (response.info) {
           // console.log("SDFKJDSJFJDSFJDENTRO",response.data);
            this.ListadoDeActividades = response.data;
