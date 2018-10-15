@@ -138,8 +138,8 @@ export class RegEstudianteComponent implements OnInit {
       estado:a.estado,
       image:a.image,
       carnet:[a.carnet,Validators.compose([Validators.required, Validators.minLength(16),Validators.maxLength(16)])],
-      clave:[''/*, Validators.compose([Validators.required, Validators.minLength(4)])*/],
-      claveConfirm:[''/*,Validators.compose([Validators.required, Validators.minLength(4)])*/],
+      clave:['1234'/*, Validators.compose([Validators.required, Validators.minLength(4)])*/],
+      claveConfirm:['1234'/*,Validators.compose([Validators.required, Validators.minLength(4)])*/],
       horas_concurriculares_acumuladas:[a.horas_concurriculares_acumuladas],
       id_usuario:a.id_usuario
     });

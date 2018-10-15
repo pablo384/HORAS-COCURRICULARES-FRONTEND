@@ -78,7 +78,7 @@
 							<div class="col-lg-6">
 			          <div class="input-group">
 			            <span class="input-group-addon">Nombre de usuario</span>
-			            <input type="text" class="form-control" formControlName="usuario" [attr.disabled]="id==null"  required>
+			            <input type="text" class="form-control" formControlName="usuario" [readonly]="id!=null"  required>
 			          </div>
 			        </div>
 							<div class="col-lg-6">
@@ -97,7 +97,7 @@
 	          	<div class="col-lg-6">
 	          		<div class="input-group">
 		              <span class="input-group-addon">Matricula</span>
-		              <input type="text" minlength="5" class="form-control" formControlName="matricula" [attr.disabled]="id==null" required>
+		              <input type="text" minlength="5" class="form-control" formControlName="matricula" [readonly]="id!=null" required>
 		            </div>
 	          	</div>
 	          	<!-- <br> -->
