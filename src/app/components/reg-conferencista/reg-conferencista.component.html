@@ -1,4 +1,12 @@
-<p-dialog header="Registrar Conferencista"  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
+<p-dialog [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="600"  [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false"  >
+  <p-header>
+    <div [formGroup]="formPerson">
+      <label *ngIf="_funtions.IsRegistrar()">Registrar Conferencista</label>
+      <label *ngIf="_funtions.IsEditar()">Editar Conferencista</label>
+      <label *ngIf="_funtions.IsMostrar()">Mostrar Conferencista</label>
+      <p-toggleButton styleClass="btn-default pull-right" formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
+    </div>
+  </p-header>
   <div class="modal-body">
     <div class="box-body">
       <form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
@@ -64,9 +72,13 @@
 </div>
 <p-footer>
   <button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
-  <button type="button" (click)="onSubmit()" [disabled]="formPerson.invalid" class="btn btn-success">
+  <button type="button" class="btn btn-success" [disabled]="formPerson.invalid" (click)="onSubmit()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
   <span *ngIf="id==null">Registrar</span>
-  <span *ngIf="id!=null">Actualizar</span>
+  <span *ngIf="id!=null && !_funtions.IsMostrar()">Actualizar</span>
+  <!-- <span *ngIf="id!=null && _funtions.IsMostrar()">Editar</span> -->
+  </button>
+  <button type="button" class="btn btn-success" [disabled]="formPerson.invalid" [routerLink]="['/conferencistas',id,'editar']" *ngIf="_funtions.IsMostrar()">
+  <span>Editar</span>
   </button>
 </p-footer>
 </p-dialog>

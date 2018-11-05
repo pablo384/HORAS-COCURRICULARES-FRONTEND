@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject,Subscription } from 'rxjs';
 import {PeticionesService} from '../../services/peticiones.service';
 import {FuncionesService} from '../../services/funciones.service';
 import * as moment from "moment"
@@ -8,14 +9,23 @@ import * as moment from "moment"
   styleUrls: ['./list-verificadores.component.css']
 })
 export class ListVerificadoresComponent implements OnInit {
-  constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) { }
+    public static returned: Subject<any> = new Subject();
+  subc:Subscription;
   verificadores
   searchText;
+  constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
+    this.subc = ListVerificadoresComponent.returned.subscribe(res => {
+      this.allVerificadores();
+    });
+  }
   ngOnInit() {
     this.searchText='';
   	this.allVerificadores()
   }
 
+  ngOnDestroy(): void {
+    this.subc.unsubscribe();
+  }
   allVerificadores(){
 		this.verificadores =[]
 		this._funtions.blockUIO().start()

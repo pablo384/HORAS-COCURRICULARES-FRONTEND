@@ -108,8 +108,9 @@ export class RegEstudianteComponent implements OnInit {
     this.Inpdisplay = false;
     if (this.routeBack != null){
       this._router.navigate(["/actividades"]);
-    }else
+    }else{
       this._router.navigate(["/estudiantes"]);
+    }
 
     // this.Outdisplay.emit(false);
   }
@@ -143,6 +144,7 @@ export class RegEstudianteComponent implements OnInit {
       horas_concurriculares_acumuladas:[a.horas_concurriculares_acumuladas],
       id_usuario:a.id_usuario
     });
+    this._funtions.actionsOnRoute(this.formPerson.controls);
     // console.log(this.formPerson.controls)
   }
   onSubmit(){

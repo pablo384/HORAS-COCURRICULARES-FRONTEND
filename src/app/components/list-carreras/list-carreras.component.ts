@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectItem } from 'primeng/primeng'
+import { SelectItem } from 'primeng/primeng';
+import { Subject,Subscription } from 'rxjs';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 import * as moment from "moment"
@@ -11,14 +12,22 @@ import * as moment from "moment"
 export class ListCarrerasComponent implements OnInit {
 	carreras: any[];
   searchText;
+  public static returned: Subject<any> = new Subject();
+  subc:Subscription;
   constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) {
-  	this.allCarreras()
     this.searchText='';
+    this.subc = ListCarrerasComponent.returned.subscribe(res => {
+      this.allCarreras();
+    });
   }
 
   ngOnInit() {
+  	this.allCarreras()
   }
 
+  ngOnDestroy(): void {
+    this.subc.unsubscribe();
+  }
   allCarreras(){
 		this.carreras =[]
 		this._funtions.blockUIO().start()

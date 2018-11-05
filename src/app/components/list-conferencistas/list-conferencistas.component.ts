@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject,Subscription } from 'rxjs';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 @Component({
@@ -9,12 +10,21 @@ import {PeticionesService} from '../../services/peticiones.service';
 export class ListConferencistasComponent implements OnInit {
 	ListadoConferencistas;
   searchText;
+  public static returned: Subject<any> = new Subject();
+  subc:Subscription;
     constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService ) {
       this.searchText='';
+      this.subc = ListConferencistasComponent.returned.subscribe(res => {
+        this.listadoDeConferencistas();
+      });
     }
 
   ngOnInit() {
   	this.listadoDeConferencistas()
+  }
+
+  ngOnDestroy(): void {
+    this.subc.unsubscribe();
   }
 
   listadoDeConferencistas() {

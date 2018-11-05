@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject,Subscription } from 'rxjs';
 import {PeticionesService} from '../../services/peticiones.service';
 import {FuncionesService} from '../../services/funciones.service';
 import * as moment from "moment"
@@ -10,13 +11,13 @@ import * as moment from "moment"
 export class ListActividadesComponent implements OnInit {
   ListadoDeActividades:any[];
   searchText;
+  public static returned: Subject<any> = new Subject();
+  subc:Subscription;
   constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) {
     this.searchText= '';
-  	// this.ListadoDeActividades = [
-  	// 	{id:1,titulo:"Seminario 1",fecha_inicio:"101212",fecha_fin:"123213"},
-  	// 	{id:2,titulo:"Administración de Recursos",fecha_inicio:"101212",fecha_fin:"123213"},
-  	// 	{id:3,titulo:"TIC",fecha_inicio:"101212",fecha_fin:"123213"},
-  	// ]
+     this.subc = ListActividadesComponent.returned.subscribe(res => {
+      this.buscarActividades(moment().format("YYYY-MM-DD"), moment().format("YYYY-MM-DD"))
+    });
    }
 
   ngOnInit() {
@@ -28,6 +29,9 @@ export class ListActividadesComponent implements OnInit {
     return (fecha1,fecha2) => this.buscarActividades(fecha1,fecha2);
   }
 
+  ngOnDestroy(): void {
+    this.subc.unsubscribe();
+  }
   buscarActividades(fecha1,fecha2){
     this._peticiones.GetActividades(fecha1,fecha2).subscribe(
       response => {

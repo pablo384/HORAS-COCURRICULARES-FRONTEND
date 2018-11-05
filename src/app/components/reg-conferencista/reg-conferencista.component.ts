@@ -3,7 +3,7 @@ import { RouterModule, Router,ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {PeticionesService} from '../../services/peticiones.service';
 import {FuncionesService} from '../../services/funciones.service';
-
+import {ListConferencistasComponent} from '../../components/list-conferencistas/list-conferencistas.component';
 @Component({
   selector: 'app-reg-conferencista',
   templateUrl: './reg-conferencista.component.html',
@@ -35,6 +35,7 @@ export class RegConferencistaComponent implements OnInit {
         this._funtions.blockUIO().stop()
         console.log(response);
         if (response.info) {
+           response.data.estado = response.data.estado=="A"
           this.createForm(response.data)
         }else
           this._funtions.Toast("error", "error",this._funtions.sacarText(response.error));
@@ -54,7 +55,7 @@ export class RegConferencistaComponent implements OnInit {
       }
     );
   }
-	createForm(a ={nombres:'',apellidos:'',direccion:'',telefono:'',cedula:'',email:'',cargo:'',trabajo:''}){
+	createForm(a ={nombres:'',apellidos:'',direccion:'',telefono:'',cedula:'',email:'',cargo:'',trabajo:'',estado:'A'}){
   	this.formPerson = this.fb.group({
       nombres: [a.nombres, Validators.required],
       apellidos: [a.apellidos, Validators.required],
@@ -63,9 +64,11 @@ export class RegConferencistaComponent implements OnInit {
       email:a.email,
       telefono:[a.telefono, Validators.required],
       tipo:'C',
+      estado:a.estado,
       cargo:a.cargo,
       trabajo:a.trabajo
     });
+    this._funtions.actionsOnRoute(this.formPerson.controls);
   }
 
 	OnHIde(){
@@ -76,6 +79,7 @@ export class RegConferencistaComponent implements OnInit {
     this.formPerson.reset();
     this.Inpdisplay = false;
     this._router.navigate([uri]);
+    ListConferencistasComponent.returned.next(false);
 	}
 	onSubmit(){
     let cNameAction = "crearEstudiante";
@@ -84,6 +88,7 @@ export class RegConferencistaComponent implements OnInit {
       cNameAction ="ActualizarConferencista";
       value.id = this.id;
     }
+    value.estado = value.estado?"A":"I";
     console.log("value",value,"cNameAction",cNameAction)
     this._funtions.blockUIO().start()
     this._peticiones[cNameAction](value,this.id).subscribe(

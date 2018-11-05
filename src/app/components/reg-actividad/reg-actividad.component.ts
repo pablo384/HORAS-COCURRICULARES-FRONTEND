@@ -4,7 +4,9 @@ import { SelectItem } from 'primeng/primeng'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
-import * as moment from "moment"
+import * as moment from "moment";
+import {ListActividadesComponent} from '../list-actividades/list-actividades.component'
+
 @Component({
   selector: 'app-reg-actividad',
   templateUrl: './reg-actividad.component.html',
@@ -180,8 +182,8 @@ export class RegActividadComponent implements OnInit {
     if(this.id!= null){
       uri = "actividades";
     }
-
     this._router.navigate([uri]);
+    ListActividadesComponent.returned.next(false);
 	    // this.Outdisplay.emit(false);
 	 }
 

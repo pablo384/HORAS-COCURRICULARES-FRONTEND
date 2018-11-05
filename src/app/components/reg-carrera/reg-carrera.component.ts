@@ -3,6 +3,9 @@ import { RouterModule,ActivatedRoute, Router } from '@angular/router';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+ import {ListCarrerasComponent} from '../list-carreras/list-carreras.component'
+ 
+
 
 
 @Component({
@@ -48,7 +51,7 @@ export class RegCarreraComponent implements OnInit {
     this.formCarrera.reset();
     this.Inpdisplay = false;
     this._router.navigate([uri]);
- 
+    ListCarrerasComponent.returned.next(false);
   }
 
 

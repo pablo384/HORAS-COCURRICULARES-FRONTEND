@@ -1,10 +1,5 @@
 <p-dialog  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false"  >
 	<p-header>
-<!-- 		<div [formGroup]="formPerson" >
-			<label >Registrar Estudiante</label>
-			<p-toggleButton styleClass="btn-default pull-right"  formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
-	</div>
- -->
 	<div [formGroup]="formPerson" >
 	<label *ngIf="_funtions.IsRegistrar()">Registrar Estudiante</label>
 	<label *ngIf="_funtions.IsEditar()">Editar Estudiante</label>
@@ -132,12 +127,10 @@
 </form>
 </div>
 <p-footer>
-<!-- <button type="button" class="btn btn-default pull-left"   (click)="OnHIde()">Salir</button> -->
-<!-- <button type="button" (click)="onSubmit()" [disabled]="formPerson.invalid" class="btn btn-success">Registrar</button> -->
+<button type="button" class="btn btn-default pull-left"   (click)="OnHIde()">Salir</button>
 	<button type="button" class="btn btn-success" [disabled]="formPerson.invalid" (click)="onSubmit()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
 			<span *ngIf="id==null">Registrar</span>
 			<span *ngIf="id!=null && !_funtions.IsMostrar()">Actualizar</span>
-			<!-- <span *ngIf="id!=null && _funtions.IsMostrar()">Editar</span> -->
 		</button>		
 		<button type="button" class="btn btn-success" [disabled]="formPerson.invalid" [routerLink]="['/estudiantes',id,'editar']" *ngIf="_funtions.IsMostrar()">
 			<span>Editar</span>

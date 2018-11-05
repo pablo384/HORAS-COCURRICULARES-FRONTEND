@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule,ActivatedRoute, Router } from '@angular/router';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
+import {ListVerificadoresComponent} from '../list-verificadores/list-verificadores.component'
 
 @Component({
   selector: 'app-reg-verificador',
@@ -40,6 +41,7 @@ export class RegVerificadorComponent implements OnInit {
     this.formPerson.reset();
     this.Inpdisplay = false;
     this._router.navigate([uri]); 
+    ListVerificadoresComponent.returned.next(false);
     // this._funtions.backRoute()
   	}
 
@@ -50,6 +52,7 @@ export class RegVerificadorComponent implements OnInit {
         this._funtions.blockUIO().stop()
         console.log(response);
         if (response.info) {
+          response.data.estado = response.data.estado== "A"
           this.datosCurrent = response.data;
           this.createForm(response.data)
         }else
@@ -71,7 +74,7 @@ export class RegVerificadorComponent implements OnInit {
     );
   }
 
-  createForm(a={nombres:'',apellidos:'',direccion:'',cedula:'',email:'',telefono:'',usuario:'',password:''}){
+  createForm(a={nombres:'',apellidos:'',direccion:'',cedula:'',email:'',telefono:'',usuario:'',password:'',estado:'A'}){
     this.formPerson = this.fb.group({
       nombres: [a.nombres, Validators.required],
       apellidos: [a.apellidos, Validators.required],
@@ -81,9 +84,11 @@ export class RegVerificadorComponent implements OnInit {
       telefono:a.telefono,
       usuario:[a.usuario, Validators.required],
       tipo:'V',
+      estado:a.estado,
       clave:[a.password, Validators.compose([Validators.required, Validators.minLength(4)])],
       claveConfirm:[a.password, Validators.compose([Validators.required, Validators.minLength(4)])]
     });
+    this._funtions.actionsOnRoute(this.formPerson.controls);
   }
 
   onSubmit(){
@@ -96,6 +101,7 @@ export class RegVerificadorComponent implements OnInit {
     }
     console.log("value",value,"cNameAction",cNameAction)
     if (value.clave == value.claveConfirm){
+      value.estado = value.estado?"A":"I";
       this._funtions.blockUIO().start()
       this._peticiones[cNameAction](value,this.id).subscribe(
         response => {
