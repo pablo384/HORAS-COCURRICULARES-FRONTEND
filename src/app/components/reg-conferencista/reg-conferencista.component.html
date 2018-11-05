@@ -1,73 +1,72 @@
 <p-dialog header="Registrar Conferencista"  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
-	<div class="modal-body">
-  	<div class="box-body">
-			<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
-      <div class="row">
-    		<div class="col-lg-12">
-           		<div class="input-group">
-               	<span class="input-group-addon">Nombres</span>
-                <input type="text" class="form-control" formControlName="nombres">
-            	</div>
-    		</div>
-    	</div>
-  		<br>
-			<div class="row">
-        <div class="col-lg-12">
-        		<div class="input-group">
-           	<span class="input-group-addon">Apellidos</span>
-            <input type="text" class="form-control" formControlName="apellidos">
-        	</div>
-        </div>
-    	</div>
-  		<br>
-    		<div class="row">
-        	<div class="col-lg-12">
-        		 <div class="input-group">
-                <span class="input-group-addon">Teléfono</span>
-                <p-inputMask mask="(999) 999-9999" formControlName="telefono" [style]="{'border-radius': '1px 6px 6px 1px','border-color':'#bfbfbf','height':'35px','width':'100%'}" placeholder="(999) 999-9999"></p-inputMask>
+  <div class="modal-body">
+    <div class="box-body">
+      <form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="input-group">
+              <span class="input-group-addon">Nombres</span>
+              <input type="text" class="form-control" formControlName="nombres">
             </div>
-            <br>
-        	</div>
-          <br>
-        	<div class="col-lg-12">
-        		<div class="input-group">
-                <span class="input-group-addon">Email</span>
-                <input type="email" class="form-control" formControlName="email">
-            </div>
-        	</div>
+          </div>
         </div>
         <br>
-        <div class="input-group">
-              <span class="input-group-addon">Dirección</span>
-              <input type="text" class="form-control" formControlName="direccion">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="input-group">
+              <span class="input-group-addon">Apellidos</span>
+              <input type="text" class="form-control" formControlName="apellidos">
             </div>
-            <br>
-    		<div class="row">
-    			<div class="col-lg-12">
-               		<div class="input-group">
-		               	<span class="input-group-addon">Cargo o Especialidad</span>
-		                <input type="text" class="form-control" formControlName="cargo">
-	              	</div>
-              	</div>
-    		</div>
-    		<br>
-
-    		<div class="row">
-    			<div class="col-lg-12">
-               		<div class="input-group">
-		               	<span class="input-group-addon">Trabajo o empresa</span>
-		                <input type="text" class="form-control" formControlName="trabajo">
-	              	</div>
-              	</div>
-    		</div>
-      </form>
-		</div>
-	</div>
-	<p-footer>
-		<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
-		<button type="button" (click)="onSubmit()" [disabled]="formPerson.invalid" class="btn btn-success">
-      <span *ngIf="id==null">Registrar</span>
-      <span *ngIf="id!=null">Actualizar</span>  
-    </button>
-	</p-footer>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="input-group">
+              <span class="input-group-addon">Teléfono</span>
+            <p-inputMask mask="(999) 999-9999" formControlName="telefono" [style]="{'border-radius': '1px 6px 6px 1px','border-color':'#bfbfbf','height':'35px','width':'100%'}" placeholder="(999) 999-9999"></p-inputMask>
+          </div>
+          <br>
+        </div>
+        <br>
+        <div class="col-lg-12">
+          <div class="input-group">
+            <span class="input-group-addon">Email</span>
+            <input type="email" class="form-control" formControlName="email">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="input-group">
+        <span class="input-group-addon">Dirección</span>
+        <input type="text" class="form-control" formControlName="direccion">
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="input-group">
+            <span class="input-group-addon">Cargo o Especialidad</span>
+            <input type="text" class="form-control" formControlName="cargo">
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="input-group">
+            <span class="input-group-addon">Trabajo o empresa</span>
+            <input type="text" class="form-control" formControlName="trabajo">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<p-footer>
+  <button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
+  <button type="button" (click)="onSubmit()" [disabled]="formPerson.invalid" class="btn btn-success">
+  <span *ngIf="id==null">Registrar</span>
+  <span *ngIf="id!=null">Actualizar</span>
+  </button>
+</p-footer>
 </p-dialog>

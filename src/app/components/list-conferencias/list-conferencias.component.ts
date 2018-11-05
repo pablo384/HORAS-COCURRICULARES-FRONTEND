@@ -12,15 +12,28 @@ import * as moment from "moment"
 export class ListConferenciasComponent implements OnInit,OnDestroy {
 	ListadoDeConferenciasPorActividad:any[];
 	actividad;
+  id_actividad;
   private onDestroy$ = new Subject<void>();
 
 	constructor(private aroute:ActivatedRoute,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
-	  this.aroute.queryParams.subscribe( params => {
-  		// console.log('params["actividad"]',params);
-        this.actividad = JSON.parse( params["actividad"] );
-  		}
-    );
-      
+	  // this.aroute.queryParams.subscribe( params => {
+  	// 	console.log('params["actividad"]',params);
+   //      if(params["actividad"] != undefined){
+   //        this.actividad = JSON.parse( params["actividad"] );
+   //      }
+   //      if(params["id_actividad"] != undefined){
+   //        this.id = params["id_actividad"];
+   //      }
+   //      console.log('params["actividad"]',this.actividad);
+  	// 	}
+   //  );
+
+    this.aroute.params.subscribe( params => {
+      console.log('RegConferenciaComponent ',params);
+      // this.id = params["id"]
+      this.id_actividad = params["id_actividad"]
+    });
+
 	}
 
 	ngOnInit() {
@@ -82,7 +95,9 @@ export class ListConferenciasComponent implements OnInit,OnDestroy {
     );
   }
   ListasDeConferencias(){
-		 this._peticiones.GetConferenciasPorActividad(this.actividad.id).subscribe(
+    console.log("ListasDeConferencias(this.actividad && this.actividad.id) || this.id", this.id_actividad)
+     this._peticiones.GetConferenciasPorActividad( this.id_actividad).subscribe(
+		 // this._peticiones.GetConferenciasPorActividad(this.a).subscribe(
       response => {
         this._funtions.blockUIO().stop()
         console.log("sdfkjdsjfjdsfj",response.data);

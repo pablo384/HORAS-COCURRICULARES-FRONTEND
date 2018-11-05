@@ -37,12 +37,13 @@ export class RegCarreraComponent implements OnInit {
       abreviatura:ab,
   		horas_requeridas:hr
   	})
+    this._funtions.actionsOnRoute(this.formCarrera.controls);
   }
 
   OnHIde(){
-    let uri="/";
+    let uri="carreras";
     if(this.id!= null){
-      uri = "list_carreras";
+      uri = "carreras";
     }
     this.formCarrera.reset();
     this.Inpdisplay = false;

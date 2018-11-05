@@ -37,37 +37,55 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'iniciar_actividad', component: IniciarActividadComponent },
     { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard] },
-
-    { path: 'resgistrar_estudiante',    component: RegEstudianteComponent,    canActivate: [AuthGuard] },
-    { path: 'estudiante/editar/:id',    component: RegEstudianteComponent,    canActivate: [AuthGuard] },
-    { path: 'resgistrar_conferencista', component: RegConferencistaComponent, canActivate: [AuthGuard] },
-    { path: 'conferencista/editar/:id', component: RegConferencistaComponent, canActivate: [AuthGuard] },
-    { path: 'resgistrar_carrera',       component: RegCarreraComponent,       canActivate: [AuthGuard] },
-    { path: 'carrera/editar/:id',       component: RegCarreraComponent,       canActivate: [AuthGuard] },
-    { path: 'resgistrar_actividad',     component: RegActividadComponent,     canActivate: [AuthGuard] },
-    { path: 'actividad/editar/:id',     component: RegActividadComponent,     canActivate: [AuthGuard] },
-    { path: 'resgistrar_conferencia',   component: RegConferenciaComponent,   canActivate: [AuthGuard] },
-    { path: 'resgistrar_verificador',   component: RegVerificadorComponent,   canActivate: [AuthGuard] },
-    { path: 'verificador/editar/:id',   component: RegVerificadorComponent,   canActivate: [AuthGuard] },
     { 
-        path: 'lista_actividades',
+        path: 'actividades',
         component: ListActividadesComponent, canActivate: [AuthGuard],
         children: [
-          {path: 'reg', component: RegConferenciaComponent},
+          // { path: 'reg', component: RegConferenciaComponent},
+          { path: 'registrar',     component: RegActividadComponent,     canActivate: [AuthGuard] },
+          { path: ':id/editar',     component: RegActividadComponent,     canActivate: [AuthGuard] },
+          { path: ':id/mostrar',     component: RegActividadComponent,     canActivate: [AuthGuard] },
         ]
     },
 
-    { path: 'conferencias', component: ListConferenciasComponent,canActivate: [AuthGuard] },
-    {path: 'detalle_conferencia', component: DetalleConferenciaComponent},
-    { path: 'list_conferencistas', component: ListConferencistasComponent, canActivate: [AuthGuard]},
-    { path: 'list_asistencias', component: ListAsistenciasComponent, canActivate: [AuthGuard] },
-    { path: 'list_estudiantes', component: ListEstudiantesComponent,canActivate: [AuthGuard],
-      // children: [
-      //     {path: 'ponchar_asistencia', component: PoncharAsistenciaComponent},
-      //   ]
+    { path: ':id_actividad/conferencias', component: ListConferenciasComponent,canActivate: [AuthGuard] ,
+      children:[
+        { path: 'registrar',   component: RegConferenciaComponent,   canActivate: [AuthGuard] },
+        { path: ':id/editar',   component: RegConferenciaComponent,   canActivate: [AuthGuard] },
+        { path: ':id/mostrar',   component: RegConferenciaComponent,   canActivate: [AuthGuard] },
+      ]
     },
-    { path: 'list_carreras', component: ListCarrerasComponent,canActivate: [AuthGuard] },
-    { path: 'list_verificadores', component: ListVerificadoresComponent,canActivate: [AuthGuard] },
+    {path: 'detalle_conferencia', component: DetalleConferenciaComponent},
+    { path: 'conferencistas', component: ListConferencistasComponent, canActivate: [AuthGuard],
+        children:[
+            { path: 'registrar', component: RegConferencistaComponent, canActivate: [AuthGuard] },
+            { path: ':id/editar', component: RegConferencistaComponent, canActivate: [AuthGuard] },
+            { path: ':id/mostrar', component: RegConferencistaComponent, canActivate: [AuthGuard] },
+        ]
+    },
+    { path: 'list_asistencias', component: ListAsistenciasComponent, canActivate: [AuthGuard] },
+    { path: 'estudiantes', component: ListEstudiantesComponent,canActivate: [AuthGuard],
+      children: [
+        { path: 'registrar',    component: RegEstudianteComponent,    canActivate: [AuthGuard] },
+        { path: ':id/editar',    component: RegEstudianteComponent,    canActivate: [AuthGuard] },
+        { path: ':id/mostrar',    component: RegEstudianteComponent,    canActivate: [AuthGuard] },
+      ]
+    },
+    { path: 'carreras', component: ListCarrerasComponent,canActivate: [AuthGuard],
+      children:[
+        { path: 'registrar',   component: RegCarreraComponent,       canActivate: [AuthGuard] },
+        { path: ':id/editar',  component: RegCarreraComponent,       canActivate: [AuthGuard] },
+        { path: ':id/mostrar', component: RegCarreraComponent,       canActivate: [AuthGuard] },
+      ]
+    },
+    
+    { path: 'verificadores', component: ListVerificadoresComponent,canActivate: [AuthGuard],
+      children:[
+        { path: 'registrar',   component: RegVerificadorComponent,   canActivate: [AuthGuard] },
+        { path: ':id/editar',   component: RegVerificadorComponent,   canActivate: [AuthGuard] },
+        { path: ':id/mostrar',   component: RegVerificadorComponent,   canActivate: [AuthGuard] },
+      ]
+    },
  
     {path:'report_asistencia_conferencia', component: ReportAsistenciaPorConferenciaComponent, canActivate: [AuthGuard] },
     // otherwise redirect to home

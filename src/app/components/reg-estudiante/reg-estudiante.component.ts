@@ -107,9 +107,9 @@ export class RegEstudianteComponent implements OnInit {
     this.formPerson.reset();
     this.Inpdisplay = false;
     if (this.routeBack != null){
-      this._router.navigate(["/lista_actividades"]);
+      this._router.navigate(["/actividades"]);
     }else
-      this._router.navigate(["/"]);
+      this._router.navigate(["/estudiantes"]);
 
     // this.Outdisplay.emit(false);
   }

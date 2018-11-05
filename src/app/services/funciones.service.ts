@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import {CookieService} from 'ngx-cookie';
 import {ToasterService} from 'angular5-toaster/dist';
 import {BlockUI, NgBlockUI} from 'ng-block-ui';
 import {PeticionesService} from './peticiones.service';
+import { Location} from '@angular/common';
+import { Router, ActivatedRoute } from '@angular/router';
+
 @Injectable()
 export class FuncionesService {
   @BlockUI() blockUI: NgBlockUI;
   public token: string;
   public loggedUser;
-  constructor(private myRoute: Router,private cookieService: CookieService,private toasterService: ToasterService,private _peticiones:PeticionesService) { }
+  constructor(private _location: Location,private myRoute: Router,private cookieService: CookieService,private toasterService: ToasterService,private _peticiones:PeticionesService) { }
 
   setCookieObject(name: string, object: Object) {
     this.cookieService.putObject(name, object);
@@ -24,6 +26,34 @@ export class FuncionesService {
   Toast(cType="success",cTitle="success",cMsg){
     this.toasterService.pop(cType,cTitle,cMsg);
     // this.toasterService.pop("success", "success", "Bienvenido!!");
+  }
+
+
+  IsMostrar(): boolean{
+    return this.myRoute.url.split("/").slice(-1)[0] == "mostrar"
+  }
+
+  IsRegistrar(): boolean{
+    return this.myRoute.url.split("/").slice(-1)[0] == "registrar"
+  }
+
+  IsEditar(): boolean{
+    return this.myRoute.url.split("/").slice(-1)[0] == "editar"
+  }
+
+  actionsOnRoute(constrols: object){
+    Object.keys(constrols).forEach(key => {
+    if (this.IsMostrar()){
+      constrols[key].disable();
+    }
+    else{
+      constrols[key].enable();
+    } 
+    });
+  }
+
+  backRoute(){
+    this._location.back();
   }
 
   allCarreras(callBack){

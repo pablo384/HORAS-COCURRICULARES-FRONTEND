@@ -1,5 +1,12 @@
-
-<p-dialog header="Registrar Actividad"  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=500 [height]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" >
+<p-dialog [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=500 [height]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false">
+   <p-header>
+    <div >
+      <label *ngIf="_funtions.IsRegistrar()">Registrar Actividad</label>
+      <label *ngIf="_funtions.IsEditar()">Editar Actividad</label>
+      <label *ngIf="_funtions.IsMostrar()">Mostrar Actividad</label>
+      <!-- <p-toggleButton styleClass="btn-default pull-right" formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton> -->
+    </div>
+  </p-header>
   <div class="box-body" style="height: 441px;">
     <form [formGroup]="formActividad"  (ngSubmit)="crearActividad()" >
       <div class="col-lg-12">
@@ -11,47 +18,50 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="col-lg-6">
-               Fecha de inicio
+              Fecha de inicio
             </div>
             <div class="col-lg-6">
-              <p-calendar  dateFormat="dd/mm/yy" (onSelect)="onSelectDateInicio($event)" [minDate]="minDate" formControlName="fecha_inicio" [showIcon]="true" required></p-calendar>
-            </div>
+            <p-calendar  dateFormat="dd/mm/yy" (onSelect)="onSelectDateInicio($event)" [minDate]="minDate" formControlName="fecha_inicio" [showIcon]="true" required></p-calendar>
           </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-lg-12">
-              <div class="col-lg-6">
-                Fecha de Finalizar
-              </div>
-              <div class="col-lg-6">
-                <p-calendar  dateFormat="dd/mm/yy" [minDate]="minDateFin" formControlName="fecha_finalizacion" [showIcon]="true" required></p-calendar>
-              </div>
-          </div>
-        </div>
-         <br>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="col-lg-6">
-              <span>Carreras participantes</span>
-            </div>
-            <div class="col-lg-6">
-              <p-multiSelect defaultLabel="Carreras" [selectedItemsLabel]="'Carreras seleccionada'" [maxSelectedLabels]='false' [options]="allCarreras"  formControlName="carreras" [style]="{'width':'100%','height':'33px'}" required></p-multiSelect>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <p><span *ngFor="let c of selectedCarreras" style="margin-right: 10px">{{c.name}}</span></p>
-          </div>
-
         </div>
       </div>
-    </form>
+      <br>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="col-lg-6">
+            Fecha de Finalizar
+          </div>
+          <div class="col-lg-6">
+          <p-calendar  dateFormat="dd/mm/yy" [minDate]="minDateFin" formControlName="fecha_finalizacion" [showIcon]="true" required></p-calendar>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="col-lg-6">
+          <span>Carreras participantes</span>
+        </div>
+        <div class="col-lg-6">
+        <p-multiSelect defaultLabel="Carreras" [selectedItemsLabel]="'Carreras seleccionada'" [maxSelectedLabels]='false' [options]="allCarreras"  formControlName="carreras" [style]="{'width':'100%','height':'33px'}" required></p-multiSelect>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <p><span *ngFor="let c of selectedCarreras" style="margin-right: 10px">{{c.name}}</span></p>
+    </div>
   </div>
-  <p-footer>
-    <button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
-    <button type="button" (click)="crearActividad()" [disabled]="formActividad.invalid" class="btn btn-success">
+</div>
+</form>
+</div>
+<p-footer>
+  <button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
+  <button type="button" class="btn btn-success" [disabled]="formActividad.invalid" (click)="crearActividad()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
       <span *ngIf="id==null">Registrar</span>
-      <span *ngIf="id!=null">Actualizar</span>
+      <span *ngIf="id!=null && !_funtions.IsMostrar()">Actualizar</span>
+      <!-- <span *ngIf="id!=null && _funtions.IsMostrar()">Editar</span> -->
+    </button>   
+    <button type="button" class="btn btn-success" [disabled]="formActividad.invalid" [routerLink]="['/actividades',id,'editar']" *ngIf="_funtions.IsMostrar()">
+      <span>Editar</span>
     </button>
-  </p-footer>
+</p-footer>
 </p-dialog>

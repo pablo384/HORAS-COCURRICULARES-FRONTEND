@@ -69,9 +69,9 @@ export class RegConferencistaComponent implements OnInit {
   }
 
 	OnHIde(){
-    let uri="/";
+    let uri="/conferencistas";
     if(this.id!= null){
-      uri = "list_conferencistas";
+      uri = "conferencistas";
     }
     this.formPerson.reset();
     this.Inpdisplay = false;

@@ -55,6 +55,15 @@ export class PeticionesService {
 
     return this.http.post(this.url + '/conferencia',JSON.stringify(data))
   } 
+   //=======================================| ESTUDIANTE |=====================
+  updateConferencia(data: Object,id): Observable<any> {
+    return this.http.patch(this.url + '/conferencia/'+id,JSON.stringify(data))
+  } 
+   //=======================================| ESTUDIANTE |=====================
+  getConferencia(id): Observable<any> {
+
+    return this.http.get(this.url + '/conferencia/'+id)
+  } 
 
   //=======================================| ESTUDIANTE |=====================
   verificarParticipacion(data: Object): Observable<any> {

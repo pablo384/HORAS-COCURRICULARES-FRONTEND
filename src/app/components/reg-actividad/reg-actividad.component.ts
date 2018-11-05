@@ -54,6 +54,7 @@ export class RegActividadComponent implements OnInit {
     this.minDateFin = a.fecha_finalizacion;
     this.formActividad=this.fb.group(a);
     this.formActividad.controls.carreras.patchValue(carreras);
+    this._funtions.actionsOnRoute(this.formActividad.controls);
   }
 
 
@@ -173,11 +174,11 @@ export class RegActividadComponent implements OnInit {
 	
 
 	 OnHIde(){
-    let uri="/";
+    let uri="actividades";
     this.formActividad.reset();
     this.Inpdisplay = false;
     if(this.id!= null){
-      uri = "lista_actividades";
+      uri = "actividades";
     }
 
     this._router.navigate([uri]);

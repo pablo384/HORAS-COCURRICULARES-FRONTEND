@@ -1,45 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css"
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-.ui-widget-content {
-  border: 2px solid white;
-  background: white;
-  color: #323232;
-}
-.ui-widget-content a {
-  color: #323232; 
-}
+@import "~bootstrap/dist/css/bootstrap.css" @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+/*.ui-widget-content {
+    border: 2px solid white;
+    background: white;
+    color: #323232;
+}*/
 
-.ui-autocomplete-dd input.ui-corner-all, .ui-autocomplete-dd .ui-autocomplete-multiple-container.ui-corner-all{
-	border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  height: 36px;
-  border-radius: 1px 1px 1px 1px;
-}
-.item_menu{
-	background:#222d32;
-	color:#b8c7ce;
-}
+/*.ui-widget-content a {
+    color: #323232;
+}*/
 
+.ui-autocomplete-dd input.ui-corner-all, .ui-autocomplete-dd .ui-autocomplete-multiple-container.ui-corner-all {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 36px;
+    border-radius: 1px 1px 1px 1px;
+}
+.item_menu {
+    background: #222d32;
+    color: #b8c7ce;
+}
 .skin-blue .sidebar-menu .treeview-menu>li>a {
     color: #8aa4af;
 }
-
-.header-list{
-  background: #b3d9ea;
+.header-list {
+    background: #b3d9ea;
 }
-
 .ui-widget-header {
     border: 1px solid #323232;
-    /*background: #333333b3;*/
     color: #cccccc;
-    background:#1a83e4;
+    background: #1a83e4;
     font-weight: bold;
 }
-
 .ui-state-active {
     border-color: #13630a;
     background: #137b1a;
-    color: #fffff2;
+    /*color: #fffff2;*/
+}
+.ui-dropdown label.ui-dropdown-label {
+    height: 32px;
+    margin-top: -6px;
+    margin-left: -11px;
 }

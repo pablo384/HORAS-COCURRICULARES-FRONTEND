@@ -1,4 +1,11 @@
-<p-dialog header="Registrar Carrera"  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
+<p-dialog  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false" >   <p-header>
+    <div >
+      <label *ngIf="_funtions.IsRegistrar()">Registrar Carrera</label>
+      <label *ngIf="_funtions.IsEditar()">Editar Carrera</label>
+      <label *ngIf="_funtions.IsMostrar()">Mostrar Carrera</label>
+      <!-- <p-toggleButton styleClass="btn-default pull-right" formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton> -->
+    </div>
+  </p-header>
 	<form [formGroup]="formCarrera"  (ngSubmit)="onSubmit()" >
 		<div class="box-body">
 			<div class="col-lg-7">
@@ -25,10 +32,14 @@
 		</div>
 	</form>
 	<p-footer>
-  	<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
-		<button type="button" class="btn btn-success" [disabled]="formCarrera.invalid" (click)="onSubmit()">
-			<span *ngIf="id==null">Registrar</span>
-			<span *ngIf="id!=null">Actualizar</span>
-		</button>
+		  <button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
+	  <button type="button" class="btn btn-success" [disabled]="formCarrera.invalid" (click)="onSubmit()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
+	      <span *ngIf="id==null">Registrar</span>
+	      <span *ngIf="id!=null && !_funtions.IsMostrar()">Actualizar</span>
+	      <!-- <span *ngIf="id!=null && _funtions.IsMostrar()">Editar</span> -->
+	    </button>   
+	    <button type="button" class="btn btn-success" [disabled]="formCarrera.invalid" [routerLink]="['/carreras',id,'editar']" *ngIf="_funtions.IsMostrar()">
+	      <span>Editar</span>
+	    </button>
 	</p-footer>
 </p-dialog>
