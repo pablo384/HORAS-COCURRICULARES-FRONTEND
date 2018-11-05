@@ -3,7 +3,7 @@ import { RouterModule, Router ,  ActivatedRoute} from '@angular/router';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import {ListEstudiantesComponent} from '../list-estudiantes/list-estudiantes.component'
 
 
 @Component({
@@ -112,6 +112,7 @@ export class RegEstudianteComponent implements OnInit {
       this._router.navigate(["/estudiantes"]);
     }
 
+    ListEstudiantesComponent.returned.next(false);
     // this.Outdisplay.emit(false);
   }
 
