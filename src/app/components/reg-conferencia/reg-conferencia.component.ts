@@ -13,28 +13,17 @@ export class RegConferenciaComponent implements OnInit {
   formConferencia:FormGroup;
 	Inpdisplay: boolean;
   formPerson: FormGroup;
-  	// @Output() public Outdisplay = new EventEmitter<boolean>();
 	date8: Date;
 	dateValue: Date;
   porcentaje_default:any[];
   actividad:string;
   conferencista:string;
-  // horas_default:any[];
   ListadoConferencistas: any[];
   id_conferencia;
-  // filteredConferencista: any[];
   constructor(private aroute:ActivatedRoute,private fb: FormBuilder,private _router: Router,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
-   //  this.aroute.queryParams.subscribe( params => {
-   //    console.log('RegConferenciaComponent params["actividad"]',params,this._router.url.split('/')[1]);
-   //        // this.actividad = JSON.parse( params["id_actividad"] );
-   //    }
-   // );
-
-  this.aroute.params.subscribe( params => {
-    console.log('RegConferenciaComponent ',params,this._router.url);
-      // this.id = params["id"]
+    this.aroute.params.subscribe( params => {
       this.id_conferencia = params["id"]
-  });
+    });
     if(this._router.url.split('/').length >0 &&  this._router.url.split('/')[1] != undefined ){
       this.actividad= this._router.url.split('/')[1]
     }
@@ -43,17 +32,13 @@ export class RegConferenciaComponent implements OnInit {
     for(let i = 50; i <=100; i=i+5) {
       this.porcentaje_default.push({name:i+"%",value:i})
     }
-     // this.horas_default =[{name:"0:15",value:"0:15"}];
+
     this.Inpdisplay = true;
     this.listadoDeConferencistas();
     this.createForm();
-   
   }
 
   ngOnInit() {
-    
-   
-    
   }
 
   OnHIde(){
@@ -62,9 +47,6 @@ export class RegConferenciaComponent implements OnInit {
     this._router.navigate(["/actividades"]);
     // this.Outdisplay.emit(false);
   }
-
-
-
 
   listadoDeConferencistas() {
     // console.log(this.loginForm.value);
