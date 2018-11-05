@@ -30,7 +30,8 @@
           <td>{{item.direccion}}</td>
           <td>{{item.correo}}</td>
           <td>{{item.telefono}}</td>
-          <td>{{item.estado}}</td>
+          <td *ngIf="item.estado == 'A'"><div class="label label-success">Activo</div> </td>
+          <td *ngIf="item.estado == 'I'"><div class="label label-danger">Inactivo</div></td>
           <td>
             <div class="btn-group">
               <button type="button" class="btn btn-default btn-flat" title="Editar"  [routerLink]="[item.id_persona,'editar']" ><i class="fa fa-edit"></i></button>

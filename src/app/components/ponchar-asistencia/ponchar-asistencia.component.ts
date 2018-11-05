@@ -1,4 +1,4 @@
-import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter,ChangeDetectorRef } from '@angular/core';
 import { RouterModule, Router ,ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {FuncionesService} from '../../services/funciones.service';
@@ -13,7 +13,7 @@ export class PoncharAsistenciaComponent implements OnInit {
 	@Output() public Outdisplay = new EventEmitter<boolean>();
 	@Input() public Inpdisplay;
 	@Input() public InpDatos;
-	  constructor(private fb: FormBuilder,private _router: Router,private aroute:ActivatedRoute,private _funtions: FuncionesService, private _peticiones :PeticionesService) {
+	  constructor(private _chngRef:ChangeDetectorRef,private fb: FormBuilder,private _router: Router,private aroute:ActivatedRoute,private _funtions: FuncionesService, private _peticiones :PeticionesService) {
 	  	// this.aroute.queryParams.subscribe( params => {
     // 		console.log('params["conferencia"]',params);
     //     		// this.datos = JSON.parse( params["datos"] );
@@ -27,6 +27,11 @@ export class PoncharAsistenciaComponent implements OnInit {
 		console.log("InpDatos ",this.InpDatos)
 		// this.createForm();
 	}
+
+
+	ngDoCheck(){ //para que no de error
+    this._chngRef.detectChanges();
+  }
 
 	enviarDatos(){
 		let value = {};
