@@ -68,6 +68,7 @@ import { ReportAsistenciaPorConferenciaComponent } from './components/report-asi
     ListEntradaSalidaComponent,
     ListConferencistasComponent,
     ListCarrerasComponent,
+    BuscadorComponent,    
     ListVerificadoresComponent,
     SearchPipe,
     PerfilComponent,

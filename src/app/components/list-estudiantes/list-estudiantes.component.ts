@@ -26,7 +26,7 @@ export class ListEstudiantesComponent implements OnInit {
   ngOnDestroy(): void {
     this.subc.unsubscribe();
   }
-  private doThingFactory() {
+   doThingFactory() {
     return (cDatos) => this.getEstudiante(cDatos);
   }
 
