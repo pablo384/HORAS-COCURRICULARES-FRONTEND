@@ -3,6 +3,9 @@ import { RouterModule,ActivatedRoute, Router } from '@angular/router';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+ import {ListCarrerasComponent} from '../list-carreras/list-carreras.component'
+ 
+
 
 
 @Component({
@@ -37,13 +40,18 @@ export class RegCarreraComponent implements OnInit {
       abreviatura:ab,
   		horas_requeridas:hr
   	})
+    this._funtions.actionsOnRoute(this.formCarrera.controls);
   }
 
   OnHIde(){
+    let uri="carreras";
+    if(this.id!= null){
+      uri = "carreras";
+    }
     this.formCarrera.reset();
     this.Inpdisplay = false;
-    this._router.navigate(["/"]);
-    // this.Outdisplay.emit(false);
+    this._router.navigate([uri]);
+    ListCarrerasComponent.returned.next(false);
   }
 
 

@@ -1,76 +1,88 @@
 
-<p-dialog header="Registrar Verificador"  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  >
-		<div class="box-body">
-        	<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
-	        	<div class="input-group">
-		          <span class="input-group-addon">Nombres</span>
-		          <input type="text" class="form-control" formControlName="nombres" >
-	          	</div>
-	          	<br>
+<p-dialog  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false"  >
+	<p-header>
+	<div [formGroup]="formPerson" >
+	<label *ngIf="_funtions.IsRegistrar()">Registrar Verificador</label>
+	<label *ngIf="_funtions.IsEditar()">Editar Verificador</label>
+	<label *ngIf="_funtions.IsMostrar()">Mostrar Verificador</label>
+	<p-toggleButton  styleClass="btn-default pull-right" formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
+	</div>
+</p-header>
+<!-- <p-dialog header="Registrar Verificador"  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()"  > -->
+	<div class="box-body">
+		<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
+			<div class="input-group">
+				<span class="input-group-addon">Nombres</span>
+				<input type="text" class="form-control" formControlName="nombres" >
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon">Apellidos</span>
+				<input type="text" class="form-control" formControlName="apellidos">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon">Dirección</span>
+				<input type="text" class="form-control" formControlName="direccion">
+			</div>
+			<br>
+			<div class="row" style="padding-bottom:16px">
+				<div class="col-lg-6">
+					<div class="input-group">
+						<span class="input-group-addon">Cedula</span>
+						<!-- <input type="text" class="form-control" formControlName="cedula"> -->
+					<p-inputMask mask="999-9999999-9" formControlName="cedula" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}" placeholder="999-9999999-9"></p-inputMask>
+				</div>
+			</div>
+			<div class="col-lg-6">
 				<div class="input-group">
-					<span class="input-group-addon">Apellidos</span>
-					<input type="text" class="form-control" formControlName="apellidos">
+					<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+					<input type="email" class="form-control" placeholder="Email" formControlName="email">
 				</div>
-				<br>
-				<div class="input-group">
-					<span class="input-group-addon">Dirección</span>
-					<input type="text" class="form-control" formControlName="direccion">
+			</div>
+		</div>
+		<div class="row" style="padding-bottom:16px">
+			<div class="col-lg-12">
+				<label>Teléfono</label>
+				<div class="form-group">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+					<p-inputMask mask="(999) 999-9999" formControlName="telefono" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}"  placeholder="(999) 999-9999"></p-inputMask>
 				</div>
-				<br>
-				<div class="row" style="padding-bottom:16px">
-					<div class="col-lg-6">
-							<div class="input-group">
-								<span class="input-group-addon">Cedula</span>
-								<!-- <input type="text" class="form-control" formControlName="cedula"> -->
-								 <p-inputMask mask="999-9999999-9" formControlName="cedula" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}" placeholder="999-9999999-9"></p-inputMask>
-							</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-							<input type="email" class="form-control" placeholder="Email" formControlName="email">
-						</div>
-					</div>
-				</div>
-				<div class="row" style="padding-bottom:16px">
-					<div class="col-lg-12">
-						<label>Teléfono</label>
-						<div class="form-group">
-							<div class="input-group">
-			          <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-			          <p-inputMask mask="(999) 999-9999" formControlName="telefono" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}"  placeholder="(999) 999-9999"></p-inputMask>
-			        </div>
-						</div>
-					</div>
-				</div>   
-				<div class="input-group">
-					<span class="input-group-addon">Nombre de usuario</span>
-					<input type="text" class="form-control" formControlName="usuario">
-				</div>    
-				<br>
-				<div class="row">
-					<div class="col-lg-6">
-						<div class="input-group">
-							<span class="input-group-addon">Clave</span>
-							<input type="password"  minlength="4" class="form-control" formControlName="clave">
-						</div>
-					</div>
-					<!-- <br> -->
-					<div class="col-lg-6">
-						<div class="input-group">
-							<span class="input-group-addon">Confirmar Clave</span>
-							<input type="password" minlength="4" class="form-control" formControlName="claveConfirm">
-						</div>
-					</div>
-				</div>
-				<br>
-			</form>
-    	</div>
-    	<p-footer>
-    		<button type="button" class="btn btn-default pull-left"   (click)="OnHIde()">Salir</button>
-			<button type="button" (click)="onSubmit()"  [disabled]="formPerson.invalid" class="btn btn-success">
-				<span *ngIf="id==null">Registrar</span>
-				<span *ngIf="id!=null">Actualizar</span>
-			</button>
-    	</p-footer>
+			</div>
+		</div>
+	</div>
+	<div class="input-group">
+		<span class="input-group-addon">Nombre de usuario</span>
+		<input type="text" class="form-control" formControlName="usuario">
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="input-group">
+				<span class="input-group-addon">Clave</span>
+				<input type="password"  minlength="4" pPassword  class="form-control" style="border: 1px solid #d0caca"  promptLabel="Porfavor ingrese una contraseña" weakLabel="Debil" mediumLabel="Media" strongLabel="Fuerte" class="form-control" formControlName="clave">
+			</div>
+		</div>
+		<!-- <br> -->
+		<div class="col-lg-6">
+			<div class="input-group">
+				<span class="input-group-addon">Confirmar Clave</span>
+				<input type="password" minlength="4" pPassword  class="form-control" style="border: 1px solid #d0caca" promptLabel="Porfavor ingrese una contraseña" weakLabel="Debil" mediumLabel="Media" strongLabel="Fuerte" class="form-control" formControlName="claveConfirm">
+			</div>
+		</div>
+	</div>
+	<br>
+</form>
+</div>
+<p-footer>
+	<button type="button" class="btn btn-default pull-left"   (click)="OnHIde()">Salir</button>
+	<button type="button" class="btn btn-success" [disabled]="formPerson.invalid" (click)="onSubmit()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
+			<span *ngIf="id==null">Registrar</span>
+			<span *ngIf="id!=null && !_funtions.IsMostrar()">Actualizar</span>
+		</button>		
+		<button type="button" class="btn btn-success" [disabled]="formPerson.invalid" [routerLink]="['/verificadores',id,'editar']" *ngIf="_funtions.IsMostrar()">
+			<span>Editar</span>
+		</button>
+</p-footer>
 </p-dialog>

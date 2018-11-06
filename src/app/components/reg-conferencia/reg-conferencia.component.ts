@@ -13,101 +13,137 @@ export class RegConferenciaComponent implements OnInit {
   formConferencia:FormGroup;
 	Inpdisplay: boolean;
   formPerson: FormGroup;
-  	// @Output() public Outdisplay = new EventEmitter<boolean>();
 	date8: Date;
 	dateValue: Date;
   porcentaje_default:any[];
   actividad:string;
   conferencista:string;
-  horas_default:any[];
   ListadoConferencistas: any[];
-  filteredConferencista: any[];
+  id_conferencia;
   constructor(private aroute:ActivatedRoute,private fb: FormBuilder,private _router: Router,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
-    this.aroute.queryParams.subscribe( params => {
-      console.log('params["actividad"]',params);
-          this.actividad = JSON.parse( params["id_actividad"] );
-      }
-   );
-    // this.actividad= '1';
+    this.aroute.params.subscribe( params => {
+      this.id_conferencia = params["id"]
+    });
+    if(this._router.url.split('/').length >0 &&  this._router.url.split('/')[1] != undefined ){
+      this.actividad= this._router.url.split('/')[1]
+    }
+
+    this.porcentaje_default = [];
+    for(let i = 50; i <=100; i=i+5) {
+      this.porcentaje_default.push({name:i+"%",value:i})
+    }
+
+    this.Inpdisplay = true;
+    this.listadoDeConferencistas();
+    this.createForm();
   }
 
   ngOnInit() {
-    this.porcentaje_default =[{name:"50%",value:50},{name:"60%",value:60},{name:"70%",value:70},{name:"80%",value:80},{name:"90%",value:90},{name:"100%",value:100}];
-    this.horas_default =[{name:"0:15",value:"0:15"}];
-    this.Inpdisplay = true;
-    this.createForm();
-    this.listadoDeConferencistas();
   }
 
   OnHIde(){
     // this.formPerson.reset();
     this.Inpdisplay = false;
-    this._router.navigate(["/"]);
+    this._router.navigate(["/actividades"]);
     // this.Outdisplay.emit(false);
   }
 
-   filterConferencistas(event) {
-        this.filteredConferencista = [];
-        for(let i = 0; i < this.ListadoConferencistas.length; i++) {
-            let conferencista = this.ListadoConferencistas[i];
-            if(conferencista["nombres"].toLowerCase().indexOf(event.query.toLowerCase()) == 0) {
-                this.filteredConferencista.push(conferencista);
-            }
+  listadoDeConferencistas() {
+    // console.log(this.loginForm.value);
+    this._funtions.blockUIO().start()
+    this._peticiones.GetConferencistas().subscribe(
+      response => {
+         this._funtions.blockUIO().stop()
+        console.log('response',response);
+        this.ListadoConferencistas = response.data;
+        if(this.id_conferencia != undefined){
+          this.Conferencia();
         }
-      return this.filteredConferencista;
-    }
-
-
-
-    listadoDeConferencistas() {
-      // console.log(this.loginForm.value);
-      this._funtions.blockUIO().start()
-      this._peticiones.GetConferencistas().subscribe(
-        response => {
-           this._funtions.blockUIO().stop()
-          console.log('response',response);
-          this.ListadoConferencistas = response.data;
-        },
-        error => {
-          let resultado;
-          if (error.error && error.status !== 0) {
-            resultado = this._funtions.sacarText(error.error);
-          } else {
-            resultado = error.error.message;
-          }
-          console.log(error.error.message)
-          this._funtions.Toast("error","Error",resultado);
-
-          this._funtions.blockUIO().stop(); 
+      },
+      error => {
+        let resultado;
+        if (error.error && error.status !== 0) {
+          resultado = this._funtions.sacarText(error.error);
+        } else {
+          resultado = error.error.message;
         }
-      );
+        console.log(error.error.message)
+        this._funtions.Toast("error","Error",resultado);
+
+        this._funtions.blockUIO().stop(); 
+      }
+    );
+
+  }
+
+
+  Conferencia() {
+    // console.log(this.loginForm.value);
+    this._funtions.blockUIO().start()
+    this._peticiones.getConferencia(this.id_conferencia).subscribe(
+      response => {
+        this._funtions.blockUIO().stop()
+        console.log('getConferencia response',response);
+        response["data"].hora_inicio = moment(response["data"].hora_inicio).toDate();
+        response["data"].dia_de_presentacion = moment(response["data"].dia_de_presentacion).toDate();
+        this.createForm(response["data"])
+      },
+      error => {
+        let resultado;
+        if (error.error && error.status !== 0) {
+          resultado = this._funtions.sacarText(error.error);
+        } else {
+          resultado = error.error.message;
+        }
+        console.log(error.error.message)
+        this._funtions.Toast("error","Error",resultado);
+
+        this._funtions.blockUIO().stop(); 
+      }
+    );
 
   }
 
 
 
-  createForm(){
-    this.formConferencia=this.fb.group({
-      titulo:['', Validators.required],
+  createForm(
+    a={
+      titulo:'',
       descripcion:'',
-      hora_inicio:[new Date(), Validators.required],
-      dura_estimada:['', Validators.required],
-      dia_de_presentacion:[new Date(), Validators.required],
-      porciento_horas_validas:['', Validators.required],
-      id_persona_conferencista:['',Validators.required]
+      hora_inicio:new Date(),
+      dura_estimada:'',
+      dia_de_presentacion:new Date(),
+      porciento_horas_validas:0,
+      id_persona_conferencista:''
+    }
+    ){
+    // let hor
+    this.formConferencia=this.fb.group({
+      titulo:[a.titulo, Validators.required],
+      descripcion:a.descripcion,
+      hora_inicio:[a.hora_inicio, Validators.required],
+      dura_estimada:[a.dura_estimada, Validators.compose([Validators.pattern("([0-9]+):([0-5]?[0-9]):([0-5]?[0-9])"),Validators.required])],
+      dia_de_presentacion:[a.dia_de_presentacion,Validators.required],
+      porciento_horas_validas:[a.porciento_horas_validas, Validators.required],
+      id_persona_conferencista:[a.id_persona_conferencista,Validators.required]
     })
+    // this.formConferencia.controls.porciento_horas_validas.patchValue(90);
+    this._funtions.actionsOnRoute(this.formConferencia.controls);
   }
+
+
+  
   onSubmit(){
     console.log("console.log(this.formConferencia.value)",this.formConferencia.value)
     let value = JSON.parse(JSON.stringify(this.formConferencia.value))
     let duracion = value.dura_estimada.replace(":","")
     duracion = duracion.replace(":","")
     if(parseInt(duracion)>0){
-      value.hora_inicio = moment(value.hora_inicio).format("HH:MM")
-      value.dia_de_presentacion = moment(value.dia_de_presentacion).format("YYYY-MM-DD")
-      value.porciento_horas_validas = value.porciento_horas_validas.value
+      value.hora_inicio              = moment(value.hora_inicio).format("HH:MM")
+      value.dia_de_presentacion      = moment(value.dia_de_presentacion).format("YYYY-MM-DD")
+      value.porciento_horas_validas  = value.porciento_horas_validas.value
       value.id_persona_conferencista = value.id_persona_conferencista.id
-      value.actividad = this.actividad;
+      value.actividad                = this.actividad;
       console.log("onSubmit ",JSON.stringify(value))
       this._peticiones.crearConferencia(value).subscribe(
         response => {

@@ -1,45 +1,46 @@
 <div class="box">
-    <div class="box-header header-list">
-      <h3 class="box-title">Listado de Verificadores</h3>
-    </div>
-    <!-- <app-buscador ></app-buscador> -->
-    <div class="box-header">
+  <div class="box-header header-list">
+    <h3 class="box-title">Listado de Verificadores</h3>
+  </div>
+  <!-- <app-buscador ></app-buscador> -->
+  <div class="box-header">
     <div class="row">
       <div class="col-xs-3">
         <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Nombre, Apellido, Email, Dirección">
       </div>
     </div>
   </div>
-    <div class="box-body">
-      <table id="example1" class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Dirección</th>
-            <th>email</th>
-            <th>Telefono</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of verificadores | search:searchText">
-            <td>{{item.nombres}}</td>
-            <td>{{item.apellidos}}</td>
-            <td>{{item.direccion}}</td>
-            <td>{{item.correo}}</td>
-            <td>{{item.telefono}}</td>
-            <td>{{item.estado}}</td>
-            <td>
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-flat" title="Editar" [routerLink]="['/verificador/editar',item.id_persona]"><i class="fa fa-edit"></i></button>
-                <button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="box-body">
+    <table id="example1" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Dirección</th>
+          <th>email</th>
+          <th>Telefono</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of verificadores | search:searchText">
+          <td>{{item.nombres}}</td>
+          <td>{{item.apellidos}}</td>
+          <td>{{item.direccion}}</td>
+          <td>{{item.correo}}</td>
+          <td>{{item.telefono}}</td>
+          <td *ngIf="item.estado == 'A'"><div class="label label-success">Activo</div> </td>
+          <td *ngIf="item.estado == 'I'"><div class="label label-danger">Inactivo</div></td>
+          <td>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default btn-flat" title="Editar"  [routerLink]="[item.id_persona,'editar']" ><i class="fa fa-edit"></i></button>
+              <button type="button" class="btn btn-default btn-flat" title="Ver" [routerLink]="[item.id_persona,'mostrar']"><i class="fa fa-eye"></i></button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <router-outlet></router-outlet>
- 

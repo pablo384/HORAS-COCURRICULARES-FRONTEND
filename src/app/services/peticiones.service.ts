@@ -55,6 +55,15 @@ export class PeticionesService {
 
     return this.http.post(this.url + '/conferencia',JSON.stringify(data))
   } 
+   //=======================================| ESTUDIANTE |=====================
+  updateConferencia(data: Object,id): Observable<any> {
+    return this.http.patch(this.url + '/conferencia/'+id,JSON.stringify(data))
+  } 
+   //=======================================| ESTUDIANTE |=====================
+  getConferencia(id): Observable<any> {
+
+    return this.http.get(this.url + '/conferencia/'+id)
+  } 
 
   //=======================================| ESTUDIANTE |=====================
   verificarParticipacion(data: Object): Observable<any> {
@@ -70,6 +79,11 @@ export class PeticionesService {
   GetCarrera(id): Observable<any> {
 
     return this.http.get(this.url + '/carrera/'+id)
+  } 
+  
+  GetActividad(id): Observable<any> {
+
+    return this.http.get(this.url + '/actividad/con_carreras/'+id)
   }
 
   getEstudiante(data: Object): Observable<any> {
@@ -117,7 +131,17 @@ export class PeticionesService {
   //=======================================| ESTUDIANTE |=====================
   ActualizarEstudiante(data: Object): Observable<any> {
 
-    return this.http.patch(this.url + '/usuario',JSON.stringify(data))
+    return this.http.patch(this.url + '/usuario/estudiante',JSON.stringify(data))
+  }
+
+  //=======================================| ESTUDIANTE |=====================
+  ActualizarActividad(data: Object,id): Observable<any> {
+
+    return this.http.patch(this.url + '/actividad/'+id,JSON.stringify(data))
+  }
+  //=======================================| ESTUDIANTE |=====================
+  EliminarConferencia(id,id_conferecia_por_conferencista): Observable<any> {
+    return this.http.delete(this.url + "/conferencia/"+id+"/"+id_conferecia_por_conferencista)
   }
 
   //=======================================| ESTUDIANTE |=====================

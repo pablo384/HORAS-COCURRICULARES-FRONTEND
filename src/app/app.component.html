@@ -1,176 +1,153 @@
-
 <toaster-container></toaster-container>
 <block-ui></block-ui>
 <div [class]="[_funtions.isLoggednIn()?['hold-transition','skin-blue', 'sidebar-mini']:'']">
-<div [class]="[_funtions.isLoggednIn()?'wrapper':'']">
-  <header class="main-header" *ngIf="_funtions.isLoggednIn()">
-    <!-- Logo -->
-    <a [routerLink]="['/']" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>S</b>AHC</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>SAHC</b></span>
-    </a>
-    <!-- =============================== -->
-    <!-- MENU GRIS LATERAL  -->
-    <!-- =============================== -->
-    <nav class="navbar navbar-static-top" style="background: #001c42">
-      <a  class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
+  <div [class]="[_funtions.isLoggednIn()?'wrapper':'']">
+    <header class="main-header" *ngIf="_funtions.isLoggednIn()">
+      <!-- Logo -->
+      <a [routerLink]="['/']" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>S</b>AHC</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>SAHC</b></span>
       </a>
-
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-
-          <li class="dropdown notifications-menu">
-            <a  class="dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">{{TotalDeConferencias}}</span>
+      <!-- =============================== -->
+      <!-- MENU GRIS LATERAL  -->
+      <!-- =============================== -->
+      <nav class="navbar navbar-static-top" style="background: #001c42">
+        <a  class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="dropdown notifications-menu">
+              <a  class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-bell-o"></i>
+                <span class="label label-warning">{{TotalDeConferencias}}</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="header" *ngIf="TotalDeConferencias>1">Tienes <b>{{TotalDeConferencias}} </b>conferencias para hoy</li>
+                <li class="header" *ngIf="TotalDeConferencias==1">Tienes <b>{{TotalDeConferencias}} </b>conferencia para hoy</li>
+                <li class="header" *ngIf="TotalDeConferencias==0">No Tienes conferencias para hoy</li>
+                <li>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown user user-menu">
+              <a  class="dropdown-toggle" style="height: 50px;" data-toggle="dropdown">
+                <img src="assets/myimages/user2-160x160.jpg" class="user-image" alt="User Image">
+                <span class="hidden-xs">{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</span>
+              </a>
+              <ul class="dropdown-menu">
+                <li class="user-header">
+                  <img src="assets/myimages/user2-160x160.jpg" class="img-circle" alt="User Image">
+                  <p style="color:#001c42;">
+                    {{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}
+                    <small *ngIf="_funtions.getLoggedUser().tipo == 'A'">Administrador</small>
+                    <small *ngIf="_funtions.getLoggedUser().tipo == 'V'">Vericador</small>
+                    <small *ngIf="_funtions.getLoggedUser().tipo == 'E'">Estudiante</small>
+                  </p>
+                </li>
+                <li class="user-footer">
+                  <div class="pull-left">
+                    <a [routerLink]="['perfil']" class="btn btn-default btn-flat">Perfil</a>
+                  </div>
+                  <div class="pull-right">
+                    <a (click)="_funtions.logout()" class="btn btn-default btn-flat">Salir</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- =============================== -->
+      <!-- MENU GRIS LATERAL ------------------------| END |-->
+      <!-- =============================== -->
+    </header>
+    <aside class="main-sidebar" style="background:#222d32" *ngIf="_funtions.isLoggednIn()">
+      <section class="sidebar">
+        <div class="user-panel">
+          <div class="pull-left image">
+            <img src="assets/myimages/user2-160x160.jpg" class="img-circle" alt="User Image">
+          </div>
+          <div class="pull-left info">
+            <p style="color: #d7d9f9">{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</p>
+            <a ><i class="fa fa-circle text-success"></i> Online</a>
+          </div>
+        </div>
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="active treeview" *ngIf="isAdmin()">
+            <a  class="item_menu">
+              <i class="fa fa-dashboard"></i> <span>Estudiante</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
             </a>
-            <ul class="dropdown-menu">
-              <li class="header" *ngIf="TotalDeConferencias>1">Tienes <b>{{TotalDeConferencias}} </b>conferencias para hoy</li>
-              <li class="header" *ngIf="TotalDeConferencias==1">Tienes <b>{{TotalDeConferencias}} </b>conferencia para hoy</li>
-              <li class="header" *ngIf="TotalDeConferencias==0">No Tienes conferencias para hoy</li>
-              <li>
-              </li>
+            <ul class="treeview-menu">
+              <li class="active" *ngIf="isAdmin()"><a [routerLink]="['estudiantes/registrar']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+              <li><a [routerLink]="['estudiantes']"><i class="fa fa-circle-o text-yellow"></i>Buscar</a></li>
             </ul>
           </li>
-          <li class="dropdown user user-menu">
-            <a  class="dropdown-toggle" style="height: 50px;" data-toggle="dropdown">
-              <img src="assets/myimages/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</span>
+          <li class="active treeview">
+            <a  class="item_menu" >
+              <i class="fa fa-dashboard"></i> <span>Actividades</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
             </a>
-            <ul class="dropdown-menu">
-              <li class="user-header">
-                <img src="assets/myimages/user2-160x160.jpg" class="img-circle" alt="User Image">
-                <p style="color:#001c42;">
-                  {{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}} 
-                  <small *ngIf="_funtions.getLoggedUser().tipo == 'A'">Administrador</small>
-                  <small *ngIf="_funtions.getLoggedUser().tipo == 'V'">Vericador</small>
-                  <small *ngIf="_funtions.getLoggedUser().tipo == 'E'">Estudiante</small>
-                </p>
-              </li>
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a [routerLink]="['perfil']" class="btn btn-default btn-flat">Perfil</a>
-                </div>
-                <div class="pull-right">
-                  <a (click)="_funtions.logout()" class="btn btn-default btn-flat">Salir</a>
-                </div>
-              </li>
+            <ul class="treeview-menu">
+              <li class="active" *ngIf="isAdmin()"><a [routerLink]="['actividades/registrar']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+              <li><a [routerLink]="['actividades']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
             </ul>
           </li>
+          <li class="active treeview" *ngIf="isAdmin()">
+            <a  class="item_menu">
+              <i class="fa fa-dashboard"></i> <span>Carreras</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="active" *ngIf="isAdmin()"><a [routerLink]="['carreras/registrar']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+              <li class="active" *ngIf="isAdmin()"><a [routerLink]="['carreras']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
+            </ul>
+          </li>
+          <li class="active treeview" *ngIf="isAdmin()">
+            <a  class="item_menu">
+              <i class="fa fa-dashboard" *ngIf="isAdmin()"></i> <span>Verificadores</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="active"><a [routerLink]="['verificadores/registrar']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+              <li class="active"><a [routerLink]="['verificadores']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
+            </ul>
+          </li>
+          <li class="active treeview" *ngIf="isAdmin()">
+            <a  class="item_menu">
+              <i class="fa fa-dashboard"></i> <span>Conferencista</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="active"><a [routerLink]="['conferencistas/registrar']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+              <li class="active"><a [routerLink]="['conferencistas']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
+            </ul>
+          </li>
+          
         </ul>
-      </div>
-    </nav>
-    <!-- =============================== -->
-    <!-- MENU GRIS LATERAL ------------------------| END |-->
-    <!-- =============================== -->
-  </header>
-  <aside class="main-sidebar" style="background:#222d32" *ngIf="_funtions.isLoggednIn()">
-    <section class="sidebar">
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="assets/myimages/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p style="color: #d7d9f9">{{_funtions.getLoggedUser().nombres}}  {{_funtions.getLoggedUser().apellidos}}</p>
-          <a ><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="active treeview" *ngIf="isAdmin()">
-          <a  class="item_menu">
-            <i class="fa fa-dashboard"></i> <span>Estudiante</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active" *ngIf="isAdmin()"><a [routerLink]="['resgistrar_estudiante']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
-            <li><a [routerLink]="['list_estudiantes']"><i class="fa fa-circle-o text-yellow"></i>Buscar</a></li>
-          </ul>
-        </li>
-        <li class="active treeview">
-          <a  class="item_menu" >
-            <i class="fa fa-dashboard"></i> <span>Actividades</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active" *ngIf="isAdmin()"><a [routerLink]="['resgistrar_actividad']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
-            <li><a [routerLink]="['lista_actividades']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
-          </ul>
-        </li>
-
-
-
-
-
-        <li class="active treeview" *ngIf="isAdmin()">
-          <a  class="item_menu">
-            <i class="fa fa-dashboard"></i> <span>Carreras</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active" *ngIf="isAdmin()"><a [routerLink]="['resgistrar_carrera']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
-            <li class="active" *ngIf="isAdmin()"><a [routerLink]="['list_carreras']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
-          </ul>
-        </li>
-
-
-
-        <li class="active treeview" *ngIf="isAdmin()">
-          <a  class="item_menu">
-            <i class="fa fa-dashboard" *ngIf="isAdmin()"></i> <span>Verificadores</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a [routerLink]="['resgistrar_verificador']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
-            <li class="active"><a [routerLink]="['list_verificadores']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
-          </ul>
-        </li>
-
-        <li class="active treeview" *ngIf="isAdmin()">
-          <a  class="item_menu">
-            <i class="fa fa-dashboard"></i> <span>Conferencista</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a [routerLink]="['resgistrar_conferencista']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
-            <li class="active"><a [routerLink]="['list_conferencistas']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
-          </ul>
-        </li>
-      
-      </ul>
-    </section>
-    <!-- /.sidebar -->
-  </aside>
-  <div  [class]="[_funtions.isLoggednIn()?'content-wrapper':'']" >
-    <section  [class]="[_funtions.isLoggednIn()?'content-header':'']" >
-      <router-outlet></router-outlet>
-    </section>
+      </section>
+      <!-- /.sidebar -->
+    </aside>
+    <div  [class]="[_funtions.isLoggednIn()?'content-wrapper':'']" >
+      <section  [class]="[_funtions.isLoggednIn()?'content-header':'']" >
+        <router-outlet></router-outlet>
+      </section>
+    </div>
   </div>
 </div>
+<!-- <div *ngIf="!_funtions.isLoggednIn()"> <router-outlet></router-outlet>
 </div>
-
-<!-- <div *ngIf="!_funtions.isLoggednIn()"> <router-outlet></router-outlet> 
-</div>
- -->
-
-
-
-
-
-
-
-
-
-
+-->

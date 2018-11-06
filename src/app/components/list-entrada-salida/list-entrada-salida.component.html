@@ -1,23 +1,24 @@
 <div class="box">
-    <div class="box-header list_e_s">
+	<div class="box-header list_e_s">
 		<h3 class="box-title ">[{{InpDatos?.conferencia?.id}}] ID Conferencia: {{InpDatos?.conferencia?.titulo}}</h3>
 		<br>
 		<small>Entradas y Salidas</small>
-    </div>
-    <div class="box-body  list_e_s">
-      	<table id="example1" class="table table-bordered table-striped">
-	        <thead>
-		        <tr style="background: white">
-		          <th>Entrada</th>
-		          <th>Salida</th>
-		        </tr>
-        	</thead>
-	        <tbody>
-		         <tr *ngFor="let item of InpDatos?.asistencia">
-		          <td>{{item.hora_inicio  | amDateFormat:'hh:mm:ss a'}}</td>
-		          <td *ngIf="item.hora_fin!= null">{{item.hora_fin  | amDateFormat:'hh:mm:ss a'}}</td> <td *ngIf="item.hora_fin== null">No ha Salido</td>
-		        </tr>
-	        </tbody>
-  		</table>
-    </div>
+	</div>
+	<div class="box-body  list_e_s">
+		<table id="example1" class="table table-bordered table-striped">
+			<thead>
+				<tr style="background: white">
+					<th>Entrada</th>
+					<th>Salida</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of InpDatos?.asistencia">
+					<td>{{item.hora_inicio  | amDateFormat:'hh:mm:ss a'}}</td>
+					<td *ngIf="item.hora_fin!= null">{{item.hora_fin  | amDateFormat:'hh:mm:ss a'}}</td> <td *ngIf="item.hora_fin== null">No ha Salido</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
+<router-outlet></router-outlet>

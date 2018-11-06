@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject,Subscription } from 'rxjs';
 import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 
@@ -9,12 +10,22 @@ import {PeticionesService} from '../../services/peticiones.service';
 })
 export class ListEstudiantesComponent implements OnInit {
 	searchText;
+  cDatosSearch:string;
 	estudiante:any[];
-  constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) { }
+  public static returned: Subject<any> = new Subject();
+  subc:Subscription;
+  constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) {
+    this.subc = ListEstudiantesComponent.returned.subscribe(res => {
+      this.getEstudiante(this.cDatosSearch);
+    });
+   }
 
   ngOnInit() {
   }
 
+  ngOnDestroy(): void {
+    this.subc.unsubscribe();
+  }
   private doThingFactory() {
     return (cDatos) => this.getEstudiante(cDatos);
   }
@@ -24,6 +35,7 @@ export class ListEstudiantesComponent implements OnInit {
   	if( !(cDatos.length>0) ){
   		return;
   	}
+    this.cDatosSearch = cDatos;
     if (!isNaN(parseInt(cDatos)) && parseInt(cDatos)>0){
       if (cDatos.length == 16){
         value["carnet"] = cDatos;
@@ -32,10 +44,11 @@ export class ListEstudiantesComponent implements OnInit {
     }else{
       value["usuario"] = cDatos
     }
+    console.log(value)
   	this._peticiones.getEstudiante(value).subscribe(
       response => {
         this._funtions.blockUIO().stop()
-        console.log("sdfkjdsjfjdsfj",response.data);
+        console.log("getEstudiante",response);
         if (response.info) {        
         	this.estudiante = response.data;
         }

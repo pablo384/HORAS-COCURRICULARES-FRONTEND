@@ -19,6 +19,7 @@ export class BuscadorComponent implements OnInit {
 	}
 	buscar(){
 		this.fn(this.texto_a_buscar);
+		this.texto_a_buscar = "";
 	}
 
 	onKeydown(event) {
