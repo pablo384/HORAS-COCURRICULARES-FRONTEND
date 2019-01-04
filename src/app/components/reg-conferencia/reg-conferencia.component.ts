@@ -117,6 +117,8 @@ export class RegConferenciaComponent implements OnInit {
       id_persona_conferencista:''
     }
     ){
+    let temp = JSON.parse(JSON.stringify(a))
+    console.log("a ",a)
     // let hor
     this.formConferencia=this.fb.group({
       titulo:[a.titulo, Validators.required],
@@ -127,7 +129,7 @@ export class RegConferenciaComponent implements OnInit {
       porciento_horas_validas:[a.porciento_horas_validas, Validators.required],
       id_persona_conferencista:[a.id_persona_conferencista,Validators.required]
     })
-    // this.formConferencia.controls.porciento_horas_validas.patchValue(90);
+    this.formConferencia.controls.porciento_horas_validas.patchValue({name:temp.porciento_horas_validas+"%",value:temp.porciento_horas_validas});
     this._funtions.actionsOnRoute(this.formConferencia.controls);
   }
 
