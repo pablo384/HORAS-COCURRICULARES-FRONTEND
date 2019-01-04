@@ -1,9 +1,9 @@
 <p-dialog [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="600" [height]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false"  >
 	<p-header>
 		<div >
-			<label *ngIf="_funtions.IsRegistrar()">Registrar Conferencia</label>
-			<label *ngIf="_funtions.IsEditar()">Editar Conferencia</label>
-			<label *ngIf="_funtions.IsMostrar()">Mostrar Conferencia</label>
+			<label *ngIf="_funtions.IsRegistrar()">Registrar Actividad</label>
+			<label *ngIf="_funtions.IsEditar()">Editar Actividad</label>
+			<label *ngIf="_funtions.IsMostrar()">Mostrar Actividad</label>
 			<!-- <p-toggleButton styleClass="btn-default pull-right" formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton> -->
 		</div>
 	</p-header>
@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="input-group">
-							<span class="input-group-addon">Titulo</span>
+							<span class="input-group-addon">*Titulo</span>
 							<input type="text" class="form-control" formControlName="titulo" required>
 						</div>
 					</div>
@@ -29,9 +29,9 @@
 				</div>
 				<br>
 				<div class="col-lg-12">
-					<div class="col-lg-5"><label>Hora de inicio</label></div>
+					<div class="col-lg-5"><label>*Hora de inicio</label></div>
 					<div class="col-lg-7" style="margin-bottom:4px"><p-calendar formControlName="hora_inicio" required [inputStyle]="{'width':'100%','height':'33px'}" [style]="{'width':'100%','height':'33px'}" [timeOnly]="true" hourFormat="12"></p-calendar></div>
-					<div class="col-lg-5"><label>Duración</label></div>
+					<div class="col-lg-5"><label>*Duración</label></div>
 					<div class="col-lg-7" style="margin-bottom:4px">
 					<p-inputMask [style]="{'width':'100%','heigth':'54px'}" mask="99:99:99" formControlName="dura_estimada"></p-inputMask>
 				</div>
@@ -39,12 +39,12 @@
 			<br>
 			<div class="col-lg-12">
 				<div class="col-lg-5" style="margin-bottom:4px">
-					Día de presentación
+					*Día de presentación
 				</div>
 				<div class="col-lg-7" style="margin-bottom:4px">
 				<p-calendar formControlName="dia_de_presentacion" required [inputStyle]="{'width':'100%','height':'33px'}" [style]="{'width':'100%','height':'33px'}"  dateFormat="dd/mm/yy"></p-calendar>
 			</div>
-			<div class="col-lg-5" style="margin-bottom:4px">% de horas validas</div>
+			<div class="col-lg-5" style="margin-bottom:4px">* % de horas validas</div>
 			<div class="col-lg-7" style="margin-bottom:4px">
 			<p-dropdown [options]="porcentaje_default" formControlName="porciento_horas_validas" pTooltip="Porciento de hora validas" tooltipPosition="top" styleClass="form-control" [style]="{'width':'100%','heigth':'50px'}"  optionLabel="name" [showClear]="false" [autoDisplayFirst]="false"></p-dropdown>
      	<!-- <p-dropdown [options]="porcentaje_default" formControlName="porciento_horas_validas"  pTooltip="Unidades" tooltipPosition="top" [style]="{'width':'100%','height':'36px','margin-top':'0px','margin-left':'0px'}"  optionLabel="nombre" [showClear]="false" required filter="true" [autoDisplayFirst]="false"></p-dropdown> -->
@@ -52,7 +52,7 @@
 	</div>
 	<div class="col-lg-12">
 		<div class="col-lg-5" style="margin-bottom:4px">
-			Conferencista
+			*Conferencista
 		</div>
 		<div class="col-lg-7" style="margin-bottom:4px;height:180px;">
 			<!-- <p-autoComplete formControlName="id_persona_conferencista" field="nombres" [suggestions]="filteredConferencista" (completeMethod)="filterConferencistas($event)"  [size]="30" placeholder="Conferencistas" [minLength]="1"></p-autoComplete> -->
