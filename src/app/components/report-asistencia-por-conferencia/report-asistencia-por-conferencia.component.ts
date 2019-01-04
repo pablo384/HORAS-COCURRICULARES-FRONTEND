@@ -9,10 +9,12 @@ import * as moment from "moment"
   styleUrls: ['./report-asistencia-por-conferencia.component.css']
 })
 export class ReportAsistenciaPorConferenciaComponent implements OnInit {
-	 data: any;
-     conferencia;
-     totalAsistencia;
-	 constructor(private aroute:ActivatedRoute,private _funtions: FuncionesService, private _peticiones :PeticionesService) {
+	data: any;
+    conferencia;
+    estudiantes = [];
+    carreras = []
+    totalAsistencia;
+	constructor(private aroute:ActivatedRoute,private _funtions: FuncionesService, private _peticiones :PeticionesService) {
 
         this.aroute.queryParams.subscribe( params => {
               console.log('params["conferencia"]',params);
@@ -23,34 +25,54 @@ export class ReportAsistenciaPorConferenciaComponent implements OnInit {
          );
 
         this.data = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: ['January', 'February'],
             datasets: [
                 {
                     label: 'My First dataset',
                     backgroundColor: '#42A5F5',
                     borderColor: '#1E88E5',
-                    data: [65, 59, 80, 81, 56, 55, 40]
+                    data: [1]
                 },
                 {
                     label: 'My Second dataset',
                     backgroundColor: '#9CCC65',
                     borderColor: '#7CB342',
-                    data: [28, 48, 40, 19, 86, 27, 90]
+                    data: [2]
                 }
             ]
         }
     }
 	ngOnInit() {
+        this.ListadoEstudiantesPorConferencias( this.conferencia.id );
 	}
 
     ListadoEstudiantesPorConferencias(conferencia_id){
         this._funtions.blockUIO().start()
         this._peticiones.GetEstudiantesPorConferencias(conferencia_id).subscribe(
           response => {
-            this._funtions.blockUIO().stop()
             console.log("adasda",response);
-             this.totalAsistencia  = response.data.length
-               
+            this.estudiantes = response.data
+            let carreras = [];
+            response.data.forEach((estudiante_carrera)=>{
+                if( Object.keys(carreras).indexOf(estudiante_carrera.carrera) == -1){
+                    carreras[estudiante_carrera.carrera] = { asistencia : 1, carrera :estudiante_carrera.carrera }
+                }else{
+                    carreras[estudiante_carrera.carrera].asistencia += 1 
+                }
+            })
+            let aCarreras = []
+            for (var carrera in carreras){
+                let oCarrera = { 'carrera' : carrera , asistencia:0 }
+                aCarreras.push(oCarrera)
+                response.data.forEach((estudiante_carrera)=>{
+                    if(estudiante_carrera.carrera == carrera){
+                        oCarrera.asistencia += 1
+                    }
+                })
+            }
+            this.carreras = aCarreras
+            this._funtions.blockUIO().stop()
+            this.totalAsistencia  = response.data.length
           },
           error => {
             let resultado;
