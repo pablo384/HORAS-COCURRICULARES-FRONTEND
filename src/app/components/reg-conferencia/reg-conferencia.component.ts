@@ -44,7 +44,7 @@ export class RegConferenciaComponent implements OnInit {
   OnHIde(){
     // this.formPerson.reset();
     this.Inpdisplay = false;
-    this._router.navigate(["/actividades"]);
+    this._router.navigate(["/cuatrimestres"]);
     // this.Outdisplay.emit(false);
   }
 

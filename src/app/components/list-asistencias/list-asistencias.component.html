@@ -2,13 +2,13 @@
 	<div class="box-header header-list">
 		<h3>Listado de Asistencia</h3>
 		<h3 class="box-title ">
-		[ {{conferencia.id}} ] <b>ID Conferencia:</b> {{conferencia.titulo}}
+		[ {{conferencia.id}} ] <b>ID Actividad:</b> {{conferencia.titulo}}
 		</h3>
 		<p *ngIf="conferencia.hora_inicio != null"><b>Iniciada a las {{conferencia.hora_inicio | amAdd : '12' : 'hours' | amDateFormat:'hh:mm:ss a'}}</b><br>
 		<b *ngIf="conferencia.hora_fin != null">Finalizada a las {{conferencia.hora_fin | amAdd : '12' : 'hours' | amDateFormat:'hh:mm:ss a'}}</b></p>
 	</div>
 <app-buscador [fn]="doThingFactory()" [placeholder]="'Matircula, Carnet, Usuario'" [disabled]="conferencia.finalizada"></app-buscador>
-<h1 style="color: red;"*ngIf="conferencia.finalizada">Conferencia ha finalizado.</h1>
+<h1 style="color: red;"*ngIf="conferencia.finalizada">Actividad ha finalizado.</h1>
 <div class="box-header">
 	<div class="row">
 		<div class="col-xs-4">

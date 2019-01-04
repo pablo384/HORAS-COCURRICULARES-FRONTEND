@@ -90,14 +90,14 @@
           </li>
           <li class="active treeview">
             <a  class="item_menu" >
-              <i class="fa fa-dashboard"></i> <span>Actividades</span>
+              <i class="fa fa-dashboard"></i> <span>Cuatrimestre</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="active" *ngIf="isAdmin()"><a [routerLink]="['actividades/registrar']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
-              <li><a [routerLink]="['actividades']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
+              <li class="active" *ngIf="isAdmin()"><a [routerLink]="['cuatrimestres/registrar']"><i class="fa fa-circle-o text-red"></i>Registrar</a></li>
+              <li><a [routerLink]="['cuatrimestres']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
             </ul>
           </li>
           <li class="active treeview" *ngIf="isAdmin()">

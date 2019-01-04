@@ -18,12 +18,12 @@
 		</div>
 		
 		<div class="input-group">
-			<span class="input-group-addon">Nombres</span>
+			<span class="input-group-addon">*Nombres</span>
 			<input type="text" class="form-control" formControlName="nombres"required >
 		</div>
 		<br>
 		<div class="input-group">
-			<span class="input-group-addon">Apellidos</span>
+			<span class="input-group-addon">*Apellidos</span>
 			<input type="text" class="form-control" formControlName="apellidos" required>
 		</div>
 		<br>
@@ -35,7 +35,7 @@
 		<div class="row" style="padding-bottom:16px">
 			<div class="col-lg-6">
 				<div class="input-group">
-					<span class="input-group-addon">Cedula</span>
+					<span class="input-group-addon">*Cedula</span>
 					<!-- <input type="text" class="form-control" formControlName="cedula"> -->
 				<p-inputMask mask="999-9999999-9" formControlName="cedula" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}" placeholder="999-9999999-9"></p-inputMask>
 			</div>
@@ -50,7 +50,7 @@
 	</div>
 	<div class="row" style="padding-bottom:16px">
 		<div class="col-lg-6">
-			<label>Carrera</label>
+			<label>*Carrera</label>
 			<div class="form-group">
 				<div class="input-group">
 					<!-- <span class="input-group-addon"><i class="fa fa-phone"></i></span> -->
@@ -78,7 +78,7 @@
 <div class="row">
 	<div class="col-lg-6">
 		<div class="input-group">
-			<span class="input-group-addon">Nombre de usuario</span>
+			<span class="input-group-addon">*Nombre de usuario</span>
 			<input type="text" class="form-control" formControlName="usuario" [readonly]="id!=null"  required>
 		</div>
 	</div>
@@ -96,14 +96,14 @@
 <div class="row">
 	<div class="col-lg-6">
 		<div class="input-group">
-			<span class="input-group-addon">Matricula</span>
+			<span class="input-group-addon">*Matricula</span>
 			<input type="text" minlength="5" class="form-control" formControlName="matricula" [readonly]="id!=null" required>
 		</div>
 	</div>
 	<!-- <br> -->
 	<div class="col-lg-6">
 		<div class="input-group">
-			<span class="input-group-addon">Carnet</span>
+			<span class="input-group-addon">*Carnet</span>
 			<input type="text" maxlength="16" class="form-control" formControlName="carnet" >
 		</div>
 	</div>

@@ -32,7 +32,7 @@ export class ListEstudiantesComponent implements OnInit {
 
   getEstudiante(cDatos){
   	let value = {}
-  	if( !(cDatos.length>0) ){
+  	if( cDatos && !(cDatos.length>0) ){
   		return;
   	}
     this.cDatosSearch = cDatos;
@@ -44,7 +44,10 @@ export class ListEstudiantesComponent implements OnInit {
     }else{
       value["usuario"] = cDatos
     }
-    console.log(value)
+    if(value["usuario"] == undefined || value["matricula"]== undefined || value["carnet"]){
+      return;
+    }
+    console.log("getEstudiante",value)
   	this._peticiones.getEstudiante(value).subscribe(
       response => {
         this._funtions.blockUIO().stop()

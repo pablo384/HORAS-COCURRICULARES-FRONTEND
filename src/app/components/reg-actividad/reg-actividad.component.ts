@@ -176,11 +176,11 @@ export class RegActividadComponent implements OnInit {
 	
 
 	 OnHIde(){
-    let uri="actividades";
+    let uri="cuatrimestres";
     this.formActividad.reset();
     this.Inpdisplay = false;
     if(this.id!= null){
-      uri = "actividades";
+      uri = "cuatrimestres";
     }
     this._router.navigate([uri]);
     ListActividadesComponent.returned.next(false);

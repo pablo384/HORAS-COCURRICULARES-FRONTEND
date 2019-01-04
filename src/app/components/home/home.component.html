@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="box box-widget widget-user-2">
 			<div class="widget-user-header bg-yellow">
-				<h3 class="widget-user-username">Conferencias de Hoy</h3>
+				<h3 class="widget-user-username">Actividades de Hoy</h3>
 				<h5 class="widget-user-desc">Fecha {{fechaActual | amDateFormat:'DD/MM/YYYY'}}</h5>
 			</div>
 			<div class="col-lg-12" style="background: #9c9c9c52;padding-top: 12px">
@@ -10,8 +10,8 @@
 					<div class="info-box" >
 						<div class=" info-box-icon bg-green" style="width:8px;"><i class="ion ion-ios-cart-outline"></i></div>
 						<div class="info-box-content" style="margin-left: 18px;">
-							<span class="info-box-number"><b>Conferencia:</b>&nbsp;{{item.conferencia}}</span>
-							<span class="info-box-text" ><b>Actividad:</b>&nbsp;{{item.actividad}}</span>
+							<span class="info-box-number"><b>Actividad:</b>&nbsp;{{item.conferencia}}</span>
+							<span class="info-box-text" ><b>Cuatrimestre:</b>&nbsp;{{item.actividad}}</span>
 							<span class="info-box-text"><b>Hora:</b>&nbsp;{{item.hora_inicio | amDateFormat:'HH:MM A'}}</span>
 							<span class="info-box-text"><b>Total Asistencia:</b>&nbsp;{{item.total}}</span>
 							<h1 style="text-align: center; color: red;margin: 0;" *ngIf="item.finalizada && item.iniciada">Finalizada</h1>
