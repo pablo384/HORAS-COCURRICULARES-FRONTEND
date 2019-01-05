@@ -19,7 +19,9 @@ export class ReportAsistenciaPorConferenciaComponent implements OnInit {
         this.aroute.queryParams.subscribe( params => {
               console.log('params["conferencia"]',params);
                   this.conferencia = JSON.parse( params["conferencia"] );
-                  this.conferencia.dia_de_presentacion= moment(params["conferencia"].dia_de_presentacion).format("YYYY-MM-DD")
+                  this.conferencia.hora_inicio = moment(this.conferencia.hora_inicio).format('HH:mm:ss');
+                      this.conferencia.hora_fin = moment(this.conferencia.hora_fin).format('HH:mm:ss');
+                  this.conferencia.dia_de_presentacion= moment(params["conferencia"].dia_de_presentacion).format("DD/MM/YYYY")
                   this.ListadoEstudiantesPorConferencias( this.conferencia.id );
               }
          );
