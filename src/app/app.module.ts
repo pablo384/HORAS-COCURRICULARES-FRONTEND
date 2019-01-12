@@ -43,6 +43,9 @@ import { SearchPipe } from './search.pipe';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { DetalleConferenciaComponent } from './components/detalle-conferencia/detalle-conferencia.component';
 import { ReportAsistenciaPorConferenciaComponent } from './components/report-asistencia-por-conferencia/report-asistencia-por-conferencia.component';
+import { ReportActividadesPorCuatrimestreComponent } from './components/report-actividades-por-cuatrimestre/report-actividades-por-cuatrimestre.component';
+import { ReportCuatrimestresComponent } from './components/report-cuatrimestres/report-cuatrimestres.component';
+import { ReportEstudiantesComponent } from './components/report-estudiantes/report-estudiantes.component';
 
 
 
@@ -73,7 +76,10 @@ import { ReportAsistenciaPorConferenciaComponent } from './components/report-asi
     SearchPipe,
     PerfilComponent,
     DetalleConferenciaComponent,
-    ReportAsistenciaPorConferenciaComponent
+    ReportAsistenciaPorConferenciaComponent,
+    ReportActividadesPorCuatrimestreComponent,
+    ReportCuatrimestresComponent,
+    ReportEstudiantesComponent,
   ],
   imports: [
     BrowserModule,

@@ -136,6 +136,19 @@
               <li class="active"><a [routerLink]="['conferencistas']"><i class="fa fa-circle-o text-aqua"></i>Listado</a></li>
             </ul>
           </li>
+
+          <li class="active treeview" *ngIf="isAdmin()">
+            <a  class="item_menu">
+              <i class="fa fa-dashboard"></i> <span>Reportes</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="active"><a [routerLink]="['report_de_estudiantes']"><i class="fa fa-circle-o text-red"></i>R. Estudiantes</a></li>
+              <li class="active"><a [routerLink]="['report_de_cuatrimestres']"><i class="fa fa-circle-o text-red"></i>R. Cuatrimestres</a></li>
+            </ul>
+          </li>
           
         </ul>
       </section>

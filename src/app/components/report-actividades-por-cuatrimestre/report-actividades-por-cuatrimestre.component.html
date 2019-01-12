@@ -1,6 +1,6 @@
 <div class="box">
 	<div class="box-header header-list">
-		<h1>Listado de Actividades</h1>
+		<h1>Reporte de Actividades</h1>
 		<h3 class="box-title" style="color:#027ebf">Cuatrimestre (ID-{{actividad.id}}) {{actividad.titulo}}</h3>
 
 	</div>
@@ -33,13 +33,7 @@
 					<td><b>{{item.transcurrido}}</b></td>
 					<td>
 						<div class="btn-group">
-							<a class="btn btn-default btn-flat" title="Editar" [routerLink]="['/list_asistencias']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i></a>
-							<a type="button" class="btn btn-default btn-flat" title="Editar" [routerLink]="['/',id_actividad,'conferencias',item.id,'editar']" ><i class=" glyphicon glyphicon-pencil" aria-hidden="true"></i></a>
-							<!-- <a class="btn btn-default btn-flat" title="Ver" [routerLink]="['/detalle_conferencia']" [queryParams]="{conferencia:item|json }"><i class="fa fa-eye"></i></a>-->
-							
 							<a  *ngIf="item.hora_fin != null && item.hora_inicio != null" [routerLink]="['/report_asistencia_conferencia']" [queryParams]="{conferencia:item|json }" class="btn btn-default btn-flat" title="Reporte"><i class="fa fa-bar-chart"></i></a>
-							
-							<!-- <button type="button" *ngIf="item.hora_fin == null && item.hora_inicio == null" class="btn btn-default btn-danger" title="Desactivar" (click)="EliminarConferencia(i,item.id,item.id_conferencista_por_actividad)"><i class="fa fa-remove"></i></button>  -->
 						</div>
 					</td>
 					<td>

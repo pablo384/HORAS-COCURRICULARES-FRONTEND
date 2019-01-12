@@ -40,6 +40,11 @@ export class PeticionesService {
     return this.http.post(this.url + '/asistencia/new',JSON.stringify(data))
   }
 
+   GetAllActividades(): Observable<any> {
+    return this.http.get(this.url + '/actividad/reporte_de_asistencia_por_cuatrimestre')
+    // return this.http.get(this.url + '/actividad')
+  }
+
   GetActividades(fecha1: string,fecha2): Observable<any> {
 
     return this.http.get(this.url + '/actividad/por_fecha/'+fecha1+'/'+fecha2)
@@ -109,6 +114,11 @@ export class PeticionesService {
     return this.http.get(this.url + '/conferencia/por_actividad/'+actividad)
   }
 
+  GetConferenciasPorActividadReporte(actividad): Observable<any> {
+
+    return this.http.get(this.url + '/conferencia/reporte_actividades_por_cuatrimestre/'+actividad)
+  }
+
   GetConferenciasDeHoy(): Observable<any> {
 
     return this.http.get(this.url + '/conferencia/para_hoy')
@@ -117,6 +127,11 @@ export class PeticionesService {
   GetEstudiantesPorConferencias(id_conferencia): Observable<any> {
 
     return this.http.get(this.url + '/conferencia/lista_estudiantes/'+id_conferencia)
+  }
+
+  GetAllEstudiantes(): Observable<any> {
+
+    return this.http.get(this.url + '/estudiantes')
   }
 
 

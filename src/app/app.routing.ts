@@ -24,6 +24,9 @@ import { ListEstudiantesComponent } from './components/list-estudiantes/list-est
 
 
 import { ReportAsistenciaPorConferenciaComponent } from './components/report-asistencia-por-conferencia/report-asistencia-por-conferencia.component';
+import { ReportActividadesPorCuatrimestreComponent } from './components/report-actividades-por-cuatrimestre/report-actividades-por-cuatrimestre.component';
+import { ReportCuatrimestresComponent } from './components/report-cuatrimestres/report-cuatrimestres.component';
+import { ReportEstudiantesComponent } from './components/report-estudiantes/report-estudiantes.component';
 
 import { DetalleConferenciaComponent } from './components/detalle-conferencia/detalle-conferencia.component';
 
@@ -87,7 +90,10 @@ const appRoutes: Routes = [
       ]
     },
  
+    {path:':id_actividad/report_actividades_por_cuatrimestre', component: ReportActividadesPorCuatrimestreComponent, canActivate: [AuthGuard] },
     {path:'report_asistencia_conferencia', component: ReportAsistenciaPorConferenciaComponent, canActivate: [AuthGuard] },
+    {path:'report_de_cuatrimestres', component: ReportCuatrimestresComponent, canActivate: [AuthGuard] },
+    {path:'report_de_estudiantes', component: ReportEstudiantesComponent, canActivate: [AuthGuard] },
     // otherwise redirect to home
     { path: '**', redirectTo: '',canActivate: [AuthGuard] }
     // { path: '**', redirectTo: ''}

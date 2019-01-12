@@ -5,20 +5,20 @@ import {FuncionesService} from '../../services/funciones.service';
 import {PeticionesService} from '../../services/peticiones.service';
 import * as moment from "moment"
 @Component({
-  selector: 'app-list-conferencias',
-  templateUrl: './list-conferencias.component.html',
-  styleUrls: ['./list-conferencias.component.css']
+  selector: 'app-report-actividades-por-cuatrimestre',
+  templateUrl: './report-actividades-por-cuatrimestre.component.html',
+  styleUrls: ['./report-actividades-por-cuatrimestre.component.css']
 })
-export class ListConferenciasComponent implements OnInit,OnDestroy {
-	ListadoDeConferenciasPorActividad:any[];
-	actividad;
+export class ReportActividadesPorCuatrimestreComponent implements OnInit {
+ListadoDeConferenciasPorActividad:any[];
+  actividad;
   id_actividad;
   id
   private onDestroy$ = new Subject<void>();
 
-	constructor(private aroute:ActivatedRoute,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
-	  this.aroute.queryParams.subscribe( params => {
-  		console.log('params["actividad"]',params);
+  constructor(private aroute:ActivatedRoute,private _funtions: FuncionesService, private _peticiones :PeticionesService) { 
+    this.aroute.queryParams.subscribe( params => {
+      console.log('params["actividad"]',params);
         if(params["actividad"] != undefined){
           this.actividad = JSON.parse( params["actividad"] );
         }
@@ -26,7 +26,7 @@ export class ListConferenciasComponent implements OnInit,OnDestroy {
           this.id = params["id_actividad"];
         }
         console.log('params["actividad"]',this.actividad);
-  		}
+      }
     );
 
     this.aroute.params.subscribe( params => {
@@ -35,12 +35,12 @@ export class ListConferenciasComponent implements OnInit,OnDestroy {
       this.id_actividad = params["id_actividad"]
     });
 
-	}
+  }
 
-	ngOnInit() {
-		this.ListasDeConferencias();
+  ngOnInit() {
+    this.ListasDeConferencias();
 
-	}
+  }
 
   calcularTiempoTrasncurrido(){
     if(this.ListadoDeConferenciasPorActividad != null){
@@ -69,7 +69,7 @@ export class ListConferenciasComponent implements OnInit,OnDestroy {
 }
   
 
-	EliminarConferencia(index,id_conferencia,id_conferencista_por_actividad){
+  EliminarConferencia(index,id_conferencia,id_conferencista_por_actividad){
 
     console.log("id_conferencia,id_conferencista_por_actividad",id_conferencia,id_conferencista_por_actividad)
      this._peticiones.EliminarConferencia(id_conferencia,id_conferencista_por_actividad).subscribe(
@@ -98,13 +98,20 @@ export class ListConferenciasComponent implements OnInit,OnDestroy {
   ListasDeConferencias(){
     console.log("ListasDeConferencias(this.actividad && this.actividad.id) || this.id", this.id_actividad)
      this._peticiones.GetConferenciasPorActividad( this.id_actividad).subscribe(
-		 // this._peticiones.GetConferenciasPorActividad(this.a).subscribe(
+     // this._peticiones.GetConferenciasPorActividad(this.a).subscribe(
       response => {
         this._funtions.blockUIO().stop()
         console.log("sdfkjdsjfjdsfj",response.data);
         if (response.info) {
           // console.log("SDFKJDSJFJDSFJDENTRO",response.data);
-           this.ListadoDeConferenciasPorActividad = response.data;
+          let conferencias = []
+          response.data.forEach(conferencia =>{
+          console.log('conferencias',conferencia);
+            if(conferencia.hora_fin!=null){
+             conferencias.push(conferencia)
+            }
+          })
+           this.ListadoDeConferenciasPorActividad = conferencias;
            this.calcularTiempoTrasncurrido() 
           let t= Observable.interval(1000*3).takeUntil(this.onDestroy$);
           t.subscribe(i => this.calcularTiempoTrasncurrido());
@@ -123,5 +130,5 @@ export class ListConferenciasComponent implements OnInit,OnDestroy {
         this._funtions.blockUIO().stop(); 
       }
     );
-	}
+  }
 }
