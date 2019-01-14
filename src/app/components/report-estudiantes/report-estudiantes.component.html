@@ -24,8 +24,8 @@
 							<tbody>
 								<tr *ngFor="let item of allEstudiantes let i = index">
 									<td><span>{{item.matricula}}</span></td>
-									<td>{{item.nombres}}</td>
-									<td><span class="label label-success">{{item.carrera}}</span></td>
+									<td>{{item.nombres| titlecase}}</td>
+									<td><span class="label label-success">{{item.carrera| titlecase}}</span></td>
 									<td>{{item.horas_concurriculares_acumuladas}}</td>
 								</tr>
 							</tbody>
@@ -46,23 +46,19 @@
 				<h3 class="box-title">Resumen</h3>
 			</div>
 			<div class="box-body">
-				<dl class="dl-horizontal">
-					<dt>Total de Asistencia</dt><dd>{{totalEstudiantes}}</dd>
-					<!-- <dt>Tiempo valido</dt><dd>{{conferencia.porciento_horas_validas}}%</dd>
-					<dt>Hora de Inicio</dt><dd><span class="label label-primary">{{conferencia.hora_inicio}}</span></dd>
-					<dt>Hora de finalización</dt><dd><span class="label label-success">{{conferencia.hora_fin}}</span></dd> -->
-					<!-- <dt style="font-size: 32px">Total de Asistencia</dt><dd style="font-size: 32px">{{totalEstudiantes}}</dd> -->
-				</dl>
-				<dl *ngFor="let item of allCarreras let i = index" class="dl-horizontal">
-					<dt>{{item}}</dt><dd>{{item.asistencia}}</dd>
+				<dl  class="dl-horizontal">
+					<dt>Total de Estudiantes</dt><dd>{{totalEstudiantes}}</dd>
+					<div *ngFor="let item of allCarrerasAsistencia let i = index">
+						<dt>{{item.nombre| titlecase}}</dt><dd>{{item[item.nombre]}}</dd>
+					</div>
 				</dl>
 			</div>
-			<div class="box-footer">
+			<!-- <div class="box-footer">
 				<div class="btn-group ">
 					<button type="submit" class="btn btn-lg btn-success"><i class="fa fa-print"></i> Imprimir Reporte</button>
 				</div>
-				<!-- <button type="submit" class="btn btn-default">Cancel</button> -->
-			</div>
+				<!-<button type="submit" class="btn btn-default">Cancel</button> ->
+			</div> -->
 		</div>
 	</div>
 </div>

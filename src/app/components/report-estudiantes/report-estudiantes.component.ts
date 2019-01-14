@@ -10,9 +10,10 @@ import * as moment from "moment"
   styleUrls: ['./report-estudiantes.component.css']
 })
 export class ReportEstudiantesComponent implements OnInit {
-	allEstudiantes = [];
-	allCarreras = []
-	totalEstudiantes = 0
+	allEstudiantes        = [];
+	allCarreras           = []
+	totalEstudiantes      = 0
+	allCarrerasAsistencia = []
   	constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) { }
 
   	ngOnInit() {
@@ -29,22 +30,22 @@ export class ReportEstudiantesComponent implements OnInit {
 	    this._funtions.blockUIO().stop()
 	    if (response.info){
 	    	this.allEstudiantes = response.data
+	    	this.allCarrerasAsistencia = [];
 	    	this.totalEstudiantes= response.data.length
 		    response.data.forEach(estudainte_carrera=>{
-		    	let carrera_asistencia = { "estudainte_carrera['carrera']":0};
-		    	// if( this.allCarreras.indexOf(carrera_asistencia) == -1){
-		    	let existe = this.include(this.allCarreras,carrera_asistencia)
-		    	if( !existe ){
-		    		this.allCarreras.push(carrera_asistencia)
+		    	let carrera = estudainte_carrera.carrera
+		    	if( this.allCarreras.indexOf(carrera) == -1){
+			    	let carrera_asistencia = {};
+			    	carrera_asistencia[carrera] = 0
+			    	carrera_asistencia['nombre'] = carrera
+			    	this.allCarrerasAsistencia.push(carrera_asistencia)
+		    		this.allCarreras.push(carrera)
 		    	}
-		    	console.log('this.allCarreras',this.allCarreras,this.allCarreras.indexOf(carrera_asistencia));
 		    })
-
-
-		    response.data.forEach(estudiante=>{
-		    	this.allCarreras.forEach(carrera=>{
-		    		if(estudiante['carrera'] == carrera){
-
+		    response.data.forEach( estudiante=> {
+		    	this.allCarrerasAsistencia.forEach( (carrera,index )=> {
+		    		if(estudiante['carrera'] == carrera.nombre){
+		    			this.allCarrerasAsistencia[index][carrera.nombre] += 1 
 		    		}
 		    	})
 		    })
