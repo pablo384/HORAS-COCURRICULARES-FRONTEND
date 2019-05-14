@@ -31,12 +31,13 @@
             <div class="btn-group">
               <button type="button" class="btn btn-default btn-flat" [routerLink]="[item.value,'editar']"  title="Editar"><i class=" glyphicon glyphicon-pencil" aria-hidden="true"></i></button>
               <button type="button" class="btn btn-default btn-flat" [routerLink]="[item.value,'mostrar']"  title="Editar"><i class=" fa fa-eye" aria-hidden="true"></i></button>
-              <!-- <button type="button" class="btn btn-default btn-danger" title="Desactivar" ><i class="fa fa-remove"></i></button> -->
+              <button type="button" class="btn btn-default btn-danger" title="Desactivar" (click)="confrimacion(item.value)" ><i class="fa fa-remove"></i></button>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
+    <p-confirmDialog header="Confirmacion" icon="pi pi-exclamation-triangle"></p-confirmDialog>
   </div>
 </div>
 <router-outlet></router-outlet>

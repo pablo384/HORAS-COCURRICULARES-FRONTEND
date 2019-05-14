@@ -2,9 +2,9 @@
 <p-dialog  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false"  >
 	<p-header>
 	<div [formGroup]="formPerson" >
-	<label *ngIf="_funtions.IsRegistrar()">Registrar Verificador</label>
-	<label *ngIf="_funtions.IsEditar()">Editar Verificador</label>
-	<label *ngIf="_funtions.IsMostrar()">Mostrar Verificador</label>
+	<label *ngIf="_funtions.IsRegistrar()">Registrar Supervisor</label>
+	<label *ngIf="_funtions.IsEditar()">Editar Supervisor</label>
+	<label *ngIf="_funtions.IsMostrar()">Mostrar Supervisor</label>
 	<p-toggleButton  styleClass="btn-default pull-right" formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton>
 	</div>
 </p-header>
@@ -13,17 +13,17 @@
 		<form [formGroup]="formPerson"  (ngSubmit)="onSubmit()" >
 			<div class="input-group">
 				<span class="input-group-addon">*Nombres</span>
-				<input type="text" class="form-control" formControlName="nombres" >
+				<input type="text" class="form-control" formControlName="name" >
 			</div>
 			<br>
 			<div class="input-group">
 				<span class="input-group-addon">*Apellidos</span>
-				<input type="text" class="form-control" formControlName="apellidos">
+				<input type="text" class="form-control" formControlName="surname">
 			</div>
 			<br>
 			<div class="input-group">
 				<span class="input-group-addon">Dirección</span>
-				<input type="text" class="form-control" formControlName="direccion">
+				<input type="text" class="form-control" formControlName="address">
 			</div>
 			<br>
 			<div class="row" style="padding-bottom:16px">
@@ -47,28 +47,28 @@
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-phone"></i></span>
-					<p-inputMask mask="(999) 999-9999" formControlName="telefono" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}"  placeholder="(999) 999-9999"></p-inputMask>
+					<p-inputMask mask="(999) 999-9999" formControlName="phone" [style]="{'border-radius': '1px 6px 6px 1px','height':'34px','width':'100%','border': '1px solid #d0caca'}"  placeholder="(999) 999-9999"></p-inputMask>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="input-group">
 		<span class="input-group-addon">*Nombre de usuario</span>
-		<input type="text" class="form-control" formControlName="usuario">
+		<input type="text" class="form-control" formControlName="nick">
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="input-group">
 				<span class="input-group-addon">*Clave</span>
-				<input type="password"  minlength="4" pPassword  class="form-control" style="border: 1px solid #d0caca"  promptLabel="Porfavor ingrese una contraseña" weakLabel="Debil" mediumLabel="Media" strongLabel="Fuerte" class="form-control" formControlName="clave">
+				<input type="password"  minlength="4" pPassword  class="form-control" style="border: 1px solid #d0caca"  promptLabel="Porfavor ingrese una contraseña" weakLabel="Debil" mediumLabel="Media" strongLabel="Fuerte" class="form-control" formControlName="password">
 			</div>
 		</div>
 		<!-- <br> -->
 		<div class="col-lg-6">
 			<div class="input-group">
 				<span class="input-group-addon">*Confirmar Clave</span>
-				<input type="password" minlength="4" pPassword  class="form-control" style="border: 1px solid #d0caca" promptLabel="Porfavor ingrese una contraseña" weakLabel="Debil" mediumLabel="Media" strongLabel="Fuerte" class="form-control" formControlName="claveConfirm">
+				<input type="password" minlength="4" pPassword  class="form-control" style="border: 1px solid #d0caca" promptLabel="Porfavor ingrese una contraseña" weakLabel="Debil" mediumLabel="Media" strongLabel="Fuerte" class="form-control" formControlName="passwordConfirm">
 			</div>
 		</div>
 	</div>

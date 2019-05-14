@@ -1,76 +1,184 @@
-<p-dialog [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="600" [height]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false"  >
-	<p-header>
-		<div >
-			<label *ngIf="_funtions.IsRegistrar()">Registrar Actividad</label>
-			<label *ngIf="_funtions.IsEditar()">Editar Actividad</label>
-			<label *ngIf="_funtions.IsMostrar()">Mostrar Actividad</label>
-			<!-- <p-toggleButton styleClass="btn-default pull-right" formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton> -->
-		</div>
-	</p-header>
-	<div class="modal-body">
-		<form [formGroup]="formConferencia"  (ngSubmit)="onSubmit()" >
-			<div class="box-body">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="input-group">
-							<span class="input-group-addon">*Titulo</span>
-							<input type="text" class="form-control" formControlName="titulo" required>
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="input-group">
-							<span class="input-group-addon">Descripción</span>
-							<input type="text" class="form-control" formControlName="descripcion" >
-						</div>
-					</div>
-				</div>
-				<br>
-				<div class="col-lg-12">
-					<div class="col-lg-5"><label>*Hora de inicio</label></div>
-					<div class="col-lg-7" style="margin-bottom:4px"><p-calendar formControlName="hora_inicio" required [inputStyle]="{'width':'100%','height':'33px'}" [style]="{'width':'100%','height':'33px'}" [timeOnly]="true" hourFormat="12"></p-calendar></div>
-					<div class="col-lg-5"><label>*Duración</label></div>
-					<div class="col-lg-7" style="margin-bottom:4px">
-					<p-inputMask [style]="{'width':'100%','heigth':'54px'}" mask="99:99:99" formControlName="dura_estimada"></p-inputMask>
-				</div>
-			</div>
-			<br>
-			<div class="col-lg-12">
-				<div class="col-lg-5" style="margin-bottom:4px">
-					*Día de presentación
-				</div>
-				<div class="col-lg-7" style="margin-bottom:4px">
-				<p-calendar formControlName="dia_de_presentacion" required [inputStyle]="{'width':'100%','height':'33px'}" [style]="{'width':'100%','height':'33px'}"  dateFormat="dd/mm/yy"></p-calendar>
-			</div>
-			<div class="col-lg-5" style="margin-bottom:4px">* % de horas validas</div>
-			<div class="col-lg-7" style="margin-bottom:4px">
-			<p-dropdown [options]="porcentaje_default" formControlName="porciento_horas_validas" pTooltip="Porciento de hora validas" tooltipPosition="top" styleClass="form-control" [style]="{'width':'100%','heigth':'50px'}"  optionLabel="name" [showClear]="false" [autoDisplayFirst]="false"></p-dropdown>
-     	<!-- <p-dropdown [options]="porcentaje_default" formControlName="porciento_horas_validas"  pTooltip="Unidades" tooltipPosition="top" [style]="{'width':'100%','height':'36px','margin-top':'0px','margin-left':'0px'}"  optionLabel="nombre" [showClear]="false" required filter="true" [autoDisplayFirst]="false"></p-dropdown> -->
-		</div>
-	</div>
-	<div class="col-lg-12">
-		<div class="col-lg-5" style="margin-bottom:4px">
-			*Conferencista
-		</div>
-		<div class="col-lg-7" style="margin-bottom:4px;height:180px;">
-			<!-- <p-autoComplete formControlName="id_persona_conferencista" field="nombres" [suggestions]="filteredConferencista" (completeMethod)="filterConferencistas($event)"  [size]="30" placeholder="Conferencistas" [minLength]="1"></p-autoComplete> -->
-		<p-dropdown [options]="ListadoConferencistas" formControlName="id_persona_conferencista" filter="true" pTooltip="Conferencistas"  styleClass="form-control" [style]="{'width':'100%','heigth':'50px'}"   optionLabel="nombres" [showClear]="true" [autoDisplayFirst]="false"></p-dropdown>
-	</div>
-</div>
-</div>
-</form>
-</div>
-<p-footer>
-	<button type="button" class="btn btn-default pull-left" (click)="OnHIde()">Salir</button>
-	<button type="button" class="btn btn-success" [disabled]="formConferencia.invalid" (click)="onSubmit()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
-	<span *ngIf="id_conferencia==null">Registrar</span>
-	<span *ngIf="id_conferencia!=null && !_funtions.IsMostrar()">Actualizar</span>
-	<!-- <span *ngIf="id!=null && _funtions.IsMostrar()">Editar</span> -->
-	</button>
-	<button type="button" class="btn btn-success" [disabled]="formConferencia.invalid" [routerLink]="['/',actividad,'/conferencias',id_conferencia,'editar']" *ngIf="_funtions.IsMostrar()">
-	<span>Editar</span>
-	</button>
-</p-footer>
+<p-dialog
+  [positionTop]="50"
+  [draggable]="false"
+  [(visible)]="Inpdisplay"
+  [width]="600"
+  [height]="600"
+  [closeOnEscape]="false"
+  [modal]="true"
+  (onHide)="OnHIde()"
+  [closable]="false"
+>
+  <p-header>
+    <div>
+      <label *ngIf="_funtions.IsRegistrar()">Registrar Actividad</label>
+      <label *ngIf="_funtions.IsEditar()">Editar Actividad</label>
+      <label *ngIf="_funtions.IsMostrar()">Mostrar Actividad</label>
+      <!-- <p-toggleButton styleClass="btn-default pull-right" formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton> -->
+    </div>
+  </p-header>
+  <div class="modal-body">
+    <!-- <p>{{this.formConferencia.value.horaInicio}}</p> -->
+    <!-- <p>{{ this.formConferencia.value | json }}</p> -->
+    <form [formGroup]="formConferencia" (ngSubmit)="onSubmit()">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="input-group">
+              <span class="input-group-addon">*Titulo</span>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="titulo"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="input-group">
+              <span class="input-group-addon">Descripción</span>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="descripcion"
+              />
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="col-lg-12">
+          <div class="col-lg-5"><label>*Hora de inicio</label></div>
+          <div class="col-lg-7" style="margin-bottom:4px">
+            <p-calendar
+              formControlName="horaInicio"
+              required
+              [inputStyle]="{ width: '100%', height: '33px' }"
+              [style]="{ width: '100%', height: '33px' }"
+              [timeOnly]="true"
+              hourFormat="12"
+            ></p-calendar>
+          </div>
+          <div class="col-lg-5"><label>*Duración</label></div>
+          <div class="col-lg-7" style="margin-bottom:4px">
+            <p-inputMask
+              [style]="{ width: '100%', heigth: '54px' }"
+              mask="99:99:99"
+              formControlName="duracionEstimada"
+            ></p-inputMask>
+          </div>
+          <div class="col-lg-5">
+            <label>* Valor de conferencia en horas</label>
+          </div>
+          <div class="col-lg-7" style="margin-bottom:4px">
+            <input
+              pInputText
+              [style]="{ width: '100%', heigth: '54px' }"
+              type="number"
+              formControlName="valorConf"
+            />
+          </div>
+        </div>
+        <br />
+        <div class="col-lg-12">
+          <div class="col-lg-5" style="margin-bottom:4px">
+            *Día de presentación
+          </div>
+          <div class="col-lg-7" style="margin-bottom:4px">
+            <p-calendar
+              formControlName="diaPresentacion"
+              required
+              [inputStyle]="{ width: '100%', height: '33px' }"
+              [style]="{ width: '100%', height: '33px' }"
+              dateFormat="dd/mm/yy"
+            ></p-calendar>
+          </div>
+          <div class="col-lg-5" style="margin-bottom:4px">
+            * % de horas validas
+          </div>
+          <div class="col-lg-7" style="margin-bottom:4px">
+            <p-dropdown
+              [options]="porcentaje_default"
+              formControlName="porcientoHorasValidas"
+              pTooltip="Porciento de hora validas"
+              tooltipPosition="top"
+              styleClass="form-control"
+              [style]="{ width: '100%', heigth: '50px' }"
+              optionLabel="name"
+              [showClear]="false"
+              [autoDisplayFirst]="false"
+            ></p-dropdown>
+            <!-- <p-dropdown [options]="porcentaje_default" formControlName="porcientoHorasValidas"  pTooltip="Unidades" tooltipPosition="top" [style]="{'width':'100%','height':'36px','margin-top':'0px','margin-left':'0px'}"  optionLabel="nombre" [showClear]="false" required filter="true" [autoDisplayFirst]="false"></p-dropdown> -->
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="col-lg-5" style="margin-bottom:4px">
+            *Carrera
+          </div>
+          <div class="col-lg-7" style="margin-bottom:4px;">
+            <!-- <p-autoComplete formControlName="conferencista" field="nombres" [suggestions]="filteredConferencista" (completeMethod)="filterConferencistas($event)"  [size]="30" placeholder="Conferencistas" [minLength]="1"></p-autoComplete> -->
+            <p-dropdown
+              [options]="carreras"
+              formControlName="carrera"
+              filter="true"
+              pTooltip="Carrera"
+              styleClass="form-control"
+              [style]="{ width: '100%', heigth: '50px' }"
+              optionLabel="abreviatura"
+              [showClear]="true"
+              [autoDisplayFirst]="false"
+            ></p-dropdown>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <div class="col-lg-5" style="margin-bottom:4px">
+            *Panelista principal
+          </div>
+          <div class="col-lg-7" style="margin-bottom:4px;height:180px;">
+            <!-- <p-autoComplete formControlName="conferencista" field="nombres" [suggestions]="filteredConferencista" (completeMethod)="filterConferencistas($event)"  [size]="30" placeholder="Conferencistas" [minLength]="1"></p-autoComplete> -->
+            <p-dropdown
+              [options]="ListadoConferencistas"
+              formControlName="conferencista"
+              filter="true"
+              pTooltip="Conferencistas"
+              styleClass="form-control"
+              [style]="{ width: '100%', heigth: '50px' }"
+              optionLabel="nombres"
+              [showClear]="true"
+              [autoDisplayFirst]="false"
+            ></p-dropdown>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <p-footer>
+    <button type="button" class="btn btn-default pull-left" (click)="OnHIde()">
+      Salir
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      [disabled]="formConferencia.invalid"
+      (click)="onSubmit()"
+      *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()"
+    >
+      <span *ngIf="id_conferencia == null">Registrar</span>
+      <span *ngIf="id_conferencia != null && !_funtions.IsMostrar()"
+        >Actualizar</span
+      >
+      <!-- <span *ngIf="id!=null && _funtions.IsMostrar()">Editar</span> -->
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      [disabled]="formConferencia.invalid"
+      [routerLink]="['/', actividad, '/conferencias', id_conferencia, 'editar']"
+      *ngIf="_funtions.IsMostrar()"
+    >
+      <span>Editar</span>
+    </button>
+  </p-footer>
 </p-dialog>

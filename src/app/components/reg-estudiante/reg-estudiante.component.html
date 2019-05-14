@@ -54,7 +54,7 @@
 			<div class="form-group">
 				<div class="input-group">
 					<!-- <span class="input-group-addon"><i class="fa fa-phone"></i></span> -->
-					<p-autoComplete formControlName="carrera" value='carrera.value' [suggestions]="filteredCarreras" [style]="{'height':'36px'}" [inputStyle]="{'border': '1px solid #d0caca'}" (completeMethod)="filterCarreras($event)" field="abreviatura" [size]="15" [minLength]="1" placeholder="Carreras" [dropdown]="true" [readonly]="true" required>
+					<p-autoComplete formControlName="carrera" value='carrera.id' [suggestions]="filteredCarreras" [style]="{'height':'36px'}" [inputStyle]="{'border': '1px solid #d0caca'}" (completeMethod)="filterCarreras($event)" field="abreviatura" [size]="15" [minLength]="1" placeholder="Carreras" [dropdown]="true" [readonly]="true" required>
 						<ng-template let-carrera pTemplate="item" >
 						<div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
 							<!-- <img src="assets/showcase/images/demo/car/{{brand}}.png" style="width:32px;display:inline-block;margin:5px 0 2px 5px"/> -->
@@ -85,9 +85,9 @@
 	<div class="col-lg-6">
 		<div class="progress-group" *ngIf="id!=null">
 			<span class="progress-text">Horas Acumuladas</span>
-			<span class="progress-number"><b>{{formPerson.controls.horas_concurriculares_acumuladas.value}}</b>/{{formPerson.controls.carrera.value.horas_requeridas}}</span>
+			<span class="progress-number"><b>{{formPerson.controls.horasAcumuladas.value}}</b>/{{formPerson.controls.carrera.value.horasRequeridas}}</span>
 			<div class="progress sm">
-				<div class="progress-bar progress-bar-aqua" [ngStyle]="{'width': ((formPerson.controls.horas_concurriculares_acumuladas.value/formPerson.controls.carrera.value.horas_requeridas)*100)+'%' }"></div>
+				<div class="progress-bar progress-bar-aqua" [ngStyle]="{'width': ((formPerson.controls.horasAcumuladas.value/formPerson.controls.carrera.value.horasRequeridas)*100)+'%' }"></div>
 			</div>
 		</div>
 	</div>

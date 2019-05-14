@@ -35,7 +35,8 @@ export class RegConferencistaComponent implements OnInit {
         this._funtions.blockUIO().stop()
         console.log(response);
         if (response.info) {
-           response.data.estado = response.data.estado=="A"
+           response.data.estado = response.data.estado=="A";
+           this.id = response.data.id;
           this.createForm(response.data)
         }else
           this._funtions.Toast("error", "error",this._funtions.sacarText(response.error));
@@ -63,7 +64,7 @@ export class RegConferencistaComponent implements OnInit {
       cedula:a.cedula,
       email:a.email,
       telefono:[a.telefono, Validators.required],
-      tipo:'C',
+      esEstudiante: false,
       estado:a.estado,
       cargo:a.cargo,
       trabajo:a.trabajo

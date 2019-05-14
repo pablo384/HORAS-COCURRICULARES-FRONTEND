@@ -38,7 +38,7 @@ export class RegCarreraComponent implements OnInit {
   	this.formCarrera=this.fb.group({
   		nombre:n,
       abreviatura:ab,
-  		horas_requeridas:hr
+  		horasRequeridas:hr
   	})
     this._funtions.actionsOnRoute(this.formCarrera.controls);
   }
@@ -62,7 +62,7 @@ export class RegCarreraComponent implements OnInit {
         this._funtions.blockUIO().stop()
         console.log(response);
         if (response.info) {
-          this.createForm(response.data.nombre,response.data.abreviatura,response.data.horas_requeridas)
+          this.createForm(response.data.nombre,response.data.abreviatura,response.data.horasRequeridas)
         }else
           this._funtions.Toast("error", "error",this._funtions.sacarText(response.error));
 

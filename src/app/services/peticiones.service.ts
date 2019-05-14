@@ -1,178 +1,208 @@
 
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
-import {CONSTANTES} from './CONSTANTES.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { CONSTANTES } from './CONSTANTES.service';
 @Injectable()
 export class PeticionesService {
   public url: string;
-  constructor(private  http: HttpClient) {
-    this.url = "http://"+CONSTANTES.url;
+  constructor(private http: HttpClient) {
+    this.url = 'http://' + CONSTANTES.url;
   }
 
-  getResultadosDeSorteos(cFecha:string,token:string) {
-      return this.http.get(this.url +'')
-  } 
+  getResultadosDeSorteos(cFecha: string, token: string) {
+    return this.http.get(this.url + '');
+  }
 
-  login(data: Object) {
+  login(data: any) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(this.url + '/login',JSON.stringify(data),{headers: headers})
+    data.nick = data['usuario'];
+    // delete data['usuario'];
+    return this.http.post(this.url + '/user/login', JSON.stringify(data), { headers: headers });
   }
-  //=======================================| CARRERA |=====================
-  crearCarrera(data: Object): Observable<any> {
-
-    return this.http.post(this.url + '/carrera',JSON.stringify(data))
+  // =======================================| CARRERA |=====================
+  crearCarrera(data: any): Observable<any> {
+    data.horasRequeridas = data.horas_requeridas;
+    return this.http.post(this.url + '/carrera', JSON.stringify(data));
   }
 
   GetAllCarrera(): Observable<any> {
 
-    return this.http.get(this.url + '/carrera')
+    return this.http.get(this.url + '/carrera');
   }
 
-  //=======================================| ACTIVIDAD |=====================
-  crearActividad(data: Object): Observable<any> {
+  // =======================================| ACTIVIDAD |=====================
+  crearCuatrimestre(data: any): Observable<any> {
 
-    return this.http.post(this.url + '/actividad',JSON.stringify(data))
+    return this.http.post(this.url + '/cuatrimestre', JSON.stringify(data));
   }
-  //=======================================| ACTIVIDAD |=====================
-  crearAsistencia(data: Object): Observable<any> {
+  // =======================================| ACTIVIDAD |=====================
+  crearAsistencia(data: any): Observable<any> {
 
-    return this.http.post(this.url + '/asistencia/new',JSON.stringify(data))
+    return this.http.get(this.url + `/asistencia/ponche?idPersona=${data.idPersona}&idConferencia=${data.idConferencia}`);
   }
 
-   GetAllActividades(): Observable<any> {
-    return this.http.get(this.url + '/actividad/reporte_de_asistencia_por_cuatrimestre')
+  GetAllActividades(): Observable<any> {
+    return this.http.get(this.url + '/actividad/reporte_de_asistencia_por_cuatrimestre');
     // return this.http.get(this.url + '/actividad')
   }
 
-  GetActividades(fecha1: string,fecha2): Observable<any> {
-
-    return this.http.get(this.url + '/actividad/por_fecha/'+fecha1+'/'+fecha2)
+  GetCuatrimestres(fecha1: string, fecha2): Observable<any> {
+    return this.http.get(this.url + '/cuatrimestre?fechaInicio=' + fecha1 + '&fechaFin=' + fecha2);
     // return this.http.get(this.url + '/actividad')
   }
-  //=======================================| ESTUDIANTE |=====================
+  // =======================================| ESTUDIANTE |=====================
   crearEstudiante(data: Object): Observable<any> {
 
-    return this.http.post(this.url + '/usuario',JSON.stringify(data))
+    return this.http.post(this.url + '/persona', JSON.stringify(data));
   }
-  //=======================================| ESTUDIANTE |=====================
+  // =======================================| ESTUDIANTE |=====================
   crearConferencia(data: Object): Observable<any> {
 
-    return this.http.post(this.url + '/conferencia',JSON.stringify(data))
-  } 
-   //=======================================| ESTUDIANTE |=====================
-  updateConferencia(data: Object,id): Observable<any> {
-    return this.http.patch(this.url + '/conferencia/'+id,JSON.stringify(data))
-  } 
-   //=======================================| ESTUDIANTE |=====================
+    return this.http.post(this.url + '/conferencia', JSON.stringify(data));
+  }
+  // =======================================| ESTUDIANTE |=====================
+  updateConferencia(data: Object, id): Observable<any> {
+    return this.http.patch(this.url + '/conferencia', JSON.stringify(data));
+  }
+  // =======================================| ESTUDIANTE |=====================
   getConferencia(id): Observable<any> {
 
-    return this.http.get(this.url + '/conferencia/'+id)
-  } 
+    return this.http.get(this.url + '/conferencia/byId?id=' + id);
+  }
+  getConferenciasParticipadas(id): Observable<any> {
+    return this.http.get(this.url + '/persona/getconferenciasparticipadas?id=' + id);
+  }
 
-  //=======================================| ESTUDIANTE |=====================
-  verificarParticipacion(data: Object): Observable<any> {
+  // =======================================| ESTUDIANTE |=====================
+  verificarParticipacion(data: any): Observable<any> {
 
-    return this.http.post(this.url + '/asistencia/verificar_participacion',JSON.stringify(data))
-  } 
+    return this.http.get(this.url + `/asistencia/verificarParticipacion?termPersona=${data.matricula}&idConferencia=${data.conferencia}`);
+  }
 
   GetConferencistas(): Observable<any> {
 
-    return this.http.get(this.url + '/persona/conferencistas')
+    return this.http.get(this.url + '/persona?esEstudiante=false');
   }
 
   GetCarrera(id): Observable<any> {
 
-    return this.http.get(this.url + '/carrera/'+id)
-  } 
-  
-  GetActividad(id): Observable<any> {
-
-    return this.http.get(this.url + '/actividad/con_carreras/'+id)
+    return this.http.get(this.url + '/carrera?id=' + id);
   }
 
-  getEstudiante(data: Object): Observable<any> {
-    return this.http.post(this.url + '/usuario/estudiante/search',data)
+  GetCuatrimestre(id): Observable<any> {
+
+    return this.http.get(this.url + '/cuatrimestre/byId?id=' + id);
+  }
+
+  getEstudiante(data: any): Observable<any> {
+    return this.http.get(this.url + '/persona?esEstudiante=true&query=' + data);
   }
 
   GetConferencista(id): Observable<any> {
 
-    return this.http.get(this.url + '/persona/conferencista/'+id)
+    return this.http.get(this.url + '/persona/byId?id=' + id);
   }
 
   GetAllVerificadores(): Observable<any> {
-
-    return this.http.get(this.url + '/usuario/verificadores')
+    return this.http.get(this.url + '/user/getall');
   }
 
   GetVerifidor(id): Observable<any> {
-    return this.http.get(this.url + '/usuario/verificador/'+id)
+    return this.http.get(this.url + '/user/getbyid?id=' + id);
   }
 
-  GetConferenciasPorActividad(actividad): Observable<any> {
+  GetConferenciasPorCuatrimestre(actividad): Observable<any> {
 
-    return this.http.get(this.url + '/conferencia/por_actividad/'+actividad)
+    return this.http.get(this.url + '/conferencia/getbycuatrimestre?id=' + actividad);
   }
 
-  GetConferenciasPorActividadReporte(actividad): Observable<any> {
+  GetConferenciasPorCuatrimestreReporte(actividad): Observable<any> {
 
-    return this.http.get(this.url + '/conferencia/reporte_actividades_por_cuatrimestre/'+actividad)
+    return this.http.get(this.url + '/conferencia/reporte_actividades_por_cuatrimestre/' + actividad);
   }
 
   GetConferenciasDeHoy(): Observable<any> {
 
-    return this.http.get(this.url + '/conferencia/para_hoy')
+    return this.http.get(this.url + '/conferencia/para_hoy');
   }
+  GetUltimoCuatrimestre(): Observable<any> {
+    return this.http.get(this.url + '/cuatrimestre?last=true');
+  }
+  GetTodayConf(): Observable<any> {
+    return this.http.get(this.url + '/conferencias/hoy');
+  }
+  // GetAllCuatrimestre(): Observable<any> {
+  //   return this.http.get(this.url + '/cuatrimestre?last=true');
+  // }
 
-  GetEstudiantesPorConferencias(id_conferencia): Observable<any> {
+  GetAsistenciaPorConferencias(id_conferencia): Observable<any> {
 
-    return this.http.get(this.url + '/conferencia/lista_estudiantes/'+id_conferencia)
+    return this.http.get(this.url + '/persona/getbyconferencia?id=' + id_conferencia);
+  }
+  GetReporteAsistenciaPorConferencias(id_conferencia): Observable<any> {
+
+    return this.http.get(this.url + '/conferencia/report-asistencia-por-conferencia?id=' + id_conferencia);
   }
 
   GetAllEstudiantes(): Observable<any> {
 
-    return this.http.get(this.url + '/estudiantes')
+    return this.http.get(this.url + '/estudiantes');
   }
 
 
-  ConferenciaTerminarOIniciar(id,iniciar:boolean=false): Observable<any> {
-    let uri = '/conferencia/iniciar/'
-    if (iniciar){
-      uri = '/conferencia/finalizar/'
+  ConferenciaTerminarOIniciar(id, iniciar: boolean = false): Observable<any> {
+    let uri = '/conferencia/iniciar/';
+    if (iniciar) {
+      uri = '/conferencia/finalizar/';
     }
-    return this.http.get(this.url + uri+id)
+    return this.http.get(this.url + uri + id);
   }
 
-  //=======================================| ESTUDIANTE |=====================
-  ActualizarEstudiante(data: Object): Observable<any> {
+  // =======================================| ESTUDIANTE |=====================
+  ActualizarEstudiante(data: any): Observable<any> {
+    return this.http.patch(this.url + '/persona' , JSON.stringify({...data}));
 
-    return this.http.patch(this.url + '/usuario/estudiante',JSON.stringify(data))
+    // return this.http.patch(this.url + '/usuario/estudiante', JSON.stringify(data));
   }
 
-  //=======================================| ESTUDIANTE |=====================
-  ActualizarActividad(data: Object,id): Observable<any> {
+  // =======================================| ESTUDIANTE |=====================
+  ActualizarCuatrimestre(data: Object, id): Observable<any> {
 
-    return this.http.patch(this.url + '/actividad/'+id,JSON.stringify(data))
+    return this.http.patch(this.url + '/cuatrimestre?id=' + id, JSON.stringify(data));
   }
-  //=======================================| ESTUDIANTE |=====================
-  EliminarConferencia(id,id_conferecia_por_conferencista): Observable<any> {
-    return this.http.delete(this.url + "/conferencia/"+id+"/"+id_conferecia_por_conferencista)
+  EliminarActividadCuatrimestre(id): Observable<any> {
+    return this.http.delete(this.url + '/cuatrimestre?id=' + id);
   }
-
-  //=======================================| ESTUDIANTE |=====================
-  ActualizarVerificador(data: Object,id): Observable<any> {
-
-    return this.http.patch(this.url + '/persona/verificador/'+id,JSON.stringify(data))
+  // =======================================| ESTUDIANTE |=====================
+  EliminarConferencia(id, id_conferecia_por_conferencista): Observable<any> {
+    return this.http.delete(this.url + '/conferencia?id=' + id);
   }
-  //=======================================| ESTUDIANTE |=====================
-  ActualizarCarrera(data: Object,id): Observable<any> {
-
-    return this.http.patch(this.url + '/carrera/'+id,JSON.stringify(data))
+  FinalizarConferencia(id): Observable<any> {
+    return this.http.delete(this.url + '/conferencia/finalizar?id=' + id);
   }
 
-   //=======================================| ESTUDIANTE |=====================
-  ActualizarConferencista(data: Object,id): Observable<any> {
+  // =======================================| ESTUDIANTE |=====================
+  ActualizarVerificador(data: any, id): Observable<any> {
 
-    return this.http.patch(this.url + '/persona/conferencista/'+id,JSON.stringify(data))
+    return this.http.patch(this.url + '/user', JSON.stringify(data));
+  }
+  RegistrarVerificador(data: any, id): Observable<any> {
+
+    return this.http.post(this.url + '/user/signin', JSON.stringify(data));
+  }
+  // =======================================| ESTUDIANTE |=====================
+  ActualizarCarrera(data: Object, id): Observable<any> {
+
+    return this.http.patch(this.url + '/carrera', JSON.stringify({...data, id: id}));
+  }
+  EliminarCarrerae(id): Observable<any> {
+    return this.http.delete(this.url + '/carrera?id=' + id);
+  }
+
+  // =======================================| ESTUDIANTE |=====================
+  ActualizarConferencista(data: Object, id): Observable<any> {
+
+    return this.http.patch(this.url + '/persona' , JSON.stringify({...data, id: id}));
   }
 }

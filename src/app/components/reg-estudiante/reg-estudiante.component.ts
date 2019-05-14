@@ -73,16 +73,18 @@ export class RegEstudianteComponent implements OnInit {
 
   getEstudiante(){
     let value = {id_persona:this.id}
-    this._peticiones.getEstudiante(value).subscribe(
+    console.log('id estudiante::', this.id);
+    
+    this._peticiones.GetConferencista(this.id).subscribe(
       response => {
         this._funtions.blockUIO().stop()
         console.log("getEstudiante",response.data);
-        if (response.data.length >0) {
-          let estudiante = response.data[0];
-          let carrera = {nombres:estudiante.carrera,abreviatura:estudiante.carrera_abreviatura,horas_requeridas:estudiante.horas_requeridas,id:estudiante.id_estudiante_carrera}
-          estudiante.carrera = carrera;
+        if (response.data) {
+          let estudiante = response.data;
+          // let carrera = {nombres:estudiante.carrera,abreviatura:estudiante.carrera_abreviatura,horas_requeridas:estudiante.horas_requeridas,id:estudiante.id_estudiante_carrera}
+          // estudiante.carrera = estudiante.carrera.id;
           estudiante.estado = estudiante.estado=="A"
-          estudiante.carnet = estudiante.no_carnet;
+          // estudiante.carnet = estudiante.no_carnet;
           this.createForm(estudiante);    
           // this.estudiante = response.data;
         }
@@ -125,7 +127,7 @@ export class RegEstudianteComponent implements OnInit {
             }
         }
     }
-  createForm(a= {nombres:'',apellidos:'',direccion:'',cedula:'',email:'',carrera:'',telefono:'',usuario:'',matricula:'',image:'',carnet:'',horas_concurriculares_acumuladas:null,estado:true,id_usuario:''}){
+  createForm(a= {nombres:'',apellidos:'',direccion:'',cedula:'',email:'',carrera:'',telefono:'',usuario:'',matricula:'',image:'',carnet:'',horasAcumuladas:0,estado:true,id_usuario:''}){
   	this.formPerson = this.fb.group({
       nombres: [a.nombres, Validators.required],
       apellidos: [a.apellidos, Validators.required],
@@ -142,7 +144,7 @@ export class RegEstudianteComponent implements OnInit {
       carnet:[a.carnet,Validators.compose([Validators.required, Validators.minLength(16),Validators.maxLength(16)])],
       clave:['1234'/*, Validators.compose([Validators.required, Validators.minLength(4)])*/],
       claveConfirm:['1234'/*,Validators.compose([Validators.required, Validators.minLength(4)])*/],
-      horas_concurriculares_acumuladas:[a.horas_concurriculares_acumuladas],
+      horasAcumuladas:[a.horasAcumuladas],
       id_usuario:a.id_usuario
     });
     this._funtions.actionsOnRoute(this.formPerson.controls);

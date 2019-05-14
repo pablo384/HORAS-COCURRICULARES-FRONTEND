@@ -1,15 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbDropdownModule, NgbModule, NgbDropdown} from '@ng-bootstrap/ng-bootstrap';
-import {HTTP_INTERCEPTORS, HttpClientModule}            from '@angular/common/http';
-import { FormBuilder, FormsModule,ReactiveFormsModule} from '@angular/forms';
-import {InputSwitchModule,ToggleButtonModule ,SelectButtonModule, CalendarModule , InputTextModule,ConfirmDialogModule ,PasswordModule, InputMaskModule ,ChartModule , MultiSelectModule , ListboxModule ,SplitButtonModule,DialogModule,AutoCompleteModule,DropdownModule,FileUploadModule} from 'primeng/primeng';
+import { NgbDropdownModule, NgbModule, NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  InputSwitchModule,
+  ToggleButtonModule,
+  SelectButtonModule,
+  CalendarModule,
+  InputTextModule,
+  ConfirmDialogModule,
+  PasswordModule,
+  InputMaskModule,
+  ChartModule,
+  MultiSelectModule,
+  ListboxModule,
+  SplitButtonModule,
+  DialogModule,
+  AutoCompleteModule,
+  DropdownModule,
+  FileUploadModule,
+  OverlayPanelModule
+} from 'primeng/primeng';
 import { MomentModule } from 'angular2-moment';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ToasterModule, ToasterService}  from 'angular5-toaster/dist';
-import {ConfirmationService } from 'primeng/api';
-import {BlockUIModule} from 'ng-block-ui';
-import {CookieModule, CookieService} from 'ngx-cookie';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  ToasterModule,
+  ToasterService
+} from 'angular5-toaster/dist';
+import { ConfirmationService } from 'primeng/api';
+import { BlockUIModule } from 'ng-block-ui';
+import {
+  CookieModule,
+  CookieService
+} from 'ngx-cookie';
 
 import { AppComponent } from './app.component';
 
@@ -18,7 +42,7 @@ import { FuncionesService } from './services/funciones.service'
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './components/login/login.component'
-import { routing }        from './app.routing';
+import { routing } from './app.routing';
 import { HomeComponent } from './components/home/home.component';
 import { BoxBodyComponent } from './components/box-body/box-body.component';
 import { RegEstudianteComponent } from './components/reg-estudiante/reg-estudiante.component';
@@ -71,7 +95,7 @@ import { ReportEstudiantesComponent } from './components/report-estudiantes/repo
     ListEntradaSalidaComponent,
     ListConferencistasComponent,
     ListCarrerasComponent,
-    BuscadorComponent,    
+    BuscadorComponent,
     ListVerificadoresComponent,
     SearchPipe,
     PerfilComponent,
@@ -95,6 +119,7 @@ import { ReportEstudiantesComponent } from './components/report-estudiantes/repo
     PasswordModule,
     InputMaskModule,
     ToggleButtonModule,
+    OverlayPanelModule,
     ChartModule,
     MultiSelectModule,
     ListboxModule,
@@ -111,15 +136,15 @@ import { ReportEstudiantesComponent } from './components/report-estudiantes/repo
     HttpClientModule
   ],
   providers: [
-  	PeticionesService,
-  	CookieService,
-  	AuthGuard,
-  	FuncionesService,
-  // WebsocketService,
-  ConfirmationService,
-  ToasterService,
-  FormBuilder,
-   {
+    PeticionesService,
+    CookieService,
+    AuthGuard,
+    FuncionesService,
+    // WebsocketService,
+    ConfirmationService,
+    ToasterService,
+    FormBuilder,
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthService,
       multi: true,

@@ -21,7 +21,7 @@
               *Fecha de inicio
             </div>
             <div class="col-lg-6">
-            <p-calendar  dateFormat="dd/mm/yy" (onSelect)="onSelectDateInicio($event)" [minDate]="minDate" formControlName="fecha_inicio" [showIcon]="true" required></p-calendar>
+            <p-calendar  dateFormat="dd/mm/yy" (onSelect)="onSelectDateInicio($event)" [minDate]="minDate" formControlName="fechaInicio" [showIcon]="true" required></p-calendar>
           </div>
         </div>
       </div>
@@ -32,12 +32,12 @@
             *Fecha de Finalizar
           </div>
           <div class="col-lg-6">
-          <p-calendar  dateFormat="dd/mm/yy" [minDate]="minDateFin" formControlName="fecha_finalizacion" [showIcon]="true" required></p-calendar>
+          <p-calendar  dateFormat="dd/mm/yy" [minDate]="minDateFin" formControlName="fechaFin" [showIcon]="true" required></p-calendar>
         </div>
       </div>
     </div>
     <br>
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-lg-12">
         <div class="col-lg-6">
           <span>*Carreras participantes</span>
@@ -49,7 +49,7 @@
     <div class="col-lg-7">
       <p><span *ngFor="let c of selectedCarreras" style="margin-right: 10px">{{c.name}}</span></p>
     </div>
-  </div>
+  </div> -->
 </div>
 </form>
 </div>

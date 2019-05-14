@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject,Subscription } from 'rxjs';
-import {FuncionesService} from '../../services/funciones.service';
-import {PeticionesService} from '../../services/peticiones.service';
+import { Subject, Subscription } from 'rxjs';
+import { FuncionesService } from '../../services/funciones.service';
+import { PeticionesService } from '../../services/peticiones.service';
 
 @Component({
   selector: 'app-list-estudiantes',
@@ -9,28 +9,41 @@ import {PeticionesService} from '../../services/peticiones.service';
   styleUrls: ['./list-estudiantes.component.css']
 })
 export class ListEstudiantesComponent implements OnInit {
-	searchText;
+  searchText;
   EstudianteSeleccionado;
-  filteredEstudiantes:any[];
-  Estudiantes:any[];
-  cDatosSearch:string;
-	estudiante:any[];
+  filteredEstudiantes: any[];
+  Estudiantes: any[] = [];
+  cDatosSearch: string;
+  estudiante: any[];
+  display_actividades = false;
+  actividadesPar = [];
   public static returned: Subject<any> = new Subject();
-  subc:Subscription;
-  constructor(private _funtions: FuncionesService, private _peticiones :PeticionesService) {
+  subc: Subscription;
+  constructor(private _funtions: FuncionesService, private _peticiones: PeticionesService) {
     this.subc = ListEstudiantesComponent.returned.subscribe(res => {
       this.getEstudiante(this.cDatosSearch);
     });
-   }
+  }
 
   ngOnInit() {
-    this.getEstudiante("fffff");
+    this.getEstudiante('fffff');
+  }
+  toggleActi() {
+    this.display_actividades = !this.display_actividades;
+  }
+  getConfParticipadas(id) {
+    this._peticiones.getConferenciasParticipadas(id).subscribe(
+      res => {
+        this.actividadesPar = res.data;
+        this.toggleActi();
+      }
+    );
   }
 
   ngOnDestroy(): void {
     this.subc.unsubscribe();
   }
-   doThingFactory() {
+  doThingFactory() {
     return (cDatos) => this.getEstudiante(cDatos);
   }
 
@@ -38,21 +51,19 @@ export class ListEstudiantesComponent implements OnInit {
   search(event) {
     this.filteredEstudiantes = [];
 
-    let searchKeyword = event.query.toLowerCase();
-      this.Estudiantes.forEach(item => {
-        //Object.values(item) => gives the list of all the property values of the 'item' object
-        let propValueList = Object.values(item);
-        for(let i=0;i<propValueList.length;i++)
-        {
-          if (propValueList[i]) {
-            if (propValueList[i].toString().toLowerCase().indexOf(searchKeyword) > -1)
-            {
-              this.filteredEstudiantes.push(item);
-              break;
-            }
+    const searchKeyword = event.query.toLowerCase();
+    this.Estudiantes.forEach(item => {
+      // Object.values(item) => gives the list of all the property values of the 'item' object
+      const propValueList = Object.values(item);
+      for (let i = 0; i < propValueList.length; i++) {
+        if (propValueList[i]) {
+          if (propValueList[i].toString().toLowerCase().indexOf(searchKeyword) > -1) {
+            this.filteredEstudiantes.push(item);
+            break;
           }
         }
-      });
+      }
+    });
 
 
 
@@ -66,21 +77,22 @@ export class ListEstudiantesComponent implements OnInit {
   }
 
 
-  getEstudiante(cDatos){
-  	let value = {}
-  	// if( cDatos && (cDatos.length < 0) ){
-  	// 	return;
-  	// }
+  getEstudiante(cDatos) {
+    const value = {};
+    // if( cDatos && (cDatos.length < 0) ){
+    // 	return;
+    // }
     this.cDatosSearch = cDatos;
-    if (!isNaN(parseInt(cDatos)) && parseInt(cDatos)>0){
-      if (cDatos.length == 16){
-        value["carnet"] = cDatos;
-      }else
+    if (!isNaN(parseInt(cDatos)) && parseInt(cDatos) > 0) {
+      if (cDatos.length == 16) {
+        value['carnet'] = cDatos;
+      } else {
         value["matricula"] = cDatos;
-    }else{
-      value["usuario"] = cDatos
+      }
+    } else {
+      value['usuario'] = cDatos;
     }
-    let correcto = false;
+    const correcto = false;
     // console.log("getEstudiante",value)
     // if(value["usuario"] != undefined || value["matricula"] != undefined || value["carnet"]){
     //   correcto = true;
@@ -88,14 +100,14 @@ export class ListEstudiantesComponent implements OnInit {
     // if(!correcto){
     //   return;
     // }
-    console.log("getEstudiante",value)
-  	this._peticiones.getEstudiante(value).subscribe(
+    console.log('getEstudiante', value);
+    this._peticiones.getEstudiante(cDatos).subscribe(
       response => {
-        this._funtions.blockUIO().stop()
-        console.log("getEstudiante",response);
-        if (response.info) {        
+        this._funtions.blockUIO().stop();
+        console.log('getEstudiante', response);
+        if (response.info) {
           // this.estudiante = response.data;
-        	this.Estudiantes = response.data;
+          this.Estudiantes = response.data;
         }
       },
       error => {
@@ -105,10 +117,10 @@ export class ListEstudiantesComponent implements OnInit {
         } else {
           resultado = error.error.error;
         }
-        console.log(error.error)
-        this._funtions.Toast("error","Error",resultado);
+        console.log(error.error);
+        this._funtions.Toast('error', 'Error', resultado);
 
-        this._funtions.blockUIO().stop(); 
+        this._funtions.blockUIO().stop();
       }
     );
   }

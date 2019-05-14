@@ -26,7 +26,7 @@
 								<td><span>{{i+1}}</span></td>
 								<td>{{item.carrera}}</td>
 								<td><span class="label label-success">{{item.asistencia}}</span></td>
-								<td>{{item.asistencia/totalAsistencia*100| number : '1.2-2'}}</td>
+								<td>{{item.porciento + '%'}}</td>
 							</tr>
 							
 						</tbody>
@@ -47,10 +47,11 @@
 	</div>
 	<div class="box-body">
 		<dl class="dl-horizontal">
-			<dt>Fecha</dt><dd>{{conferencia.dia_de_presentacion}}</dd>
-			<dt>Tiempo valido</dt><dd>{{conferencia.porciento_horas_validas}}%</dd>
-			<dt>Hora de Inicio</dt><dd><span class="label label-primary">{{conferencia.hora_inicio}}</span></dd>
-			<dt>Hora de finalización</dt><dd><span class="label label-success">{{conferencia.hora_fin}}</span></dd>
+			<dt>Fecha</dt><dd>{{conferencia.diaPresentacion | amDateFormat: 'DD/MM/YYYY'}}</dd>
+			<dt>Tiempo valido</dt><dd>{{conferencia.porcientoHorasValidas}}%</dd>
+			<dt>Valor de conferencia</dt><dd>{{conferencia.valorConf}}</dd>
+			<dt>Hora de Inicio</dt><dd><span class="label label-primary">{{conferencia.horaInicio | amDateFormat: 'HH:mm:ss a'}}</span></dd>
+			<dt>Hora de finalización</dt><dd><span class="label label-success">{{conferencia.horaFin | amDateFormat: 'HH:mm:ss a'}}</span></dd>
 			<dt style="font-size: 32px">TOTAL</dt><dd style="font-size: 32px">{{totalAsistencia}}</dd>
 		</dl>
 	</div>

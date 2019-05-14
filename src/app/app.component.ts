@@ -14,8 +14,8 @@ export class AppComponent implements OnDestroy {
   TotalDeConferencias;
 	constructor(private _funtions: FuncionesService,private _peticiones:PeticionesService) {
 		this.actividadesDehoy();
-    let t= Observable.interval(1000*60).takeUntil(this.onDestroy$);
-    t.subscribe(i => this.actividadesDehoy(false));
+    // let t= Observable.interval(1000*60).takeUntil(this.onDestroy$);
+    // t.subscribe(i => this.actividadesDehoy(false));
 	}
 
   ngOnDestroy(): void {
@@ -23,13 +23,13 @@ export class AppComponent implements OnDestroy {
   }
 
   isAdmin(){
-    return this._funtions.getLoggedUser().tipo == 'A'
+    return this._funtions.getLoggedUser().isAdmin;
   }
 
   actividadesDehoy(lMos=true){
     if (lMos)
   	  this._funtions.blockUIO().start()
-      this._peticiones.GetConferenciasDeHoy().subscribe(
+      this._peticiones.GetUltimoCuatrimestre().subscribe(
         response => {
            this._funtions.blockUIO().stop()
           console.log('response',response);

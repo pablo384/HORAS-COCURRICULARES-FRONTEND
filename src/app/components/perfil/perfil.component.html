@@ -3,7 +3,7 @@
 		<div class="box-body" style="text-align: center">
 			<div class="col-lg-12">
 				<a (click)="openInput()">
-					<img  _ngcontent-c0="" alt="User Image" class="img-circle img_border" src="assets/myimages/user2-160x160.jpg">
+					<img  _ngcontent-c0="" alt="User Image" class="img-circle img_border" [src]="_funtions.getLoggedUser().image.url" height="160px" width="160px">
 				</a>
 				
 			</div>

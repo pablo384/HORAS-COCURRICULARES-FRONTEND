@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-list-entrada-salida',
@@ -11,5 +12,7 @@ export class ListEntradaSalidaComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  momentDuration(arg) {
+    return moment.duration(arg).humanize();
+  }
 }
