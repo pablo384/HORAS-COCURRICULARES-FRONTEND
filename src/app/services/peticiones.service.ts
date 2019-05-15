@@ -144,6 +144,10 @@ export class PeticionesService {
 
     return this.http.get(this.url + '/conferencia/report-asistencia-por-conferencia?id=' + id_conferencia);
   }
+  GetReporteEstudiantes(): Observable<any> {
+
+    return this.http.get(this.url + '/reporte/reporte-estudiantes');
+  }
 
   GetAllEstudiantes(): Observable<any> {
 
