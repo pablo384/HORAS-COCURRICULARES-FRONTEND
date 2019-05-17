@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { FuncionesService } from '../../services/funciones.service';
 import { PeticionesService } from '../../services/peticiones.service';
-import * as moment from 'moment'
+import * as moment from 'moment';
+import * as printJS from 'print-js';
+
 @Component({
   selector: 'app-report-asistencia-por-conferencia',
   templateUrl: './report-asistencia-por-conferencia.component.html',
@@ -47,7 +49,9 @@ export class ReportAsistenciaPorConferenciaComponent implements OnInit {
   ngOnInit() {
     this.ListadoEstudiantesPorConferencias(this.conferencia.id);
   }
-
+  captureScreen() {
+    printJS('reporteTable', 'html');
+  }
   ListadoEstudiantesPorConferencias(conferencia_id) {
     this._funtions.blockUIO().start();
     this._peticiones.GetReporteAsistenciaPorConferencias(conferencia_id).subscribe(

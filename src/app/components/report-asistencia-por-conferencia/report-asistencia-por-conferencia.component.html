@@ -1,65 +1,89 @@
 <div class="col-lg-7">
-	<!-- <div class="col-lg-12"> -->
-		<div class="box box-info">
-			<div class="box-header with-border">
-				<h3 class="box-title">REPORTE DE ASISTENCIA POR ACTIVIDAD</h3><br>
-				<h3 class="box-title" style="color:#027ebf">{{conferencia.titulo}}</h3>
-				<div class="box-tools pull-right">
-					<div class="btn-group">
-					</div>
-				</div>
-			</div>
-			<!-- /.box-header -->
-			<div class="box-body">
-				<div class="table-responsive">
-					<table class="table no-margin">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>CARRERA</th>
-								<th>ASISTENCIA</th>
-								<th>%</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of carreras let i = index">
-								<td><span>{{i+1}}</span></td>
-								<td>{{item.carrera}}</td>
-								<td><span class="label label-success">{{item.asistencia}}</span></td>
-								<td>{{item.porciento + '%'}}</td>
-							</tr>
-							
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	<!-- </div> -->
-	<!-- <div class="col-lg-12"> -->
-	<!-- <p-chart type="bar" [data]="data"></p-chart> -->
-	<!-- </div> -->
+  <!-- <div class="col-lg-12"> -->
+  <div id="reporteTable" class="box box-info">
+    <div class="box-header with-border">
+      <h4 class="box-title">REPORTE DE ASISTENCIA POR ACTIVIDAD: {{ conferencia.titulo }}</h4>
+      <br />
+      <br />
+      <div class="box-tools pull-right">
+        <div class="btn-group"></div>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="table-responsive">
+        <!-- <h3>REPORTE DE ASISTENCIA POR ACTIVIDAD</h3> -->
+        <table class="table no-margin">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>CARRERA</th>
+              <th>ASISTENCIA</th>
+              <th>%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of carreras; let i = index">
+              <td>
+                <span>{{ i + 1 }}</span>
+              </td>
+              <td>{{ item.carrera }}</td>
+              <td>
+                <span class="label label-success">{{ item.asistencia }}</span>
+              </td>
+              <td>{{ item.porciento + "%" }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+  <!-- <div class="col-lg-12"> -->
+  <!-- <p-chart type="bar" [data]="data"></p-chart> -->
+  <!-- </div> -->
 </div>
 <div class="col-lg-5">
-<div class="box box-solid">
-	<div class="box-header with-border" style="background: #027ebf;color: white">
-		<i class="fa fa-dashboard"></i>
-		<h3 class="box-title">Resumen</h3>
-	</div>
-	<div class="box-body">
-		<dl class="dl-horizontal">
-			<dt>Fecha</dt><dd>{{conferencia.diaPresentacion | amDateFormat: 'DD/MM/YYYY'}}</dd>
-			<dt>Tiempo valido</dt><dd>{{conferencia.porcientoHorasValidas}}%</dd>
-			<dt>Valor de conferencia</dt><dd>{{conferencia.valorConf}}</dd>
-			<dt>Hora de Inicio</dt><dd><span class="label label-primary">{{conferencia.horaInicio | amDateFormat: 'HH:mm:ss a'}}</span></dd>
-			<dt>Hora de finalización</dt><dd><span class="label label-success">{{conferencia.horaFin | amDateFormat: 'HH:mm:ss a'}}</span></dd>
-			<dt style="font-size: 32px">TOTAL</dt><dd style="font-size: 32px">{{totalAsistencia}}</dd>
-		</dl>
-	</div>
-	<div class="box-footer">
-		<div class="btn-group ">
-			<button type="submit" class="btn btn-lg btn-success"><i class="fa fa-print"></i> Imprimir Reporte</button>
-		</div>
-		<!-- <button type="submit" class="btn btn-default">Cancel</button> -->
-	</div>
-</div>
+  <div class="box box-solid">
+    <div
+      class="box-header with-border"
+      style="background: #027ebf;color: white"
+    >
+      <i class="fa fa-dashboard"></i>
+      <h3 class="box-title">Resumen:</h3>
+      <h4 class="box-title" >{{ conferencia.titulo }}</h4>
+    </div>
+    <div class="box-body">
+      <dl class="dl-horizontal">
+        <dt>Fecha</dt>
+        <dd>{{ conferencia.diaPresentacion | amDateFormat: "DD/MM/YYYY" }}</dd>
+        <dt>Tiempo valido</dt>
+        <dd>{{ conferencia.porcientoHorasValidas }}%</dd>
+        <dt>Valor de conferencia</dt>
+        <dd>{{ conferencia.valorConf }}</dd>
+        <dt>Hora de Inicio</dt>
+        <dd>
+          <span class="label label-primary">{{
+            conferencia.horaInicio | amDateFormat: "HH:mm:ss a"
+          }}</span>
+        </dd>
+        <dt>Hora de finalización</dt>
+        <dd>
+          <span class="label label-success">{{
+            conferencia.horaFin | amDateFormat: "HH:mm:ss a"
+          }}</span>
+        </dd>
+        <dt style="font-size: 32px">TOTAL</dt>
+        <dd style="font-size: 32px">{{ totalAsistencia }}</dd>
+      </dl>
+    </div>
+    <div class="box-footer">
+      <div class="btn-group ">
+        <button (click)="captureScreen()" class="btn btn-lg btn-success">
+          <i class="fa fa-print"></i> Imprimir Reporte
+        </button>
+      </div>
+      <!-- <button type="submit" class="btn btn-default">Cancel</button> -->
+    </div>
+  </div>
 </div>

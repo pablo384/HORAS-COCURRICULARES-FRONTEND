@@ -4,6 +4,7 @@ import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { FuncionesService } from '../../services/funciones.service';
 import { PeticionesService } from '../../services/peticiones.service';
 import * as moment from 'moment';
+import * as printJS from 'print-js';
 @Component({
   selector: 'app-report-estudiantes',
   templateUrl: './report-estudiantes.component.html',
@@ -77,7 +78,7 @@ export class ReportEstudiantesComponent implements OnInit {
     //     return ok;
     //   });
     // } else {
-    return res;
+    // return res;
     // }
   }
   get allActividadesbyC() {
@@ -108,7 +109,9 @@ export class ReportEstudiantesComponent implements OnInit {
   ngOnInit() {
     this.ListEstudiantes();
   }
-
+  captureScreen() {
+    printJS('reporteTable', 'html');
+  }
   include(arr, obj) {
     return (arr.indexOf(obj) != -1);
   }
