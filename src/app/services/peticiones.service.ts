@@ -22,7 +22,7 @@ export class PeticionesService {
   }
   // =======================================| CARRERA |=====================
   crearCarrera(data: any): Observable<any> {
-    data.horasRequeridas = data.horas_requeridas;
+    // data.horasRequeridas = data.horas_requeridas;
     return this.http.post(this.url + '/carrera', JSON.stringify(data));
   }
 
