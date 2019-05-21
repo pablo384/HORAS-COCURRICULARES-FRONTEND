@@ -13,13 +13,24 @@ import * as printJS from 'print-js';
 })
 export class ReportCuatrimestresComponent implements OnInit {
   ListDeActividades = [];
+  listCuatrimestres = [];
   constructor(private _funtions: FuncionesService, private _peticiones: PeticionesService) { }
 
   ngOnInit() {
-    this.ListActividades();
+    this.getCuatrimestres();
+    // this.ListActividades();
   }
   captureScreen() {
     printJS('reporteTable', 'html');
+  }
+  getCuatrimestres() {
+    this._peticiones.GetAllCuatrimestres().subscribe(
+      (res: any) => {
+        if (res.info) {
+          this.listCuatrimestres = res.data;
+        }
+      }
+    );
   }
   ListActividades() {
     this._peticiones.GetAllActividades().subscribe(

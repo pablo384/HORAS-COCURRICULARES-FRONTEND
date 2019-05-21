@@ -51,6 +51,10 @@ export class PeticionesService {
     return this.http.get(this.url + '/cuatrimestre?fechaInicio=' + fecha1 + '&fechaFin=' + fecha2);
     // return this.http.get(this.url + '/actividad')
   }
+  GetAllCuatrimestres(): Observable<any> {
+    return this.http.get(this.url + '/cuatrimestre');
+    // return this.http.get(this.url + '/actividad')
+  }
   // =======================================| ESTUDIANTE |=====================
   crearEstudiante(data: Object): Observable<any> {
 
