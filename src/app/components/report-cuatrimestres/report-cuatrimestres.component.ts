@@ -33,6 +33,17 @@ export class ReportCuatrimestresComponent implements OnInit {
       }
     );
   }
+  getbyCuatrimestres() {
+    if (this.cuatrimestreSeleccionado) {
+      this._peticiones.GetConferenciasPorCuatrimestre(this.cuatrimestreSeleccionado).subscribe(
+        (res: any) => {
+          if (res.info) {
+            this.ListDeActividades = res.data;
+          }
+        }
+      );
+    }
+  }
   ListActividades() {
     this._peticiones.GetAllActividades().subscribe(
       response => {

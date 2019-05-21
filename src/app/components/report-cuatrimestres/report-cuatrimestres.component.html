@@ -5,6 +5,7 @@
 		  <label for="cuatrimestresSelect">Cuatrimestre</label>
 		  <select
 			[(ngModel)]="cuatrimestreSeleccionado"
+			(change)="getbyCuatrimestres()"
 			class="form-control"
 			id="cuatrimestresSelect"
 		  >
@@ -28,7 +29,7 @@
         <tr>
           <th>ID</th>
           <th>Titulo</th>
-          <th>Asistencia</th>
+          <!-- <th>Asistencia</th> -->
           <th>Horas Aportadas</th>
           <th>Fecha de inicio</th>
           <th>Fecha de finalizar</th>
@@ -41,14 +42,14 @@
           <td>
             <b>{{ item.titulo | uppercase }}</b>
           </td>
-          <td>
+          <!-- <td>
             <b>{{ item.asistencia }}</b>
-          </td>
+          </td> -->
           <td>
-            <b>{{ item.horas_aportadas }}</b>
+            <b>{{ item.valorConf }}</b>
           </td>
-          <td>{{ item.fecha_inicio }}</td>
-          <td>{{ item.fecha_finalizar }}</td>
+          <td>{{ item.horaInicio | amDateFormat: "DD/MM/YYYY HH:mm:ss a" }}</td>
+          <td>{{ item.horaFin | amDateFormat: "DD/MM/YYYY HH:mm:ss a" }}</td>
           <td>
             <a
               class="btn btn-default btn-flat"
