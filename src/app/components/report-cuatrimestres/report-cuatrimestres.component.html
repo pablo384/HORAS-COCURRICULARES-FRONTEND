@@ -29,7 +29,7 @@
         <tr>
           <th>ID</th>
           <th>Titulo</th>
-          <!-- <th>Asistencia</th> -->
+          <th>Carrera</th>
           <th>Horas Aportadas</th>
           <th>Fecha de inicio</th>
           <th>Fecha de finalizar</th>
@@ -42,9 +42,9 @@
           <td>
             <b>{{ item.titulo | uppercase }}</b>
           </td>
-          <!-- <td>
-            <b>{{ item.asistencia }}</b>
-          </td> -->
+          <td>
+            <b>{{ item.carrera.abreviatura | uppercase }}</b>
+          </td>
           <td>
             <b>{{ item.valorConf }}</b>
           </td>
