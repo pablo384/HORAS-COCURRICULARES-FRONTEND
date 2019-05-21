@@ -14,6 +14,7 @@ import * as printJS from 'print-js';
 export class ReportCuatrimestresComponent implements OnInit {
   ListDeActividades = [];
   listCuatrimestres = [];
+  cuatrimestreSeleccionado;
   constructor(private _funtions: FuncionesService, private _peticiones: PeticionesService) { }
 
   ngOnInit() {

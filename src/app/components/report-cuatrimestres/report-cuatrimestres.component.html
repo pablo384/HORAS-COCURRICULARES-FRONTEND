@@ -1,34 +1,70 @@
+<div class="container">
+	<div class="row">
+	  <div class="col-lg-4">
+		<div class="form-group">
+		  <label for="cuatrimestresSelect">Cuatrimestre</label>
+		  <select
+			[(ngModel)]="cuatrimestreSeleccionado"
+			class="form-control"
+			id="cuatrimestresSelect"
+		  >
+			<option *ngFor="let item of listCuatrimestres" [value]="item.id">{{
+			  item.titulo
+			}}</option>
+		  </select>
+		</div>
+	  </div>
+	</div>
+</div>
 <div class="box">
-	<div class="box-header header-list">
-		<h1>Reporte de Cuatrimestres</h1>
-		<!-- <small class="box-title"> [ {{actividad.id}} ] ID Actividad : {{actividad.titulo}}</small> -->
-		<br>
-	</div>
-	<div class="box-body">
-		<table id="example1" class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Titulo</th>
-					<th>Asistencia</th>
-					<th>Horas Aportadas</th>
-					<th>Fecha de inicio</th>
-					<th>Fecha de finalizar</th>
-					<th>Acciones</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let item of ListDeActividades let i = index">
-					<td>{{item.id}}</td>
-					<td><b>{{item.titulo| uppercase}}</b></td>
-					<td><b>{{item.asistencia}}</b></td>
-					<td><b>{{item.horas_aportadas}}</b></td>
-					<td>{{item.fecha_inicio}}</td>
-					<td>{{item.fecha_finalizar}}</td>
-					<td><a class="btn btn-default btn-flat" title="Conferencias" [routerLink]="['/',item.id,'report_actividades_por_cuatrimestre']" [queryParams]="{actividad:item|json }"><i class="fa fa-bar-chart"></i></a></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+  <div class="box-header header-list">
+    <h1>Reporte de Cuatrimestres</h1>
+    <!-- <small class="box-title"> [ {{actividad.id}} ] ID Actividad : {{actividad.titulo}}</small> -->
+    <br />
+  </div>
+  <div class="box-body">
+    <table id="example1" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titulo</th>
+          <th>Asistencia</th>
+          <th>Horas Aportadas</th>
+          <th>Fecha de inicio</th>
+          <th>Fecha de finalizar</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of ListDeActividades; let i = index">
+          <td>{{ item.id }}</td>
+          <td>
+            <b>{{ item.titulo | uppercase }}</b>
+          </td>
+          <td>
+            <b>{{ item.asistencia }}</b>
+          </td>
+          <td>
+            <b>{{ item.horas_aportadas }}</b>
+          </td>
+          <td>{{ item.fecha_inicio }}</td>
+          <td>{{ item.fecha_finalizar }}</td>
+          <td>
+            <a
+              class="btn btn-default btn-flat"
+              title="Conferencias"
+              [routerLink]="[
+                '/',
+                item.id,
+                'report_actividades_por_cuatrimestre'
+              ]"
+              [queryParams]="{ actividad: item | json }"
+              ><i class="fa fa-bar-chart"></i
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 <router-outlet></router-outlet>
