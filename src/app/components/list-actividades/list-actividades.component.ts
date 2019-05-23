@@ -35,6 +35,9 @@ export class ListActividadesComponent implements OnInit {
   ngOnDestroy(): void {
     this.subc.unsubscribe();
   }
+  isAdmin() {
+    return this._funtions.getLoggedUser().isAdmin;
+  }
   eliminarCuatrimestre(item, index) {
     console.log('idx', index,
     'eliminar cuatrimestre::', item, item.total_conferencias, item.total_conferencias === '0', item.total_conferencias == '0');

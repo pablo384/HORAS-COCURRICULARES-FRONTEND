@@ -67,6 +67,7 @@
               </button>
               <!-- <button type="button" class="btn btn-default btn-danger" title="Desactivar" *ngIf="item.total_conferencias ==0" ><i class="fa fa-remove"></i></button> -->
               <button
+                *ngIf="isAdmin()"
                 type="button"
                 class="btn btn-default btn-danger"
                 title="Desactivar"
