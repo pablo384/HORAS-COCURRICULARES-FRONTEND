@@ -54,6 +54,7 @@
                   <th>MATRICULA</th>
                   <th>NOMBRE</th>
                   <th>CARRERA</th>
+                  <!-- <th>MATRICULA</th> -->
                   <th>HORAS ACUMULADAS</th>
                 </tr>
               </thead>
@@ -65,9 +66,10 @@
                   <td>{{ item.nombres | titlecase }} {{item.apellidos | titlecase}}</td>
                   <td>
                     <span class="label label-success">{{
-                      item.carrera.abreviatura | titlecase
+                      item.carrera.abreviatura | uppercase
                     }}</span>
                   </td>
+                  <!-- <td>{{ item.matricula | titlecase }}</td> -->
                   <td>{{ item.horasAcumuladas }}</td>
                 </tr>
               </tbody>
