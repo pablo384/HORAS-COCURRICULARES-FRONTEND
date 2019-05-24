@@ -51,7 +51,7 @@
           <th>Horas Aportadas</th>
           <th>Fecha de inicio</th>
           <th>Fecha de finalizar</th>
-          <th>Acciones</th>
+          <!-- <th>Acciones</th> -->
         </tr>
       </thead>
       <tbody>
@@ -68,7 +68,7 @@
           </td>
           <td>{{ item.horaInicio | amDateFormat: "DD/MM/YYYY HH:mm:ss a" }}</td>
           <td>{{ item.horaFin | amDateFormat: "DD/MM/YYYY HH:mm:ss a" }}</td>
-          <td>
+          <!-- <td>
             <a
               class="btn btn-default btn-flat"
               title="Conferencias"
@@ -80,7 +80,7 @@
               [queryParams]="{ actividad: item | json }"
               ><i class="fa fa-bar-chart"></i
             ></a>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </table>
