@@ -31,7 +31,7 @@
 							<!-- <span class="info-box-text"><b>Total Asistencia:</b>&nbsp;{{item.total}}</span> -->
 							<h1 style="text-align: center; color: red;margin: 0;" *ngIf="isEnded(item.horaInicio, item.horaFin) && item.iniciada">Finalizada</h1>
 							<div class="btn-group" *ngIf="!isEnded(item.horaInicio, item.horaFin) || !item.iniciada">
-								<button class="btn btn-success btn-flat" [disabled]="isEnded(item.horaInicio, item.horaFin)" title="Editar" [routerLink]="['/list_asistencias']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i> Pasar Asistencia</button>
+								<button class="btn btn-success btn-flat" *ngIf="isProgress(item.horaInicio, item.horaFin)" [disabled]="isEnded(item.horaInicio, item.horaFin)" title="Editar" [routerLink]="['/list_asistencias']" [queryParams]="{conferencia:item|json }"><i class="fa fa-list"></i> Pasar Asistencia</button>
 								<!-- <button type="button" [disabled]="item.iniciada" class="btn btn-primary btn-flat" title="Agregar Conferencia"  (click)="confirm(item)">
 								<i class="fa fa-clock-o"></i>
 								<span >Iniciar</span>
