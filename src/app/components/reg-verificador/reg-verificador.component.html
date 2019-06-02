@@ -76,7 +76,7 @@
 </form>
 </div>
 <p-footer>
-	<button type="button" class="btn btn-default pull-left"   (click)="OnHIde()">Salir</button>
+	<button type="button" class="btn btn-danger pull-left"   (click)="OnHIde()">Salir</button>
 	<button type="button" class="btn btn-success" [disabled]="formPerson.invalid" (click)="onSubmit()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
 			<span *ngIf="id==null">Registrar</span>
 			<span *ngIf="id!=null && !_funtions.IsMostrar()">Actualizar</span>

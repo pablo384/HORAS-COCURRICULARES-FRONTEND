@@ -110,7 +110,12 @@ export class ReportEstudiantesComponent implements OnInit {
     this.ListEstudiantes();
   }
   captureScreen() {
-    printJS('reporteTable', 'html');
+    printJS({
+      type: 'html',
+      printable: 'reporteTable',
+      css: 'assets/print.css'
+      // targetStyles: ['*']
+    });
   }
   include(arr, obj) {
     return (arr.indexOf(obj) != -1);

@@ -53,6 +53,8 @@
                 <tr>
                   <th>MATRICULA</th>
                   <th>NOMBRE</th>
+                  <th>APELLIDO</th>
+                  <th>TELEFONO</th>
                   <th>CARRERA</th>
                   <!-- <th>MATRICULA</th> -->
                   <th>HORAS ACUMULADAS</th>
@@ -63,7 +65,9 @@
                   <td>
                     <span>{{ item.matricula }}</span>
                   </td>
-                  <td>{{ item.nombres | titlecase }} {{item.apellidos | titlecase}}</td>
+                  <td>{{ item.nombres | titlecase }}</td>
+                  <td>{{item.apellidos | titlecase}}</td>
+                  <td>{{ item.telefono | titlecase }}</td>
                   <td>
                     <span class="label label-success">{{
                       item.carrera.abreviatura | uppercase

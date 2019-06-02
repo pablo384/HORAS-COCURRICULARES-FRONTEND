@@ -1,0 +1,21 @@
+#reporteTable {
+  width: 100%;
+}
+/* table {
+  border: 1px solid black;
+  text-align: center;
+  width: 100%;
+} */
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 15px;
+}
+table {
+  border-spacing: 5px;
+}

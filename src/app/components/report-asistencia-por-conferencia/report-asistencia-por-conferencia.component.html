@@ -57,6 +57,8 @@
       <dl class="dl-horizontal">
         <dt>Fecha</dt>
         <dd>{{ conferencia.diaPresentacion | amDateFormat: "DD/MM/YYYY" }}</dd>
+        <dt>Conferencista</dt>
+        <dd>{{ conferencia.conferencista.nombres }} {{conferencia.conferencista.apellidos}}</dd>
         <dt>Tiempo valido</dt>
         <dd>{{ conferencia.porcientoHorasValidas }}%</dd>
         <dt>Valor de conferencia</dt>

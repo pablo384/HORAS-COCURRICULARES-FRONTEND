@@ -76,6 +76,7 @@ export class ReportAsistenciaPorConferenciaComponent implements OnInit {
         //         }
         //     })
         // }
+        this.conferencia = {...this.conferencia, ...response.conferencia};
         this.carreras = response.listadoPorCarrea;
         this._funtions.blockUIO().stop();
         this.totalAsistencia = response.totalAsistencia;
