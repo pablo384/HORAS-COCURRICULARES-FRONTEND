@@ -4,6 +4,7 @@ import { FuncionesService } from '../../services/funciones.service';
 import { PeticionesService } from '../../services/peticiones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ListCarrerasComponent } from '../list-carreras/list-carreras.component';
+import { ConfirmationService } from 'primeng/api';
 
 
 
@@ -18,8 +19,23 @@ export class RegCarreraComponent implements OnInit {
   id;
   Inpdisplay: boolean;
   // @Output() public Outdisplay = new EventEmitter<boolean>();
-  constructor(private aroute: ActivatedRoute, private fb: FormBuilder, private _router: Router, private _funtions: FuncionesService, private _peticiones: PeticionesService) { }
-
+  constructor(
+    private aroute: ActivatedRoute,
+    private fb: FormBuilder,
+    private _router: Router,
+    private confirmationService: ConfirmationService,
+    private _funtions: FuncionesService,
+    private _peticiones: PeticionesService
+    ) { }
+    salir() {
+      this.confirmationService.confirm({
+        message: '¿Seguro que quieres salir?',
+        accept: () => {
+          // this.eliminarCargo(id);
+          this.OnHIde();
+        }
+      });
+    }
   ngOnInit() {
     this.Inpdisplay = true;
     this.aroute.params.subscribe(params => {

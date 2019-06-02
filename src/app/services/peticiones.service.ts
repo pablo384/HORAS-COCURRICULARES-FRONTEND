@@ -30,6 +30,27 @@ export class PeticionesService {
 
     return this.http.get(this.url + '/carrera');
   }
+  // CARGO
+  crearcargo(data: any): Observable<any> {
+    // data.horasRequeridas = data.horas_requeridas;
+    return this.http.post(this.url + '/cargo', JSON.stringify(data));
+  }
+
+  GetAllcargo(): Observable<any> {
+
+    return this.http.get(this.url + '/cargo');
+  }
+  GetCargo(id): Observable<any> {
+
+    return this.http.get(this.url + '/cargo?id=' + id);
+  }
+  Actualizarcargo(data: Object, id): Observable<any> {
+
+    return this.http.patch(this.url + '/cargo', JSON.stringify({...data, id: id}));
+  }
+  eliminarcargo(id): Observable<any> {
+    return this.http.delete(this.url + '/cargo?id=' + id);
+  }
 
   // =======================================| ACTIVIDAD |=====================
   crearCuatrimestre(data: any): Observable<any> {

@@ -79,7 +79,7 @@
 	<div class="col-lg-6">
 		<div class="input-group">
 			<span class="input-group-addon">*Nombre de usuario</span>
-			<input type="text" class="form-control" formControlName="usuario" [readonly]="id!=null"  required>
+			<p-inputMask mask="aa99-9999" placeholder="az99-9999"  type="text"  formControlName="usuario" [readonly]="id!=null"  required></p-inputMask>
 		</div>
 	</div>
 	<div class="col-lg-6">
@@ -97,14 +97,14 @@
 	<div class="col-lg-6">
 		<div class="input-group">
 			<span class="input-group-addon">*Matricula</span>
-			<input type="text" minlength="5" class="form-control" formControlName="matricula" [readonly]="id!=null" required>
+			<p-inputMask mask="99-9999"  type="text" minlength="5" placeholder="99-9999"  formControlName="matricula" [readonly]="id!=null" required></p-inputMask>
 		</div>
 	</div>
 	<!-- <br> -->
 	<div class="col-lg-6">
 		<div class="input-group">
 			<span class="input-group-addon">*Carnet</span>
-			<input type="text" maxlength="16" class="form-control" formControlName="carnet" >
+			<input type="text" maxlength="16" placeholder="9999999999999999"  class="form-control" formControlName="carnet" >
 		</div>
 	</div>
 </div>
@@ -126,8 +126,9 @@
 <br> -->
 </form>
 </div>
+
 <p-footer>
-<button type="button" class="btn btn-danger pull-left"   (click)="OnHIde()">Salir</button>
+<button type="button" class="btn btn-danger pull-left"   (click)="salir()">Salir</button>
 	<button type="button" class="btn btn-success" [disabled]="formPerson.invalid" (click)="onSubmit()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
 			<span *ngIf="id==null">Registrar</span>
 			<span *ngIf="id!=null && !_funtions.IsMostrar()">Actualizar</span>

@@ -2,6 +2,8 @@
 	<div class="box-header header-list">
 		<h3 class="box-title">Listado de Conferencistas</h3>
 	</div>
+<p-confirmDialog appendTo="body" header="Confirmacion" icon="pi pi-exclamation-triangle" ></p-confirmDialog>
+
 	<!-- <app-buscador></app-buscador> -->
 	<div class="box box-success  bg-blue">
 		
@@ -35,7 +37,7 @@
 					<td>{{item.nombres}}</td>
 					<td>{{item.apellidos}}</td>
 					<td>{{item.email}}</td>
-					<td>{{item.cargo}}</td>
+					<td>{{item.cargo.nombre}}</td>
 					<td>{{item.trabajo}}</td>
 					<td>{{item.direccion}}</td>
 					<td *ngIf="item.estado == 'A'"><div class="label label-success">Activo</div> </td>

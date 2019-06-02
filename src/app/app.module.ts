@@ -37,11 +37,11 @@ import {
 
 import { AppComponent } from './app.component';
 
-import { PeticionesService } from './services/peticiones.service'
-import { FuncionesService } from './services/funciones.service'
+import { PeticionesService } from './services/peticiones.service';
+import { FuncionesService } from './services/funciones.service';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './services/auth.service';
-import { LoginComponent } from './components/login/login.component'
+import { LoginComponent } from './components/login/login.component';
 import { routing } from './app.routing';
 import { HomeComponent } from './components/home/home.component';
 import { BoxBodyComponent } from './components/box-body/box-body.component';
@@ -70,6 +70,8 @@ import { ReportAsistenciaPorConferenciaComponent } from './components/report-asi
 import { ReportActividadesPorCuatrimestreComponent } from './components/report-actividades-por-cuatrimestre/report-actividades-por-cuatrimestre.component';
 import { ReportCuatrimestresComponent } from './components/report-cuatrimestres/report-cuatrimestres.component';
 import { ReportEstudiantesComponent } from './components/report-estudiantes/report-estudiantes.component';
+import { ListCargosComponent } from './components/list-cargos/list-cargos.component';
+import { RegCargoComponent } from './components/reg-cargo/reg-cargo.component';
 
 
 
@@ -104,6 +106,8 @@ import { ReportEstudiantesComponent } from './components/report-estudiantes/repo
     ReportActividadesPorCuatrimestreComponent,
     ReportCuatrimestresComponent,
     ReportEstudiantesComponent,
+    ListCargosComponent,
+    RegCargoComponent
   ],
   imports: [
     BrowserModule,

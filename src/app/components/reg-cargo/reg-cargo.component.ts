@@ -1,20 +1,25 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { RouterModule, Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PeticionesService } from '../../services/peticiones.service';
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { FuncionesService } from '../../services/funciones.service';
-import { ListConferencistasComponent } from '../../components/list-conferencistas/list-conferencistas.component';
+import { PeticionesService } from '../../services/peticiones.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ListCarrerasComponent } from '../list-carreras/list-carreras.component';
+import { ListCargosComponent } from '../list-cargos/list-cargos.component';
 import { ConfirmationService } from 'primeng/api';
+
+
+
+
 @Component({
-  selector: 'app-reg-conferencista',
-  templateUrl: './reg-conferencista.component.html',
-  styleUrls: ['./reg-conferencista.component.css']
+  selector: 'app-reg-cargo',
+  templateUrl: './reg-cargo.component.html',
+  styleUrls: ['./reg-cargo.component.css']
 })
-export class RegConferencistaComponent implements OnInit {
+export class RegCargoComponent implements OnInit {
+  formCarrera: FormGroup;
   id;
   Inpdisplay: boolean;
-  formPerson: FormGroup;
-  cargos = [];
+  // @Output() public Outdisplay = new EventEmitter<boolean>();
   constructor(
     private aroute: ActivatedRoute,
     private fb: FormBuilder,
@@ -22,8 +27,7 @@ export class RegConferencistaComponent implements OnInit {
     private _funtions: FuncionesService,
     private confirmationService: ConfirmationService,
     private _peticiones: PeticionesService
-    ) { }
-
+  ) { }
   salir() {
     this.confirmationService.confirm({
       message: '¿Seguro que quieres salir?',
@@ -34,36 +38,46 @@ export class RegConferencistaComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.getCargos();
-
+    this.Inpdisplay = true;
     this.aroute.params.subscribe(params => {
       console.log('params["conferencia"]', params);
       this.id = params['id'];
     }
     );
-    this.Inpdisplay = true;
-    if (this.id != undefined) {
-      this.GetConferencista();
-    }
     this.createForm();
+    if (this.id != undefined) {
+      this.GetCarrera();
+    }
+
   }
-  getCargos() {
-    this._peticiones.GetAllcargo().subscribe(
-      (res: any) => {
-        this.cargos = res.data;
-      }
-    );
+
+  createForm(n = '') {
+    this.formCarrera = this.fb.group({
+      nombre: n,
+    });
+    this._funtions.actionsOnRoute(this.formCarrera.controls);
   }
-  GetConferencista() {
+
+  OnHIde() {
+    let uri = 'cargos';
+    if (this.id != null) {
+      uri = 'cargos';
+    }
+    this.formCarrera.reset();
+    this.Inpdisplay = false;
+    this._router.navigate([uri]);
+    ListCargosComponent.returned.next(false);
+  }
+
+
+  GetCarrera() {
     this._funtions.blockUIO().start();
-    this._peticiones.GetConferencista(this.id).subscribe(
+    this._peticiones.GetCargo(this.id).subscribe(
       response => {
         this._funtions.blockUIO().stop();
         console.log(response);
         if (response.info) {
-          response.data.estado = response.data.estado == 'A';
-          this.id = response.data.id;
-          this.createForm(response.data);
+          this.createForm(response.data.nombre);
         } else {
           this._funtions.Toast('error', 'error', this._funtions.sacarText(response.error));
         }
@@ -82,41 +96,16 @@ export class RegConferencistaComponent implements OnInit {
         this._funtions.blockUIO().stop();
       }
     );
-  }
-  createForm(a = { nombres: '', apellidos: '', direccion: '', telefono: '', cedula: '', email: '', cargo: '', trabajo: '', estado: 'A' }) {
-    this.formPerson = this.fb.group({
-      nombres: [a.nombres, Validators.required],
-      apellidos: [a.apellidos, Validators.required],
-      direccion: a.direccion,
-      cedula: a.cedula,
-      email: [a.email, Validators.compose([Validators.required, Validators.email])],
-      telefono: [a.telefono, Validators.required],
-      esEstudiante: false,
-      estado: a.estado,
-      cargo: a.cargo,
-      trabajo: a.trabajo
-    });
-    this._funtions.actionsOnRoute(this.formPerson.controls);
+    // console.log("sdfdf",this.formCarrera.value)
   }
 
-  OnHIde() {
-    let uri = '/conferencistas';
-    if (this.id != null) {
-      uri = 'conferencistas';
-    }
-    this.formPerson.reset();
-    this.Inpdisplay = false;
-    this._router.navigate([uri]);
-    ListConferencistasComponent.returned.next(false);
-  }
   onSubmit() {
-    let cNameAction = 'crearEstudiante';
-    const value = JSON.parse(JSON.stringify(this.formPerson.value));
+    let cNameAction = 'crearcargo';
+    const value = JSON.parse(JSON.stringify(this.formCarrera.value));
     if (this.id != null) {
-      cNameAction = 'ActualizarConferencista';
+      cNameAction = 'Actualizarcargo';
       value.id = this.id;
     }
-    value.estado = value.estado ? 'A' : 'I';
     console.log('value', value, 'cNameAction', cNameAction);
     this._funtions.blockUIO().start();
     this._peticiones[cNameAction](value, this.id).subscribe(
@@ -126,9 +115,10 @@ export class RegConferencistaComponent implements OnInit {
         if (response.info) {
           this._funtions.Toast('success', 'success', response.message);
           this.OnHIde();
+          // this.Outdisplay.emit(false);
           // this._router.navigate(['/home']);
         } else {
-          this._funtions.Toast('error', 'error', this._funtions.sacarText(response.error || response.message));
+          this._funtions.Toast('error', 'error', this._funtions.sacarText(response.error));
         }
 
       },
@@ -145,7 +135,6 @@ export class RegConferencistaComponent implements OnInit {
         this._funtions.blockUIO().stop();
       }
     );
-
-    console.log('onSubmit ', JSON.stringify(value));
+    console.log('sdfdf', this.formCarrera.value);
   }
 }

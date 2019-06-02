@@ -4,6 +4,7 @@ import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { FuncionesService } from '../../services/funciones.service';
 import { PeticionesService } from '../../services/peticiones.service';
 import { ListVerificadoresComponent } from '../list-verificadores/list-verificadores.component';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-reg-verificador',
@@ -20,6 +21,7 @@ export class RegVerificadorComponent implements OnInit {
     private fb: FormBuilder,
     private _router: Router,
     private _funtions: FuncionesService,
+    private confirmationService: ConfirmationService,
     private _peticiones: PeticionesService
   ) {
     this.aroute.params.subscribe(params => {
@@ -30,6 +32,15 @@ export class RegVerificadorComponent implements OnInit {
 
   }
 
+salir() {
+  this.confirmationService.confirm({
+    message: '¿Seguro que quieres salir?',
+    accept: () => {
+      // this.eliminarCargo(id);
+      this.OnHIde();
+    }
+  });
+}
   ngOnInit() {
     this.Inpdisplay = true;
     this.createForm();
@@ -87,7 +98,7 @@ export class RegVerificadorComponent implements OnInit {
       surname: [a.surname, Validators.required],
       address: a.address,
       cedula: a.cedula,
-      email: [a.email, Validators.required],
+      email: [a.email, Validators.compose([Validators.required, Validators.email])],
       phone: [a.phone, Validators.required],
       nick: [a.nick, Validators.required],
       tipo: 'V',

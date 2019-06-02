@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
-import { SelectItem } from 'primeng/primeng'
+import { SelectItem, ConfirmationService } from 'primeng/primeng';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FuncionesService } from '../../services/funciones.service';
 import { PeticionesService } from '../../services/peticiones.service';
-import * as moment from "moment";
-import { ListActividadesComponent } from '../list-actividades/list-actividades.component'
+import * as moment from 'moment';
+import { ListActividadesComponent } from '../list-actividades/list-actividades.component';
 
 @Component({
   selector: 'app-reg-actividad',
@@ -26,20 +26,36 @@ export class RegActividadComponent implements OnInit {
   // selectedCarreras: string[];
 
 
-  constructor(private aroute: ActivatedRoute, private fb: FormBuilder, private _router: Router, private _funtions: FuncionesService, private _peticiones: PeticionesService) {
+  constructor(
+    private aroute: ActivatedRoute,
+    private fb: FormBuilder,
+    private _router: Router,
+    private _funtions: FuncionesService,
+    private confirmationService: ConfirmationService,
+    private _peticiones: PeticionesService
+    ) {
     this.aroute.params.subscribe(params => {
-      console.log('params["conferencia"]', params);
-      this.id = params["id"]
+      console.log('params["conferencia"]',
+      params);
+      this.id = params['id'];
     }
     );
 
   }
-
+  salir() {
+    this.confirmationService.confirm({
+      message: '¿Seguro que quieres salir?',
+      accept: () => {
+        // this.eliminarCargo(id);
+        this.OnHIde();
+      }
+    });
+  }
   ngOnInit() {
     this.Inpdisplay = true;
     this.createForm();
     this.allCarreras = [];
-    console.log("this.id", this.id)
+    console.log('this.id', this.id);
     if (this.id) {
       this.GetActividad();
     }
@@ -50,7 +66,7 @@ export class RegActividadComponent implements OnInit {
     // }
   }
   onSelectDateInicio(event) {
-    this.minDateFin = event
+    this.minDateFin = event;
   }
   createForm(a = { titulo: '', fechaInicio: new Date(), fechaFin: new Date(), descripcion: '' }) {
     // let carreras = JSON.parse(JSON.stringify(a.carreras))
@@ -63,13 +79,13 @@ export class RegActividadComponent implements OnInit {
 
 
   GetActividad() {
-    this._funtions.blockUIO().start()
+    this._funtions.blockUIO().start();
     this._peticiones.GetCuatrimestre(this.id).subscribe(
       response => {
-        this._funtions.blockUIO().stop()
+        this._funtions.blockUIO().stop();
         console.log(response);
         if (response.info) {
-          let actividad = response.data[0];
+          const actividad = response.data[0];
           actividad.fechaInicio = moment(actividad.fechaInicio).toDate();
           actividad.fechaFin = moment(actividad.fechaFin).toDate();
           // actividad.carreras = [];
@@ -78,8 +94,9 @@ export class RegActividadComponent implements OnInit {
           //   actividad.carreras.push(carrera.id_carrera)
           // }
           this.createForm(actividad);
-        } else
+        } else {
           this._funtions.Toast("error", "error", this._funtions.sacarText(response.error));
+        }
 
       },
       error => {
@@ -89,8 +106,8 @@ export class RegActividadComponent implements OnInit {
         } else {
           resultado = error.error.error;
         }
-        console.log(error.error)
-        this._funtions.Toast("error", "Error", resultado);
+        console.log(error.error);
+        this._funtions.Toast('error', 'Error', resultado);
 
         this._funtions.blockUIO().stop();
       }
@@ -101,30 +118,30 @@ export class RegActividadComponent implements OnInit {
 
 
   crearActividad() {
-    let cNameAction = "crearCuatrimestre";
-    let value = JSON.parse(JSON.stringify(this.formActividad.value));
+    let cNameAction = 'crearCuatrimestre';
+    const value = JSON.parse(JSON.stringify(this.formActividad.value));
     if (this.id != null) {
-      cNameAction = "ActualizarCuatrimestre";
+      cNameAction = 'ActualizarCuatrimestre';
       value.id = this.id;
 
     }
-    console.log("value", value, "cNameAction", cNameAction)
+    console.log('value', value, 'cNameAction', cNameAction);
 
     // let value                = this.formActividad.value
-    value.fechaInicio = moment(value.fechaInicio).format("YYYY-MM-DD")
-    value.fechaFin = moment(value.fechaFin).format("YYYY-MM-DD")
-    console.log("formActividad ", this.formActividad.value)
-    this._funtions.blockUIO().start()
+    value.fechaInicio = moment(value.fechaInicio).format('YYYY-MM-DD');
+    value.fechaFin = moment(value.fechaFin).format('YYYY-MM-DD');
+    console.log('formActividad ', this.formActividad.value);
+    this._funtions.blockUIO().start();
     this._peticiones[cNameAction](value, this.id).subscribe(
       response => {
         this._funtions.blockUIO().stop();
         if (response.info) {
           this.OnHIde();
           if (this.id != null) {
-            this._funtions.Toast("success", "Success", this._funtions.sacarText(response.message));
+            this._funtions.Toast('success', 'Success', this._funtions.sacarText(response.message));
           }
         } else {
-          this._funtions.Toast("error", "Error", this._funtions.sacarText(response.error));
+          this._funtions.Toast('error', 'Error', this._funtions.sacarText(response.error));
         }
         console.log(response);
       },
@@ -135,8 +152,8 @@ export class RegActividadComponent implements OnInit {
         } else {
           resultado = error.error.error;
         }
-        console.log(error.error)
-        this._funtions.Toast("error", "Error", resultado);
+        console.log(error.error);
+        this._funtions.Toast('error', 'Error', resultado);
 
         this._funtions.blockUIO().stop();
       }
@@ -144,19 +161,19 @@ export class RegActividadComponent implements OnInit {
   }
 
   AllCarreras() {
-    this.allCarreras = []
-    this._funtions.blockUIO().start()
+    this.allCarreras = [];
+    this._funtions.blockUIO().start();
     this._peticiones.GetAllCarrera().subscribe(
       response => {
-        this._funtions.blockUIO().stop()
+        this._funtions.blockUIO().stop();
         console.log(response);
         if (response.info) {
-          for (var i = 0; i < response.data.length; ++i) {
-            let carrera = response.data[i];
-            this.allCarreras.push({ label: carrera.nombre, value: carrera.id })
+          for (let i = 0; i < response.data.length; ++i) {
+            const carrera = response.data[i];
+            this.allCarreras.push({ label: carrera.nombre, value: carrera.id });
           }
           if (this.id) {
-            this.GetActividad()
+            this.GetActividad();
           }
         }
 
@@ -168,8 +185,8 @@ export class RegActividadComponent implements OnInit {
         } else {
           resultado = error.error.error;
         }
-        console.log(error.error)
-        this._funtions.Toast("error", "Error", resultado);
+        console.log(error.error);
+        this._funtions.Toast('error', 'Error', resultado);
 
         this._funtions.blockUIO().stop();
       }
@@ -178,11 +195,11 @@ export class RegActividadComponent implements OnInit {
 
 
   OnHIde() {
-    let uri = "cuatrimestres";
+    let uri = 'cuatrimestres';
     this.formActividad.reset();
     this.Inpdisplay = false;
     if (this.id != null) {
-      uri = "cuatrimestres";
+      uri = 'cuatrimestres';
     }
     this._router.navigate([uri]);
     ListActividadesComponent.returned.next(false);

@@ -4,6 +4,7 @@ import { FuncionesService } from '../../services/funciones.service';
 import { PeticionesService } from '../../services/peticiones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ListEstudiantesComponent } from '../list-estudiantes/list-estudiantes.component';
+import { ConfirmationService } from 'primeng/api';
 
 
 @Component({
@@ -21,7 +22,14 @@ export class RegEstudianteComponent implements OnInit {
   routeBack;
   imgPerson;
   id;
-  constructor(private aroute: ActivatedRoute, private fb: FormBuilder, private _router: Router, private _funtions: FuncionesService, private _peticiones: PeticionesService) {
+  constructor(
+    private aroute: ActivatedRoute,
+    private fb: FormBuilder,
+    private _router: Router,
+    private _funtions: FuncionesService,
+    private _peticiones: PeticionesService,
+    private confirmationService: ConfirmationService
+  ) {
 
     this._funtions.allCarreras((carreras) => {
       this.carreras = carreras.data;
@@ -31,7 +39,15 @@ export class RegEstudianteComponent implements OnInit {
     );
   }
 
-
+  salir() {
+    this.confirmationService.confirm({
+      message: '¿Seguro que quieres salir?',
+      accept: () => {
+        // this.eliminarCargo(id);
+        this.OnHIde();
+      }
+    });
+  }
   onFileChange(event) {
     console.log(event.files);
     const reader = new FileReader();
@@ -127,13 +143,29 @@ export class RegEstudianteComponent implements OnInit {
       }
     }
   }
-  createForm(a = { nombres: '', apellidos: '', direccion: '', cedula: '', email: '', carrera: '', telefono: '', usuario: '', matricula: '', image: '', carnet: '', horasAcumuladas: 0, estado: true, id_usuario: '' }) {
+  createForm(a = {
+    nombres: '',
+    apellidos: '',
+    direccion: '',
+    cedula: '',
+    email: '',
+    carrera: '',
+    telefono: '',
+    usuario: '',
+    matricula: '',
+    image: '',
+    carnet: '',
+    horasAcumuladas: 0,
+    estado: true,
+    id_usuario: ''
+  }) {
     this.formPerson = this.fb.group({
-      nombres: [a.nombres, Validators.required],
+      nombres: [a.nombres,
+      Validators.required],
       apellidos: [a.apellidos, Validators.required],
       direccion: a.direccion,
       cedula: a.cedula,
-      email: a.email,
+      email: [a.email, Validators.compose([Validators.required, Validators.email])],
       carrera: [a.carrera, Validators.required],
       telefono: a.telefono,
       usuario: [a.usuario, Validators.required],

@@ -53,8 +53,10 @@
 </div>
 </form>
 </div>
+<!-- <p-confirmDialog appendTo="body" header="Confirmacion" icon="pi pi-exclamation-triangle" ></p-confirmDialog> -->
+
 <p-footer>
-  <button type="button" class="btn btn-danger pull-left" (click)="OnHIde()">Salir</button>
+  <button type="button" class="btn btn-danger pull-left" (click)="salir()">Salir</button>
   <button type="button" class="btn btn-success" [disabled]="formActividad.invalid" (click)="crearActividad()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
       <span *ngIf="id==null">Registrar</span>
       <span *ngIf="id!=null && !_funtions.IsMostrar()">Actualizar</span>

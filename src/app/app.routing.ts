@@ -33,6 +33,8 @@ import { DetalleConferenciaComponent } from './components/detalle-conferencia/de
 
 
 import { AuthGuard } from './auth.guard';
+import { ListCargosComponent } from './components/list-cargos/list-cargos.component';
+import { RegCargoComponent } from './components/reg-cargo/reg-cargo.component';
 
 const appRoutes: Routes = [
   // { path: '', component: HomeComponent, canActivate: [AuthGuard]},
@@ -83,6 +85,14 @@ const appRoutes: Routes = [
       { path: 'registrar', component: RegCarreraComponent, canActivate: [AuthGuard] },
       { path: ':id/editar', component: RegCarreraComponent, canActivate: [AuthGuard] },
       { path: ':id/mostrar', component: RegCarreraComponent, canActivate: [AuthGuard] },
+    ]
+  },
+  {
+    path: 'cargos', component: ListCargosComponent, canActivate: [AuthGuard],
+    children: [
+      { path: 'registrar', component: RegCargoComponent, canActivate: [AuthGuard] },
+      { path: ':id/editar', component: RegCargoComponent, canActivate: [AuthGuard] },
+      { path: ':id/mostrar', component: RegCargoComponent, canActivate: [AuthGuard] },
     ]
   },
 

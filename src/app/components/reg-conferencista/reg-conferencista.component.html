@@ -54,7 +54,21 @@
         <div class="col-lg-12">
           <div class="input-group">
             <span class="input-group-addon">Cargo o Especialidad</span>
-            <input type="text" class="form-control" formControlName="cargo">
+            <!-- <input type="text" class="form-control" formControlName="cargo"> -->
+            <!-- <p-dropdown
+            [options]="cargos"
+            formControlName="cargo"
+            filter="true"
+            pTooltip="Cargo"
+            styleClass="form-control"
+            [style]="{ width: '100%', heigth: '50px' }"
+            optionLabel="nombre"
+            [showClear]="true"
+            [autoDisplayFirst]="false"
+          ></p-dropdown> -->
+          <select formControlName="cargo" class="form-control" id="cargose">
+              <option *ngFor="let item of cargos" [value]="item.id">{{item.nombre}}</option>
+            </select>
           </div>
         </div>
       </div>
@@ -71,7 +85,7 @@
   </div>
 </div>
 <p-footer>
-  <button type="button" class="btn btn-danger pull-left" (click)="OnHIde()">Salir</button>
+  <button type="button" class="btn btn-danger pull-left" (click)="salir()">Salir</button>
   <button type="button" class="btn btn-success" [disabled]="formPerson.invalid" (click)="onSubmit()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
   <span *ngIf="id==null">Registrar</span>
   <span *ngIf="id!=null && !_funtions.IsMostrar()">Actualizar</span>

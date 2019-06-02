@@ -16,6 +16,7 @@
                 <label for="carrerasSelect">Carrera</label>
                 <select [(ngModel)]="carreraSeleccionada" class="form-control" id="carrerasSelect">
                   <option *ngFor="let item of allCarreras" [value]="item.id">{{item.nombre}}</option>
+                  <option [value]="undefined">Todas</option>
                 </select>
               </div>
             </div>
@@ -24,6 +25,8 @@
                 <label for="CuatrimestresSelect">Cuatrimestre</label>
                 <select [(ngModel)]="cuatrimestreSeleccionada" class="form-control" id="CuatrimestresSelect">
                   <option *ngFor="let item of allCuatrimestres" [value]="item.id">{{item.titulo}}</option>
+                  <option [value]="undefined">Todos</option>
+
                 </select>
               </div>
             </div>
@@ -32,6 +35,7 @@
                 <label for="ActividadsSelect">Actividad</label>
                 <select [(ngModel)]="actividadSeleccionada" class="form-control" id="ActividadsSelect">
                   <option *ngFor="let item of allActividadesbyC" [value]="item.id">{{item.titulo}}</option>
+                  <option [value]="undefined">Todas</option>
                 </select>
               </div>
             </div>

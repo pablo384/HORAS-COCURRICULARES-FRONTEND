@@ -22,7 +22,12 @@ export class ReportCuatrimestresComponent implements OnInit {
     // this.ListActividades();
   }
   captureScreen() {
-    printJS('todoReport', 'html');
+    printJS({
+      type: 'html',
+      printable: 'todoReport',
+      css: 'assets/print.css'
+    });
+    // printJS('todoReport', 'html');
   }
   getCuatrimestres() {
     this._peticiones.GetAllCuatrimestres().subscribe(

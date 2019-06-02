@@ -4,6 +4,7 @@ import { FuncionesService } from '../../services/funciones.service';
 import { PeticionesService } from '../../services/peticiones.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment'
+import { ConfirmationService } from 'primeng/api';
 @Component({
   selector: 'app-reg-conferencia',
   templateUrl: './reg-conferencia.component.html',
@@ -26,6 +27,7 @@ export class RegConferenciaComponent implements OnInit {
     private fb: FormBuilder,
     private _router: Router,
     private _funtions: FuncionesService,
+    private confirmationService: ConfirmationService,
     private _peticiones: PeticionesService
   ) {
     this.aroute.params.subscribe(params => {
@@ -44,7 +46,15 @@ export class RegConferenciaComponent implements OnInit {
     this.listadoDeConferencistas();
     this.createForm();
   }
-
+  salir() {
+    this.confirmationService.confirm({
+      message: '¿Seguro que quieres salir?',
+      accept: () => {
+        // this.eliminarCargo(id);
+        this.OnHIde();
+      }
+    });
+  }
   ngOnInit() {
     console.log('LOG REGISTRO COMPONENT URL::::', this._router.url);
     console.log('LOG REGISTRO COMPONENT URL::::', this._router.url.toString().search('editar'));

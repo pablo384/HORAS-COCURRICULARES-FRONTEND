@@ -50,7 +50,12 @@ export class ReportAsistenciaPorConferenciaComponent implements OnInit {
     this.ListadoEstudiantesPorConferencias(this.conferencia.id);
   }
   captureScreen() {
-    printJS('reporteTable', 'html');
+    printJS({
+      type: 'html',
+      printable: 'reporteTable',
+      css: 'assets/print.css'
+    });
+    // printJS('reporteTable', 'html');
   }
   ListadoEstudiantesPorConferencias(conferencia_id) {
     this._funtions.blockUIO().start();

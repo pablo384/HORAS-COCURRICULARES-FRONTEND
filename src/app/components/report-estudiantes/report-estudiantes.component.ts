@@ -114,7 +114,6 @@ export class ReportEstudiantesComponent implements OnInit {
       type: 'html',
       printable: 'reporteTable',
       css: 'assets/print.css'
-      // targetStyles: ['*']
     });
   }
   include(arr, obj) {
