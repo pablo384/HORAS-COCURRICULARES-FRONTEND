@@ -43,3 +43,6 @@
     margin-top: -6px;
     margin-left: -11px;
 }
+.uppercase{
+    text-transform: uppercase !important;
+  }

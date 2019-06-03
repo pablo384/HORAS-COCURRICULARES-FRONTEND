@@ -161,7 +161,7 @@ export class RegEstudianteComponent implements OnInit {
   }) {
     this.formPerson = this.fb.group({
       nombres: [a.nombres,
-      Validators.required],
+        Validators.compose([Validators.required])],
       apellidos: [a.apellidos, Validators.required],
       direccion: a.direccion,
       cedula: a.cedula,

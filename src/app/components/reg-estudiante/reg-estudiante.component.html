@@ -1,4 +1,4 @@
-<p-dialog  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false"  >
+<p-dialog  [positionTop]=50 [draggable]="false" *ngIf="Inpdisplay" [(visible)]="Inpdisplay" [width]=600 [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false"  >
 	<p-header>
 	<div [formGroup]="formPerson" >
 	<label *ngIf="_funtions.IsRegistrar()">Registrar Estudiante</label>
@@ -19,17 +19,17 @@
 		
 		<div class="input-group">
 			<span class="input-group-addon">*Nombres</span>
-			<input autofocus type="text" class="form-control" formControlName="nombres"required >
+			<input  autofocus  type="text" class="form-control uppercase" formControlName="nombres"required >
 		</div>
 		<br>
 		<div class="input-group">
 			<span class="input-group-addon">*Apellidos</span>
-			<input type="text" class="form-control" formControlName="apellidos" required>
+			<input type="text" class="form-control uppercase" formControlName="apellidos" required>
 		</div>
 		<br>
 		<div class="input-group">
 			<span class="input-group-addon">Dirección</span>
-			<input type="text" class="form-control" formControlName="direccion">
+			<input type="text" class="form-control uppercase" formControlName="direccion">
 		</div>
 		<br>
 		<div class="row" style="padding-bottom:16px">

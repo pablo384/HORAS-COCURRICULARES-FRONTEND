@@ -27,6 +27,7 @@
     [fn]="doThingFactory()"
     [placeholder]="'Matircula, Carnet, Usuario'"
     [disabled]="conferencia.finalizada"
+    autofocus
   ></app-buscador>
   <h1 style="color: red;" *ngIf="conferencia.finalizada">
     Actividad ha finalizado.

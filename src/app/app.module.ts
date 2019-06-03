@@ -75,7 +75,6 @@ import { ListCargosComponent } from './components/list-cargos/list-cargos.compon
 import { RegCargoComponent } from './components/reg-cargo/reg-cargo.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
