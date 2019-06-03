@@ -20,6 +20,7 @@ import {
   AutoCompleteModule,
   DropdownModule,
   FileUploadModule,
+  CheckboxModule,
   OverlayPanelModule
 } from 'primeng/primeng';
 import { MomentModule } from 'angular2-moment';
@@ -133,6 +134,7 @@ import { RegCargoComponent } from './components/reg-cargo/reg-cargo.component';
     DropdownModule,
     FileUploadModule,
     FormsModule,
+    CheckboxModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
     NgbDropdownModule.forRoot(),

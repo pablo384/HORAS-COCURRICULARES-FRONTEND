@@ -56,6 +56,7 @@
 		<span class="input-group-addon">*Nombre de usuario</span>
 		<input type="text" class="form-control" formControlName="nick">
 	</div>
+
 	<br>
 	<div class="row">
 		<div class="col-lg-6">
@@ -73,6 +74,13 @@
 		</div>
 	</div>
 	<br>
+	<div class="input-group">
+			<!-- <span class="input-group-addon">*Nombre de usuario</span> -->
+			<p-checkbox label="Es administrador" binary="true" formControlName="isAdmin"></p-checkbox>
+			<!-- <p>{{formPerson.value.isAdmin}}</p> -->
+			<!-- <input type="text" class="form-control" formControlName="nick"> -->
+		</div>
+		<br>
 </form>
 </div>
 <p-footer>

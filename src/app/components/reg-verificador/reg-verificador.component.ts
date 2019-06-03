@@ -92,7 +92,16 @@ salir() {
     );
   }
 
-  createForm(a = { name: '', surname: '', address: '', cedula: '', email: '', phone: '', nick: '', password: '', estado: 'A' }) {
+  createForm(a = { name: '',
+  surname: '',
+  address: '',
+  cedula: '',
+  email: '',
+  phone: '',
+  nick: '',
+  password: '',
+  estado: 'A',
+  isAdmin: false }) {
     this.formPerson = this.fb.group({
       name: [a.name, Validators.required],
       surname: [a.surname, Validators.required],
@@ -102,6 +111,7 @@ salir() {
       phone: [a.phone, Validators.required],
       nick: [a.nick, Validators.required],
       tipo: 'V',
+      isAdmin: a.isAdmin,
       estado: a.estado,
       password: [a.password, Validators.compose([Validators.required, Validators.minLength(4)])],
       passwordConfirm: [a.password, Validators.compose([Validators.required, Validators.minLength(4)])]
