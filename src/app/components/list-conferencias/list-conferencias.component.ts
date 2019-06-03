@@ -16,6 +16,7 @@ export class ListConferenciasComponent implements OnInit, OnDestroy {
   id_actividad;
   id;
   carreras = [];
+
   private onDestroy$ = new Subject<void>();
 
   constructor(
@@ -43,6 +44,7 @@ export class ListConferenciasComponent implements OnInit, OnDestroy {
     });
 
   }
+
 
   ngOnInit() {
     this.ListasDeConferencias();

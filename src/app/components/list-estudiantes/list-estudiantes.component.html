@@ -26,22 +26,59 @@
   </div>
 </div>
 <p-dialog header="Actividades" [(visible)]="display_actividades" appendTo="body">
-  <table class="table table-bordered table-striped">
+    <button class="btn btn-success" (click)="printReport()">Imprimir</button>
+  <table id="tablereport" class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>
-          Fecha
+          Fecha de inicio
+        </th>
+        <th>
+          Fecha finalizada
         </th>
         <th>Actividad</th>
-        <th>Horas validas de actividad</th>
-        <th>Horas aplicadas de esta asistencia</th>
+        <th>Requisito Horas de actividad</th>
+        <th>Horas aplicadas de esta actividad</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of actividadesPar">
         <td>{{item.horaInicio | amDateFormat:'DD-MM-YYYY hh:mm:ss a'}}</td>
+        <td>{{item.horaFin | amDateFormat:'DD-MM-YYYY hh:mm:ss a'}}</td>
+        <td>{{item.titulo}}</td>
+        <td>{{item.porcientoHorasValidas}}%</td>
+        <td>{{item.horasAplicadas}}</td>
+      </tr>
+    </tbody>
+  </table>
+    <!-- <ul>
+      <li *ngFor="let item of actividadesPar">
+        {{item.horaInicio | amDateFormat:'DD-MM-YYYY hh:mm:ss a'}} - {{item.conferencia.titulo}} - {{item.conferencia.porcientoHorasValidas}}% - {{item.horasAplicadas}}
+      </li>
+    </ul> -->
+</p-dialog>
+<p-dialog header="Asistencias Entrada/Salida" [(visible)]="display_entrada_salida" appendTo="body">
+    <button class="btn btn-success" (click)="printReportEntradaSalida()">Imprimir</button>
+  <table id="tablereportentrada" class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>
+          Entrada
+        </th>
+        <th>
+          Salida
+        </th>
+        <th>Actividad</th>
+        <th>Valor de actividad</th>
+        <th>Horas aplicadas de esta asistencia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of asistencias">
+        <td>{{item.horaInicio | amDateFormat:'DD-MM-YYYY hh:mm:ss a'}}</td>
+        <td>{{item.horaFin | amDateFormat:'DD-MM-YYYY hh:mm:ss a'}}</td>
         <td>{{item.conferencia.titulo}}</td>
-        <td>{{item.conferencia.porcientoHorasValidas}}%</td>
+        <td>{{item.conferencia.valorConf}}</td>
         <td>{{item.horasAplicadas}}</td>
       </tr>
     </tbody>
@@ -78,6 +115,7 @@
             <button type="button" class="btn btn-default btn-flat" title="Editar" [routerLink]="[EstudianteSeleccionado?.id,'editar']"><i class=" glyphicon glyphicon-pencil" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-default btn-flat" title="Ver" [routerLink]="[EstudianteSeleccionado?.id,'mostrar']"><i class="fa fa-eye"></i></button>
             <button type="button" class="btn btn-default btn-flat" title="Actividades que participo" (click)="getConfParticipadas(EstudianteSeleccionado?.id)"><i class="fa fa-hourglass-half"></i></button>
+            <button type="button" class="btn btn-default btn-flat" title="Actividades que participo" (click)="getEntradaSalida(EstudianteSeleccionado?.id)"><i class="fa fa-sign-out"></i></button>
             <!-- <button type="button" class="btn btn-default btn-danger" title="Desactivar"><i class="fa fa-remove"></i></button> -->
           </div>
         </td>

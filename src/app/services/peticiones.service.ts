@@ -98,6 +98,9 @@ export class PeticionesService {
   getConferenciasParticipadas(id): Observable<any> {
     return this.http.get(this.url + '/persona/getconferenciasparticipadas?id=' + id);
   }
+  getReporteEntradaSalida(id): Observable<any> {
+    return this.http.get(this.url + '/persona/reporentradasalida?id=' + id);
+  }
 
   // =======================================| ESTUDIANTE |=====================
   verificarParticipacion(data: any): Observable<any> {

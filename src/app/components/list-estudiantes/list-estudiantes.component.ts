@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { FuncionesService } from '../../services/funciones.service';
 import { PeticionesService } from '../../services/peticiones.service';
-
+import * as printJS from 'print-js';
 @Component({
   selector: 'app-list-estudiantes',
   templateUrl: './list-estudiantes.component.html',
@@ -16,7 +16,9 @@ export class ListEstudiantesComponent implements OnInit {
   cDatosSearch: string;
   estudiante: any[];
   display_actividades = false;
+  display_entrada_salida = false;
   actividadesPar = [];
+  asistencias = [];
   public static returned: Subject<any> = new Subject();
   subc: Subscription;
   constructor(private _funtions: FuncionesService, private _peticiones: PeticionesService) {
@@ -31,11 +33,22 @@ export class ListEstudiantesComponent implements OnInit {
   toggleActi() {
     this.display_actividades = !this.display_actividades;
   }
+  toggleActiEntrada() {
+    this.display_entrada_salida = !this.display_entrada_salida;
+  }
   getConfParticipadas(id) {
     this._peticiones.getConferenciasParticipadas(id).subscribe(
       res => {
         this.actividadesPar = res.data;
         this.toggleActi();
+      }
+    );
+  }
+  getEntradaSalida(id) {
+    this._peticiones.getReporteEntradaSalida(id).subscribe(
+      res => {
+        this.asistencias = res.data;
+        this.toggleActiEntrada();
       }
     );
   }
@@ -45,6 +58,24 @@ export class ListEstudiantesComponent implements OnInit {
   }
   doThingFactory() {
     return (cDatos) => this.getEstudiante(cDatos);
+  }
+  printReport() {
+    // example1
+    printJS({
+      type: 'html',
+      printable: 'tablereport',
+      css: 'assets/print.css',
+      header: 'Reporte de asistencia matricula:' + this.EstudianteSeleccionado.matricula,
+    });
+  }
+  printReportEntradaSalida() {
+    // example1
+    printJS({
+      type: 'html',
+      printable: 'tablereportentrada',
+      css: 'assets/print.css',
+      header: 'Reporte de Entrada/Salida matricula:' + this.EstudianteSeleccionado.matricula,
+    });
   }
 
 
