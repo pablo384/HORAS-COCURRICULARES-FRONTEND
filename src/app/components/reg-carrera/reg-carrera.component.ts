@@ -26,16 +26,16 @@ export class RegCarreraComponent implements OnInit {
     private confirmationService: ConfirmationService,
     private _funtions: FuncionesService,
     private _peticiones: PeticionesService
-    ) { }
-    salir() {
-      this.confirmationService.confirm({
-        message: '¿Seguro que quieres salir?',
-        accept: () => {
-          // this.eliminarCargo(id);
-          this.OnHIde();
-        }
-      });
-    }
+  ) { }
+  salir() {
+    this.confirmationService.confirm({
+      message: '¿Seguro que quieres salir?',
+      accept: () => {
+        // this.eliminarCargo(id);
+        this.OnHIde();
+      }
+    });
+  }
   ngOnInit() {
     this.Inpdisplay = true;
     this.aroute.params.subscribe(params => {
@@ -68,6 +68,15 @@ export class RegCarreraComponent implements OnInit {
     this.Inpdisplay = false;
     this._router.navigate([uri]);
     ListCarrerasComponent.returned.next(false);
+  }
+
+  get isValidHoras() {
+    const res = this.formCarrera.value.horasRequeridas >= 10 &&
+      this.formCarrera.value.horasRequeridas <= 99;
+    // console.log('isvalid:: ', res);
+
+
+    return !res;
   }
 
 

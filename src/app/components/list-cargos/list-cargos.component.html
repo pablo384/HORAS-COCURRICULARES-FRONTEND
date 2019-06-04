@@ -1,12 +1,17 @@
 <div class="box">
   <div class="box-header header-list">
-    <h3 class="box-title">Listado de Carreras</h3>
+    <h3 class="box-title">Listado de Cargos</h3>
   </div>
   <!-- <app-buscador ></app-buscador> -->
   <div class="box-header">
     <div class="row">
       <div class="col-xs-4">
-        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Nombre, Abreviatura, Fecha de creación">
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="searchText"
+          placeholder="Nombre, Abreviatura, Fecha de creación"
+        />
       </div>
     </div>
   </div>
@@ -22,21 +27,45 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of cargos | search:searchText">
-          <td>{{item.value}}</td>
-          <td>{{item.label}}</td>
-          <td>{{item.creado | amDateFormat:'DD/MM/YYYY'}}</td>
+        <tr *ngFor="let item of cargos | search: searchText">
+          <td>{{ item.value }}</td>
+          <td>{{ item.label }}</td>
+          <td>{{ item.creado | amDateFormat: "DD/MM/YYYY" }}</td>
           <td>
             <div class="btn-group">
-              <button type="button" class="btn btn-default btn-flat" [routerLink]="[item.value,'editar']"  title="Editar"><i class=" glyphicon glyphicon-pencil" aria-hidden="true"></i></button>
-              <button type="button" class="btn btn-default btn-flat" [routerLink]="[item.value,'mostrar']"  title="Editar"><i class=" fa fa-eye" aria-hidden="true"></i></button>
-              <button type="button" class="btn btn-default btn-danger" title="Desactivar" (click)="confrimacion(item.value)" ><i class="fa fa-remove"></i></button>
+              <button
+                type="button"
+                class="btn btn-default btn-flat"
+                [routerLink]="[item.value, 'editar']"
+                title="Editar"
+              >
+                <i class=" glyphicon glyphicon-pencil" aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-flat"
+                [routerLink]="[item.value, 'mostrar']"
+                title="Editar"
+              >
+                <i class=" fa fa-eye" aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-default btn-danger"
+                title="Desactivar"
+                (click)="confrimacion(item.value)"
+              >
+                <i class="fa fa-remove"></i>
+              </button>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
-    <p-confirmDialog header="Confirmacion" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-confirmDialog
+      header="Confirmacion"
+      icon="pi pi-exclamation-triangle"
+    ></p-confirmDialog>
   </div>
 </div>
 <router-outlet></router-outlet>
