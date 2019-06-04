@@ -1,20 +1,36 @@
-<p-dialog  [positionTop]=50 [draggable]="false" [(visible)]="Inpdisplay" [width]="600" [closeOnEscape]="false" [modal]="true" (onHide)="OnHIde()" [closable]="false" >   <p-header>
-    <div >
-      <label *ngIf="_funtions.IsRegistrar()">Registrar Carrera</label>
-      <label *ngIf="_funtions.IsEditar()">Editar Carrera</label>
-      <label *ngIf="_funtions.IsMostrar()">Mostrar Carrera</label>
+<p-dialog
+  [positionTop]="50"
+  [draggable]="false"
+  [(visible)]="Inpdisplay"
+  [width]="600"
+  [closeOnEscape]="false"
+  [modal]="true"
+  (onHide)="OnHIde()"
+  [closable]="false"
+>
+  <p-header>
+    <div>
+      <label *ngIf="_funtions.IsRegistrar()">Registrar Cargo</label>
+      <label *ngIf="_funtions.IsEditar()">Editar Cargo</label>
+      <label *ngIf="_funtions.IsMostrar()">Mostrar Cargo</label>
       <!-- <p-toggleButton styleClass="btn-default pull-right" formControlName="estado" onLabel="Activo" offLabel="Inactivo" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width':'150px'}"></p-toggleButton> -->
     </div>
   </p-header>
-	<form [formGroup]="formCarrera"  (ngSubmit)="onSubmit()" >
-		<div class="box-body">
-			<div class="col-lg-7">
-		   		<div class="input-group">
-		       	<span class="input-group-addon">*Nombre</span>
-		        <input type="text" class="form-control uppercase" formControlName="nombre" autofocus required>
-		    	</div>
-			</div>
-		  	<!-- <div class="col-lg-5">
+  <form [formGroup]="formCarrera" (ngSubmit)="onSubmit()">
+    <div class="box-body">
+      <div class="col-lg-7">
+        <div class="input-group">
+          <span class="input-group-addon">*Nombre</span>
+          <input
+            type="text"
+            class="form-control uppercase"
+            formControlName="nombre"
+            autofocus
+            required
+          />
+        </div>
+      </div>
+      <!-- <div class="col-lg-5">
 		   		<div class="input-group">
 		       	<span class="input-group-addon">*Codigo</span>
 		        <input type="text" class="form-control" formControlName="abreviatura" required>
@@ -29,17 +45,35 @@
 		        <input type="number" class="form-control" formControlName="horasRequeridas" required>
 		    	</div>
 			</div> -->
-		</div>
-	</form>
-	<p-footer>
-		  <button type="button" class="btn btn-danger pull-left" (click)="salir()">Salir</button>
-	  <button type="button" class="btn btn-success" [disabled]="formCarrera.invalid" (click)="onSubmit()" *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()">
-	      <span *ngIf="id==null">Registrar</span>
-	      <span *ngIf="id!=null && !_funtions.IsMostrar()">Actualizar</span>
-	      <!-- <span *ngIf="id!=null && _funtions.IsMostrar()">Editar</span> -->
-	    </button>   
-	    <button type="button" class="btn btn-success" [disabled]="formCarrera.invalid && formCarrera.value.horasRequeridas >= 10 && formCarrera.value.horasRequeridas <=99" [routerLink]="['/carreras',id,'editar']" *ngIf="_funtions.IsMostrar()">
-	      <span>Editar</span>
-	    </button>
-	</p-footer>
+    </div>
+  </form>
+  <p-footer>
+    <button type="button" class="btn btn-danger pull-left" (click)="salir()">
+      Salir
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      [disabled]="formCarrera.invalid"
+      (click)="onSubmit()"
+      *ngIf="_funtions.IsRegistrar() || _funtions.IsEditar()"
+    >
+      <span *ngIf="id == null">Registrar</span>
+      <span *ngIf="id != null && !_funtions.IsMostrar()">Actualizar</span>
+      <!-- <span *ngIf="id!=null && _funtions.IsMostrar()">Editar</span> -->
+    </button>
+    <button
+      type="button"
+      class="btn btn-success"
+      [disabled]="
+        formCarrera.invalid &&
+        formCarrera.value.horasRequeridas >= 10 &&
+        formCarrera.value.horasRequeridas <= 99
+      "
+      [routerLink]="['/cargos', id, 'editar']"
+      *ngIf="_funtions.IsMostrar()"
+    >
+      <span>Editar</span>
+    </button>
+  </p-footer>
 </p-dialog>
