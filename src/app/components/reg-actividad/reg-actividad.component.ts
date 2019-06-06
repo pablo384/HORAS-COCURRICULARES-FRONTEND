@@ -45,6 +45,8 @@ export class RegActividadComponent implements OnInit {
   salir() {
     this.confirmationService.confirm({
       message: '¿Seguro que quieres salir?',
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
       accept: () => {
         // this.eliminarCargo(id);
         this.OnHIde();
@@ -120,6 +122,8 @@ export class RegActividadComponent implements OnInit {
   crearActividad() {
     let cNameAction = 'crearCuatrimestre';
     const value = JSON.parse(JSON.stringify(this.formActividad.value));
+    value.titulo = value.titulo.toUpperCase();
+    value.descripcion = value.descripcion.toUpperCase();
     if (this.id != null) {
       cNameAction = 'ActualizarCuatrimestre';
       value.id = this.id;

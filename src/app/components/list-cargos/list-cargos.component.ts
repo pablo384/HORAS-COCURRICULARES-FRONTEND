@@ -33,6 +33,8 @@ export class ListCargosComponent implements OnInit {
   confrimacion(id) {
     this.confirmationService.confirm({
       message: '¿Seguro que quieres desactivar este cargo?',
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
       accept: () => {
         this.eliminarCargo(id);
       }

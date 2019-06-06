@@ -40,14 +40,16 @@ export class ListActividadesComponent implements OnInit {
   }
   eliminarCuatrimestre(item, index) {
     console.log('idx', index,
-    'eliminar cuatrimestre::', item, item.total_conferencias, item.total_conferencias === '0', item.total_conferencias == '0');
+      'eliminar cuatrimestre::', item, item.total_conferencias, item.total_conferencias === '0', item.total_conferencias == '0');
     if (item.conferencias > 0) {
-      this._funtions.Toast('warning', 'warning', 'Para eliminar un cuatrimestre debes eliminar todas sus actividades primero');
+      this._funtions.Toast('warning', 'Advertencia', 'Para eliminar un cuatrimestre debes eliminar todas sus actividades primero');
       // return;
     } else {
       console.log('ELSE ELIMINAR CUATRIMESTRE');
       this.confirmationService.confirm({
         message: '¿Seguro que quieres eliminar este cuatrimestre?',
+        acceptLabel: 'Si',
+        rejectLabel: 'No',
         accept: () => {
           // Actual logic to perform a confirmation
           this.eliminarCuatrimestrePeticion(item.id);

@@ -33,6 +33,8 @@ export class ListCarrerasComponent implements OnInit {
   confrimacion(id) {
     this.confirmationService.confirm({
       message: '¿Seguro que quieres desactivar esta carrera?',
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
       accept: () => {
         this.eliminarCarrera(id);
       }

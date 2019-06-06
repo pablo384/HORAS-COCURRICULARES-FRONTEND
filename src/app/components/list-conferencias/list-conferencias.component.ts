@@ -134,6 +134,8 @@ export class ListConferenciasComponent implements OnInit, OnDestroy {
   EliminarConferencia(index, id_conferencia, id_conferencista_por_actividad) {
     console.log('id_conferencia,id_conferencista_por_actividad', id_conferencia, id_conferencista_por_actividad);
     this.confirmationService.confirm({
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
       message: '¿Seguro que quieres eliminar esta actividad?',
       accept: () => {
         // Actual logic to perform a confirmation
@@ -168,6 +170,8 @@ export class ListConferenciasComponent implements OnInit, OnDestroy {
   finalizarConferencia(index, id_conferencia, id_conferencista_por_actividad) {
     // console.log('id_conferencia,id_conferencista_por_actividad', id_conferencia, id_conferencista_por_actividad);
     this.confirmationService.confirm({
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
       message: '¿Seguro que quieres finalizar esta actividad?',
       accept: () => {
         // Actual logic to perform a confirmation

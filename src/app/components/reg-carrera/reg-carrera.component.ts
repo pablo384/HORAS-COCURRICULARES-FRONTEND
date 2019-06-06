@@ -29,6 +29,8 @@ export class RegCarreraComponent implements OnInit {
   ) { }
   salir() {
     this.confirmationService.confirm({
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
       message: '¿Seguro que quieres salir?',
       accept: () => {
         // this.eliminarCargo(id);
@@ -112,6 +114,8 @@ export class RegCarreraComponent implements OnInit {
   onSubmit() {
     let cNameAction = 'crearCarrera';
     const value = JSON.parse(JSON.stringify(this.formCarrera.value));
+    value.nombre = value.nombre.toUpperCase();
+    value.abreviatura = value.abreviatura.toUpperCase();
     if (this.id != null) {
       cNameAction = 'ActualizarCarrera';
       value.id = this.id;

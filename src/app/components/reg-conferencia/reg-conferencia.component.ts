@@ -48,6 +48,8 @@ export class RegConferenciaComponent implements OnInit {
   }
   salir() {
     this.confirmationService.confirm({
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
       message: '¿Seguro que quieres salir?',
       accept: () => {
         // this.eliminarCargo(id);

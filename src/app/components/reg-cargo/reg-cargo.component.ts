@@ -31,6 +31,8 @@ export class RegCargoComponent implements OnInit {
   salir() {
     this.confirmationService.confirm({
       message: '¿Seguro que quieres salir?',
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
       accept: () => {
         // this.eliminarCargo(id);
         this.OnHIde();
@@ -102,6 +104,7 @@ export class RegCargoComponent implements OnInit {
   onSubmit() {
     let cNameAction = 'crearcargo';
     const value = JSON.parse(JSON.stringify(this.formCarrera.value));
+    value.nombre = value.nombre.toUpperCase();
     if (this.id != null) {
       cNameAction = 'Actualizarcargo';
       value.id = this.id;

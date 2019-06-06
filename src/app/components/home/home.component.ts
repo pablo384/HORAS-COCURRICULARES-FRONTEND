@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   isProgress(timeInit, timeEnd) {
     // console.log('progreso::', moment(timeInit, 'HH:mm').unix(), timeEnd, moment().hour());
     // console.log('progreso:COND:', moment(timeInit).unix() < moment().unix(), (!timeEnd || timeEnd ===  '' || timeEnd ===  '0'));
-    if (moment(timeInit).unix() < moment().unix() && (!timeEnd || timeEnd ===  '' || timeEnd ===  '0')) {
+    if (moment(timeInit).unix() < moment().unix() && (!timeEnd || timeEnd === '' || timeEnd === '0')) {
       return true;
     }
     return false;
@@ -91,6 +91,8 @@ export class HomeComponent implements OnInit {
     }
     this._digalog.confirm({
       message: cMsg,
+      acceptLabel: 'Si',
+      rejectLabel: 'No',
       accept: () => {
         this.finalizarConferenciaPeticion(item.id);
       }
