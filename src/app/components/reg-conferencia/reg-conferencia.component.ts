@@ -134,6 +134,12 @@ export class RegConferenciaComponent implements OnInit {
   }
 
 
+  get estimada() {
+    const dur = moment.duration(this.formConferencia.value.duracionEstimada);
+    return moment(this.formConferencia.value.horaInicio).add(dur)
+    .format('hh:mm a');
+
+  }
 
   createForm(
     a = {

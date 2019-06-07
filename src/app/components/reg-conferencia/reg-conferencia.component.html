@@ -70,10 +70,14 @@
               formControlName="duracionEstimada"
             ></p-inputMask>
           </div>
-          <div class="col-lg-5">
-            <label>* Valor de conferencia en horas</label>
-          </div>
+          <div class="col-lg-5"><label>*Hora estimada a finalizar</label></div>
           <div class="col-lg-7" style="margin-bottom:4px">
+            <span>{{ estimada }}</span>
+          </div>
+          <!-- <div class="col-lg-5">
+          </div> -->
+          <div class="col-lg-12" style="margin-bottom:4px">
+              <label>* Valor de conferencia en horas</label>
             <input
               pInputText
               [style]="{ width: '100%', heigth: '54px' }"
